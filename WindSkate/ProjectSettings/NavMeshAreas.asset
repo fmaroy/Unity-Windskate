@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!126 &1
+NavMeshAreas:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  areas:
+  - name: Walkable
+    cost: 1
+  - name: Not Walkable
+    cost: 1
+  - name: Jump
+    cost: 2
+  - name: Sand_light
+    cost: 1.1
+  - name: Sand
+    cost: 1.2
+  - name: Dirt
+    cost: 1.3
+  - name: Wind Light
+    cost: 1.1
+  - name: Wind Heavy
+    cost: 1.2
+  - name: 
+    cost: 1
+  - name: Track Details
+    cost: 100
+  - name: 
+    cost: 1
+  - name: 
+    cost: 1
+  - name: 
+    cost: 1
+  - name: 
+    cost: 1
+  - name: 
+    cost: 1
+  - name: 
+    cost: 1
+  - name: 
+    cost: 1
+  - name: 
+    cost: 1
+  - name: 
+    cost: 1
+  - name: 
+    cost: 1
+  - name: 
+    cost: 1
+  - name: 
+    cost: 1
+  - name: 
+    cost: 1
+  - name: 
+    cost: 1
+  - name: 
+    cost: 1
+  - name: 
+    cost: 1
+  - name: 
+    cost: 1
+  - name: 
+    cost: 1
+  - name: 
+    cost: 1
+  - name: 
+    cost: 1
+  - name: 
+    cost: 1
+  - name: 
+    cost: 1

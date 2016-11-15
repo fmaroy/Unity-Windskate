@@ -1,0 +1,121 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: fence_02_std
+  m_Shader: {fileID: 54, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _AOUV0UV1_ON _SLIDERCONTROLGLOSSCONTROL_ON
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+    - first:
+        name: _BumpMap
+      second:
+        m_Texture: {fileID: 2800000, guid: 6864f731309597344a68ea087f53f1a0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Illum
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _MainTex
+      second:
+        m_Texture: {fileID: 2800000, guid: 81c3e34ae6f75154ea283fb2102f0bf2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _aorgbcolormaska
+      second:
+        m_Texture: {fileID: 2800000, guid: 1cdb0c90db3bf92459cb20bf9d9b61f8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _environment
+      second:
+        m_Texture: {fileID: 8900000, guid: f9382e5e7ba1b87498b521f1e9c4ac0c, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _specularrgbglossa
+      second:
+        m_Texture: {fileID: 2800000, guid: 048b8e1ec839d7247832f2bde749b87c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - first:
+        name: _AOUv0Uv1
+      second: 1
+    - first:
+        name: _AdditionalBrightnesscontrol
+      second: 0.79999995
+    - first:
+        name: _BrignessLevelscontrast
+      second: 0.7142857
+    - first:
+        name: _Cutoff
+      second: 0.5
+    - first:
+        name: _EmissionLM
+      second: 0
+    - first:
+        name: _MainBrightnessControl
+      second: 0.12499999
+    - first:
+        name: _OverrideAmbient
+      second: 0
+    - first:
+        name: _Shininess
+      second: 0.06610363
+    - first:
+        name: _SlidercontrolGlosscontrol
+      second: 1
+    - first:
+        name: _aopower
+      second: 1
+    - first:
+        name: _emissionintensity
+      second: 0
+    - first:
+        name: _environmentblur
+      second: 0.28571427
+    - first:
+        name: _environmentcorrection
+      second: 2.2321427
+    - first:
+        name: _environmentfresnel
+      second: 0.16071428
+    - first:
+        name: _environmentpower
+      second: 1.8928572
+    - first:
+        name: _normalintensity
+      second: 1
+    - first:
+        name: _normaluv01
+      second: 0
+    - first:
+        name: _specularpower
+      second: 0.53571427
+    m_Colors:
+    - first:
+        name: _AmbientColor
+      second: {r: 1, g: 1, b: 1, a: 1}
+    - first:
+        name: _Color
+      second: {r: 0.8021045, g: 0.78617, b: 0.8161765, a: 1}
+    - first:
+        name: _SpecColor
+      second: {r: 0.84089607, g: 0.76557094, b: 0.86764705, a: 1}
+    - first:
+        name: _emissioncolor
+      second: {r: 0.5, g: 0.5, b: 0.5, a: 1}

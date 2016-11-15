@@ -1,0 +1,180 @@
+fileFormatVersion: 2
+guid: 001fc6fd4cb5d1e47ad7b85370fad4a8
+timeCreated: 1452188519
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Board
+    100002: //RootNode
+    100004: Front_Axle
+    100006: Front_Axle_Bar
+    100008: Rear_Axle
+    100010: Rear_Axle_Bar
+    100012: Wheel_FL
+    100014: Wheel_FR
+    100016: Wheel_RL
+    100018: Wheel_RR
+    100020: Board_Type_2
+    100022: Plane
+    100024: Axle_Front_Type_3_Part_1
+    100026: Axle_Front_Type_3_Part_2
+    100028: Axle_Rear_Type_3_Part_1
+    100030: Axle_Rear_Type_3_Part_2
+    100032: Board__Type_3
+    100034: Front_Axle_001
+    100036: Wheel_FL_Type_3
+    100038: Wheel_FR_Type_3
+    100040: Wheel_RL_Type_3
+    100042: Wheel_RR_Type_3
+    400000: Board
+    400002: //RootNode
+    400004: Front_Axle
+    400006: Front_Axle_Bar
+    400008: Rear_Axle
+    400010: Rear_Axle_Bar
+    400012: Wheel_FL
+    400014: Wheel_FR
+    400016: Wheel_RL
+    400018: Wheel_RR
+    400020: Board_Type_2
+    400022: Plane
+    400024: Axle_Front_Type_3_Part_1
+    400026: Axle_Front_Type_3_Part_2
+    400028: Axle_Rear_Type_3_Part_1
+    400030: Axle_Rear_Type_3_Part_2
+    400032: Board__Type_3
+    400034: Front_Axle_001
+    400036: Wheel_FL_Type_3
+    400038: Wheel_FR_Type_3
+    400040: Wheel_RL_Type_3
+    400042: Wheel_RR_Type_3
+    2300000: Board
+    2300002: Front_Axle
+    2300004: Front_Axle_Bar
+    2300006: Rear_Axle
+    2300008: Rear_Axle_Bar
+    2300010: Wheel_FL
+    2300012: Wheel_FR
+    2300014: Wheel_RL
+    2300016: Wheel_RR
+    2300018: Board_Type_2
+    2300020: Plane
+    2300022: Axle_Front_Type_3_Part_1
+    2300024: Axle_Front_Type_3_Part_2
+    2300026: Axle_Rear_Type_3_Part_1
+    2300028: Axle_Rear_Type_3_Part_2
+    2300030: Board__Type_3
+    2300032: Front_Axle_001
+    2300034: Wheel_FL_Type_3
+    2300036: Wheel_FR_Type_3
+    2300038: Wheel_RL_Type_3
+    2300040: Wheel_RR_Type_3
+    3300000: Board
+    3300002: Front_Axle
+    3300004: Front_Axle_Bar
+    3300006: Rear_Axle
+    3300008: Rear_Axle_Bar
+    3300010: Wheel_FL
+    3300012: Wheel_FR
+    3300014: Wheel_RL
+    3300016: Wheel_RR
+    3300018: Board_Type_2
+    3300020: Plane
+    3300022: Axle_Front_Type_3_Part_1
+    3300024: Axle_Front_Type_3_Part_2
+    3300026: Axle_Rear_Type_3_Part_1
+    3300028: Axle_Rear_Type_3_Part_2
+    3300030: Board__Type_3
+    3300032: Front_Axle_001
+    3300034: Wheel_FL_Type_3
+    3300036: Wheel_FR_Type_3
+    3300038: Wheel_RL_Type_3
+    3300040: Wheel_RR_Type_3
+    4300000: Wheel_FL
+    4300002: Front_Axle_Bar
+    4300004: Front_Axle
+    4300006: Board
+    4300008: Rear_Axle
+    4300010: Wheel_FR
+    4300012: Wheel_RR
+    4300014: Rear_Axle_Bar
+    4300016: Wheel_RL
+    4300018: Board_Type_2
+    4300020: Plane
+    4300022: Wheel_RR_Type_3
+    4300024: Wheel_RL_Type_3
+    4300026: Axle_Rear_Type_3_Part_1
+    4300028: Axle_Rear_Type_3_Part_2
+    4300030: Axle_Front_Type_3_Part_2
+    4300032: Board__Type_3
+    4300034: Axle_Front_Type_3_Part_1
+    4300036: Wheel_FR_Type_3
+    4300038: Front_Axle_001
+    4300040: Wheel_FL_Type_3
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

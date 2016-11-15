@@ -1,0 +1,211 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: trashbin_01_std
+  m_Shader: {fileID: 4, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+    - first:
+        name: _BumpMap
+      second:
+        m_Texture: {fileID: 2800000, guid: dff40d403ca3b59429d1e65f9636aad8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Illum
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _MainTex
+      second:
+        m_Texture: {fileID: 2800000, guid: ec8ccc274e749534abbb94c451efb316, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _ao
+      second:
+        m_Texture: {fileID: 2800000, guid: 54a89ea1293902444bd38df0c60bfe60, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _aorgbcolormaska
+      second:
+        m_Texture: {fileID: 2800000, guid: 9dffb7c9d9b1e214689ef3a2aec6e0a1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _cubemap
+      second:
+        m_Texture: {fileID: 8900000, guid: 2f821dbbb5e173e468876ef2e4eaa490, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _diffuserbgtransparentya
+      second:
+        m_Texture: {fileID: 2800000, guid: 60c86ee3953c01443bb8ac6d67b32adb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _emission
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _environment
+      second:
+        m_Texture: {fileID: 8900000, guid: 000af05488042cd4db8c0758e97cee7f, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _node_200
+      second:
+        m_Texture: {fileID: 8900000, guid: 2f821dbbb5e173e468876ef2e4eaa490, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _normal
+      second:
+        m_Texture: {fileID: 2800000, guid: dff40d403ca3b59429d1e65f9636aad8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _specularrgbglossa
+      second:
+        m_Texture: {fileID: 2800000, guid: 52c659d7a27b7184882fe0bcb7bd52dc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - first:
+        name: _AOUv0Uv1
+      second: 0
+    - first:
+        name: _AdditionalBrightnesscontrol
+      second: 0.9477199
+    - first:
+        name: _BrignessLevelscontrast
+      second: 0.71428573
+    - first:
+        name: _Cutoff
+      second: 0.5
+    - first:
+        name: _EmissionLM
+      second: 0
+    - first:
+        name: _MainBrightnessContro4
+      second: 0.9477199
+    - first:
+        name: _MainBrightnessControl
+      second: 0
+    - first:
+        name: _OverrideAmbient
+      second: 0
+    - first:
+        name: _Shininess
+      second: 0.263668
+    - first:
+        name: _SlidercontrolGlosscontrol
+      second: 1
+    - first:
+        name: _aopower
+      second: 1
+    - first:
+        name: _cubemappower
+      second: 1
+    - first:
+        name: _emissionintensity
+      second: 0
+    - first:
+        name: _emissionpower
+      second: 0
+    - first:
+        name: _environmentblue
+      second: 1
+    - first:
+        name: _environmentblur
+      second: 0.017857144
+    - first:
+        name: _environmentcorrection
+      second: 3.142857
+    - first:
+        name: _environmentfresnel
+      second: 0.75
+    - first:
+        name: _environmentglossiness
+      second: 0
+    - first:
+        name: _environmentpower
+      second: 1.25
+    - first:
+        name: _fresnel
+      second: 2.6785715
+    - first:
+        name: _glosspower
+      second: 0.6964286
+    - first:
+        name: _glossyness
+      second: 0.5
+    - first:
+        name: _node_127
+      second: 0
+    - first:
+        name: _node_128
+      second: 0
+    - first:
+        name: _node_206
+      second: 2.142857
+    - first:
+        name: _node_277
+      second: 0
+    - first:
+        name: _node_292
+      second: 0
+    - first:
+        name: _node_340
+      second: 0
+    - first:
+        name: _node_428
+      second: 0
+    - first:
+        name: _normalintensity
+      second: 1
+    - first:
+        name: _normaluv01
+      second: 0
+    - first:
+        name: _specularpower
+      second: 0.875
+    - first:
+        name: _transparency
+      second: 0
+    m_Colors:
+    - first:
+        name: _AmbientColor
+      second: {r: 0.05449827, g: 0.2351569, b: 0.3088235, a: 1}
+    - first:
+        name: _Color
+      second: {r: 1, g: 1, b: 1, a: 1}
+    - first:
+        name: _SpecColor
+      second: {r: 0.63235295, g: 0.63235295, b: 0.63235295, a: 1}
+    - first:
+        name: _color
+      second: {r: 0.26735508, g: 0.48668492, b: 0.8455882, a: 1}
+    - first:
+        name: _emissioncolor
+      second: {r: 1, g: 1, b: 1, a: 1}
+    - first:
+        name: _specularcolor
+      second: {r: 1, g: 1, b: 1, a: 1}

@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: camera_01_glass_std
+  m_Shader: {fileID: 4800000, guid: 62bbf065246827f4fa51d36f9d96a745, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+    - first:
+        name: _MainTex
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _environment
+      second:
+        m_Texture: {fileID: 8900000, guid: 5011b1556b6b24f45b2b5cb0b50fbdf9, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _node_3
+      second:
+        m_Texture: {fileID: 8900000, guid: f9382e5e7ba1b87498b521f1e9c4ac0c, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _node_7
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _normal
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - first:
+        name: _Cutoff
+      second: 0.5
+    - first:
+        name: _envblur
+      second: 0.5
+    - first:
+        name: _envfresnel
+      second: 0.2654474
+    - first:
+        name: _gloss
+      second: 0.3366911
+    - first:
+        name: _node_16
+      second: 0.64285713
+    - first:
+        name: _node_23
+      second: 0.4876654
+    - first:
+        name: _node_39
+      second: 0.67857146
+    - first:
+        name: _node_4
+      second: 0.19642858
+    - first:
+        name: _node_5
+      second: 1
+    - first:
+        name: _node_6
+      second: 0.14285715
+    - first:
+        name: _specular
+      second: 0.9107143
+    - first:
+        name: _transfresnel
+      second: 0.30357143
+    - first:
+        name: _transparency
+      second: 1
+    m_Colors:
+    - first:
+        name: _Color
+      second: {r: 0.32156864, g: 0.4156863, b: 0.45882356, a: 0.39999998}

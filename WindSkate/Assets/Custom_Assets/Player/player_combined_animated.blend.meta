@@ -1,0 +1,3504 @@
+fileFormatVersion: 2
+guid: 6dc93c24710f0334c95985c4f979bd71
+timeCreated: 1463496000
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Arm01_L
+    100002: Arm01_R
+    100004: Arm02_L
+    100006: Arm02_R
+    100008: Arm_ik_L
+    100010: Arm_ik_R
+    100012: Armature
+    100014: Armature_Sail
+    100016: Bone
+    100018: Charcter
+    100020: Eyes
+    100022: Finger01_L
+    100024: Finger01_R
+    100026: Finger02_L
+    100028: Finger02_R
+    100030: Foot_Angle_control_L
+    100032: Foot_Angle_control_R
+    100034: Foot_L
+    100036: Foot_R
+    100038: Hair
+    100040: Hand_L
+    100042: Hand_R
+    100044: Head
+    100046: Helnmet
+    100048: Leg_Control_L
+    100050: Leg_Control_R
+    100052: Lower_Leg_L
+    100054: Lower_Leg_R
+    100056: Neck
+    100058: Plane_001
+    100060: //RootNode
+    100062: Pole_Target_Arm_L
+    100064: Pole_Target_Arm_R
+    100066: Pole_Target_Leg_L
+    100068: Pole_Target_Leg_R
+    100070: SailObject
+    100072: Thumb01_L
+    100074: Thumb01_R
+    100076: Thumb02_L
+    100078: Thumb02_R
+    100080: Toe_L
+    100082: Toe_R
+    100084: Torso_00
+    100086: Torso_01
+    100088: Upper_Leg_L
+    100090: Upper_Leg_R
+    100092: Wishbone
+    100094: Sail_type1
+    100096: Sail_type2
+    100098: Sail_type3
+    100100: Character
+    100102: Pants
+    100104: Shoes_Low
+    100106: Short_Pants
+    100108: Sweater
+    100110: T-shirt
+    100112: Hair_1
+    400000: Arm01_L
+    400002: Arm01_R
+    400004: Arm02_L
+    400006: Arm02_R
+    400008: Arm_ik_L
+    400010: Arm_ik_R
+    400012: Armature
+    400014: Armature_Sail
+    400016: Bone
+    400018: Charcter
+    400020: Eyes
+    400022: Finger01_L
+    400024: Finger01_R
+    400026: Finger02_L
+    400028: Finger02_R
+    400030: Foot_Angle_control_L
+    400032: Foot_Angle_control_R
+    400034: Foot_L
+    400036: Foot_R
+    400038: Hair
+    400040: Hand_L
+    400042: Hand_R
+    400044: Head
+    400046: Helnmet
+    400048: Leg_Control_L
+    400050: Leg_Control_R
+    400052: Lower_Leg_L
+    400054: Lower_Leg_R
+    400056: Neck
+    400058: Plane_001
+    400060: //RootNode
+    400062: Pole_Target_Arm_L
+    400064: Pole_Target_Arm_R
+    400066: Pole_Target_Leg_L
+    400068: Pole_Target_Leg_R
+    400070: SailObject
+    400072: Thumb01_L
+    400074: Thumb01_R
+    400076: Thumb02_L
+    400078: Thumb02_R
+    400080: Toe_L
+    400082: Toe_R
+    400084: Torso_00
+    400086: Torso_01
+    400088: Upper_Leg_L
+    400090: Upper_Leg_R
+    400092: Wishbone
+    400094: Sail_type1
+    400096: Sail_type2
+    400098: Sail_type3
+    400100: Character
+    400102: Pants
+    400104: Shoes_Low
+    400106: Short_Pants
+    400108: Sweater
+    400110: T-shirt
+    400112: Hair_1
+    2300000: Plane_001
+    3300000: Plane_001
+    4300000: SailObject
+    4300002: Wishbone
+    4300004: Plane_001
+    4300006: Charcter
+    4300008: Eyes
+    4300010: Hair
+    4300012: Helnmet
+    4300014: Sail_type3
+    4300016: Sail_type2
+    4300018: Sail_type1
+    4300020: Short_Pants
+    4300022: Shoes_Low
+    4300024: Character
+    4300026: Pants
+    4300028: T-shirt
+    4300030: Sweater
+    4300032: Hair_1
+    7400000: LightWindStarboard
+    7400002: Armature_SailAction
+    7400004: Player_Anim
+    7400006: LightWind
+    7400008: LightWindPort
+    7400010: LowWindStarboard
+    7400012: HeavyWindStarboard
+    7400014: LowWindPort
+    7400016: HeavyWindPort
+    7400018: BasicTackStarboardPart1
+    7400020: BasicTackPortPart1
+    7400022: BasicTackStarboardPart2
+    7400024: BasicTackPortPart2
+    7400026: FromStarboard10deg
+    7400028: FromPort10deg
+    7400030: MiddleTackPosition
+    7400032: BasicJibeStarboard
+    7400034: FromStarboard90deg
+    7400036: FromPort90deg
+    7400038: BasicJibePort
+    7400040: PushStarboard
+    7400042: HeliTackStarboard
+    7400044: HeliTackPort
+    7400046: DuckJibe_Starboard
+    7400048: DuckJibePort
+    7400050: ModelSelector
+    7400052: JumpBaseStarboard
+    7400054: Player_low_Wind_001
+    7400056: JumpBasePort
+    9500000: //RootNode
+    13700000: Charcter
+    13700002: Eyes
+    13700004: Hair
+    13700006: Helnmet
+    13700008: SailObject
+    13700010: Wishbone
+    13700012: Sail_type1
+    13700014: Sail_type2
+    13700016: Sail_type3
+    13700018: Character
+    13700020: Pants
+    13700022: Shoes_Low
+    13700024: Short_Pants
+    13700026: Sweater
+    13700028: T-shirt
+    13700030: Hair_1
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: "\nClip 'Default Take' has import animation warnings
+      that might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'Thumb01_L' has translation animation that
+      will be discarded.\n\t'Thumb01_R' has translation animation that will be discarded.\n\t'Upper_Leg_L'
+      has scale animation that will be discarded.\n\t'Foot_L' has scale animation
+      that will be discarded.\n\t'Upper_Leg_R' has scale animation that will be discarded.\n\t'Foot_R'
+      has scale animation that will be discarded.\n\nClip 'ModelSelector' has import
+      animation warnings that might lower retargeting quality:\nNote: Activate translation
+      DOF on avatar to improve retargeting quality.\n\t'Foot_R' has scale animation
+      that will be discarded.\n\nClip 'Player_low_Wind' has import animation warnings
+      that might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'Thumb01_L' has translation animation that
+      will be discarded.\n\t'Thumb01_R' has translation animation that will be discarded.\n\t'Upper_Leg_L'
+      has scale animation that will be discarded.\n\t'Foot_L' has scale animation
+      that will be discarded.\n\t'Upper_Leg_R' has scale animation that will be discarded.\n\t'Foot_R'
+      has scale animation that will be discarded.\n\nClip 'Player_low_Wind_001' has
+      import animation warnings that might lower retargeting quality:\nNote: Activate
+      translation DOF on avatar to improve retargeting quality.\n\t'Thumb01_L' has
+      translation animation that will be discarded.\n\t'Thumb01_R' has translation
+      animation that will be discarded.\n\t'Upper_Leg_L' has scale animation that
+      will be discarded.\n\t'Foot_L' has scale animation that will be discarded.\n\t'Upper_Leg_R'
+      has scale animation that will be discarded.\n\t'Foot_R' has scale animation
+      that will be discarded.\n\nClip 'Player_low_Wind_002' has import animation warnings
+      that might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'Thumb01_L' has translation animation that
+      will be discarded.\n\t'Thumb01_R' has translation animation that will be discarded.\n\t'Upper_Leg_L'
+      has scale animation that will be discarded.\n\t'Foot_L' has scale animation
+      that will be discarded.\n\t'Upper_Leg_R' has scale animation that will be discarded.\n\t'Foot_R'
+      has scale animation that will be discarded.\n\nClip 'Player_low_Wind_003' has
+      import animation warnings that might lower retargeting quality:\nNote: Activate
+      translation DOF on avatar to improve retargeting quality.\n\t'Thumb01_L' has
+      translation animation that will be discarded.\n\t'Thumb01_R' has translation
+      animation that will be discarded.\n\t'Upper_Leg_L' has scale animation that
+      will be discarded.\n\t'Foot_L' has scale animation that will be discarded.\n\t'Upper_Leg_R'
+      has scale animation that will be discarded.\n\t'Foot_R' has scale animation
+      that will be discarded.\n"
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths:
+    - Armature/Torso_00
+    - Armature/Torso_00/Torso_01
+    - Armature/Torso_00/Torso_01/Arm01_L
+    - Armature/Torso_00/Torso_01/Arm01_L/Arm02_L
+    - Armature/Torso_00/Torso_01/Arm01_R
+    - Armature/Torso_00/Torso_01/Arm01_R/Arm02_R
+    - Armature/Torso_00/Torso_01/Neck
+    - Armature/Torso_00/Torso_01/Neck/Head
+    - Armature/Torso_00/Upper_Leg_L
+    - Armature/Torso_00/Upper_Leg_L/Lower_Leg_L
+    - Armature/Torso_00/Upper_Leg_R
+    - Armature/Torso_00/Upper_Leg_R/Lower_Leg_R
+    clipAnimations:
+    - serializedVersion: 16
+      name: LowWindStarboard
+      takeName: Player_low_Wind
+      firstFrame: 9
+      lastFrame: 89
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_ik_L
+        weight: 0
+      - path: Armature/Arm_ik_R
+        weight: 0
+      - path: Armature/Leg_Control_L
+        weight: 0
+      - path: Armature/Leg_Control_L/Foot_Angle_control_L
+        weight: 0
+      - path: Armature/Leg_Control_R
+        weight: 0
+      - path: Armature/Leg_Control_R/Foot_Angle_control_R
+        weight: 0
+      - path: Armature/Pole_Target_Arm_L
+        weight: 0
+      - path: Armature/Pole_Target_Arm_R
+        weight: 0
+      - path: Armature/Pole_Target_Leg_L
+        weight: 0
+      - path: Armature/Pole_Target_Leg_R
+        weight: 0
+      - path: Armature/Torso_00
+        weight: 1
+      - path: Armature/Torso_00/Torso_01
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L/Finger02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R/Finger02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck/Head
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Armature_Sail
+        weight: 1
+      - path: Armature_Sail/Bone
+        weight: 1
+      - path: Character
+        weight: 0
+      - path: Eyes
+        weight: 0
+      - path: Hair
+        weight: 0
+      - path: Hair_1
+        weight: 0
+      - path: Helnmet
+        weight: 0
+      - path: Pants
+        weight: 0
+      - path: Plane_001
+        weight: 0
+      - path: Sail_type1
+        weight: 0
+      - path: Sail_type2
+        weight: 0
+      - path: Sail_type3
+        weight: 0
+      - path: Shoes_Low
+        weight: 0
+      - path: Short_Pants
+        weight: 0
+      - path: Sweater
+        weight: 0
+      - path: T-shirt
+        weight: 0
+      - path: Wishbone
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: LowWindPort
+      takeName: Player_low_Wind
+      firstFrame: 109
+      lastFrame: 189
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_ik_L
+        weight: 0
+      - path: Armature/Arm_ik_R
+        weight: 0
+      - path: Armature/Leg_Control_L
+        weight: 0
+      - path: Armature/Leg_Control_L/Foot_Angle_control_L
+        weight: 0
+      - path: Armature/Leg_Control_R
+        weight: 0
+      - path: Armature/Leg_Control_R/Foot_Angle_control_R
+        weight: 0
+      - path: Armature/Pole_Target_Arm_L
+        weight: 0
+      - path: Armature/Pole_Target_Arm_R
+        weight: 0
+      - path: Armature/Pole_Target_Leg_L
+        weight: 0
+      - path: Armature/Pole_Target_Leg_R
+        weight: 0
+      - path: Armature/Torso_00
+        weight: 1
+      - path: Armature/Torso_00/Torso_01
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L/Finger02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R/Finger02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck/Head
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Armature_Sail
+        weight: 1
+      - path: Armature_Sail/Bone
+        weight: 1
+      - path: Charcter
+        weight: 0
+      - path: Eyes
+        weight: 0
+      - path: Hair
+        weight: 0
+      - path: Helnmet
+        weight: 0
+      - path: Plane_001
+        weight: 0
+      - path: SailObject
+        weight: 0
+      - path: Wishbone
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: HeavyWindStarboard
+      takeName: Player_low_Wind
+      firstFrame: 209
+      lastFrame: 289
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_ik_L
+        weight: 0
+      - path: Armature/Arm_ik_R
+        weight: 0
+      - path: Armature/Leg_Control_L
+        weight: 0
+      - path: Armature/Leg_Control_L/Foot_Angle_control_L
+        weight: 0
+      - path: Armature/Leg_Control_R
+        weight: 0
+      - path: Armature/Leg_Control_R/Foot_Angle_control_R
+        weight: 0
+      - path: Armature/Pole_Target_Arm_L
+        weight: 0
+      - path: Armature/Pole_Target_Arm_R
+        weight: 0
+      - path: Armature/Pole_Target_Leg_L
+        weight: 0
+      - path: Armature/Pole_Target_Leg_R
+        weight: 0
+      - path: Armature/Torso_00
+        weight: 1
+      - path: Armature/Torso_00/Torso_01
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L/Finger02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R/Finger02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck/Head
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Armature_Sail
+        weight: 1
+      - path: Armature_Sail/Bone
+        weight: 1
+      - path: Charcter
+        weight: 0
+      - path: Eyes
+        weight: 0
+      - path: Hair
+        weight: 0
+      - path: Helnmet
+        weight: 0
+      - path: Plane_001
+        weight: 0
+      - path: SailObject
+        weight: 1
+      - path: Wishbone
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: HeavyWindPort
+      takeName: Player_low_Wind
+      firstFrame: 309
+      lastFrame: 389
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_ik_L
+        weight: 0
+      - path: Armature/Arm_ik_R
+        weight: 0
+      - path: Armature/Leg_Control_L
+        weight: 0
+      - path: Armature/Leg_Control_L/Foot_Angle_control_L
+        weight: 0
+      - path: Armature/Leg_Control_R
+        weight: 0
+      - path: Armature/Leg_Control_R/Foot_Angle_control_R
+        weight: 0
+      - path: Armature/Pole_Target_Arm_L
+        weight: 0
+      - path: Armature/Pole_Target_Arm_R
+        weight: 0
+      - path: Armature/Pole_Target_Leg_L
+        weight: 0
+      - path: Armature/Pole_Target_Leg_R
+        weight: 0
+      - path: Armature/Torso_00
+        weight: 1
+      - path: Armature/Torso_00/Torso_01
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L/Finger02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R/Finger02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck/Head
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Armature_Sail
+        weight: 1
+      - path: Armature_Sail/Bone
+        weight: 1
+      - path: Charcter
+        weight: 0
+      - path: Eyes
+        weight: 0
+      - path: Hair
+        weight: 0
+      - path: Helnmet
+        weight: 0
+      - path: Plane_001
+        weight: 0
+      - path: SailObject
+        weight: 0
+      - path: Wishbone
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: BasicTackStarboardPart1
+      takeName: Player_low_Wind
+      firstFrame: 399
+      lastFrame: 419
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_ik_L
+        weight: 0
+      - path: Armature/Arm_ik_R
+        weight: 0
+      - path: Armature/Leg_Control_L
+        weight: 0
+      - path: Armature/Leg_Control_L/Foot_Angle_control_L
+        weight: 0
+      - path: Armature/Leg_Control_R
+        weight: 0
+      - path: Armature/Leg_Control_R/Foot_Angle_control_R
+        weight: 0
+      - path: Armature/Pole_Target_Arm_L
+        weight: 0
+      - path: Armature/Pole_Target_Arm_R
+        weight: 0
+      - path: Armature/Pole_Target_Leg_L
+        weight: 0
+      - path: Armature/Pole_Target_Leg_R
+        weight: 0
+      - path: Armature/Torso_00
+        weight: 1
+      - path: Armature/Torso_00/Torso_01
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L/Finger02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R/Finger02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck/Head
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Armature_Sail
+        weight: 1
+      - path: Armature_Sail/Bone
+        weight: 1
+      - path: Charcter
+        weight: 0
+      - path: Eyes
+        weight: 0
+      - path: Hair
+        weight: 0
+      - path: Helnmet
+        weight: 0
+      - path: Plane_001
+        weight: 0
+      - path: SailObject
+        weight: 0
+      - path: Wishbone
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: BasicTackPortPart1
+      takeName: Player_low_Wind
+      firstFrame: 449
+      lastFrame: 469
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_ik_L
+        weight: 0
+      - path: Armature/Arm_ik_R
+        weight: 0
+      - path: Armature/Leg_Control_L
+        weight: 0
+      - path: Armature/Leg_Control_L/Foot_Angle_control_L
+        weight: 0
+      - path: Armature/Leg_Control_R
+        weight: 0
+      - path: Armature/Leg_Control_R/Foot_Angle_control_R
+        weight: 0
+      - path: Armature/Pole_Target_Arm_L
+        weight: 0
+      - path: Armature/Pole_Target_Arm_R
+        weight: 0
+      - path: Armature/Pole_Target_Leg_L
+        weight: 0
+      - path: Armature/Pole_Target_Leg_R
+        weight: 0
+      - path: Armature/Torso_00
+        weight: 1
+      - path: Armature/Torso_00/Torso_01
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L/Finger02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R/Finger02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck/Head
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Armature_Sail
+        weight: 1
+      - path: Armature_Sail/Bone
+        weight: 1
+      - path: Charcter
+        weight: 0
+      - path: Eyes
+        weight: 0
+      - path: Hair
+        weight: 0
+      - path: Helnmet
+        weight: 0
+      - path: Plane_001
+        weight: 0
+      - path: SailObject
+        weight: 0
+      - path: Wishbone
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: BasicTackStarboardPart2
+      takeName: Player_low_Wind
+      firstFrame: 419
+      lastFrame: 439
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_ik_L
+        weight: 0
+      - path: Armature/Arm_ik_R
+        weight: 0
+      - path: Armature/Leg_Control_L
+        weight: 0
+      - path: Armature/Leg_Control_L/Foot_Angle_control_L
+        weight: 0
+      - path: Armature/Leg_Control_R
+        weight: 0
+      - path: Armature/Leg_Control_R/Foot_Angle_control_R
+        weight: 0
+      - path: Armature/Pole_Target_Arm_L
+        weight: 0
+      - path: Armature/Pole_Target_Arm_R
+        weight: 0
+      - path: Armature/Pole_Target_Leg_L
+        weight: 0
+      - path: Armature/Pole_Target_Leg_R
+        weight: 0
+      - path: Armature/Torso_00
+        weight: 1
+      - path: Armature/Torso_00/Torso_01
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L/Finger02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R/Finger02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck/Head
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Armature_Sail
+        weight: 1
+      - path: Armature_Sail/Bone
+        weight: 1
+      - path: Charcter
+        weight: 0
+      - path: Eyes
+        weight: 0
+      - path: Hair
+        weight: 0
+      - path: Helnmet
+        weight: 0
+      - path: Plane_001
+        weight: 0
+      - path: SailObject
+        weight: 0
+      - path: Wishbone
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: BasicTackPortPart2
+      takeName: Player_low_Wind
+      firstFrame: 469
+      lastFrame: 489
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_ik_L
+        weight: 0
+      - path: Armature/Arm_ik_R
+        weight: 0
+      - path: Armature/Leg_Control_L
+        weight: 0
+      - path: Armature/Leg_Control_L/Foot_Angle_control_L
+        weight: 0
+      - path: Armature/Leg_Control_R
+        weight: 0
+      - path: Armature/Leg_Control_R/Foot_Angle_control_R
+        weight: 0
+      - path: Armature/Pole_Target_Arm_L
+        weight: 0
+      - path: Armature/Pole_Target_Arm_R
+        weight: 0
+      - path: Armature/Pole_Target_Leg_L
+        weight: 0
+      - path: Armature/Pole_Target_Leg_R
+        weight: 0
+      - path: Armature/Torso_00
+        weight: 1
+      - path: Armature/Torso_00/Torso_01
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L/Finger02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R/Finger02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck/Head
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Armature_Sail
+        weight: 1
+      - path: Armature_Sail/Bone
+        weight: 1
+      - path: Charcter
+        weight: 0
+      - path: Eyes
+        weight: 0
+      - path: Hair
+        weight: 0
+      - path: Helnmet
+        weight: 0
+      - path: Plane_001
+        weight: 0
+      - path: SailObject
+        weight: 0
+      - path: Wishbone
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: FromStarboard10deg
+      takeName: Player_low_Wind
+      firstFrame: 398
+      lastFrame: 399
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 1
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_ik_L
+        weight: 0
+      - path: Armature/Arm_ik_R
+        weight: 0
+      - path: Armature/Leg_Control_L
+        weight: 0
+      - path: Armature/Leg_Control_L/Foot_Angle_control_L
+        weight: 0
+      - path: Armature/Leg_Control_R
+        weight: 0
+      - path: Armature/Leg_Control_R/Foot_Angle_control_R
+        weight: 0
+      - path: Armature/Pole_Target_Arm_L
+        weight: 0
+      - path: Armature/Pole_Target_Arm_R
+        weight: 0
+      - path: Armature/Pole_Target_Leg_L
+        weight: 0
+      - path: Armature/Pole_Target_Leg_R
+        weight: 0
+      - path: Armature/Torso_00
+        weight: 1
+      - path: Armature/Torso_00/Torso_01
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L/Finger02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R/Finger02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck/Head
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Armature_Sail
+        weight: 1
+      - path: Armature_Sail/Bone
+        weight: 1
+      - path: Charcter
+        weight: 0
+      - path: Eyes
+        weight: 0
+      - path: Hair
+        weight: 0
+      - path: Helnmet
+        weight: 0
+      - path: Plane_001
+        weight: 0
+      - path: SailObject
+        weight: 0
+      - path: Wishbone
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: FromPort10deg
+      takeName: Player_low_Wind
+      firstFrame: 448
+      lastFrame: 449
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 1
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_ik_L
+        weight: 0
+      - path: Armature/Arm_ik_R
+        weight: 0
+      - path: Armature/Leg_Control_L
+        weight: 0
+      - path: Armature/Leg_Control_L/Foot_Angle_control_L
+        weight: 0
+      - path: Armature/Leg_Control_R
+        weight: 0
+      - path: Armature/Leg_Control_R/Foot_Angle_control_R
+        weight: 0
+      - path: Armature/Pole_Target_Arm_L
+        weight: 0
+      - path: Armature/Pole_Target_Arm_R
+        weight: 0
+      - path: Armature/Pole_Target_Leg_L
+        weight: 0
+      - path: Armature/Pole_Target_Leg_R
+        weight: 0
+      - path: Armature/Torso_00
+        weight: 1
+      - path: Armature/Torso_00/Torso_01
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L/Finger02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R/Finger02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck/Head
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Armature_Sail
+        weight: 1
+      - path: Armature_Sail/Bone
+        weight: 1
+      - path: Charcter
+        weight: 0
+      - path: Eyes
+        weight: 0
+      - path: Hair
+        weight: 0
+      - path: Helnmet
+        weight: 0
+      - path: Plane_001
+        weight: 0
+      - path: SailObject
+        weight: 0
+      - path: Wishbone
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: MiddleTackPosition
+      takeName: Player_low_Wind
+      firstFrame: 418
+      lastFrame: 419
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 1
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_ik_L
+        weight: 0
+      - path: Armature/Arm_ik_R
+        weight: 0
+      - path: Armature/Leg_Control_L
+        weight: 0
+      - path: Armature/Leg_Control_L/Foot_Angle_control_L
+        weight: 0
+      - path: Armature/Leg_Control_R
+        weight: 0
+      - path: Armature/Leg_Control_R/Foot_Angle_control_R
+        weight: 0
+      - path: Armature/Pole_Target_Arm_L
+        weight: 0
+      - path: Armature/Pole_Target_Arm_R
+        weight: 0
+      - path: Armature/Pole_Target_Leg_L
+        weight: 0
+      - path: Armature/Pole_Target_Leg_R
+        weight: 0
+      - path: Armature/Torso_00
+        weight: 1
+      - path: Armature/Torso_00/Torso_01
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L/Finger02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R/Finger02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck/Head
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Armature_Sail
+        weight: 1
+      - path: Armature_Sail/Bone
+        weight: 1
+      - path: Charcter
+        weight: 0
+      - path: Eyes
+        weight: 0
+      - path: Hair
+        weight: 0
+      - path: Helnmet
+        weight: 0
+      - path: Plane_001
+        weight: 0
+      - path: SailObject
+        weight: 0
+      - path: Wishbone
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: BasicJibeStarboard
+      takeName: Player_low_Wind
+      firstFrame: 499
+      lastFrame: 539
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_ik_L
+        weight: 0
+      - path: Armature/Arm_ik_R
+        weight: 0
+      - path: Armature/Leg_Control_L
+        weight: 0
+      - path: Armature/Leg_Control_L/Foot_Angle_control_L
+        weight: 0
+      - path: Armature/Leg_Control_R
+        weight: 0
+      - path: Armature/Leg_Control_R/Foot_Angle_control_R
+        weight: 0
+      - path: Armature/Pole_Target_Arm_L
+        weight: 0
+      - path: Armature/Pole_Target_Arm_R
+        weight: 0
+      - path: Armature/Pole_Target_Leg_L
+        weight: 0
+      - path: Armature/Pole_Target_Leg_R
+        weight: 0
+      - path: Armature/Torso_00
+        weight: 1
+      - path: Armature/Torso_00/Torso_01
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L/Finger02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R/Finger02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck/Head
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Armature_Sail
+        weight: 1
+      - path: Armature_Sail/Bone
+        weight: 1
+      - path: Charcter
+        weight: 0
+      - path: Eyes
+        weight: 0
+      - path: Hair
+        weight: 0
+      - path: Helnmet
+        weight: 0
+      - path: Plane_001
+        weight: 0
+      - path: SailObject
+        weight: 0
+      - path: Wishbone
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: FromStarboard90deg
+      takeName: Player_low_Wind
+      firstFrame: 498
+      lastFrame: 499
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 1
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_ik_L
+        weight: 0
+      - path: Armature/Arm_ik_R
+        weight: 0
+      - path: Armature/Leg_Control_L
+        weight: 0
+      - path: Armature/Leg_Control_L/Foot_Angle_control_L
+        weight: 0
+      - path: Armature/Leg_Control_R
+        weight: 0
+      - path: Armature/Leg_Control_R/Foot_Angle_control_R
+        weight: 0
+      - path: Armature/Pole_Target_Arm_L
+        weight: 0
+      - path: Armature/Pole_Target_Arm_R
+        weight: 0
+      - path: Armature/Pole_Target_Leg_L
+        weight: 0
+      - path: Armature/Pole_Target_Leg_R
+        weight: 0
+      - path: Armature/Torso_00
+        weight: 1
+      - path: Armature/Torso_00/Torso_01
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L/Finger02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R/Finger02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck/Head
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Armature_Sail
+        weight: 1
+      - path: Armature_Sail/Bone
+        weight: 1
+      - path: Charcter
+        weight: 0
+      - path: Eyes
+        weight: 0
+      - path: Hair
+        weight: 0
+      - path: Helnmet
+        weight: 0
+      - path: Plane_001
+        weight: 0
+      - path: SailObject
+        weight: 0
+      - path: Wishbone
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: FromPort90deg
+      takeName: Player_low_Wind
+      firstFrame: 539
+      lastFrame: 540
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 1
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_ik_L
+        weight: 0
+      - path: Armature/Arm_ik_R
+        weight: 0
+      - path: Armature/Leg_Control_L
+        weight: 0
+      - path: Armature/Leg_Control_L/Foot_Angle_control_L
+        weight: 0
+      - path: Armature/Leg_Control_R
+        weight: 0
+      - path: Armature/Leg_Control_R/Foot_Angle_control_R
+        weight: 0
+      - path: Armature/Pole_Target_Arm_L
+        weight: 0
+      - path: Armature/Pole_Target_Arm_R
+        weight: 0
+      - path: Armature/Pole_Target_Leg_L
+        weight: 0
+      - path: Armature/Pole_Target_Leg_R
+        weight: 0
+      - path: Armature/Torso_00
+        weight: 1
+      - path: Armature/Torso_00/Torso_01
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L/Finger02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R/Finger02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck/Head
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Armature_Sail
+        weight: 1
+      - path: Armature_Sail/Bone
+        weight: 1
+      - path: Charcter
+        weight: 0
+      - path: Eyes
+        weight: 0
+      - path: Hair
+        weight: 0
+      - path: Helnmet
+        weight: 0
+      - path: Plane_001
+        weight: 0
+      - path: SailObject
+        weight: 0
+      - path: Wishbone
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: BasicJibePort
+      takeName: Player_low_Wind
+      firstFrame: 549
+      lastFrame: 589
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_ik_L
+        weight: 0
+      - path: Armature/Arm_ik_R
+        weight: 0
+      - path: Armature/Leg_Control_L
+        weight: 0
+      - path: Armature/Leg_Control_L/Foot_Angle_control_L
+        weight: 0
+      - path: Armature/Leg_Control_R
+        weight: 0
+      - path: Armature/Leg_Control_R/Foot_Angle_control_R
+        weight: 0
+      - path: Armature/Pole_Target_Arm_L
+        weight: 0
+      - path: Armature/Pole_Target_Arm_R
+        weight: 0
+      - path: Armature/Pole_Target_Leg_L
+        weight: 0
+      - path: Armature/Pole_Target_Leg_R
+        weight: 0
+      - path: Armature/Torso_00
+        weight: 1
+      - path: Armature/Torso_00/Torso_01
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L/Finger02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R/Finger02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck/Head
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Armature_Sail
+        weight: 1
+      - path: Armature_Sail/Bone
+        weight: 1
+      - path: Charcter
+        weight: 0
+      - path: Eyes
+        weight: 0
+      - path: Hair
+        weight: 0
+      - path: Helnmet
+        weight: 0
+      - path: Plane_001
+        weight: 0
+      - path: SailObject
+        weight: 0
+      - path: Wishbone
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: HeliTackStarboard
+      takeName: Player_low_Wind
+      firstFrame: 699
+      lastFrame: 739
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_ik_L
+        weight: 0
+      - path: Armature/Arm_ik_R
+        weight: 0
+      - path: Armature/Leg_Control_L
+        weight: 0
+      - path: Armature/Leg_Control_L/Foot_Angle_control_L
+        weight: 0
+      - path: Armature/Leg_Control_R
+        weight: 0
+      - path: Armature/Leg_Control_R/Foot_Angle_control_R
+        weight: 0
+      - path: Armature/Pole_Target_Arm_L
+        weight: 0
+      - path: Armature/Pole_Target_Arm_R
+        weight: 0
+      - path: Armature/Pole_Target_Leg_L
+        weight: 0
+      - path: Armature/Pole_Target_Leg_R
+        weight: 0
+      - path: Armature/Torso_00
+        weight: 1
+      - path: Armature/Torso_00/Torso_01
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L/Finger02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R/Finger02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck/Head
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Armature_Sail
+        weight: 1
+      - path: Armature_Sail/Bone
+        weight: 1
+      - path: Charcter
+        weight: 0
+      - path: Eyes
+        weight: 0
+      - path: Hair
+        weight: 0
+      - path: Helnmet
+        weight: 0
+      - path: Plane_001
+        weight: 0
+      - path: SailObject
+        weight: 0
+      - path: Wishbone
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: HeliTackPort
+      takeName: Player_low_Wind
+      firstFrame: 749
+      lastFrame: 789
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_ik_L
+        weight: 0
+      - path: Armature/Arm_ik_R
+        weight: 0
+      - path: Armature/Leg_Control_L
+        weight: 0
+      - path: Armature/Leg_Control_L/Foot_Angle_control_L
+        weight: 0
+      - path: Armature/Leg_Control_R
+        weight: 0
+      - path: Armature/Leg_Control_R/Foot_Angle_control_R
+        weight: 0
+      - path: Armature/Pole_Target_Arm_L
+        weight: 0
+      - path: Armature/Pole_Target_Arm_R
+        weight: 0
+      - path: Armature/Pole_Target_Leg_L
+        weight: 0
+      - path: Armature/Pole_Target_Leg_R
+        weight: 0
+      - path: Armature/Torso_00
+        weight: 1
+      - path: Armature/Torso_00/Torso_01
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L/Finger02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R/Finger02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck/Head
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Armature_Sail
+        weight: 1
+      - path: Armature_Sail/Bone
+        weight: 1
+      - path: Charcter
+        weight: 0
+      - path: Eyes
+        weight: 0
+      - path: Hair
+        weight: 0
+      - path: Helnmet
+        weight: 0
+      - path: Plane_001
+        weight: 0
+      - path: SailObject
+        weight: 0
+      - path: Wishbone
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: DuckJibe_Starboard
+      takeName: Player_low_Wind
+      firstFrame: 799
+      lastFrame: 839
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_ik_L
+        weight: 0
+      - path: Armature/Arm_ik_R
+        weight: 0
+      - path: Armature/Leg_Control_L
+        weight: 0
+      - path: Armature/Leg_Control_L/Foot_Angle_control_L
+        weight: 0
+      - path: Armature/Leg_Control_R
+        weight: 0
+      - path: Armature/Leg_Control_R/Foot_Angle_control_R
+        weight: 0
+      - path: Armature/Pole_Target_Arm_L
+        weight: 0
+      - path: Armature/Pole_Target_Arm_R
+        weight: 0
+      - path: Armature/Pole_Target_Leg_L
+        weight: 0
+      - path: Armature/Pole_Target_Leg_R
+        weight: 0
+      - path: Armature/Torso_00
+        weight: 1
+      - path: Armature/Torso_00/Torso_01
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L/Finger02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R/Finger02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck/Head
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Armature_Sail
+        weight: 1
+      - path: Armature_Sail/Bone
+        weight: 1
+      - path: Charcter
+        weight: 0
+      - path: Eyes
+        weight: 0
+      - path: Hair
+        weight: 0
+      - path: Helnmet
+        weight: 0
+      - path: Plane_001
+        weight: 0
+      - path: SailObject
+        weight: 0
+      - path: Wishbone
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: DuckJibePort
+      takeName: Player_low_Wind
+      firstFrame: 849
+      lastFrame: 889
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_ik_L
+        weight: 0
+      - path: Armature/Arm_ik_R
+        weight: 0
+      - path: Armature/Leg_Control_L
+        weight: 0
+      - path: Armature/Leg_Control_L/Foot_Angle_control_L
+        weight: 0
+      - path: Armature/Leg_Control_R
+        weight: 0
+      - path: Armature/Leg_Control_R/Foot_Angle_control_R
+        weight: 0
+      - path: Armature/Pole_Target_Arm_L
+        weight: 0
+      - path: Armature/Pole_Target_Arm_R
+        weight: 0
+      - path: Armature/Pole_Target_Leg_L
+        weight: 0
+      - path: Armature/Pole_Target_Leg_R
+        weight: 0
+      - path: Armature/Torso_00
+        weight: 1
+      - path: Armature/Torso_00/Torso_01
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L/Finger02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R/Finger02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck/Head
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Armature_Sail
+        weight: 1
+      - path: Armature_Sail/Bone
+        weight: 1
+      - path: Character
+        weight: 0
+      - path: Eyes
+        weight: 0
+      - path: Hair
+        weight: 0
+      - path: Hair_1
+        weight: 0
+      - path: Helnmet
+        weight: 0
+      - path: Pants
+        weight: 0
+      - path: Plane_001
+        weight: 0
+      - path: Sail_type1
+        weight: 0
+      - path: Sail_type2
+        weight: 0
+      - path: Sail_type3
+        weight: 0
+      - path: Shoes_Low
+        weight: 0
+      - path: Short_Pants
+        weight: 0
+      - path: Sweater
+        weight: 0
+      - path: T-shirt
+        weight: 0
+      - path: Wishbone
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: ModelSelector
+      takeName: ModelSelector
+      firstFrame: 4
+      lastFrame: 19
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 1
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_ik_L
+        weight: 0
+      - path: Armature/Arm_ik_R
+        weight: 0
+      - path: Armature/Leg_Control_L
+        weight: 0
+      - path: Armature/Leg_Control_L/Foot_Angle_control_L
+        weight: 0
+      - path: Armature/Leg_Control_R
+        weight: 0
+      - path: Armature/Leg_Control_R/Foot_Angle_control_R
+        weight: 0
+      - path: Armature/Pole_Target_Arm_L
+        weight: 0
+      - path: Armature/Pole_Target_Arm_R
+        weight: 0
+      - path: Armature/Pole_Target_Leg_L
+        weight: 0
+      - path: Armature/Pole_Target_Leg_R
+        weight: 0
+      - path: Armature/Torso_00
+        weight: 1
+      - path: Armature/Torso_00/Torso_01
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L/Finger02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R/Finger02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck/Head
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Armature_Sail
+        weight: 0
+      - path: Armature_Sail/Bone
+        weight: 0
+      - path: Character
+        weight: 0
+      - path: Eyes
+        weight: 0
+      - path: Hair
+        weight: 0
+      - path: Hair_1
+        weight: 0
+      - path: Helnmet
+        weight: 0
+      - path: Pants
+        weight: 0
+      - path: Plane_001
+        weight: 0
+      - path: Sail_type1
+        weight: 0
+      - path: Sail_type2
+        weight: 0
+      - path: Sail_type3
+        weight: 0
+      - path: Shoes_Low
+        weight: 0
+      - path: Short_Pants
+        weight: 0
+      - path: Sweater
+        weight: 0
+      - path: T-shirt
+        weight: 0
+      - path: Wishbone
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: JumpBaseStarboard
+      takeName: Player_low_Wind
+      firstFrame: 905
+      lastFrame: 919
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000000000000000000000000000000000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_ik_L
+        weight: 0
+      - path: Armature/Arm_ik_R
+        weight: 0
+      - path: Armature/Leg_Control_L
+        weight: 0
+      - path: Armature/Leg_Control_L/Foot_Angle_control_L
+        weight: 0
+      - path: Armature/Leg_Control_R
+        weight: 0
+      - path: Armature/Leg_Control_R/Foot_Angle_control_R
+        weight: 0
+      - path: Armature/Pole_Target_Arm_L
+        weight: 0
+      - path: Armature/Pole_Target_Arm_R
+        weight: 0
+      - path: Armature/Pole_Target_Leg_L
+        weight: 0
+      - path: Armature/Pole_Target_Leg_R
+        weight: 0
+      - path: Armature/Torso_00
+        weight: 1
+      - path: Armature/Torso_00/Torso_01
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L/Finger02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R/Finger02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck/Head
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Armature_Sail
+        weight: 1
+      - path: Armature_Sail/Bone
+        weight: 1
+      - path: Character
+        weight: 0
+      - path: Eyes
+        weight: 0
+      - path: Hair
+        weight: 0
+      - path: Hair_1
+        weight: 0
+      - path: Helnmet
+        weight: 0
+      - path: Pants
+        weight: 0
+      - path: Plane_001
+        weight: 0
+      - path: Sail_type1
+        weight: 0
+      - path: Sail_type2
+        weight: 0
+      - path: Sail_type3
+        weight: 0
+      - path: Shoes_Low
+        weight: 0
+      - path: Short_Pants
+        weight: 0
+      - path: Sweater
+        weight: 0
+      - path: T-shirt
+        weight: 0
+      - path: Wishbone
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: JumpBasePort
+      takeName: Player_low_Wind
+      firstFrame: 925
+      lastFrame: 939
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_ik_L
+        weight: 0
+      - path: Armature/Arm_ik_R
+        weight: 0
+      - path: Armature/Leg_Control_L
+        weight: 0
+      - path: Armature/Leg_Control_L/Foot_Angle_control_L
+        weight: 0
+      - path: Armature/Leg_Control_R
+        weight: 0
+      - path: Armature/Leg_Control_R/Foot_Angle_control_R
+        weight: 0
+      - path: Armature/Pole_Target_Arm_L
+        weight: 0
+      - path: Armature/Pole_Target_Arm_R
+        weight: 0
+      - path: Armature/Pole_Target_Leg_L
+        weight: 0
+      - path: Armature/Pole_Target_Leg_R
+        weight: 0
+      - path: Armature/Torso_00
+        weight: 1
+      - path: Armature/Torso_00/Torso_01
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L/Finger02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R/Finger02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck/Head
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Armature_Sail
+        weight: 1
+      - path: Armature_Sail/Bone
+        weight: 1
+      - path: Character
+        weight: 0
+      - path: Eyes
+        weight: 0
+      - path: Hair
+        weight: 0
+      - path: Hair_1
+        weight: 0
+      - path: Helnmet
+        weight: 0
+      - path: Pants
+        weight: 0
+      - path: Plane_001
+        weight: 0
+      - path: Sail_type1
+        weight: 0
+      - path: Sail_type2
+        weight: 0
+      - path: Sail_type3
+        weight: 0
+      - path: Shoes_Low
+        weight: 0
+      - path: Short_Pants
+        weight: 0
+      - path: Sweater
+        weight: 0
+      - path: T-shirt
+        weight: 0
+      - path: Wishbone
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human:
+    - boneName: Torso_00
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Upper_Leg_L
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Upper_Leg_R
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Lower_Leg_L
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Lower_Leg_R
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Foot_L
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Foot_R
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Torso_01
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Neck
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Arm01_L
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Arm01_R
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Arm02_L
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Arm02_R
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Hand_L
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Hand_R
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Toe_L
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Toe_R
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Thumb01_L
+      humanName: Left Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Thumb02_L
+      humanName: Left Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finger01_L
+      humanName: Left Little Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finger02_L
+      humanName: Left Little Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Thumb01_R
+      humanName: Right Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Thumb02_R
+      humanName: Right Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finger01_R
+      humanName: Right Little Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finger02_R
+      humanName: Right Little Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: player_combined_animated(Clone)
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Armature
+      position: {x: -2.21, y: 2.812009, z: -0.00000012291682}
+      rotation: {x: -0.50000006, y: 0.49999997, z: 0.49999997, w: 0.50000006}
+      scale: {x: 0.49995112, y: 0.5, z: 0.5}
+      transformModified: 1
+    - name: Torso_00
+      position: {x: 0.00000052695657, y: -4.42, z: 0}
+      rotation: {x: 0.7042535, y: 0.00000008940697, z: -0.7099486, w: 0.00000008940697}
+      scale: {x: 0.9999999, y: 1.0000001, z: 1}
+      transformModified: 1
+    - name: Torso_01
+      position: {x: -2.5258281, y: 0.00000019069473, z: -0.000000001862646}
+      rotation: {x: 0.000000008431243, y: 0.004027102, z: -0.000000008127201, w: 0.9999919}
+      scale: {x: 0.9999999, y: 0.99999994, z: 0.9999999}
+      transformModified: 1
+    - name: Neck
+      position: {x: -2.2254312, y: 0.00000016801538, z: -2.36122e-10}
+      rotation: {x: -9.250245e-16, y: -4.656613e-10, z: -4.3074813e-25, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Head
+      position: {x: -0.39438105, y: 0.000000029774899, z: -0.00000000213377}
+      rotation: {x: 0, y: 0, z: 7.10349e-15, w: 1}
+      scale: {x: 1, y: 1, z: 0.99999994}
+      transformModified: 1
+    - name: Arm01_L
+      position: {x: -1.7026838, y: -1.5135254, z: -0.14285035}
+      rotation: {x: 0.50604445, y: 0.5243031, z: -0.49346942, w: -0.4748823}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1}
+      transformModified: 1
+    - name: Arm02_L
+      position: {x: -1.9767388, y: 0.00000014225952, z: -0.0000009825453}
+      rotation: {x: 0.00023151688, y: 0.021849707, z: 0.016639987, w: 0.99962276}
+      scale: {x: 0.99999994, y: 1, z: 0.9999998}
+      transformModified: 1
+    - name: Hand_L
+      position: {x: -2.2310712, y: 0.00000014901161, z: -0.0000003068708}
+      rotation: {x: 0.0018653398, y: 0.035092093, z: -0.043281373, w: 0.9984447}
+      scale: {x: 1, y: 0.9999999, z: 1}
+      transformModified: 1
+    - name: Finger01_L
+      position: {x: -0.73097956, y: 0.000000074505806, z: 0.0000005373731}
+      rotation: {x: -0.2861524, y: -0.11149292, z: -0.01097824, w: 0.9516121}
+      scale: {x: 1.0000001, y: 1, z: 1}
+      transformModified: 1
+    - name: Finger02_L
+      position: {x: -0.34407297, y: -0.00000039488077, z: -0.000000044703484}
+      rotation: {x: -0.08991887, y: -0.082750194, z: -0.045067, w: 0.9914817}
+      scale: {x: 1, y: 1, z: 0.99999994}
+      transformModified: 1
+    - name: Thumb01_L
+      position: {x: -0.30966198, y: -0.03942017, z: -0.20467451}
+      rotation: {x: 0.7949202, y: 0.4298689, z: -0.09268634, w: -0.41799986}
+      scale: {x: 1.0000002, y: 1.0000001, z: 1.0000001}
+      transformModified: 1
+    - name: Thumb02_L
+      position: {x: -0.3507088, y: -0.00000035390258, z: -0.0000003799796}
+      rotation: {x: -0.02846672, y: 0.09189874, z: -0.040699553, w: 0.99452895}
+      scale: {x: 1, y: 0.99999994, z: 0.9999999}
+      transformModified: 1
+    - name: Arm01_R
+      position: {x: -1.7026836, y: 1.5135256, z: -0.14285035}
+      rotation: {x: -0.47488242, y: 0.49346924, z: -0.5243024, w: 0.5060452}
+      scale: {x: 1, y: 0.99999994, z: 1}
+      transformModified: 1
+    - name: Arm02_R
+      position: {x: -1.9767394, y: 0.00000013457611, z: 0.0000009965152}
+      rotation: {x: 0.9724265, y: 0.021252178, z: 0.017393695, w: -0.23158698}
+      scale: {x: 0.9999997, y: 1, z: 0.9999999}
+      transformModified: 1
+    - name: Hand_R
+      position: {x: -2.2310722, y: 0.00000040978193, z: 0.00000008568168}
+      rotation: {x: 0.93303597, y: 0.0030951516, z: -0.055633962, w: -0.35544232}
+      scale: {x: 0.9999999, y: 0.99999994, z: 0.99999994}
+      transformModified: 1
+    - name: Finger01_R
+      position: {x: -0.7309792, y: 0.00000009685755, z: -0.00000008940697}
+      rotation: {x: -0.81848687, y: 0.11194902, z: -0.004251152, w: 0.5634968}
+      scale: {x: 1, y: 1, z: 0.99999994}
+      transformModified: 1
+    - name: Finger02_R
+      position: {x: -0.34407392, y: 0.0000006854534, z: -0.00000052154064}
+      rotation: {x: -0.03905251, y: 0.054722603, z: 0.07670659, w: 0.99478465}
+      scale: {x: 0.9999998, y: 1, z: 1}
+      transformModified: 1
+    - name: Thumb01_R
+      position: {x: -0.30966237, y: 0.17645577, z: 0.110946804}
+      rotation: {x: -0.5440928, y: 0.32173008, z: 0.2997761, w: 0.7145538}
+      scale: {x: 0.9999998, y: 0.99999976, z: 0.99999976}
+      transformModified: 1
+    - name: Thumb02_R
+      position: {x: -0.35070878, y: -0.00000010430813, z: -0.00000043213367}
+      rotation: {x: -0.07243701, y: 0.094482444, z: -0.034278914, w: 0.9922958}
+      scale: {x: 0.9999999, y: 1, z: 1}
+      transformModified: 1
+    - name: Upper_Leg_L
+      position: {x: 0.03023904, y: -0.8403747, z: -0.06712871}
+      rotation: {x: 0.0072376602, y: 0.99992156, z: 0.0002788465, w: 0.010220125}
+      scale: {x: 1.0000001, y: 1.000037, z: 1.000074}
+      transformModified: 1
+    - name: Lower_Leg_L
+      position: {x: -2.5198689, y: 0.00000022638017, z: 0.000000007741619}
+      rotation: {x: -0.0137567, y: 0.05413939, z: -0.014111924, w: 0.99833894}
+      scale: {x: 0.99999994, y: 1, z: 1}
+      transformModified: 1
+    - name: Foot_L
+      position: {x: -2.3891392, y: 0.00000016344711, z: -0.00000000372529}
+      rotation: {x: 0.82728463, y: -0.0009931158, z: 0.5615486, w: -0.016198166}
+      scale: {x: 0.9999938, y: 1.0000075, z: 0.9999985}
+      transformModified: 1
+    - name: Toe_L
+      position: {x: -1.115449, y: 0.00000008023861, z: -0.0000003435883}
+      rotation: {x: -0.00000029819174, y: 0.17484905, z: -0.00000011413781, w: 0.9845953}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Upper_Leg_R
+      position: {x: 0.030239167, y: 0.8403747, z: -0.0671288}
+      rotation: {x: -0.006491114, y: 0.99992466, z: -0.00029987146, w: 0.010414805}
+      scale: {x: 0.99999994, y: 1.0000354, z: 1.0000906}
+      transformModified: 1
+    - name: Lower_Leg_R
+      position: {x: -2.5198689, y: 0.00000023622624, z: 0.000000002444722}
+      rotation: {x: -0.013715858, y: 0.054150064, z: 0.014070811, w: 0.9983395}
+      scale: {x: 0.9999998, y: 1.0000001, z: 1}
+      transformModified: 1
+    - name: Foot_R
+      position: {x: -2.3891377, y: 0.00000025471672, z: -0.000000033527613}
+      rotation: {x: 0.82730335, y: -0.013855828, z: 0.5615417, w: -0.006945485}
+      scale: {x: 1.0000062, y: 0.99999195, z: 1.0000014}
+      transformModified: 1
+    - name: Toe_R
+      position: {x: -1.115437, y: 0.00000004882233, z: 0.00000030177773}
+      rotation: {x: 0.00000035394115, y: 0.17485091, z: 0.00000003109493, w: 0.98459494}
+      scale: {x: 1, y: 1, z: 0.99999994}
+      transformModified: 1
+    - name: Pole_Target_Leg_L
+      position: {x: -0.8403749, y: -0.8540218, z: -2.5493727}
+      rotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Arm_ik_L
+      position: {x: -5.718765, y: 0.088945925, z: 4.175446}
+      rotation: {x: 0.50000006, y: 0.49999997, z: -0.49999997, w: 0.50000006}
+      scale: {x: 1, y: 1.0000001, z: 1.0000001}
+      transformModified: 1
+    - name: Pole_Target_Arm_L
+      position: {x: -3.489, y: 0.86601233, z: 4.1577344}
+      rotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Leg_Control_R
+      position: {x: 1.0121045, y: 0.58680344, z: -5.6311984}
+      rotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Foot_Angle_control_R
+      position: {x: -0.9345827, y: 0.17172948, z: 0.70051193}
+      rotation: {x: 0.000000033571947, y: -0.22688094, z: -0.00000010477281, w: 0.9739225}
+      scale: {x: 0.99999994, y: 1, z: 1}
+      transformModified: 1
+    - name: Pole_Target_Leg_R
+      position: {x: 0.8403745, y: -0.854022, z: -2.5493727}
+      rotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Arm_ik_R
+      position: {x: 5.7187657, y: 0.088944435, z: 4.175446}
+      rotation: {x: 0.50000006, y: 0.49999997, z: -0.49999997, w: 0.50000006}
+      scale: {x: 1, y: 1.0000001, z: 1.0000001}
+      transformModified: 1
+    - name: Pole_Target_Arm_R
+      position: {x: 3.4890006, y: 0.8660116, z: 4.1577344}
+      rotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Leg_Control_L
+      position: {x: -1.0121045, y: 0.58680296, z: -5.6311984}
+      rotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+      transformModified: 1
+    - name: Foot_Angle_control_L
+      position: {x: -0.90254104, y: -0.17173001, z: 0.70051146}
+      rotation: {x: 0.00000002723413, y: -0.226881, z: -0.000000037670485, w: 0.9739225}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Armature_Sail
+      position: {x: -2.21, y: -0.9835336, z: 0.00000004299162}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Bone
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0.50000006, y: 0.49999997, z: -0.49999997, w: 0.50000006}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Charcter
+      position: {x: 0, y: 0, z: 1.9852715}
+      rotation: {x: 0, y: 0, z: -1.0559242e-15, w: 1}
+      scale: {x: 1.6783623, y: 1.6783623, z: 1.6783623}
+      transformModified: 1
+    - name: Eyes
+      position: {x: 0.000000013517024, y: -1.6139426, z: 6.4774146}
+      rotation: {x: -0.00017699177, y: 0.9988878, z: 0.046999834, w: 0.0037616072}
+      scale: {x: 0.29000002, y: 0.15638116, z: 0.17532715}
+      transformModified: 1
+    - name: Hair
+      position: {x: -2.8e-14, y: -0.16550732, z: 3.7221808}
+      rotation: {x: -1.0784218e-30, y: -1.0384709e-15, z: -1.0384709e-15, w: 1}
+      scale: {x: 1.7081872, y: 1.7081872, z: 1.7081872}
+      transformModified: 1
+    - name: Helnmet
+      position: {x: -7.1e-14, y: 0.05179453, z: 7.252318}
+      rotation: {x: 0, y: 0, z: -8.63938e-16, w: 1}
+      scale: {x: 2.049994, y: 2.049994, z: 2.1688623}
+      transformModified: 1
+    - name: Plane_001
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: -0.50000006, y: -0.49999997, z: -0.49999997, w: 0.50000006}
+      scale: {x: 0.8021307, y: 2.4997463, z: 1.145139}
+      transformModified: 1
+    - name: SailObject
+      position: {x: -0.03346777, y: 0, z: 1.1354718}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Wishbone
+      position: {x: -0.15150142, y: 0, z: 5.7750974}
+      rotation: {x: 0.066843614, y: 0.000000005046704, z: 0.99776345, w: -0.0000000753313}
+      scale: {x: 0.061826315, y: 0.061826307, z: 0.06182632}
+      transformModified: 1
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 3
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
