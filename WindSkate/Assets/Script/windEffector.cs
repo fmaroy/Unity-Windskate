@@ -190,17 +190,17 @@ public class windEffector : MonoBehaviour {
             }
             if ((SelfIntersection == false) & (this.gameObject.transform.parent.GetComponent<PlayerCollision>().isPlayer == true))
             {
-                Debug.Log("Cover, but no MeshRenderer : " + other.gameObject.name);
+                //Debug.Log("Cover, but no MeshRenderer : " + other.gameObject.name);
                 
                 if (other.gameObject.GetComponent<MeshRenderer>() != null)
                 {
-                    Debug.Log("Covered!");
+                    //Debug.Log("Covered!");
                     other.gameObject.GetComponent<MeshRenderer>().enabled = true;
                     WindModifierObjectListDisplay.Add(other.gameObject);
                 }
                 else
                 {
-                    Debug.Log("no Meshrenderer");
+                    //Debug.Log("no Meshrenderer");
                 }
             }
         }

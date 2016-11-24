@@ -3,8 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class PlayersTrackOnRacetrack : MonoBehaviour
-{
-
+{ 
     private GameObject trackMarksContainerObject;
     private Setup_track trackDefinition;
 

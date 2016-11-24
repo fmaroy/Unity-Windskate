@@ -805,13 +805,13 @@ public class Follow_track : MonoBehaviour
         blocked = NavMesh.Raycast(transform.position, nextObjectivePosition, out hit, NavMesh.AllAreas);
         if (isPlayer)
         {
-            Debug.Log("Player " + this.gameObject.transform.parent.gameObject.name + " Navigation set to Destination : " + nextObjectivePosition);
-            Debug.DrawLine(playerPosition, nextObjectivePosition, blocked ? Color.red : Color.green, 3.0f);
+            //Debug.Log("Player " + this.gameObject.transform.parent.gameObject.name + " Navigation set to Destination : " + nextObjectivePosition);
+            //Debug.DrawLine(playerPosition, nextObjectivePosition, blocked ? Color.red : Color.green, 3.0f);
         }
         else
         {
-            Debug.Log("Opponent " + this.gameObject.transform.parent.gameObject.name + " Navigation set to Destination : " + nextObjectivePosition);
-            Debug.DrawLine(playerPosition, nextObjectivePosition, blocked ? Color.cyan : Color.blue, 3.0f);
+            //Debug.Log("Opponent " + this.gameObject.transform.parent.gameObject.name + " Navigation set to Destination : " + nextObjectivePosition);
+            //Debug.DrawLine(playerPosition, nextObjectivePosition, blocked ? Color.cyan : Color.blue, 3.0f);
         }
 
         return nextObjectivePosition;
@@ -1080,7 +1080,7 @@ public class Follow_track : MonoBehaviour
 
     public void getEndOfManoeuvre()
     {
-        Debug.Log("End Of Manoeuvre ");
+        //Debug.Log("End Of Manoeuvre ");
         float endTack = 45.0f;
         float endJibe = 135.0f;
         if (isPlayer == false)
@@ -1183,7 +1183,7 @@ public class Follow_track : MonoBehaviour
                 //Debug.Log("is Next Target changed");
                 nexttargetreforcalc = isNextTargetMark;
                 drivestarboardforrecalc = driveStarboard;
-                Debug.Log("Recalcualte Logic because of mark changed : " + isNextTargetMark);
+                //Debug.Log("Recalcualte Logic because of mark changed : " + isNextTargetMark);
                 if (isPlayer == false) { recalculatePath = true; }
                 ManouevreCompleted();
                 //NavMeshHandling(isNextTargetMark, driveStarboard);
@@ -1194,7 +1194,7 @@ public class Follow_track : MonoBehaviour
                 //Debug.Log("is IntMarkStatus changed");
                 nexttargetreforcalc = isNextTargetMark;
                 drivestarboardforrecalc = driveStarboard;
-                Debug.Log("Recalcualte Logic bacause of passing mark chnaged status to : " + isNextTargetMark);
+                //Debug.Log("Recalcualte Logic bacause of passing mark chnaged status to : " + isNextTargetMark);
                 if (isPlayer == false) { recalculatePath = true; }
                 ManouevreCompleted();
                 //NavMeshHandling(isNextTargetMark, driveStarboard);

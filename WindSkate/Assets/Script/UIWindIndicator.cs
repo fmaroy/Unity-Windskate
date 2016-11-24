@@ -38,13 +38,17 @@ public class UIWindIndicator : MonoBehaviour {
 
     public List<UpcomingWindIcon> iconList;
 
+    public float PlayerPosition;
+
     private AnimatorStateInfo currentBaseState;
 
     static int arrowHashDisplacement;
-    static int arrowHashExit;
+    static int arrowHashExitState;
     static int arrowOutlineAnimExitTrigger;
     static int arrowOutlineAnimEnableTrigger;
     static int arrowOutlineAnimStatus;
+    static int upcomingWindArrowAppliedAnimStatus;
+    static int upcomingWindArrowAppliedInt;
 
 
     // Use this for initialization
@@ -56,10 +60,11 @@ public class UIWindIndicator : MonoBehaviour {
         UIWindAngle = ReferenceGameObjectData.localWindDirection;
 
         arrowHashDisplacement = Animator.StringToHash("Base Layer.UI_Arrow_Displacement");
-        arrowHashExit = Animator.StringToHash("Base Layer.UI_Wind_Arrow");
+        arrowHashExitState = Animator.StringToHash("Base Layer.UI_Wind_Arrow");
         arrowOutlineAnimExitTrigger = Animator.StringToHash("UiWindArrowExit");
         arrowOutlineAnimEnableTrigger = Animator.StringToHash("EnableIconTrigger");
         arrowOutlineAnimStatus = Animator.StringToHash("UIArrowStatus");
+        upcomingWindArrowAppliedInt = Animator.StringToHash("UiIconAnimApply");
 
         foreach (Transform child in this.transform)
         {
@@ -121,9 +126,29 @@ public class UIWindIndicator : MonoBehaviour {
         }
     }
     /// <summary>
-    /// the follwing calculate the oritnetation diff and the force diff for the current icon
+    /// the following calculates the oritnetation diff and the force diff for the current icon
     /// </summary>
     /// <param name="iconObj"></param>
+    /// 
+
+    public void updateUpcomingWindIconPosition(UpcomingWindIcon icon)
+    {
+        float minIconPos = -130.0f;
+        float maxDistanceToGust = 500.0f;
+        float canvenasWidth = upcomingWindContainer.GetComponent<RectTransform>().rect.width;
+
+        if (icon.status == 1)
+        {
+            float distanceToGust = PlayerPosition - icon.gustObject.transform.position.z;
+
+            Debug.Log("Wind Relative distance: " + distanceToGust / maxDistanceToGust);
+            Debug.Log("Icon Placement: " + -1 * (distanceToGust / maxDistanceToGust * canvenasWidth) + minIconPos);
+
+            icon.iconObject.transform.localPosition = new Vector3(-1 * (distanceToGust / maxDistanceToGust * canvenasWidth) + minIconPos, -3.0f, 0.0f);
+            //icon.gameObject.GetComponent<Animator>().Play(arrowHashDisplacement, 0, ((1 - distanceToGust) / maxDistanceToGust));
+        }
+    }
+
     public List<float> iconWindDiffHandler (UpcomingWindIcon iconObj)
     {
         List<float> changeList = new List<float>();
@@ -133,7 +158,10 @@ public class UIWindIndicator : MonoBehaviour {
         List<UpcomingWindIcon> tmpIconList = new List<UpcomingWindIcon>();
         // checks that the gust of the current icon is active and upcoming
         if (iconObj.status != 1)
-        { return changeList; }
+        {
+            Debug.Log("The Icon is not active nor upcoming");
+            return changeList;
+        }
         // browse the othe icons to find the next active one if none is found, then the player value has to be used to calcualte the difference
         foreach(UpcomingWindIcon otherIcon in iconList)
         {
@@ -164,16 +192,16 @@ public class UIWindIndicator : MonoBehaviour {
                 }
             }
             // now we have the reference icon to compute the diff values : refIconForDiffCalc
-            orientChange = refIconForDiffCalc.gustObject.GetComponent<currentGustProperties>().thisGustOrientation - iconObj.gustObject.GetComponent<currentGustProperties>().thisGustOrientation;
-            forceChange = refIconForDiffCalc.gustObject.GetComponent<currentGustProperties>().thisGustForce - iconObj.gustObject.GetComponent<currentGustProperties>().thisGustForce;
+            orientChange = iconObj.gustObject.GetComponent<currentGustProperties>().thisGustOrientation - refIconForDiffCalc.gustObject.GetComponent<currentGustProperties>().thisGustOrientation;
+            forceChange = iconObj.gustObject.GetComponent<currentGustProperties>().thisGustForce - refIconForDiffCalc.gustObject.GetComponent<currentGustProperties>().thisGustForce;
             
         }
         else
         {
             // There are no other gust between the current one and the player
             //We need to take the player data for the diff calcualtion
-            orientChange = ReferenceGameObjectData.localWindDirection - iconObj.gustObject.GetComponent<currentGustProperties>().thisGustOrientation;
-            forceChange = ReferenceGameObjectData.localWindForce - iconObj.gustObject.GetComponent<currentGustProperties>().thisGustForce;
+            orientChange = iconObj.gustObject.GetComponent<currentGustProperties>().thisGustOrientation - ReferenceGameObjectData.localWindDirection;
+            forceChange = iconObj.gustObject.GetComponent<currentGustProperties>().thisGustForce - ReferenceGameObjectData.localWindForce;
         }
         // Now we have the diff value for the current icon
         //We still need to apply if to the icon graphics
@@ -185,19 +213,45 @@ public class UIWindIndicator : MonoBehaviour {
     ///  manages the display of the icon as well as it displacement
     /// </summary>
     /// <param name="iconObj"></param>
-    public void iconDisplayHandler (UpcomingWindIcon iconObj)
+    public void iconDisplayHandler(UpcomingWindIcon iconObj)
     {
-        if (iconObj.status == 1)
+        if (iconObj.iconObject != null)
         {
-            iconObj.iconObject.SetActive(true);
+            iconObj.iconObject.transform.GetChild(0).gameObject.SetActive(false);
+            if (iconObj.status == 1)
+            {
+                Debug.Log(iconObj.iconObject.name + ", active icon to enable found, "+ iconObj.iconObject.transform.GetChild(0).gameObject.name);
+                iconObj.iconObject.transform.GetChild(0).gameObject.SetActive(true);
+                if (Mathf.Abs(iconObj.forceDiff) < 1)
+                {
+                    iconObj.iconObject.transform.GetChild(0).GetChild(1).gameObject.SetActive(false);
+                }
+                else
+                {
+                    iconObj.iconObject.transform.GetChild(0).GetChild(1).gameObject.SetActive(true);
+                }
+            }
+            arrowHashExitState = Animator.StringToHash("Base Layer.UI_Wind_Arrow");
+            currentBaseState = iconObj.iconObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0);
+            if ((iconObj.status == 2) && (currentBaseState.fullPathHash == arrowHashExitState))
+            {
+                iconObj.iconObject.transform.GetChild(0).gameObject.SetActive(true);
+                if (Mathf.Abs(iconObj.forceDiff) < 1)
+                {
+                    iconObj.iconObject.transform.GetChild(0).GetChild(1).gameObject.SetActive(false);
+                }
+                else
+                {
+                    iconObj.iconObject.transform.GetChild(0).GetChild(1).gameObject.SetActive(true);
+                }
+            }
+            
+            /*if (iconObj.status < 1)
+            {
+                iconObj.iconObject.transform.GetChild(0).gameObject.SetActive(false);
+            }*/
         }
-        if (iconObj.status < 1)
-        {
-            iconObj.iconObject.SetActive(false);
-        }
-
     }
-
  
     /// <summary>
     /// This is called from the windeffector as the player hits the gust object
@@ -205,13 +259,27 @@ public class UIWindIndicator : MonoBehaviour {
     /// <param name="gust"></param>
     public void WindGustExitHandler(GameObject gust)
     {
-        GameObject iconObject;
+        GameObject iconObject = null;
+        UpcomingWindIcon currentIconObject;
         //first we need to find the corresponding icon
-        int positionInEligibleList = sortedEligibleGust.IndexOf(gust);
+        /*int positionInEligibleList = sortedEligibleGust.IndexOf(gust);
         if (positionInEligibleList != -1)
         {
             iconObject = upcomingWindContainer.transform.GetChild(positionInEligibleList).gameObject;
+        }*/
+        
+        foreach (UpcomingWindIcon icon in iconList)
+        {
+            if (icon.gustObject == gust)
+            {
+                iconObject = icon.iconObject;
+                currentIconObject = icon;
+            }
         }
+        //iconObject.GetComponent<Animator>().SetInteger(upcomingWindArrowAppliedInt, 1);
+        iconObject.GetComponent<Animator>().SetTrigger(arrowOutlineAnimExitTrigger);
+        //currentIconObject.exitAnimFlag = true;
+
     }
 
     /// <summary>
@@ -222,38 +290,41 @@ public class UIWindIndicator : MonoBehaviour {
     {
         GameObject iconObject;
         UpcomingWindIcon SelectedIcon;
-        bool flag = false;
         int whichIconInTreeId = 0;
-        if (iconList.Count !=0)
+        bool flagIconInUse = false;
+       
+        int i = 0;
+        //Looking for a suitable icon Object
+        foreach (Transform obj in upcomingWindContainer.transform)
         {
-            int i = 0;
-            foreach (Transform obj in upcomingWindContainer.transform)
+            // Browsing the icon Objects in the hierarchy tree
+            // gloal is to check if the current icon is already in used for an other iconObject (Gust)
+            flagIconInUse = false;
+            foreach (UpcomingWindIcon iconObj in iconList)
             {
-                // Browsing the icon Objects in the hierarchy tree
-                foreach(UpcomingWindIcon iconObj in iconList)
+                // For each icon object in the hierarchy, we are here browsing all the availale objects in the iconList
+                if (iconObj.iconObject == obj.gameObject)
                 {
-                    // For each icon object in the hierarchy, we are here browsing all the availale objects in the iconList
-                    if (iconObj.iconObject != obj.gameObject)
-                    {
-                        // Now we have found a icon object in the hierachy that is not used already in the iconList. 
-                        // We are storing the id in the whichIconId
-                        flag = true;
-                        whichIconInTreeId = i;
-                        break;
-                    }
+                    // Now we have found a icon object in the hierachy that is not used already in the iconList. 
+                    // We are storing the id in the whichIconId
+                    flagIconInUse = true;
+                    //Debug.Log("Icon " + obj.gameObject.name + " is already used for " + gust.name);
+                    
+                    //This icon is already being used by this iconObject, jumping to the next one.
+                    break;
                 }
-                if (flag) { break; }
-                i++;
             }
+            if (flagIconInUse == false)
+            {
+                //Debug.Log("The icon " + obj.gameObject.name + " is not being use by any other iconObj Gust, it can be associated with " + gust.name);
+                whichIconInTreeId = i;
+                //Debug.Log("Icon id : " + whichIconInTreeId);
+                break;
+            }
+            i++;
         }
-        else
-        {
-            //the icon List is empty, so we are using the first icon object in the hierarchy tree
-            flag = true;
-            whichIconInTreeId = 0;
-        }
-
-        if (flag == true)
+        
+        if (flagIconInUse == false)
         {
             // get the icon object ot be used in the scene tree to be used
             iconObject = upcomingWindContainer.transform.GetChild(whichIconInTreeId).gameObject;
@@ -262,52 +333,89 @@ public class UIWindIndicator : MonoBehaviour {
             {
                 if (icon.gustObject == gust)
                 {
+                    //We get the icon object of the released gust
                     SelectedIcon = icon;
                 }
             }
-            List<float> newIconDiff = iconWindDiffHandler(SelectedIcon);
+
             SelectedIcon.iconObject = iconObject;
+            SelectedIcon.status = 1;
+            SelectedIcon.exitAnimFlag = false;
+            List<float> newIconDiff = iconWindDiffHandler(SelectedIcon);
+            
             if (newIconDiff.Capacity != 0)
             {
                 SelectedIcon.orientDiff = newIconDiff[0];
                 SelectedIcon.forceDiff = newIconDiff[1];
             }
-            //iconList.Add()
-        }
-    }
-    
+            //Now we need to handle the icon is displayed
 
-    /// <summary>
-    /// Manages the animation of the wind arrow as soon as the player touches it
-    /// </summary>
-    public void AppliedWindGustAnimation(GameObject Gust)
-    {
-        // checks if there was a previous arrow
-        if (prevSortedEligibleGust.Count != 0)
-        {   // DUring the previous frame, a eligible gust was present
-            if (sortedEligibleGust.Count != 0)
-            {   // During the current frame, at least one gust is present
-                //Now we are checking that the the first previous frame and the current first frame different. If means that the previous frame has been applied an we need to animate it
-                if (prevSortedEligibleGust[0]!= sortedEligibleGust[0])
-                {
-                    AnimateUpcomingWIndIcon(prevSortedEligibleGust[0]);
-                    prevSortedEligibleGust[0].GetComponent<Animator>().SetFloat(arrowOutlineAnimStatus, 2.5f);
-                    //prevSortedEligibleGust[0].GetComponent<Animator>().SetTrigger(arrowOutlineAnimExitTrigger);
-                    //transitionAnimation = WindGustsGameObjectList.IndexOf(prevSortedEligibleGust[0]);
-                }
+            if ((Mathf.Abs(SelectedIcon.orientDiff) <= 1))
+            {
+                SelectedIcon.iconObject.transform.GetChild(0).GetChild(0).gameObject.GetComponent<Image>().sprite = spriteStraight;
+
+                SelectedIcon.iconObject.transform.GetChild(0).GetChild(0).gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(35.0f, 72.0f);
+                //child.gameObject.transform = new Vector3(0.35f, 0.7f, 1.0f);
+            }
+            if ((Mathf.Abs(SelectedIcon.orientDiff) > 1) && (Mathf.Abs(SelectedIcon.orientDiff) <= 5))
+            {
+                SelectedIcon.iconObject.transform.GetChild(0).GetChild(0).gameObject.GetComponent<Image>().sprite = spriteSlightTurn;
+                //child.GetChild(0).gameObject.transform.localPosition = new Vector3(-1 * (distanceToGust / maxDistanceToGust * canvenasWidth) + minIconPos, 2.0f, 0.0f);
+                SelectedIcon.iconObject.transform.GetChild(0).GetChild(0).gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(86.0f, 93.0f);
+                //child.gameObject.transform.localScale = new Vector3( 0.78f, 0.9f, 1.0f);
+
+            }
+            if ((Mathf.Abs(SelectedIcon.orientDiff) > 5))
+            {
+                SelectedIcon.iconObject.transform.GetChild(0).GetChild(0).gameObject.GetComponent<Image>().sprite = spriteTurn;
+                //child.GetChild(0).gameObject.transform.localPosition = new Vector3(-1 * (distanceToGust / maxDistanceToGust * canvenasWidth) + minIconPos, 5.5f, 0.0f);
+                SelectedIcon.iconObject.transform.GetChild(0).GetChild(0).gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(121.0f, 122.0f);
+                //child.gameObject.transform.localScale = new Vector3( 0.65f , 0.9f , 1.0f);
+            }
+
+            if (SelectedIcon.orientDiff > 0)
+            {
+                SelectedIcon.iconObject.transform.GetChild(0).GetChild(0).localScale = new Vector3(-1.0f, 1.0f, 1.0f);
+                
             }
             else
             {
-                // means that there were at least one gust in the previous frame, and none in the current frame
-                AnimateUpcomingWIndIcon(prevSortedEligibleGust[0]);
-                prevSortedEligibleGust[0].GetComponent<Animator>().SetFloat(arrowOutlineAnimStatus, 2.5f);
-                //prevSortedEligibleGust[0].GetComponent<Animator>().SetTrigger(arrowOutlineAnimExitTrigger);
-                //transitionAnimation = WindGustsGameObjectList.IndexOf(prevSortedEligibleGust[0]);
+                SelectedIcon.iconObject.transform.GetChild(0).GetChild(0).localScale = new Vector3(1.0f, 1.0f, 1.0f);
             }
-        }
-        
+            //foreach (Transform subchild in child)
 
+            if (Mathf.Abs(SelectedIcon.forceDiff) > 1)
+            {
+                //SelectedIcon.iconObject.transform.GetChild(1).gameObject.GetComponent<Image>().enabled = true;
+                if (SelectedIcon.forceDiff > 0)
+                {
+                    SelectedIcon.iconObject.transform.GetChild(0).GetChild(1).gameObject.GetComponent<Image>().sprite = spriteWindIncrease;
+                    SelectedIcon.iconObject.transform.GetChild(0).GetChild(1).gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(20.0f, 20.0f);
+                }
+                else
+                {
+                    SelectedIcon.iconObject.transform.GetChild(0).GetChild(1).gameObject.GetComponent<Image>().sprite = spriteWindDecrease;
+                    SelectedIcon.iconObject.transform.GetChild(0).GetChild(1).gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(20.0f, 8.0f);
+                }
+                if ((Mathf.Abs(SelectedIcon.orientDiff) <= 1))
+                {
+                    if (SelectedIcon.orientDiff > 0)
+                    {
+                        SelectedIcon.iconObject.transform.GetChild(0).GetChild(1).gameObject.transform.localPosition = new Vector3(-20.0f, -30.0f, 0.0f);
+                    }
+                    else
+                    {
+                        SelectedIcon.iconObject.transform.GetChild(0).GetChild(1).gameObject.transform.localPosition = new Vector3(20.0f, -30.0f, 0.0f);
+                    }
+                }
+                else
+                {
+                    SelectedIcon.iconObject.transform.GetChild(0).GetChild(1).gameObject.transform.localPosition = new Vector3(20.0f, -30.0f, 0.0f);
+                }
+            }
+        }    
     }
+
     public void AnimateUpcomingWIndIcon(GameObject obj)
     {
         //obj.GetComponent<Animator>().enabled = true;
@@ -326,33 +434,44 @@ public class UIWindIndicator : MonoBehaviour {
         
     }
 
-    /*public void updateUpcomingWindArrow(float WindOrient, float WindForce)
-    {
-        //UIUpcomingWindAngle = WindOrient;
-        float UILocalwindArrowScale = WindForce / WindGustsGameObjectData.initWindForce;
-        Arrow_filled.transform.localScale = new Vector3(1.0f, UILocalwindArrowScale, 1.0f);
-        Arrow_filled.transform.rotation = Quaternion.Euler(0, 0, -1*WindOrient + 90);
-        UIUpcomingWindArrowRenderer.color = new Color(1.0f, 0.0f, 0.0f, 0.2f);
 
-    }*/
     void LateUpdate()
     {
         prevSortedEligibleGust = sortedEligibleGust;
+        foreach(UpcomingWindIcon icon in iconList)
+        {
+            if (icon.iconObject != null)
+            {
+                icon.iconObject.GetComponent<Animator>().ResetTrigger(arrowOutlineAnimExitTrigger);
+            }
+            
+        }
     }
-    
+
     // Update is called once per frame
-    void Update () {
-        //Get the playewr board gameobject
-        
-        foreach(Transform child in ReferenceGameObject.transform.parent)
+    void Update()
+    {
+        PlayerPosition = 0.0f;
+
+        //Get the player board gameobject
+        foreach (Transform child in ReferenceGameObject.transform.parent)
         {
             if (child.gameObject.name.Contains("Board_assembly") == true)
             {
                 //Update the position of the upcoming wind icon
                 //buildGustList(child.position.z);
-                updateIconListStatus(child.position.z);
-
+                PlayerPosition = child.position.z;
             }
+        }
+        updateIconListStatus(PlayerPosition);
+        foreach (Transform icon in upcomingWindContainer.transform)
+        {
+            icon.GetChild(0).gameObject.SetActive(false);
+        }
+        foreach (UpcomingWindIcon icon in iconList)
+        {
+            iconDisplayHandler(icon);
+            updateUpcomingWindIconPosition(icon);
         }
 
         UIUpcomingWindAngle = WindGustsGameObjectData.currentWindOrientation;
@@ -360,7 +479,7 @@ public class UIWindIndicator : MonoBehaviour {
 
         UIWindAngle = ReferenceGameObjectData.localWindDirection;
         float UIWindForce = ReferenceGameObjectData.effectiveLocalWindForce;
-        
+
         if (UIWindAngle != UIWindAngleLastFrame || UIWindForce != UIWindForceLastFrame)
         {
             //Debug.Log("Update local wind");
@@ -370,263 +489,7 @@ public class UIWindIndicator : MonoBehaviour {
         {
             UILocalWindArrowRenderer.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
         }
-        /*
-        if (UIUpcomingWindAngle != UIUpcomingWindAngleLastFrame || UIUpcomingWindForce != UIUpcomingWindForceLastFrame)
-        {
-            timer = 2.0f;
-        }
-        if (timer >= 0.0f)
-        {
-            timer = timer - Time.deltaTime;
-            updateUpcomingWindArrow(UIUpcomingWindAngle, UIUpcomingWindForce);
-        }
-        else
-        {
-            UIUpcomingWindArrowRenderer.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
-        }*/
-
-        //float UILocalwindArrowScale = ReferenceGameObjectData.effectiveLocalWindForce/ WindGustsGameObjectData.initWindForce;
-        //float UIUpcomingWindArrowScale = WindGustsGameObjectData.currentWindForce/ WindGustsGameObjectData.initWindForce;
-        //Arrow_outline.transform.localScale = new Vector3 (1.0f, UILocalwindArrowScale, 1.0f);
-        //Arrow_filled.transform.rotation = Quaternion.Euler(0, 0, UIUpcomingWindAngle - 90);
-        //Arrow_filled.transform.localScale = new Vector3(1.0f, UIUpcomingWindArrowScale, 1.0f);
-        //UILocalWIndArrowRenderer.color = new Color(1.0f, 0.2f, 0.2f, 1.0f);
-
-        //Debug.Log(UIWindAngle);
-        //UIWindAngle = ReferenceGameObjectData.localWindDirection;
-        UIWindForceLastFrame = UIWindForce ;
-        UIWindAngleLastFrame = UIWindAngle;
-        UIUpcomingWindForceLastFrame = UIUpcomingWindForce;
-        UIUpcomingWindAngleLastFrame = UIUpcomingWindAngle;
-
-
     }
-    /*public void buildEligibleList(float playerPos)
- {
-     WindGustsGameObjectList = new List<GameObject>();
-     eligibleGust = new List<GameObject>();
-     sortedEligibleGust = new List<GameObject>();
-     foreach (Transform child in WindGustsGameObject.transform)
-     {
-         if ((child.gameObject.activeSelf == true))
-         {
-             WindGustsGameObjectList.Add(child.gameObject);
-             float distanceToGust = playerPos - child.gameObject.transform.position.z;
-             Debug.Log("Distance to gust : " + distanceToGust);
-             if (distanceToGust > 0)
-             {
-                 eligibleGust.Add(child.gameObject);
-             }
-         }
-     }
-     int i = 0;
-     foreach (GameObject gust in eligibleGust)
-     {
-         float distanceToGust = playerPos - gust.transform.position.z;
-         if (i == 0)
-         {
-             sortedEligibleGust.Add(gust);
-         }
-         else
-         {
-             if (distanceToGust < playerPos - eligibleGust[i - 1].transform.position.z)
-             {
-                 sortedEligibleGust.Insert(i - 1, gust);
-             }
-             else
-             {
-                 sortedEligibleGust.Add(gust);
-             }
-         }
-         i++;
-     }
-     //Sorted eligible Gust built
- }*/
-
-    /*public void buildGustList(float playerPos)
-    {
-        WindGustsGameObjectList = new List<GameObject>();
-        eligibleGust = new List<GameObject>();
-        sortedEligibleGust = new List<GameObject>();
-        angleChangePerGust = new List<float>();
-        forceChangePerGust = new List<float>();
-        float minIconPos = -130.0f;
-        float maxDistanceToGust = 500.0f;
-        float canvenasWidth = upcomingWindContainer.GetComponent<RectTransform>().rect.width;
-
-        foreach (Transform child in WindGustsGameObject.transform)
-        {
-            if ((child.gameObject.activeSelf == true))
-            {
-                WindGustsGameObjectList.Add(child.gameObject);
-                float distanceToGust = playerPos - child.gameObject.transform.position.z;
-                Debug.Log("Distance to gust : " + distanceToGust);
-                if (distanceToGust > 0)
-                {
-                    eligibleGust.Add(child.gameObject);
-                }
-                // Adds the gust ot the list when the first icon on the list stil in exit animation
-                
-            }
-        }
-        
-        
-        //Sort the created list by distance to the player
-        int i = 0;
-        foreach (GameObject gust in eligibleGust)
-        {
-            float distanceToGust = playerPos - gust.transform.position.z;
-            if (i == 0)
-            {
-                sortedEligibleGust.Add(gust);
-            }
-            else
-            {
-                if (distanceToGust < playerPos - eligibleGust[i - 1].transform.position.z)
-                {
-                    sortedEligibleGust.Insert(i - 1, gust);
-                }
-                else
-                {
-                    sortedEligibleGust.Add(gust);
-                }
-            }
-            i++;
-        }
-
-        // initialize the icons by hiding them
-        //foreach (Transform child in upcomingWindContainer.transform)
-        //{
-        ///    child.gameObject.SetActive(false);
-        //}
-        i = 0;
-        foreach (GameObject gust in sortedEligibleGust)
-        {
-            float distanceToGust = playerPos - gust.transform.position.z;
-            float orientChange = 0.0f;
-            float forceChange = 0.0f;
-            if (i == 0)
-            {
-                Debug.Log("Player Local WindOrient : " + ReferenceGameObjectData.localWindDirection);
-                Debug.Log("This Gust WInd Orient : " + gust.GetComponent<currentGustProperties>().thisGustOrientation);
-                //in this case the current Gust is the first one, so its direction and force has to be compared against the player
-                orientChange = ReferenceGameObjectData.localWindDirection - gust.GetComponent<currentGustProperties>().thisGustOrientation;
-                forceChange = ReferenceGameObjectData.localWindForce - gust.GetComponent<currentGustProperties>().thisGustForce;
-                angleChangePerGust.Add(orientChange);
-                forceChangePerGust.Add(forceChange);
-            }
-            else
-            {
-                //in this case, the current gust will not be the next one impacting the player, so the direction and force has to be compared to the previous one.
-                orientChange = sortedEligibleGust[i - 1].GetComponent<currentGustProperties>().thisGustOrientation - gust.GetComponent<currentGustProperties>().thisGustOrientation;
-                forceChange = sortedEligibleGust[i - 1].GetComponent<currentGustProperties>().thisGustForce - gust.GetComponent<currentGustProperties>().thisGustForce;
-                angleChangePerGust.Add(orientChange);
-                forceChangePerGust.Add(forceChange);
-            }
-
-            Debug.Log("Gust " + i + "change Orient: " + orientChange + ", change force : " + forceChange);
-            //upcomingWindIndicatorUpdate(i, distanceToGust, orientChange, forceChange);
-
-            //now we setup the position of the upcoming wind icons
-            //
-
-            //AppliedWindGustAnimation();
-
-            int iconObjectinterator = 0;
-            foreach (Transform child in upcomingWindContainer.transform)
-            {
-                
-                //enables and places the icons correspoinding to only the active gust in sorted eligible
-                if (iconObjectinterator == i)
-                {
-                    //child.gameObject.SetActive(true);
-                    Debug.Log("Wind Relative distance: " + distanceToGust / maxDistanceToGust);
-                    Debug.Log("Icon Placement: " + -1 * (distanceToGust / maxDistanceToGust * canvenasWidth) + minIconPos);
-
-                    //child.gameObject.transform.localPosition = new Vector3(-1 * (distanceToGust / maxDistanceToGust * canvenasWidth) + minIconPos, -3.0f, 0.0f);
-                    child.gameObject.GetComponent<Animator>().Play(arrowHashDisplacement, 0, ((1-distanceToGust) / maxDistanceToGust));
-
-                    if ((Mathf.Abs(orientChange) <= 1))
-                    {
-                        child.GetChild(0).gameObject.GetComponent<Image>().sprite = spriteStraight;
-                        
-                        child.GetChild(0).gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(35.0f, 72.0f);
-                        //child.gameObject.transform = new Vector3(0.35f, 0.7f, 1.0f);
-                    }
-                    if ((Mathf.Abs(orientChange) > 1) && (Mathf.Abs(orientChange) <= 5))
-                    {
-                        child.GetChild(0).gameObject.GetComponent<Image>().sprite = spriteSlightTurn;
-                        //child.GetChild(0).gameObject.transform.localPosition = new Vector3(-1 * (distanceToGust / maxDistanceToGust * canvenasWidth) + minIconPos, 2.0f, 0.0f);
-                        child.GetChild(0).gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(86.0f, 93.0f);
-                        //child.gameObject.transform.localScale = new Vector3( 0.78f, 0.9f, 1.0f);
-
-                    }
-                    if ((Mathf.Abs(orientChange) > 5))
-                    {
-                        child.GetChild(0).gameObject.GetComponent<Image>().sprite = spriteTurn;
-                        //child.GetChild(0).gameObject.transform.localPosition = new Vector3(-1 * (distanceToGust / maxDistanceToGust * canvenasWidth) + minIconPos, 5.5f, 0.0f);
-                        child.GetChild(0).gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(121.0f, 122.0f);
-                        //child.gameObject.transform.localScale = new Vector3( 0.65f , 0.9f , 1.0f);
-                    }
-
-                    if (orientChange > 0)
-                    {
-                        child.GetChild(0).gameObject.transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
-                    }
-                    else
-                    {
-                        child.GetChild(0).gameObject.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-                    }
-                    //foreach (Transform subchild in child)
-
-                    if (Mathf.Abs(forceChange) < 1)
-                    {
-                        child.GetChild(1).gameObject.SetActive(false);
-                    }
-                    else
-                    {
-                        child.GetChild(1).gameObject.SetActive(true);
-                        if (forceChange > 0)
-                        {
-                            child.GetChild(1).gameObject.GetComponent<Image>().sprite = spriteWindIncrease;
-                            child.GetChild(1).gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(20.0f, 20.0f);
-                        }
-                        else
-                        {
-                            child.GetChild(1).gameObject.GetComponent<Image>().sprite = spriteWindDecrease;
-                            child.GetChild(1).gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(20.0f, 8.0f);
-                        }
-                        if ((Mathf.Abs(orientChange) <= 1))
-                        {
-                            if (orientChange > 0)
-                            {
-                                child.GetChild(1).gameObject.transform.localPosition = new Vector3(-20.0f, -30.0f, 0.0f);
-                            }
-                            else
-                            {
-                                child.GetChild(1).gameObject.transform.localPosition = new Vector3(20.0f, -30.0f, 0.0f);
-                            }
-                        }
-                        else
-                        {
-                            child.GetChild(1).gameObject.transform.localPosition = new Vector3(20.0f, -30.0f, 0.0f);
-                        }
-                    }
-                }
-                iconObjectinterator++;
-                int prevGustIterator = 0;
-                foreach (GameObject prevGust in prevSortedEligibleGust)
-                {
-                    if (child != prevGust)
-                    {
-                        //The current eligible gust 
-                    }
-                    prevGustIterator++;
-                }
-            }
-            i++;
-        }
-    }*/
 }
 /// <summary>
 /// Upcoming Gust Object
@@ -643,6 +506,7 @@ public class UpcomingWindIcon
     public int status;
     public float forceDiff;
     public float orientDiff;
+    public bool exitAnimFlag;
     /*public UpcomingWindIcon(int i, GameObject icon, GameObject gust, float force, float orient)
     {
         int id = i;

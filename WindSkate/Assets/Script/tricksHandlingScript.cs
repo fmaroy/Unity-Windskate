@@ -377,7 +377,7 @@ public class tricksHandlingScript : MonoBehaviour {
                     {
                         if (PrevStarsMaxLevel != StarsMaxLevel)
                         {
-                            Debug.Log("Playing_Anim");
+                            //Debug.Log("Playing_Anim");
                             //starObj.gameObject.GetComponent<Animator>().SetBool(starHighlightHashEnable, true);
                             starObj.gameObject.GetComponent<Animator>().SetTrigger(starHighlightHashTrigger);
                             starListButtonLeft[0].GetComponent<Animator>().SetTrigger(starHighlightHashTrigger);
@@ -391,7 +391,7 @@ public class tricksHandlingScript : MonoBehaviour {
                     {
                         if (PrevStarsMaxLevel != StarsMaxLevel)
                         {
-                            Debug.Log("Playing_Anim");
+                            //Debug.Log("Playing_Anim");
                             starObj.gameObject.GetComponent<Animator>().SetTrigger(starHighlightHashTrigger);
                             starListButtonLeft[1].GetComponent<Animator>().SetTrigger(starHighlightHashTrigger);
                             starListButtonRight[1].GetComponent<Animator>().SetTrigger(starHighlightHashTrigger);
@@ -404,7 +404,7 @@ public class tricksHandlingScript : MonoBehaviour {
                     {
                         if (PrevStarsMaxLevel != StarsMaxLevel)
                         {
-                            Debug.Log("Playing_Anim");
+                            //Debug.Log("Playing_Anim");
                             starObj.gameObject.GetComponent<Animator>().SetTrigger(starHighlightHashTrigger);
                             starListButtonLeft[2].GetComponent<Animator>().SetTrigger(starHighlightHashTrigger);
                             starListButtonRight[2].GetComponent<Animator>().SetTrigger(starHighlightHashTrigger);
