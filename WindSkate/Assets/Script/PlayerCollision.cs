@@ -57,6 +57,9 @@ public class PlayerCollision : MonoBehaviour
     private Vector3 sailJointAnchor;
     private Vector3 sailJointConnectedAnchor;
 
+    public GameObject crashFxObj;
+    private float crashFxtimer = 0.0f;
+    private float crashFxTimeDelay = 1.0f;
     
 
     // Use this for initialization
@@ -335,9 +338,21 @@ public class PlayerCollision : MonoBehaviour
             }
         }
     }
+
+
+    IEnumerator waitBeforeDisablingFX(GameObject obj, float time)
+    {
+        yield return new WaitForSeconds(time);
+        obj.SetActive(false);
+    }
+
     public void playerCrashed()
     {
-        //Debug.Log("Player Crashed");
+        // Trigger Crash Fx
+        crashFxObj.SetActive(false);
+        crashFxObj.SetActive(true);
+        StartCoroutine(waitBeforeDisablingFX(crashFxObj, 1.0f));
+        Debug.Log("Player Crashed");
         if (isPlayer == true)
         {
             ManualDrive = true;
@@ -363,6 +378,8 @@ public class PlayerCollision : MonoBehaviour
         /*Debug.Log("Get Target Mark At Crash : " + inTargetMarkAtCrash);
         Debug.Log("Registered Position At Crash: " + playerPositionAtCrash);
         Debug.Log("Registered Orientation At Crash: " + playerOrientationAtCrash);*/
+
+        
 
     }
 
