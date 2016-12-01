@@ -13,6 +13,7 @@ public class WheelsBehavior : MonoBehaviour {
     public List<GameObject> SkidMarksAsphaltList = new List<GameObject>();
     public List<GameObject> SkidMarksSandList = new List<GameObject>();
     public List<GameObject> TireParticlesObject = new List<GameObject>();
+    //public GameObject TireWideParticleObject;
     public List<ParticleSystem> TireParticlesSystem = new List<ParticleSystem>();
     private GameObject currentTerrain;
     private TerrainFXData currentTerrainData;
@@ -56,12 +57,22 @@ public class WheelsBehavior : MonoBehaviour {
                 }
                 if (child.gameObject.name.Contains("Wheel Particle System") == true)
                 {
-                    child.gameObject.SetActive(false);
+                    //child.gameObject.SetActive(false);
                     TireParticlesObject.Add(child.gameObject);
                     TireParticlesSystem.Add(child.gameObject.GetComponent<ParticleSystem>());
+                    child.gameObject.GetComponent<ParticleSystem>().Stop();
                 }
             }
         }
+        /*foreach (Transform child in WheelsList[0].transform.parent)
+        {
+            if (child.gameObject.name == "Wheel Particle System")
+            {
+                TireWideParticleObject = child.gameObject;
+            }
+        }*/
+        //TireWideParticleObject.GetComponent<ParticleSystem>().Stop();
+
         sidewaysFriction = WheelsCollidersList[0].sidewaysFriction;
         if (WheelsPhysicsDetails == 2)
         {
@@ -227,17 +238,21 @@ public class WheelsBehavior : MonoBehaviour {
                 {
                     if (Terrain.activeTerrain.GetComponent<TerrainFXData>().EmitParticles[surfaceIndex] == true)
                     {
-                        TireParticlesObject[RearWheelsCounter].SetActive(true);
+                        //TireParticlesObject[RearWheelsCounter].SetActive(true);
+                        //Debug.Log("Particle_emission_playing");
+                        TireParticlesSystem[RearWheelsCounter].Play();
                         TireParticlesSystem[RearWheelsCounter].startColor = Terrain.activeTerrain.GetComponent<TerrainFXData>().TerrainParticleColor[surfaceIndex];
                     }
                     else
                     {
-                        TireParticlesObject[RearWheelsCounter].SetActive(false);
+                        TireParticlesSystem[RearWheelsCounter].Stop();
+                        //TireParticlesObject[RearWheelsCounter].SetActive(false);
                     }
                 }
                 else
                 {
-                    TireParticlesObject[RearWheelsCounter].SetActive(false);
+                    TireParticlesSystem[RearWheelsCounter].Stop();
+                    //TireParticlesObject[RearWheelsCounter].SetActive(false);
                 }
                 
             }

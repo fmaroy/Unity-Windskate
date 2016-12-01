@@ -349,10 +349,13 @@ public class PlayerCollision : MonoBehaviour
     public void playerCrashed()
     {
         // Trigger Crash Fx
-        crashFxObj.SetActive(false);
-        crashFxObj.SetActive(true);
-        StartCoroutine(waitBeforeDisablingFX(crashFxObj, 1.0f));
-        Debug.Log("Player Crashed");
+        if (isPlayer == true)
+        {
+            crashFxObj.SetActive(false);
+            crashFxObj.SetActive(true);
+            StartCoroutine(waitBeforeDisablingFX(crashFxObj, 1.0f));
+        }
+       
         if (isPlayer == true)
         {
             ManualDrive = true;
