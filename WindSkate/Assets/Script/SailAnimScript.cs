@@ -67,6 +67,7 @@ public class SailAnimScript : MonoBehaviour {
         targetLayerValue = 0.0f;
         initLayerValue = animSail.GetLayerWeight(2);
         Manoeuvre_level = 0;
+        
 
     }
     void enterManoeuvre()
@@ -75,12 +76,17 @@ public class SailAnimScript : MonoBehaviour {
         timerManoeuvreCurrent = 0.0f;
         targetLayerValue = 1.0f;
         initLayerValue = animSail.GetLayerWeight(2);
-}
+        
+
+    }
     // Update is called once per frame
     void Update()
     {
         animSail.SetInteger("Manoeuver_Level", Manoeuvre_level);
         
+        //Time.timeScale = 1.0f - Manoeuvre_Weight / 0.5f;
+        //Time.fixedDeltaTime = 0.01F * Time.timeScale;
+
         SailAngleAnim = 0.0f;
         SailAngle = gameObject.GetComponent<Sail_System_Control>().apparentWindAngleLocal;
         float TrueWind = gameObject.GetComponent<Sail_System_Control>().trueWindAngleLocal;
@@ -162,6 +168,7 @@ public class SailAnimScript : MonoBehaviour {
                 // initLayerValue - targetLayerValue varies from 1 to 0 when exiting and from 1 to 0 when entering
                 Manoeuvre_Weight = Mathf.Lerp(initLayerValue, targetLayerValue, timerManoeuvreCurrent/ timerManoeuvreTarget);
                 //Debug.Log("CountDown : " + timerManoeuvreCurrent + "Weight " + Manoeuvre_Weight);
+                
             }
         }
 
@@ -210,5 +217,18 @@ public class SailAnimScript : MonoBehaviour {
                 animSail.Play("HeavyWind_Layer.HeavyWindPort", 1, SailAngleAnim);
             }
         }
-	}
+        if (this.gameObject.transform.parent.gameObject.GetComponent<PlayerCollision>().isPlayer == true)
+        {
+            if (Manoeuvre_level > 0)
+            {
+                Time.timeScale = 1 - 0.5f * Manoeuvre_Weight;
+                Time.fixedDeltaTime = 0.01F * Time.timeScale;
+            }
+            else
+            {
+                Time.timeScale = 1.0f;
+                Time.fixedDeltaTime = 0.01F * Time.timeScale;
+            }
+        }
+    }
 }

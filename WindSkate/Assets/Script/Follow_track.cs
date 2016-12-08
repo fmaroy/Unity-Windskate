@@ -141,16 +141,17 @@ public class Follow_track : MonoBehaviour
             if (markData.singleMark == true)
             {
                 markIndicator[0].SetActive(true);
-                if (Vector3.Cross(firstPass, finalPass).y < 0)
+                /*if (Vector3.Cross(firstPass, finalPass).y < 0)
                 {
                     markIndicator[0].transform.GetChild(1).localEulerAngles = new Vector3(90.0f, 180.0f, 0.0f);
                 }
                 else
                 {
                     markIndicator[0].transform.GetChild(1).localEulerAngles = new Vector3(270.0f, 180.0f, 180.0f);
-                }
-                markIndicator[0].transform.position = new Vector3(currentMark.transform.position.x, 20.7f, currentMark.transform.position.z);
+                }*/
                 markIndicator[1].SetActive(false);
+                markIndicator[0].transform.position = new Vector3(currentMark.transform.position.x, 0.0f, currentMark.transform.position.z);
+                
             }
         }
         /// calcualtion for  isPlayer = true
@@ -622,17 +623,17 @@ public class Follow_track : MonoBehaviour
             {
                 //Debug.Log("Placing next single mark indicators");
                 markIndicator[0].SetActive(true);
-                if (Vector3.Cross(firstPass, finalPass).y < 0)
+                /*if (Vector3.Cross(firstPass, finalPass).y < 0)
                 {
                     markIndicator[0].transform.GetChild(1).localEulerAngles = new Vector3(90.0f, 180.0f, 0.0f);
                 }
                 else
                 {
                     markIndicator[0].transform.GetChild(1).localEulerAngles = new Vector3(270.0f, 180.0f, 180.0f);
-                }
+                }*/
                 //markIndicator[0].transform.GetChild(0).localPosition = new Vector3(0.0f, 0.0f, 0.0f);
                 //markIndicator[0].transform.GetChild(1).localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-                markIndicator[0].transform.position = new Vector3(currentMark.transform.position.x, 20.7f, currentMark.transform.position.z);
+                markIndicator[0].transform.position = new Vector3(currentMark.transform.position.x, 0.0f, currentMark.transform.position.z);
                 markIndicator[1].SetActive(false);
                 //Update Viewpoint in camera to orient the casmera with the track
 
@@ -650,25 +651,25 @@ public class Follow_track : MonoBehaviour
                     markIndicator[iter2].SetActive(true);
                     markIndicator[iter2].transform.position = new Vector3(doorMark.transform.position.x, 20.7f, doorMark.transform.position.z);
                     //Debug.Log("MarkIndicator # " + iter2 + ", set at pos : " + markIndicator[iter2].transform.position);
-                    if (currentMarkId >= (trackData.markSequence.Count - 1))
+                    /*if (currentMarkId >= (trackData.markSequence.Count - 1))
                     {
                         markIndicator[iter2].transform.GetChild(1).gameObject.SetActive(false);
                     }
                     else
                     {
                         markIndicator[iter2].transform.GetChild(1).gameObject.SetActive(true);
-                    }
+                    }*/
                     if (iter2 == 0)
                     {
                         Vector3 temp_vector = markData.Children[1].transform.position - markData.Children[0].transform.position;
                         markIndicator[iter2].transform.GetChild(0).localPosition = new Vector3(0.05f * temp_vector.x, 0.0f, 0.05f * temp_vector.z);
-                        markIndicator[iter2].transform.GetChild(1).localEulerAngles = new Vector3(90.0f, 180.0f, 0.0f);
+                        //markIndicator[iter2].transform.GetChild(1).localEulerAngles = new Vector3(90.0f, 180.0f, 0.0f);
                     }
                     else
                     {
                         Vector3 temp_vector = markData.Children[0].transform.position - markData.Children[1].transform.position;
                         markIndicator[iter2].transform.GetChild(0).localPosition = new Vector3(0.05f * temp_vector.x, 0.0f, 0.05f * temp_vector.z);
-                        markIndicator[iter2].transform.GetChild(1).localEulerAngles = new Vector3(270.0f, 180.0f, 180.0f);
+                        //markIndicator[iter2].transform.GetChild(1).localEulerAngles = new Vector3(270.0f, 180.0f, 180.0f);
                     }
                     iter2++;
                 }

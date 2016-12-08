@@ -348,6 +348,9 @@ public class PlayerCollision : MonoBehaviour
 
     public void playerCrashed()
     {
+        Time.timeScale = 1.0f;
+        Time.fixedDeltaTime = 0.01F * Time.timeScale;
+        //SailSystem.GetComponent<windEffector>().resetWindModifier();
         // Trigger Crash Fx
         if (isPlayer == true)
         {
@@ -604,6 +607,8 @@ public class PlayerCollision : MonoBehaviour
     {
         yield return new WaitForSeconds(0.02f);
 
+        
+
         colllisonFlag = false;
         //Debug.Log("Reset");
         
@@ -686,7 +691,9 @@ public class PlayerCollision : MonoBehaviour
         isInResettingState = true;
         resettingTimer = 0.0f;
         previousVelocity = Board.GetComponent<Rigidbody>().velocity;
-        
+
+        SailSystem.GetComponent<windEffector>().resetWindModifier();
+
     }
     void lowSpeedDetected()
     {

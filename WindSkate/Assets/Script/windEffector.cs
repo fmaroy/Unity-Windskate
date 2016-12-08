@@ -74,6 +74,11 @@ public class windEffector : MonoBehaviour {
         return currentObj;
     }
 
+    public void resetWindModifier()
+    {    
+        TurbulentWindModifier = 0;
+        TurbulentWindModifierTimer = TurbulentWindModifierTimieToChange;
+    }
 
     // Update is called once per frame
     void Update()
