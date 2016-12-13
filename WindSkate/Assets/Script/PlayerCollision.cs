@@ -350,6 +350,7 @@ public class PlayerCollision : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         Time.fixedDeltaTime = 0.01F * Time.timeScale;
+        SailSystem.GetComponent<SailAnimScript>().StartManoeuvreFX(0.5f);
         //SailSystem.GetComponent<windEffector>().resetWindModifier();
         // Trigger Crash Fx
         if (isPlayer == true)
@@ -511,6 +512,7 @@ public class PlayerCollision : MonoBehaviour
         
         playerRecoveryOrientation =  boardAngle + 180;
         //Debug.Log("Board Direction to set : " + playerRecoveryOrientation);
+        SailSystem.GetComponent<SailAnimScript>().EndManoeuvreFX();
 
     }
 

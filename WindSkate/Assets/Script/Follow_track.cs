@@ -88,6 +88,7 @@ public class Follow_track : MonoBehaviour
             FinishedImage.SetActive(true);
             PauseButton.SetActive(false);
             Time.timeScale = 0.0f;
+            
         }
     }
 
@@ -603,11 +604,11 @@ public class Follow_track : MonoBehaviour
             //Debug.Log(currentMark.name);
             markData = currentMark.GetComponent<Mark>();
             setNextmark();
-            int MarkIndicator = 1;
-            nextTarget = setNextTarget(currentMark, MarkIndicator, markData.firstPassValidation, markData.finalPassValidation);
+            int MarkIndicatorInt = 1;
+            nextTarget = setNextTarget(currentMark, MarkIndicatorInt, markData.firstPassValidation, markData.finalPassValidation);
             //Debug.Log("NavMeshHandling When Passing Waypoint : " + nextTarget);
             NavMeshHandling(isNextTargetMark, driveStarboard, transform.position);
-            MarkIndicator = 0;
+            MarkIndicatorInt = 0;
         }
         return MarkStatus;
     }
@@ -649,7 +650,7 @@ public class Follow_track : MonoBehaviour
                 {
                     //Debug.Log("Placing next double mark indicators");
                     markIndicator[iter2].SetActive(true);
-                    markIndicator[iter2].transform.position = new Vector3(doorMark.transform.position.x, 20.7f, doorMark.transform.position.z);
+                    markIndicator[iter2].transform.position = new Vector3(doorMark.transform.position.x, 0.0f, doorMark.transform.position.z);
                     //Debug.Log("MarkIndicator # " + iter2 + ", set at pos : " + markIndicator[iter2].transform.position);
                     /*if (currentMarkId >= (trackData.markSequence.Count - 1))
                     {
@@ -662,13 +663,13 @@ public class Follow_track : MonoBehaviour
                     if (iter2 == 0)
                     {
                         Vector3 temp_vector = markData.Children[1].transform.position - markData.Children[0].transform.position;
-                        markIndicator[iter2].transform.GetChild(0).localPosition = new Vector3(0.05f * temp_vector.x, 0.0f, 0.05f * temp_vector.z);
+                        //markIndicator[iter2].transform.GetChild(0).localPosition = new Vector3(0.05f * temp_vector.x, 0.0f, 0.05f * temp_vector.z);
                         //markIndicator[iter2].transform.GetChild(1).localEulerAngles = new Vector3(90.0f, 180.0f, 0.0f);
                     }
                     else
                     {
                         Vector3 temp_vector = markData.Children[0].transform.position - markData.Children[1].transform.position;
-                        markIndicator[iter2].transform.GetChild(0).localPosition = new Vector3(0.05f * temp_vector.x, 0.0f, 0.05f * temp_vector.z);
+                        //markIndicator[iter2].transform.GetChild(0).localPosition = new Vector3(0.05f * temp_vector.x, 0.0f, 0.05f * temp_vector.z);
                         //markIndicator[iter2].transform.GetChild(1).localEulerAngles = new Vector3(270.0f, 180.0f, 180.0f);
                     }
                     iter2++;
@@ -856,7 +857,9 @@ public class Follow_track : MonoBehaviour
             distance_to_mark = playerpos - nextTarget;
         }
 
-        windDirTransform = new Vector3(-1 * windData.localWindDirectionVector.x, 0.0f, windData.localWindDirectionVector.z);
+        // 12.9.2016 : test change to fix wrong "angleBoardToWind" that doesn"t behave correctly
+        //windDirTransform = new Vector3(-1 * windData.localWindDirectionVector.x, 0.0f, windData.localWindDirectionVector.z);
+        windDirTransform = new Vector3(windData.localWindDirectionVector.x, 0.0f, windData.localWindDirectionVector.z);
 
         angleMarkToWind = Vector3.Angle(distance_to_mark, windDirTransform);
         //Debug.Log("angleMarkToWind : " + angleMarkToWind);

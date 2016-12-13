@@ -486,44 +486,4 @@ public class tricksHandlingScript : MonoBehaviour {
             i++;
         }
     }
-
-	// Update is called once per frame
-	void Update_old () {
-        currentEnergyLevel = currentEnergyLevel + Time.deltaTime * EnergyLoadMultiplier;
-        
-        if (currentEnergyLevel <= EnergyMaxLevel)
-        {
-            if (isCurrentPlayer == true)
-            {
-                EnergySlider.GetComponent<Slider>().value = currentEnergyLevel;
-            }
-        }
-        else
-        {
-            currentEnergyLevel = EnergyMaxLevel;
-            
-        }
-        if (isCurrentPlayer == true)
-        {
-            for (var n = 0; n < TricksButton_Level.Count; n++)
-            {
-                if (currentEnergyLevel >= EnergyCostPerTrick[n])
-                {
-                    TricksButton_Level[n].GetComponent<Button>().interactable = true;
-                }
-                else
-                {
-                    TricksButton_Level[n].GetComponent<Button>().interactable = false;
-                }
-            }
-        }
-        else
-        {
-            if (currentEnergyLevel >= EnergyCostPerTrick[0])
-            {
-                enableTrick(0);
-            }
-        }
-        
-    }
 }
