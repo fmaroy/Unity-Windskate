@@ -47,7 +47,7 @@ public class SailAnimScript : MonoBehaviour
     private bool ManoeuvreFXGoingOn = false;
     private float ManoeuvreFXtimer;
     private float ManoeuvreFXtimerTarget = 2.0f;
-
+    
 
     // Use this for initialization
     void Start()
@@ -74,13 +74,15 @@ public class SailAnimScript : MonoBehaviour
 
         ManoeuvreFXtimer = ManoeuvreFXtimerTarget;
         ManoeuvreFXGoingOn = false;
+
+        
     }
 
     void LateUpdate()
     {
         // recodiring the state of the manoeuvring flag to detect if it is changed
         previsManoeuvreing = isManoeuvreing;
-        Debug.Log("assigning the value of is Manoeuvre to prevIsManoeuvre at the end of Frame rendering : isManoeuvreing: " + isManoeuvreing + ", previsManoeuvreing: " + previsManoeuvreing);
+        //Debug.Log("assigning the value of is Manoeuvre to prevIsManoeuvre at the end of Frame rendering : isManoeuvreing: " + isManoeuvreing + ", previsManoeuvreing: " + previsManoeuvreing);
     }
 
     void exitManoeuvre()

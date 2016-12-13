@@ -141,8 +141,8 @@ public class UIWindIndicator : MonoBehaviour {
         {
             float distanceToGust = PlayerPosition - icon.gustObject.transform.position.z;
 
-            Debug.Log("Wind Relative distance: " + distanceToGust / maxDistanceToGust);
-            Debug.Log("Icon Placement: " + -1 * (distanceToGust / maxDistanceToGust * canvenasWidth) + minIconPos);
+            //Debug.Log("Wind Relative distance: " + distanceToGust / maxDistanceToGust);
+            //Debug.Log("Icon Placement: " + -1 * (distanceToGust / maxDistanceToGust * canvenasWidth) + minIconPos);
 
             icon.iconObject.transform.localPosition = new Vector3(-1 * (distanceToGust / maxDistanceToGust * canvenasWidth) + minIconPos, -3.0f, 0.0f);
             //icon.gameObject.GetComponent<Animator>().Play(arrowHashDisplacement, 0, ((1 - distanceToGust) / maxDistanceToGust));
@@ -159,7 +159,7 @@ public class UIWindIndicator : MonoBehaviour {
         // checks that the gust of the current icon is active and upcoming
         if (iconObj.status != 1)
         {
-            Debug.Log("The Icon is not active nor upcoming");
+            //Debug.Log("The Icon is not active nor upcoming");
             return changeList;
         }
         // browse the othe icons to find the next active one if none is found, then the player value has to be used to calcualte the difference
@@ -220,7 +220,7 @@ public class UIWindIndicator : MonoBehaviour {
             iconObj.iconObject.transform.GetChild(0).gameObject.SetActive(false);
             if (iconObj.status == 1)
             {
-                Debug.Log(iconObj.iconObject.name + ", active icon to enable found, "+ iconObj.iconObject.transform.GetChild(0).gameObject.name);
+                //Debug.Log(iconObj.iconObject.name + ", active icon to enable found, "+ iconObj.iconObject.transform.GetChild(0).gameObject.name);
                 iconObj.iconObject.transform.GetChild(0).gameObject.SetActive(true);
                 if (Mathf.Abs(iconObj.forceDiff) < 1)
                 {

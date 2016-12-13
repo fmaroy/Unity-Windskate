@@ -12945,12 +12945,12 @@ GameObject:
   m_Component:
   - 4: {fileID: 1743482588}
   m_Layer: 13
-  m_Name: Arrival_representation
+  m_Name: Arrival
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1743482588
 Transform:
   m_ObjectHideFlags: 0
