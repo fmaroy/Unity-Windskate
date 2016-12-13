@@ -95,12 +95,12 @@ public class Follow_track : MonoBehaviour
     // end of is Player = true specidic
 
     public GameObject NavAgentObject;
-    private NavMeshPath currentNavMeshPath;
+    private UnityEngine.AI.NavMeshPath currentNavMeshPath;
     private Vector3 NavMeshNextDir;
     private Vector3 NavMeshNextCorner;
     public float TargetAngleWithWind;
     public Transform target;
-    private NavMeshHit hit;
+    private UnityEngine.AI.NavMeshHit hit;
     public GameObject DestinationIndicator;
     public GameObject arrivalObject = null;
 
@@ -852,12 +852,12 @@ public class Follow_track : MonoBehaviour
         //bool NavTargetValid = NavAgentObject.GetComponent<NavMeshAgent>().SetDestination(nextObjectivePosition);
         bool NavTargetValid = false;
         
-        NavTargetValid = NavAgentObject.GetComponent<NavMeshAgent>().SetDestination(nextObjectivePosition);
+        NavTargetValid = NavAgentObject.GetComponent<UnityEngine.AI.NavMeshAgent>().SetDestination(nextObjectivePosition);
 
         //previousFrame_isNextTargetMark = isNextTargetMark;
         //previousdriveStarboardStatus = driveStarboard;
         bool blocked = false;
-        blocked = NavMesh.Raycast(transform.position, nextObjectivePosition, out hit, NavMesh.AllAreas);
+        blocked = UnityEngine.AI.NavMesh.Raycast(transform.position, nextObjectivePosition, out hit, UnityEngine.AI.NavMesh.AllAreas);
         if (isPlayer)
         {
             //Debug.Log("Player " + this.gameObject.transform.parent.gameObject.name + " Navigation set to Destination : " + nextObjectivePosition);
@@ -1012,7 +1012,7 @@ public class Follow_track : MonoBehaviour
             //Debug.Log("intMarkStatus: " + intMarkStatus + ", prevIntMarkStatus: " + prevIntMarkStatus);
             pathRecalculateLogic();
             
-            NavMeshNextCorner = NavAgentObject.GetComponent<NavMeshAgent>().steeringTarget;
+            NavMeshNextCorner = NavAgentObject.GetComponent<UnityEngine.AI.NavMeshAgent>().steeringTarget;
 
             TargetAngleWithWind = Vector3.Angle(NavMeshNextCorner, windData.localWindDirectionVector);
 
