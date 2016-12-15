@@ -40,6 +40,7 @@ public class windEffector : MonoBehaviour {
 
     public GameObject WindIdicatorObject;
     
+    public List<GameObject> SailParticlesList = new List<GameObject>();
 
     // Use this for initialization
     void Start()
@@ -105,8 +106,43 @@ public class windEffector : MonoBehaviour {
         }
         effectiveLocalWindForce = localWindForce - currentTurbulentWindModifier;
         previousTurbulentWindModifier = TurbulentWindModifier;
+        
+        displayWindEffectParticles(currentTurbulentWindModifier);
     }
     
+    public void displayWindEffectParticles(float turbulentModif)
+    {
+        int i = 0;
+        foreach (GameObject particleObj in SailParticlesList)
+        {
+            if ((turbulentModif < 0)&&( i == 0))
+            {
+                particleObj.GetComponent<ParticleSystem>().enableEmission = true;
+            }
+            else
+            {
+                particleObj.GetComponent<ParticleSystem>().enableEmission = false;
+            }
+            if ((turbulentModif > 0) && (turbulentModif <= 10) && (i == 1))
+            {
+                particleObj.GetComponent<ParticleSystem>().enableEmission = true;
+            }
+            else
+            {
+                particleObj.GetComponent<ParticleSystem>().enableEmission = false;
+            }
+            if ((turbulentModif > 10) && (i == 2))
+            {
+                particleObj.GetComponent<ParticleSystem>().enableEmission = true;
+            }
+            else
+            {
+                particleObj.GetComponent<ParticleSystem>().enableEmission = false;
+            }
+            i++;
+        }
+    }
+
     public GameObject recursiveParentSearch(GameObject searchObject)
     {
         GameObject parentObject = searchObject;
