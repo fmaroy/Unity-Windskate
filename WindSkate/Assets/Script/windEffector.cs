@@ -41,6 +41,7 @@ public class windEffector : MonoBehaviour {
     public GameObject WindIdicatorObject;
     
     public List<GameObject> SailParticlesList = new List<GameObject>();
+    public List<bool> SailParticleListStatus = new List<bool>();
 
     // Use this for initialization
     void Start()
@@ -62,6 +63,7 @@ public class windEffector : MonoBehaviour {
         previousTurbulentWindModifier = 0.0f;
         currentTurbulentWindModifier = 0.0f;
         WindIdicatorObject = GameObject.Find("WindIndicator");
+        stopAllSystem();
     }
 
     
@@ -110,6 +112,29 @@ public class windEffector : MonoBehaviour {
         displayWindEffectParticles(currentTurbulentWindModifier);
     }
     
+    public void particlesSytemActivator(ParticleSystem sys, bool play)
+    {
+        Debug.Log("current system : " + sys.isPlaying);
+        if ((play == true) && (sys.isPlaying == false))
+        {
+            sys.Play();
+        }
+        if (play == false)
+        {
+            sys.Stop();
+        }
+    }
+
+    public void stopAllSystem()
+    {
+        foreach (GameObject particleObj in SailParticlesList)
+        {
+
+            particleObj.GetComponent<ParticleSystem>().Stop();
+
+        }
+    }
+
     public void displayWindEffectParticles(float turbulentModif)
     {
         int i = 0;
@@ -117,27 +142,33 @@ public class windEffector : MonoBehaviour {
         {
             if ((turbulentModif < 0)&&( i == 0))
             {
-                particleObj.GetComponent<ParticleSystem>().enableEmission = true;
+                particlesSytemActivator(particleObj.GetComponent<ParticleSystem>(), true);
             }
             else
             {
-                particleObj.GetComponent<ParticleSystem>().enableEmission = false;
+                Debug.Log("Stop Green System");
+                particlesSytemActivator(particleObj.GetComponent<ParticleSystem>(), false);
             }
             if ((turbulentModif > 0) && (turbulentModif <= 10) && (i == 1))
             {
-                particleObj.GetComponent<ParticleSystem>().enableEmission = true;
+                Debug.Log("Playing Yellow System");
+                Debug.Log(particleObj.name);
+                particlesSytemActivator(particleObj.GetComponent<ParticleSystem>(), true);
             }
             else
             {
-                particleObj.GetComponent<ParticleSystem>().enableEmission = false;
+                Debug.Log("Stop Yellow System");
+                particlesSytemActivator(particleObj.GetComponent<ParticleSystem>(), false);
             }
             if ((turbulentModif > 10) && (i == 2))
             {
-                particleObj.GetComponent<ParticleSystem>().enableEmission = true;
+                Debug.Log("Playing Red System");
+                particlesSytemActivator(particleObj.GetComponent<ParticleSystem>(), true);
             }
             else
             {
-                particleObj.GetComponent<ParticleSystem>().enableEmission = false;
+                Debug.Log("Stop Red System");
+                particlesSytemActivator(particleObj.GetComponent<ParticleSystem>(), false);
             }
             i++;
         }
@@ -236,7 +267,7 @@ public class windEffector : MonoBehaviour {
                 if (other.gameObject.GetComponent<MeshRenderer>() != null)
                 {
                     //Debug.Log("Covered!");
-                    other.gameObject.GetComponent<MeshRenderer>().enabled = true;
+                    //other.gameObject.GetComponent<MeshRenderer>().enabled = true;
                     WindModifierObjectListDisplay.Add(other.gameObject);
                 }
                 else
@@ -305,7 +336,7 @@ public class windEffector : MonoBehaviour {
             {
                 if (other.gameObject.GetComponent<MeshRenderer>() != null)
                 {
-                    other.gameObject.GetComponent<MeshRenderer>().enabled = false;
+                    //other.gameObject.GetComponent<MeshRenderer>().enabled = false;
                     WindModifierObjectListDisplay.Remove(other.gameObject);
                 }
             }

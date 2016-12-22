@@ -41,13 +41,13 @@ public class SailAnimScript : MonoBehaviour
 
     public int Manoeuvre_level = 0;
     private float initCamRotationDamping ;
-    private float initCamHeightDamping ;
-    private float initCamHeight;
+    //private float initCamHeightDamping ;
+    //private float initCamHeight;
     private float initCamDistance;
     private bool ManoeuvreFXGoingOn = false;
     private float ManoeuvreFXtimer;
     private float ManoeuvreFXtimerTarget = 2.0f;
-    
+    private CameraControlScript CamControlData;
 
     // Use this for initialization
     void Start()
@@ -63,7 +63,7 @@ public class SailAnimScript : MonoBehaviour
         {
             animSail.SetLayerWeight(1, 1);
         }
-
+        CamControlData = Camera.main.GetComponent<CameraControlScript>();
         SailAngle = gameObject.GetComponent<Sail_System_Control>().apparentWindAngleLocal;
 
         currentBaseStateInManoeuvre = animSail.GetCurrentAnimatorStateInfo(2);
@@ -76,6 +76,7 @@ public class SailAnimScript : MonoBehaviour
         ManoeuvreFXGoingOn = false;
 
         
+
     }
 
     void LateUpdate()
@@ -106,19 +107,18 @@ public class SailAnimScript : MonoBehaviour
     public void StartManoeuvreFX(float SlowMotionFactor)
     {
         ManoeuvreFXGoingOn = true;
-        initCamRotationDamping = Camera.main.GetComponent<CameraControlScript>().SmoothFollowData.rotationDamping;
-        initCamHeightDamping = Camera.main.GetComponent<CameraControlScript>().SmoothFollowData.heightDamping;
-        initCamHeight = Camera.main.GetComponent<CameraControlScript>().SmoothFollowData.height;
-        initCamDistance = Camera.main.GetComponent<CameraControlScript>().SmoothFollowData.distance;
+        
+        //initCamHeight = CamControlData.SmoothFollowData.height;
+        //initCamDistance = CamControlData.SmoothFollowData.distance;
         
             //Time.timeScale = 1 - 0.7f * Manoeuvre_Weight;
             Time.timeScale = SlowMotionFactor;
             Time.fixedDeltaTime = 0.01F * Time.timeScale;
-            Camera.main.GetComponent<CameraControlScript>().SmoothFollowData.rotationDamping = 0.5f;
-            Camera.main.GetComponent<CameraControlScript>().SmoothFollowData.heightDamping = 0.5f;
-            Camera.main.GetComponent<CameraControlScript>().CameraTargetData.offsetOrientation = new Vector3(0.0f, Mathf.LerpAngle(-120, 120, Random.value), 0.0f);
-            Camera.main.GetComponent<CameraControlScript>().SmoothFollowData.height = Mathf.Lerp(0f, 15.0f, Random.value);
-            Camera.main.GetComponent<CameraControlScript>().SmoothFollowData.distance = Mathf.Lerp(8.0f, 20.0f, Random.value);
+            CamControlData.SmoothFollowData.rotationDamping = 0.5f;
+            CamControlData.SmoothFollowData.heightDamping = 0.5f;
+            CamControlData.CameraTargetData.offsetOrientation = new Vector3(0.0f, Mathf.LerpAngle(-120, 120, Random.value), 0.0f);
+            CamControlData.SmoothFollowData.height = Mathf.Lerp(0f, 15.0f, Random.value);
+            CamControlData.SmoothFollowData.distance = Mathf.Lerp(8.0f, 20.0f, Random.value);
         
 
     }
@@ -129,13 +129,26 @@ public class SailAnimScript : MonoBehaviour
         {
             Time.timeScale = 1.0f;
             Time.fixedDeltaTime = 0.01F * Time.timeScale;
-            Camera.main.GetComponent<CameraControlScript>().SmoothFollowData.rotationDamping = initCamRotationDamping;
-            Camera.main.GetComponent<CameraControlScript>().SmoothFollowData.heightDamping = initCamHeightDamping;
-            Camera.main.GetComponent<CameraControlScript>().SmoothFollowData.height = initCamHeight;
-            Camera.main.GetComponent<CameraControlScript>().SmoothFollowData.distance = initCamDistance;
+            CamControlData.SmoothFollowData.rotationDamping = CamControlData.initCamRotationDamping;
+            CamControlData.SmoothFollowData.heightDamping = CamControlData.initCamHeightDamping;
+            //Camera.main.GetComponent<CameraControlScript>().SmoothFollowData.height = initCamHeight;
+            //Camera.main.GetComponent<CameraControlScript>().SmoothFollowData.distance = initCamDistance;
+            if (CamControlData.ViewpointsList[CamControlData.CameraId].rotationFollowTrack == false)
+            {
+                //Camera is not aligned with the track
+                CamControlData.CameraTargetData.offsetOrientation = new Vector3(0.0f, 0.0f, 0.0f);
+            }
+            else
+            {
+                //Camera is aligned with the track, we need ot make sure the orientation is reapplied correctly
+                CamControlData.CameraTargetData.offsetOrientation = new Vector3(0.0f, CamControlData.ViewpointsList[CamControlData.CameraId].orientBaseAngle, 0.0f);
+            }
+            
+            CamControlData.SmoothFollowData.height = CamControlData.ViewpointsList[CamControlData.CameraId].height;
+            CamControlData.SmoothFollowData.distance = CamControlData.ViewpointsList[CamControlData.CameraId].distance;
 
-            Camera.main.GetComponent<CameraControlScript>().CameraTargetData.offsetOrientation = new Vector3(0.0f, 0.0f, 0.0f);
-            Camera.main.GetComponent<CameraControlScript>().SmoothFollowData.distance = initCamDistance;
+            
+            
         }
         ManoeuvreFXGoingOn = false;
     }

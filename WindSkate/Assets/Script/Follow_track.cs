@@ -394,10 +394,10 @@ public class Follow_track : MonoBehaviour
 
     public void handleTrackIndicator(int id)
     {
-        Debug.Log("refreshing display of track mark : " + id);
+        //Debug.Log("refreshing display of track mark : " + id);
         for (int i = 0; i < trackData.markSequence.Count; i++)
         {
-            Debug.Log("Disabling track sign : " + i);
+            //Debug.Log("Disabling track sign : " + i);
             if (GameObject.Find(trackData.markSequence[i]).GetComponent<Mark>().Children.Count != 0)
             {
                 foreach (GameObject obj in GameObject.Find(trackData.markSequence[i]).GetComponent<Mark>().Children)
@@ -1122,8 +1122,11 @@ public class Follow_track : MonoBehaviour
                 this.gameObject.transform.parent.GetComponent<PlayerCollision>().updateManualDrive();
                 //Debug.Log("this.gameObject.transform.parent.GetComponent<PlayerCollision>().ManualDrive");
                 // declare the manoeuvre finished
-                triggerManoeuvre = false;
+                //triggerManoeuvre = false;
             }
+            // Test moving this one down
+            // declare the manoeuvre finished
+            triggerManoeuvre = false;
         }
         else
         {
@@ -1147,8 +1150,8 @@ public class Follow_track : MonoBehaviour
         }
         
             //int sector = this.gameObject.GetComponentInParent<tricksHandlingScript>().activeSector;
-            if (doTackToPort == true && angleBoardToWind <= 0 && angleBoardToWind < -1 * endTack) { ManouevreCompleted(); }
-            if (doTackToStarboard == true && angleBoardToWind >= 0 && angleBoardToWind > endTack) { ManouevreCompleted(); }
+        if (doTackToPort == true && angleBoardToWind <= 0 && angleBoardToWind < -1 * endTack) { ManouevreCompleted(); }
+        if (doTackToStarboard == true && angleBoardToWind >= 0 && angleBoardToWind > endTack) { ManouevreCompleted(); }
         if (doJibeToStarboard == true && angleBoardToWind >= 0 && angleBoardToWind < endJibe) { ManouevreCompleted(); }
         if (doJibeToPort == true && angleBoardToWind <= 0 && angleBoardToWind > -1 * endJibe) { ManouevreCompleted(); }
         
