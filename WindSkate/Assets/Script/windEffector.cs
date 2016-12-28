@@ -114,7 +114,7 @@ public class windEffector : MonoBehaviour {
     
     public void particlesSytemActivator(ParticleSystem sys, bool play)
     {
-        Debug.Log("current system : " + sys.isPlaying);
+        //Debug.Log("current system : " + sys.isPlaying);
         if ((play == true) && (sys.isPlaying == false))
         {
             sys.Play();
@@ -146,28 +146,28 @@ public class windEffector : MonoBehaviour {
             }
             else
             {
-                Debug.Log("Stop Green System");
+                //Debug.Log("Stop Green System");
                 particlesSytemActivator(particleObj.GetComponent<ParticleSystem>(), false);
             }
             if ((turbulentModif > 0) && (turbulentModif <= 10) && (i == 1))
             {
-                Debug.Log("Playing Yellow System");
-                Debug.Log(particleObj.name);
+                //Debug.Log("Playing Yellow System");
+                //Debug.Log(particleObj.name);
                 particlesSytemActivator(particleObj.GetComponent<ParticleSystem>(), true);
             }
             else
             {
-                Debug.Log("Stop Yellow System");
+                //Debug.Log("Stop Yellow System");
                 particlesSytemActivator(particleObj.GetComponent<ParticleSystem>(), false);
             }
             if ((turbulentModif > 10) && (i == 2))
             {
-                Debug.Log("Playing Red System");
+                //Debug.Log("Playing Red System");
                 particlesSytemActivator(particleObj.GetComponent<ParticleSystem>(), true);
             }
             else
             {
-                Debug.Log("Stop Red System");
+                //Debug.Log("Stop Red System");
                 particlesSytemActivator(particleObj.GetComponent<ParticleSystem>(), false);
             }
             i++;
