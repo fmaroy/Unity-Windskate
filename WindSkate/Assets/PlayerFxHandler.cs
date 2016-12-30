@@ -21,20 +21,23 @@ public class PlayerFxHandler : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        speed = sailData.Board_Speed;
+        if (gameObject.GetComponent<PlayerCollision>().isPlayer == true)
+        {
+            speed = sailData.Board_Speed;
 
-        if (speed > speedFxRange[0])
-        {
-            foreach (Transform particleObj in SpeedFx.transform)
+            if (speed > speedFxRange[0])
             {
-                particleObj.gameObject.GetComponent<ParticleSystem>().Play();
+                foreach (Transform particleObj in SpeedFx.transform)
+                {
+                    particleObj.gameObject.GetComponent<ParticleSystem>().Play();
+                }
             }
-        }
-        else
-        {
-            foreach (Transform particleObj in SpeedFx.transform)
+            else
             {
-                particleObj.gameObject.GetComponent<ParticleSystem>().Stop();
+                foreach (Transform particleObj in SpeedFx.transform)
+                {
+                    particleObj.gameObject.GetComponent<ParticleSystem>().Stop();
+                }
             }
         }
 	}

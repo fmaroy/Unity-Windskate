@@ -80,7 +80,7 @@ public class windEffector : MonoBehaviour {
     public void resetWindModifier()
     {    
         TurbulentWindModifier = 0;
-        TurbulentWindModifierTimer = TurbulentWindModifierTimieToChange;
+        TurbulentWindModifierTimer = 0f;
     }
 
     // Update is called once per frame

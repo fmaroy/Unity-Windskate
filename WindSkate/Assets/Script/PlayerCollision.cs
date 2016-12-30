@@ -348,10 +348,13 @@ public class PlayerCollision : MonoBehaviour
 
     public void playerCrashed()
     {
-        Time.timeScale = 1.0f;
-        Time.fixedDeltaTime = 0.01F * Time.timeScale;
-        SailSystem.GetComponent<SailAnimScript>().StartManoeuvreFX(0.5f);
-        //SailSystem.GetComponent<windEffector>().resetWindModifier();
+        if (isPlayer == true)
+        {
+            Time.timeScale = 1.0f;
+            Time.fixedDeltaTime = 0.01F * Time.timeScale;
+            SailSystem.GetComponent<SailAnimScript>().StartManoeuvreFX(0.5f);
+        }
+        SailSystem.GetComponent<windEffector>().resetWindModifier();
         // Trigger Crash Fx
         if (isPlayer == true)
         {
@@ -803,6 +806,8 @@ public class PlayerCollision : MonoBehaviour
             }
         }
         
+        //if (SailSystemData.rbBoard.velocity.x < 0f)
+
         if (lowSpeedFlag == false)
         {
             if (SailSystemData.Board_Speed < 4.0f)

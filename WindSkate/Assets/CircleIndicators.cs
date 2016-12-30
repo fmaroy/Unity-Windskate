@@ -99,7 +99,7 @@ public class CircleIndicators : MonoBehaviour {
             }
             else
             {
-                Debug.Log(board.name + " Visible");
+                //Debug.Log(board.name + " Visible");
             }
         }
         Debug.Log(Opponents.Count);

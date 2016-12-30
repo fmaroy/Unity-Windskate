@@ -22,11 +22,7 @@ public class RaceManagerScript : MonoBehaviour {
     void Start()
     {
         thisLevelTerrain = GameObject.Find("Track").GetComponentInChildren<Terrain>().gameObject;
-        foreach (Transform opponents in OpponentContainerObject.transform)
-        {
-            OpponenentObjectsList.Add(opponents.gameObject);
-            opponents.gameObject.GetComponentInChildren<windEffector>().terrainWindEffects = thisLevelTerrain;
-        }
+        
         PlayerObject.GetComponentInChildren<windEffector>().terrainWindEffects = thisLevelTerrain;
         WindData = Wind.GetComponent<WindGustsBehavior>();
         initial_wind_direction = WindData.initWindOrientation;
@@ -34,6 +30,18 @@ public class RaceManagerScript : MonoBehaviour {
         if (GameObject.Find("Scene_Manager")==null)
         {
             setWindOlderbehavior();
+        }
+
+        getOpponentList(OpponentContainerObject);
+    }
+
+    public void getOpponentList(GameObject Container)
+    {
+        foreach (Transform opponents in Container.transform)
+        {
+            Debug.Log("Check");
+            OpponenentObjectsList.Add(opponents.gameObject);
+            opponents.gameObject.GetComponentInChildren<windEffector>().terrainWindEffects = thisLevelTerrain;
         }
     }
 
