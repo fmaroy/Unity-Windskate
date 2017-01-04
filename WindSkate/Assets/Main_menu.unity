@@ -4057,6 +4057,10 @@ Prefab:
       propertyPath: sampleDist
       value: 1.3
       objectReference: {fileID: 0}
+    - target: {fileID: 11405184, guid: 0fbf3680ae4696f429ba9521e123cf9a, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11466122, guid: 0fbf3680ae4696f429ba9521e123cf9a, type: 2}
     - {fileID: 11475102, guid: 0fbf3680ae4696f429ba9521e123cf9a, type: 2}

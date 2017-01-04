@@ -39,7 +39,7 @@ public class RaceManagerScript : MonoBehaviour {
     {
         foreach (Transform opponents in Container.transform)
         {
-            Debug.Log("Check");
+            //Debug.Log("Check");
             OpponenentObjectsList.Add(opponents.gameObject);
             opponents.gameObject.GetComponentInChildren<windEffector>().terrainWindEffects = thisLevelTerrain;
         }
@@ -50,7 +50,7 @@ public class RaceManagerScript : MonoBehaviour {
         //Wind Shift handling
         if (Random.value < 0.3)
         {
-            Debug.Log("no Shift planned");
+            //Debug.Log("no Shift planned");
             //no Shift planned
             WindData.targetWindDirection = initial_wind_direction;
         }
@@ -58,39 +58,39 @@ public class RaceManagerScript : MonoBehaviour {
         {
             if (Random.value < 0.5)
             {
-                Debug.Log("wind will turn right");
+                //Debug.Log("wind will turn right");
                 //wind will turn right
                 right_shift = 1;
             }
             else
             {
                 //wind will turn left
-                Debug.Log("wind will turn left");
+                //Debug.Log("wind will turn left");
                 right_shift = -1;
             }
             if (Random.value < 0.5)
             {
                 //little shift
-                Debug.Log("wind will shift a little");
+                //Debug.Log("wind will shift a little");
                 WindData.targetWindDirection = initial_wind_direction + right_shift * Random.value * littleShift;
             }
             else
             {
                 //Big shift
-                Debug.Log("wind will shift a lot");
+                //Debug.Log("wind will shift a lot");
                 WindData.targetWindDirection = initial_wind_direction + right_shift * Random.value * bigShift;
             }
         }
         //Wind oscilation handling
         if (Random.value < 0.5)
         {
-            Debug.Log("little Oscillatons planned");
+            //Debug.Log("little Oscillatons planned");
             //no Shift planned
             WindData.windChangeDirectionFactor = smallOscillationRange;
         }
         else
         {
-            Debug.Log("Big Oscillatons planned");
+            //Debug.Log("Big Oscillatons planned");
             //no Shift planned
             WindData.windChangeDirectionFactor = highOscillationRange;
         }
@@ -102,14 +102,14 @@ public class RaceManagerScript : MonoBehaviour {
         Debug.Log("TypeOdWind : " + Windprops.name);
         if (Random.value < 0.5)
         {
-            Debug.Log("wind will turn right");
+            //Debug.Log("wind will turn right");
             //wind will turn right
             right_shift = 1;
         }
         else
         {
             //wind will turn left
-            Debug.Log("wind will turn left");
+            //Debug.Log("wind will turn left");
             right_shift = -1;
         }
         WindData.targetWindDirection = initial_wind_direction + right_shift * Random.value * Windprops.shiftRange;

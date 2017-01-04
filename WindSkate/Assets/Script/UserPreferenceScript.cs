@@ -82,7 +82,7 @@ public class UserPreferenceScript : MonoBehaviour {
 
     public void updateWindCondition()
     {
-        Debug.Log("WindType Id : " + PersistentParameterData.currentSingleRaceDefinition.typeOfWindsID);
+        //Debug.Log("WindType Id : " + PersistentParameterData.currentSingleRaceDefinition.typeOfWindsID);
         int windtypeID = PersistentParameterData.currentSingleRaceDefinition.typeOfWindsID;
         WindType currentWind=  PersistentParameterData.ListOfWinds[windtypeID];
         this.gameObject.GetComponent<RaceManagerScript>().setWindBehavior(currentWind);
