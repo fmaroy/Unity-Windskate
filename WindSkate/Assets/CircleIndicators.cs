@@ -93,7 +93,7 @@ public class CircleIndicators : MonoBehaviour {
             GameObject board = opponent.GetComponent<playerInventory>().boardList[opponent.GetComponent<playerInventory>().currentBoard];
             if (board.GetComponent<MeshRenderer>().isVisible == false)
             {
-                Debug.Log(board.name + " Not Visible");
+                //Debug.Log(board.name + " Not Visible");
                 Opponents.Add(opponent);
 
             }
@@ -102,7 +102,7 @@ public class CircleIndicators : MonoBehaviour {
                 //Debug.Log(board.name + " Visible");
             }
         }
-        Debug.Log(Opponents.Count);
+        //Debug.Log(Opponents.Count);
 
         foreach (GameObject opponent in Opponents)
         {
@@ -122,7 +122,7 @@ public class CircleIndicators : MonoBehaviour {
         {
             numberOfTicksToHandle = numberOfVisibleOpponents;
         }
-        Debug.Log("Ticks to handle : "+ numberOfTicksToHandle);
+        //Debug.Log("Ticks to handle : "+ numberOfTicksToHandle);
         for (int i = 0; i < 2; i++)
         {
             opponentTickList[i].GetComponent<SpriteRenderer>().enabled = false;
