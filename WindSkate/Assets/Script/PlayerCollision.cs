@@ -135,14 +135,14 @@ public class PlayerCollision : MonoBehaviour
     {
         if (ManualDrive == false)
         {
-            NavmeshAgent.GetComponent<NavMeshObstacle>().enabled = false;
-            NavmeshAgent.GetComponent<NavMeshAgent>().enabled = true;
+            NavmeshAgent.GetComponent<UnityEngine.AI.NavMeshObstacle>().enabled = false;
+            NavmeshAgent.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
         }
         else
         {
 
-            NavmeshAgent.GetComponent<NavMeshAgent>().enabled = false;
-            NavmeshAgent.GetComponent<NavMeshObstacle>().enabled = true;
+            NavmeshAgent.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+            NavmeshAgent.GetComponent<UnityEngine.AI.NavMeshObstacle>().enabled = true;
         }
     }
     public List<Collider> getPlayerCollider(GameObject rootObject)
