@@ -50,6 +50,9 @@ public class tricksHandlingScript : MonoBehaviour {
     static int starHighlightHashEnable ;
     static int starHighlightHashTrigger;
 
+	public List<Sprite> UIManeuverSprite = new List<Sprite>();
+	public List<Sprite> UITricksSprite = new List<Sprite>();
+
     // Use this for initialization
     void Start () {
         isCurrentPlayer = this.gameObject.GetComponent<PlayerCollision>().isPlayer;
@@ -92,6 +95,11 @@ public class tricksHandlingScript : MonoBehaviour {
         }
     }
 
+	public void assignTricksButtonSprites(GameObject ButtonObject, List<Sprite> spriteList)
+	{
+		ButtonObject.GetComponent<Image> ().sprite = spriteList [0];
+		//ButtonObject.GetComponent<Button>().targetGraphic.
+	}
     
     void ButtonDisplayManoeuvreHandling()
     {
@@ -101,6 +109,7 @@ public class tricksHandlingScript : MonoBehaviour {
             {
                 ButtonManoeuvreLeft.SetActive(true);
                 ButtonManoeuvreRight.SetActive(false);
+
             }
             else
             {
@@ -121,11 +130,16 @@ public class tricksHandlingScript : MonoBehaviour {
                 ButtonManoeuvreRight.SetActive(false);
             }
         }
-        if ((Mathf.Abs(WindAngle) > 70) && (Mathf.Abs(WindAngle) < 110))
-        {
-            ButtonManoeuvreLeft.SetActive(false);
-            ButtonManoeuvreRight.SetActive(false);
-        }
+		if ((Mathf.Abs (WindAngle) > 70) && (Mathf.Abs (WindAngle) < 110)) {
+			//ButtonManoeuvreLeft.SetActive (false);
+			//ButtonManoeuvreRight.SetActive (false);
+			assignTricksButtonSprites (ButtonManoeuvreLeft, UITricksSprite);
+			assignTricksButtonSprites (ButtonManoeuvreRight, UITricksSprite);
+		} 
+		else {
+			assignTricksButtonSprites (ButtonManoeuvreLeft, UIManeuverSprite);
+			assignTricksButtonSprites (ButtonManoeuvreRight, UIManeuverSprite);
+		}
 
     }
     void initSliders()
