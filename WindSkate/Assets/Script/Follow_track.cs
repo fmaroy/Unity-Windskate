@@ -88,7 +88,6 @@ public class Follow_track : MonoBehaviour
             FinishedImage.SetActive(true);
             PauseButton.SetActive(false);
             Time.timeScale = 0.0f;
-            
         }
     }
 
@@ -1058,6 +1057,12 @@ public class Follow_track : MonoBehaviour
     public void triggeredManoeuvre()
     {
         bool manoeuvreFlag = false;
+		bool jumpFlag = false;
+
+		if ((angleBoardToWind >= 70) & (angleBoardToWind <= 110)) 
+		{
+			jumpFlag = true;
+		}
         if ((angleBoardToWind > 0) & (angleBoardToWind < 70))
         {
             //Debug.Log("Tack to Port");

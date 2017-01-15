@@ -132,6 +132,48 @@ public class WheelsBehavior : MonoBehaviour {
         }
         return ObjectList;
     }
+
+	public List<float> getDistanceToGround ()
+	{
+		Vector3 posCenterFrontAxis = new Vector3(0.0f, 0.0f, 0.0f);
+		Vector3 posCenterRearAxis = new Vector3(0.0f, 0.0f, 0.0f);
+
+		List <float> heightList = new List<float>();
+
+		WheelHit FLwheelHit;
+		WheelHit FRwheelHit;
+		WheelHit RLwheelHit;
+		WheelHit RRwheelHit;
+
+		// checking if any front wheel touches the floor
+		WheelsCollidersList[0].GetGroundHit(out FLwheelHit);
+		WheelsCollidersList[1].GetGroundHit(out FRwheelHit);
+		WheelsCollidersList[2].GetGroundHit(out RLwheelHit);
+		WheelsCollidersList[3].GetGroundHit(out RRwheelHit);
+
+		if ((WheelsCollidersList [0].isGrounded == false) || (WheelsCollidersList [1].isGrounded == false)) {
+			// the front wheels are not touching the ground, calculating the distance to ground
+			posCenterFrontAxis = Vector3.Lerp (WheelsCollidersList [0].gameObject.transform.position, WheelsCollidersList [1].gameObject.transform.position, 0.5f);
+			heightList.Add(posCenterRearAxis.y);
+		} 
+		else 
+		{
+			heightList.Add(0.0f);
+		}
+
+		if ((WheelsCollidersList[2].isGrounded == false) || (WheelsCollidersList[3].isGrounded == false)) {
+			// the front wheels are not touching the ground, calculating the distance to ground
+			posCenterRearAxis =  Vector3.Lerp(WheelsCollidersList[2].gameObject.transform.position,WheelsCollidersList[3].gameObject.transform.position, 0.5f);
+			heightList.Add(posCenterFrontAxis.y);
+		} 
+		else 
+		{
+			heightList.Add(0.0f);
+		}
+
+		return heightList;
+	}
+
 	// Update is called once per frame
 	void Update () {
         //int i = 0;
