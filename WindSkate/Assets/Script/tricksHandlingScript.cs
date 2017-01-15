@@ -50,8 +50,13 @@ public class tricksHandlingScript : MonoBehaviour {
     static int starHighlightHashEnable ;
     static int starHighlightHashTrigger;
 
-	public List<Sprite> UIManeuverSprite = new List<Sprite>();
-	public List<Sprite> UITricksSprite = new List<Sprite>();
+	public List<Sprite> UIManeuverSpriteList = new List<Sprite> ();
+	public List<Sprite> UITrickSpriteList = new List<Sprite> ();
+
+	public bool leftManoeuvreButtonPushed = false;
+	public bool rightManoeuvreButtonPushed = false;
+
+	public string manoeuvreStatus = "none";
 
     // Use this for initialization
     void Start () {
@@ -95,16 +100,11 @@ public class tricksHandlingScript : MonoBehaviour {
         }
     }
 
-	public void assignTricksButtonSprites(GameObject ButtonObject, List<Sprite> spriteList)
-	{
-		ButtonObject.GetComponent<Image> ().sprite = spriteList [0];
-		//ButtonObject.GetComponent<Button>().targetGraphic.
-	}
-    
     void ButtonDisplayManoeuvreHandling()
     {
         if (Mathf.Abs( WindAngle) < 70)
         {
+			manoeuvreStatus = "tack";
             if (WindAngle < 0)
             {
                 ButtonManoeuvreLeft.SetActive(true);
@@ -119,6 +119,7 @@ public class tricksHandlingScript : MonoBehaviour {
         }
         if ((Mathf.Abs(WindAngle) > 110))
         {
+			manoeuvreStatus = "jibe";
             if (WindAngle < 0)
             {
                 ButtonManoeuvreLeft.SetActive(false);
@@ -130,18 +131,26 @@ public class tricksHandlingScript : MonoBehaviour {
                 ButtonManoeuvreRight.SetActive(false);
             }
         }
-		if ((Mathf.Abs (WindAngle) > 70) && (Mathf.Abs (WindAngle) < 110)) {
-			//ButtonManoeuvreLeft.SetActive (false);
-			//ButtonManoeuvreRight.SetActive (false);
-			assignTricksButtonSprites (ButtonManoeuvreLeft, UITricksSprite);
-			assignTricksButtonSprites (ButtonManoeuvreRight, UITricksSprite);
-		} 
-		else {
-			assignTricksButtonSprites (ButtonManoeuvreLeft, UIManeuverSprite);
-			assignTricksButtonSprites (ButtonManoeuvreRight, UIManeuverSprite);
+
+        if ((Mathf.Abs(WindAngle) > 70) && (Mathf.Abs(WindAngle) < 110))
+        {
+            ButtonManoeuvreLeft.SetActive(true);
+            ButtonManoeuvreRight.SetActive(true);
+			updateTrickButtonSprite(ButtonManoeuvreLeft, UITrickSpriteList);
+			updateTrickButtonSprite(ButtonManoeuvreRight, UITrickSpriteList);
+        } 
+		else 
+		{
+			updateTrickButtonSprite(ButtonManoeuvreLeft, UIManeuverSpriteList);
+			updateTrickButtonSprite(ButtonManoeuvreRight, UIManeuverSpriteList);
 		}
 
     }
+	void updateTrickButtonSprite(GameObject ButtonObject, List<Sprite> spriteList)
+	{
+		ButtonObject.GetComponent<Image> ().sprite = spriteList [0];
+	}
+
     void initSliders()
     {
         int i = 0;
@@ -176,6 +185,7 @@ public class tricksHandlingScript : MonoBehaviour {
             }
         }
     }
+
     void updateStarsPosition(List<ManoeuvreType> manoeuvreList)
     {
         int i = 0;
@@ -499,45 +509,5 @@ public class tricksHandlingScript : MonoBehaviour {
             }
             i++;
         }
-    }
-
-	// Update is called once per frame
-	void Update_old () {
-        currentEnergyLevel = currentEnergyLevel + Time.deltaTime * EnergyLoadMultiplier;
-        
-        if (currentEnergyLevel <= EnergyMaxLevel)
-        {
-            if (isCurrentPlayer == true)
-            {
-                EnergySlider.GetComponent<Slider>().value = currentEnergyLevel;
-            }
-        }
-        else
-        {
-            currentEnergyLevel = EnergyMaxLevel;
-            
-        }
-        if (isCurrentPlayer == true)
-        {
-            for (var n = 0; n < TricksButton_Level.Count; n++)
-            {
-                if (currentEnergyLevel >= EnergyCostPerTrick[n])
-                {
-                    TricksButton_Level[n].GetComponent<Button>().interactable = true;
-                }
-                else
-                {
-                    TricksButton_Level[n].GetComponent<Button>().interactable = false;
-                }
-            }
-        }
-        else
-        {
-            if (currentEnergyLevel >= EnergyCostPerTrick[0])
-            {
-                enableTrick(0);
-            }
-        }
-        
     }
 }

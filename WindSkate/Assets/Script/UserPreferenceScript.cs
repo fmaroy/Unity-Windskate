@@ -36,8 +36,10 @@ public class UserPreferenceScript : MonoBehaviour {
 
         if (SceneManagerObject != null)
         {
+            
             numbOpponenents = SceneManagerObject.GetComponent<PersistentParameters>().currentSingleRaceDefinition.numberOfOpponents;
         }
+                
         if (IntroScene == false)
         {
             List<GameObject> playerStartPos = new List<GameObject>();
@@ -61,6 +63,7 @@ public class UserPreferenceScript : MonoBehaviour {
         }
         if (SceneManagerObject != null)
         {
+            Debug.Log("Updating from Scene Manager");
             PersistentParameterData = SceneManagerObject.GetComponent<PersistentParameters>();
             updateSettings();
             updatePlayerPropsSail(Player);
@@ -69,9 +72,8 @@ public class UserPreferenceScript : MonoBehaviour {
             updateGraphicSettings();
             updateOpponentsProperties(Opponents);
             updateWindCondition();
-            
         }
-
+        this.GetComponent<RaceManagerScript>().getOpponentList(Opponents);
         // To fix!!!
         //updateDisplayWindFx(Player);
         //updateDisplayWindFx(Opponents);
@@ -80,7 +82,7 @@ public class UserPreferenceScript : MonoBehaviour {
 
     public void updateWindCondition()
     {
-        Debug.Log("WindType Id : " + PersistentParameterData.currentSingleRaceDefinition.typeOfWindsID);
+        //Debug.Log("WindType Id : " + PersistentParameterData.currentSingleRaceDefinition.typeOfWindsID);
         int windtypeID = PersistentParameterData.currentSingleRaceDefinition.typeOfWindsID;
         WindType currentWind=  PersistentParameterData.ListOfWinds[windtypeID];
         this.gameObject.GetComponent<RaceManagerScript>().setWindBehavior(currentWind);
@@ -172,7 +174,7 @@ public class UserPreferenceScript : MonoBehaviour {
         foreach (Transform opponent in OpponentsObj.transform)
         {
             opponent.gameObject.GetComponent<PlayerCollision>().opponentId = SceneManagerObject.GetComponent<PersistentParameters>().currentRaceOpponentsListIds[i];
-            opponent.gameObject.name = SceneManagerObject.GetComponent<PersistentParameters>().OpponentConfigList[i].name;
+            opponent.gameObject.name = SceneManagerObject.GetComponent<PersistentParameters>().OpponentConfigList[opponent.gameObject.GetComponent<PlayerCollision>().opponentId].name;
             updatePlayerPropsSail(opponent.gameObject);
             updatePlayerPropsBoard(opponent.gameObject);
             updatePlayerPropsCharacter(opponent.gameObject);
@@ -247,6 +249,7 @@ public class UserPreferenceScript : MonoBehaviour {
         playerInventory currentInventory = currentplayer.GetComponent<playerInventory>();
         PlayerProperties currentPlayerConfig = getPlayerProps(currentplayer);
         //Debug.Log("Updating " + currentPlayerConfig.name + " Board settings");
+        currentInventory.currentBoard = currentPlayerConfig.board;
         int i = 0;
         foreach (GameObject board in currentInventory.boardList)
         {
@@ -330,7 +333,7 @@ public class UserPreferenceScript : MonoBehaviour {
     public bool updateSailsLooks(GameObject sailObj, ObjectLookSet lookSet)
     {
         sailObj.GetComponent<SkinnedMeshRenderer>();
-
+        
         Material[] mats = sailObj.GetComponent<SkinnedMeshRenderer>().materials;
 
         for (int j = 0; j < mats.Length; j++)
@@ -341,14 +344,15 @@ public class UserPreferenceScript : MonoBehaviour {
         sailObj.GetComponent<SkinnedMeshRenderer>().materials = mats;
         return true;
     }
+
     public void updatePlayerPropsSail(GameObject currentplayer)
     {
         //Debug.Log("Updating Player Sail settings");
         playerInventory currentInventory = currentplayer.GetComponent<playerInventory>();
         PlayerProperties currentPlayerConfig = getPlayerProps(currentplayer);
         //PlayerProperties currentPlayerProps = 
+        currentInventory.currentSail = currentPlayerConfig.sail;
         int i = 0;
-
         foreach (GameObject sail in currentInventory.sailsList)
         {
             //Debug.Log(currentPlayerConfig.sail);
@@ -381,17 +385,7 @@ public class UserPreferenceScript : MonoBehaviour {
         //Debug.Log("update graphic settings");
         QualitySettings.SetQualityLevel(PlayerPrefs.GetInt("CamQualitySettings"));
         //Debug.Log(PlayerPrefs.GetInt("CamScreenOcclusion"));
-        if (PlayerPrefs.GetInt("CamScreenOcclusion") == 1)
-        {
-            //Debug.Log("turn on");
-            Camera.GetComponent<ScreenSpaceAmbientOcclusion>().enabled = true;
-        }
-        else
-        {
-            //Debug.Log("turn off");
-            Camera.GetComponent<ScreenSpaceAmbientOcclusion>().enabled = false;
-        }
-        Camera.GetComponent<EdgeDetection>().sampleDist = Screen.width / 500f;
+        
     }
 
     public void updateSettings()

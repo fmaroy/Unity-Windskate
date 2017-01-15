@@ -13,6 +13,7 @@ public class WheelsBehavior : MonoBehaviour {
     public List<GameObject> SkidMarksAsphaltList = new List<GameObject>();
     public List<GameObject> SkidMarksSandList = new List<GameObject>();
     public List<GameObject> TireParticlesObject = new List<GameObject>();
+    //public GameObject TireWideParticleObject;
     public List<ParticleSystem> TireParticlesSystem = new List<ParticleSystem>();
     private GameObject currentTerrain;
     private TerrainFXData currentTerrainData;
@@ -56,12 +57,22 @@ public class WheelsBehavior : MonoBehaviour {
                 }
                 if (child.gameObject.name.Contains("Wheel Particle System") == true)
                 {
-                    child.gameObject.SetActive(false);
+                    //child.gameObject.SetActive(false);
                     TireParticlesObject.Add(child.gameObject);
                     TireParticlesSystem.Add(child.gameObject.GetComponent<ParticleSystem>());
+                    child.gameObject.GetComponent<ParticleSystem>().Stop();
                 }
             }
         }
+        /*foreach (Transform child in WheelsList[0].transform.parent)
+        {
+            if (child.gameObject.name == "Wheel Particle System")
+            {
+                TireWideParticleObject = child.gameObject;
+            }
+        }*/
+        //TireWideParticleObject.GetComponent<ParticleSystem>().Stop();
+
         sidewaysFriction = WheelsCollidersList[0].sidewaysFriction;
         if (WheelsPhysicsDetails == 2)
         {
@@ -121,6 +132,48 @@ public class WheelsBehavior : MonoBehaviour {
         }
         return ObjectList;
     }
+
+	public List<float> getDistanceToGround ()
+	{
+		Vector3 posCenterFrontAxis = new Vector3(0.0f, 0.0f, 0.0f);
+		Vector3 posCenterRearAxis = new Vector3(0.0f, 0.0f, 0.0f);
+
+		List <float> heightList = new List<float>();
+
+		WheelHit FLwheelHit;
+		WheelHit FRwheelHit;
+		WheelHit RLwheelHit;
+		WheelHit RRwheelHit;
+
+		// checking if any front wheel touches the floor
+		WheelsCollidersList[0].GetGroundHit(out FLwheelHit);
+		WheelsCollidersList[1].GetGroundHit(out FRwheelHit);
+		WheelsCollidersList[2].GetGroundHit(out RLwheelHit);
+		WheelsCollidersList[3].GetGroundHit(out RRwheelHit);
+
+		if ((WheelsCollidersList [0].isGrounded == false) || (WheelsCollidersList [1].isGrounded == false)) {
+			// the front wheels are not touching the ground, calculating the distance to ground
+			posCenterFrontAxis = Vector3.Lerp (WheelsCollidersList [0].gameObject.transform.position, WheelsCollidersList [1].gameObject.transform.position, 0.5f);
+			heightList.Add(posCenterRearAxis.y);
+		} 
+		else 
+		{
+			heightList.Add(0.0f);
+		}
+
+		if ((WheelsCollidersList[2].isGrounded == false) || (WheelsCollidersList[3].isGrounded == false)) {
+			// the front wheels are not touching the ground, calculating the distance to ground
+			posCenterRearAxis =  Vector3.Lerp(WheelsCollidersList[2].gameObject.transform.position,WheelsCollidersList[3].gameObject.transform.position, 0.5f);
+			heightList.Add(posCenterFrontAxis.y);
+		} 
+		else 
+		{
+			heightList.Add(0.0f);
+		}
+
+		return heightList;
+	}
+
 	// Update is called once per frame
 	void Update () {
         //int i = 0;
@@ -227,17 +280,21 @@ public class WheelsBehavior : MonoBehaviour {
                 {
                     if (Terrain.activeTerrain.GetComponent<TerrainFXData>().EmitParticles[surfaceIndex] == true)
                     {
-                        TireParticlesObject[RearWheelsCounter].SetActive(true);
+                        //TireParticlesObject[RearWheelsCounter].SetActive(true);
+                        //Debug.Log("Particle_emission_playing");
+                        TireParticlesSystem[RearWheelsCounter].Play();
                         TireParticlesSystem[RearWheelsCounter].startColor = Terrain.activeTerrain.GetComponent<TerrainFXData>().TerrainParticleColor[surfaceIndex];
                     }
                     else
                     {
-                        TireParticlesObject[RearWheelsCounter].SetActive(false);
+                        TireParticlesSystem[RearWheelsCounter].Stop();
+                        //TireParticlesObject[RearWheelsCounter].SetActive(false);
                     }
                 }
                 else
                 {
-                    TireParticlesObject[RearWheelsCounter].SetActive(false);
+                    TireParticlesSystem[RearWheelsCounter].Stop();
+                    //TireParticlesObject[RearWheelsCounter].SetActive(false);
                 }
                 
             }

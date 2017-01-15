@@ -32,7 +32,11 @@ public class CameraControlScript : MonoBehaviour {
     //private Vector3 camShift;
     private GameObject playerObject;
     private Follow_track playerFollowTrack;
-    private float currentLegOrient;
+    public float currentLegOrient;
+
+    public float initCamRotationDamping = 2.0f;
+    public float initCamHeightDamping = 5.0f;
+
     // Use this for initialization
     void Start() {
         playerObject = GameObject.Find("Player");

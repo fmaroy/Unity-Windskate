@@ -19,8 +19,7 @@ public class SmoothFollow_Fab : MonoBehaviour {
         public float rotationDamping;
         [SerializeField]
         public float heightDamping;
-        [SerializeField]
-        
+
 
     // Use this for initialization
     void Start() { }
@@ -38,6 +37,7 @@ public class SmoothFollow_Fab : MonoBehaviour {
 
             var currentRotationAngle = transform.eulerAngles.y;
             var currentHeight = transform.position.y;
+            
 
             // Damp the rotation around the y-axis
             currentRotationAngle = Mathf.LerpAngle(currentRotationAngle, wantedRotationAngle, rotationDamping * Time.deltaTime);
