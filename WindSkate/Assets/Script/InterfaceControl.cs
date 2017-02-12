@@ -45,8 +45,6 @@ public class InterfaceControl : MonoBehaviour {
         Scenemanager.GetComponent<SceneManagerScript>().LoadScene("Main_menu");
 
         ScenemanagerData.UnloadScene(SceneManager.GetActiveScene().name);
-        
-        
     }
 
     public void LoadSettings()

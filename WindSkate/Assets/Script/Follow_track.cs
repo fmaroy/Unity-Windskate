@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Follow_track : MonoBehaviour
 {
-
+	public UserPreferenceScript userPrefData;
     public int currentMarkId = 0;
     public bool leaveOnStarboard = true;
     private GameObject trackDef;
@@ -106,6 +106,7 @@ public class Follow_track : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+		userPrefData = GameObject.Find ("RaceManager").GetComponent<UserPreferenceScript> ();
         SteerBoundary = new List<float>();
         SteerBoundary.Add(5.0f);
         SteerBoundary.Add(15.0f);
@@ -154,7 +155,7 @@ public class Follow_track : MonoBehaviour
                 
             }
         }
-        /// calcualtion for  isPlayer = true
+        /// calculation for  isPlayer = true
         if (markData.singleMark == true)
         {
             firstPass = markData.firstPassValidation;
@@ -202,6 +203,9 @@ public class Follow_track : MonoBehaviour
         {
             arrivalObject = GameObject.Find("Arrival");
         }
+		if (userPrefData.IntroScene == false) {
+			handleTrackIndicator (currentMarkId);
+		}
     }
 
     public void updateManualDriveFollowTrack()
@@ -393,40 +397,59 @@ public class Follow_track : MonoBehaviour
 
     public void handleTrackIndicator(int id)
     {
-        //Debug.Log("refreshing display of track mark : " + id);
-        for (int i = 0; i < trackData.markSequence.Count; i++)
+        Debug.Log("refreshing display of track mark : " + id);
+        for (int i = 0; i < trackData.markSequence.Count ; i++)
         {
-            //Debug.Log("Disabling track sign : " + i);
-            if (GameObject.Find(trackData.markSequence[i]).GetComponent<Mark>().Children.Count != 0)
-            {
-                foreach (GameObject obj in GameObject.Find(trackData.markSequence[i]).GetComponent<Mark>().Children)
-                {
-                    obj.transform.FindChild("Projector").gameObject.SetActive(false);
-                }
-            }
-            else
-            {
-                GameObject.Find(trackData.markSequence[i]).transform.FindChild("Projector").gameObject.SetActive(false);
-            }
-        }
+            Debug.Log("Disabling track sign : " + i);
+			if (GameObject.Find(trackData.markSequence[i]).GetComponent<Mark>() != null)
+			{ 	Debug.Log("Mark " + trackData.markSequence[i] + " has componenent Mark : ");
+				//Debug.Log(
+            	if (GameObject.Find(trackData.markSequence[i]).GetComponent<Mark>().Children.Count != 0)
+            	{
+                	foreach (GameObject obj in GameObject.Find(trackData.markSequence[i]).GetComponent<Mark>().Children)
+                	{
+                	    obj.transform.FindChild("Projector").gameObject.SetActive(false);
+                	}
+            	}
+            	else
+            	{
+                	GameObject.Find(trackData.markSequence[i]).transform.FindChild("Projector").gameObject.SetActive(false);
+            	}
+        	}
+		}
+		// checks if next mark is a waypoint. If yes, then the next mark is going to be used
+		bool flag = false;
+		while (flag) {
+			if (id <= trackData.markSequence.Count -1){
+				if (GameObject.Find (trackData.markSequence [id]).GetComponents<Mark> () != null) {
+					id = id + 1;
+				} 
+				else {
+					flag = true;
+				}
+			}
+			else{
+				flag = true;
+			}
+		}
+		Debug.Log ("currentMark Mark Touch Behaviour used " + trackData.markSequence [id]);
+		//checks if current mark if is the last one
         if (id != trackData.markSequence.Count -1)
-        {
-            if (GameObject.Find(trackData.markSequence[id]).GetComponent<Mark>().Children.Count != 0)
-            {
-                foreach (GameObject obj in GameObject.Find(trackData.markSequence[id]).GetComponent<Mark>().Children)
-                {
-                    obj.transform.FindChild("Projector").gameObject.SetActive(true);
-                }
-            }
-            else
-            {
-                GameObject.Find(trackData.markSequence[id]).transform.FindChild("Projector").gameObject.SetActive(true);
-            }
-            if (arrivalObject != null)
-            {
-                arrivalObject.SetActive(false);
-            }
-        }
+		{	// conditional for waypoint because waypoint don't have a Mark object.
+			
+				// checks if current mark has children
+				if (GameObject.Find (trackData.markSequence [id]).GetComponent<Mark> ().Children.Count != 0) {
+					foreach (GameObject obj in GameObject.Find(trackData.markSequence[id]).GetComponent<Mark>().Children) {
+						obj.transform.FindChild ("Projector").gameObject.SetActive (true);
+					}
+				} else {
+					GameObject.Find (trackData.markSequence [id]).transform.FindChild ("Projector").gameObject.SetActive (true);
+				}
+				if (arrivalObject != null) {
+					arrivalObject.SetActive (false);
+				}
+			}
+        
         else
         {
             if (arrivalObject != null)
@@ -550,8 +573,8 @@ public class Follow_track : MonoBehaviour
                 markData = currentMark.GetComponent<Mark>();
                 setNextmark();
 
-                if (transform.parent.gameObject.GetComponent<PlayerCollision>().isPlayer == true)
-                {
+                //if (transform.parent.gameObject.GetComponent<PlayerCollision>().isPlayer == true)
+				if (userPrefData.IntroScene == false) {
                     handleTrackIndicator(currentMarkId);
                 }
                 nextTarget = setNextTarget(currentMark, MarkIndicatorId, markData.firstPassValidation, markData.finalPassValidation);

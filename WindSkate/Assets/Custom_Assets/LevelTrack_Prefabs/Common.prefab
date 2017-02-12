@@ -405,7 +405,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &131842
 GameObject:
   m_ObjectHideFlags: 1
@@ -1593,7 +1593,7 @@ MeshRenderer:
   m_GameObject: {fileID: 187636}
   m_Enabled: 0
   m_CastShadows: 0
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1624,7 +1624,7 @@ MeshRenderer:
   m_GameObject: {fileID: 137590}
   m_Enabled: 0
   m_CastShadows: 0
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1655,7 +1655,7 @@ MeshRenderer:
   m_GameObject: {fileID: 184240}
   m_Enabled: 0
   m_CastShadows: 0
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1686,7 +1686,7 @@ MeshRenderer:
   m_GameObject: {fileID: 112108}
   m_Enabled: 0
   m_CastShadows: 0
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1717,7 +1717,7 @@ MeshRenderer:
   m_GameObject: {fileID: 117382}
   m_Enabled: 0
   m_CastShadows: 0
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -15068,6 +15068,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cb76510608e92b43958bc6a3e8f51c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  userPrefData: {fileID: 0}
   currentMarkId: 0
   leaveOnStarboard: 1
   trackData: {fileID: 0}
@@ -15345,6 +15346,15 @@ MonoBehaviour:
   EnergyCostPerTrick:
   - 50
   isCurrentPlayer: 1
+  UIManeuverSpriteList:
+  - {fileID: 21300000, guid: 7aa6526ddf75b0f4a82242892b48c684, type: 3}
+  - {fileID: 21300000, guid: f57dd1889a69c2d41bc1e7c533e21ca4, type: 3}
+  UITrickSpriteList:
+  - {fileID: 21300000, guid: 933c820efe68a4c0f814ab1357bce8b5, type: 3}
+  - {fileID: 21300000, guid: d759abae1a371457789345a2fdba02e1, type: 3}
+  leftManoeuvreButtonPushed: 0
+  rightManoeuvreButtonPushed: 0
+  manoeuvreStatus: none
 --- !u!119 &119321212035636732
 Projector:
   m_ObjectHideFlags: 1

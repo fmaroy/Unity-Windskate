@@ -5183,16 +5183,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114967335617971554, guid: 8c9b2d2d594dbc44a8051899c5277a6f,
-        type: 2}
-      propertyPath: UITrickSpriteList.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114967335617971554, guid: 8c9b2d2d594dbc44a8051899c5277a6f,
-        type: 2}
-      propertyPath: UIManeuverSpriteList.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 424776, guid: 8c9b2d2d594dbc44a8051899c5277a6f, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5249,30 +5239,6 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114967335617971554, guid: 8c9b2d2d594dbc44a8051899c5277a6f,
-        type: 2}
-      propertyPath: UIManeuverSpriteList.Array.data[0]
-      value: 
-      objectReference: {fileID: 21300000, guid: 7aa6526ddf75b0f4a82242892b48c684,
-        type: 3}
-    - target: {fileID: 114967335617971554, guid: 8c9b2d2d594dbc44a8051899c5277a6f,
-        type: 2}
-      propertyPath: UIManeuverSpriteList.Array.data[1]
-      value: 
-      objectReference: {fileID: 21300000, guid: f57dd1889a69c2d41bc1e7c533e21ca4,
-        type: 3}
-    - target: {fileID: 114967335617971554, guid: 8c9b2d2d594dbc44a8051899c5277a6f,
-        type: 2}
-      propertyPath: UITrickSpriteList.Array.data[0]
-      value: 
-      objectReference: {fileID: 21300000, guid: 933c820efe68a4c0f814ab1357bce8b5,
-        type: 3}
-    - target: {fileID: 114967335617971554, guid: 8c9b2d2d594dbc44a8051899c5277a6f,
-        type: 2}
-      propertyPath: UITrickSpriteList.Array.data[1]
-      value: 
-      objectReference: {fileID: 21300000, guid: d759abae1a371457789345a2fdba02e1,
-        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8c9b2d2d594dbc44a8051899c5277a6f, type: 2}
   m_IsPrefabParent: 0

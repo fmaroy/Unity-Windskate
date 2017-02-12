@@ -24,6 +24,7 @@ public class UI_Apparent_Wind : MonoBehaviour {
         //print(windData.effectiveLocalWindForce);
 
         initialWindForce = GameObject.Find("WindGusts").GetComponent<WindGustsBehavior>().initWindForce;	
+		this.gameObject.SetActive (false);
 	}
     // Update is called once per frame
     void Update()

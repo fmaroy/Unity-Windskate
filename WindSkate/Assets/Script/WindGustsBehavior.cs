@@ -50,6 +50,7 @@ public class WindGustsBehavior : MonoBehaviour {
         foreach (Transform child in transform)
         {
             WindGustsObjectsList.Add(child.gameObject);
+
         }
 
         currentWindForce = initWindForce;

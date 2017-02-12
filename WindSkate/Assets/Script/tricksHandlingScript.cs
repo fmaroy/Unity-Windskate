@@ -33,7 +33,6 @@ public class tricksHandlingScript : MonoBehaviour {
     public int StarsMaxLevel = 0;
     public int PrevStarsMaxLevel = 0;
     
-
     public float currentAngleLevel = 0.0f;
     public float currentEnergyLevel = 0.0f;
     public float currentSpeed = 0.0f;
@@ -134,8 +133,9 @@ public class tricksHandlingScript : MonoBehaviour {
 
         if ((Mathf.Abs(WindAngle) > 70) && (Mathf.Abs(WindAngle) < 110))
         {
-            ButtonManoeuvreLeft.SetActive(true);
-            ButtonManoeuvreRight.SetActive(true);
+			//Disabled for beta shipping, disabling the buttons since the functionality is not ready yet:
+            ButtonManoeuvreLeft.SetActive(false);
+            ButtonManoeuvreRight.SetActive(false);
 			updateTrickButtonSprite(ButtonManoeuvreLeft, UITrickSpriteList);
 			updateTrickButtonSprite(ButtonManoeuvreRight, UITrickSpriteList);
         } 

@@ -34,6 +34,7 @@ public class currentGustProperties : MonoBehaviour {
 		thisGustenabled = true;
 		transform.localPosition = initPosition;
         gameObject.SetActive(true);
+		gameObject.GetComponent<MeshRenderer> ().enabled = false;
 
 
     }
