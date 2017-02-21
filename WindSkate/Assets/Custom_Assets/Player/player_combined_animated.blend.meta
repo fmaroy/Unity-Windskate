@@ -167,6 +167,10 @@ ModelImporter:
     7400052: JumpBaseStarboard
     7400054: Player_low_Wind_001
     7400056: JumpBasePort
+    7400058: FastTackStarboard
+    7400060: FastTackPort
+    7400062: CarveJibStarboard
+    7400064: CarvejibePort
     9500000: //RootNode
     13700000: Charcter
     13700002: Eyes
@@ -191,44 +195,29 @@ ModelImporter:
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
-    resampleRotations: 1
+    resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
     animationImportErrors: 
     animationImportWarnings: "\nClip 'Default Take' has import animation warnings
       that might lower retargeting quality:\nNote: Activate translation DOF on avatar
-      to improve retargeting quality.\n\t'Thumb01_L' has translation animation that
-      will be discarded.\n\t'Thumb01_R' has translation animation that will be discarded.\n\t'Upper_Leg_L'
-      has scale animation that will be discarded.\n\t'Foot_L' has scale animation
-      that will be discarded.\n\t'Upper_Leg_R' has scale animation that will be discarded.\n\t'Foot_R'
-      has scale animation that will be discarded.\n\nClip 'ModelSelector' has import
+      to improve retargeting quality.\n\t'Upper_Leg_L' has scale animation that will
+      be discarded.\n\t'Lower_Leg_L' has scale animation that will be discarded.\n\t'Foot_L'
+      has scale animation that will be discarded.\n\t'Upper_Leg_R' has scale animation
+      that will be discarded.\n\t'Lower_Leg_R' has scale animation that will be discarded.\n\t'Foot_R'
+      has scale animation that will be discarded.\n\nClip 'Jibe_Level_2' has import
       animation warnings that might lower retargeting quality:\nNote: Activate translation
-      DOF on avatar to improve retargeting quality.\n\t'Foot_R' has scale animation
-      that will be discarded.\n\nClip 'Player_low_Wind' has import animation warnings
-      that might lower retargeting quality:\nNote: Activate translation DOF on avatar
-      to improve retargeting quality.\n\t'Thumb01_L' has translation animation that
-      will be discarded.\n\t'Thumb01_R' has translation animation that will be discarded.\n\t'Upper_Leg_L'
+      DOF on avatar to improve retargeting quality.\n\t'Upper_Leg_L' has scale animation
+      that will be discarded.\n\t'Lower_Leg_L' has scale animation that will be discarded.\n\t'Foot_L'
+      has scale animation that will be discarded.\n\t'Upper_Leg_R' has scale animation
+      that will be discarded.\n\t'Lower_Leg_R' has scale animation that will be discarded.\n\t'Foot_R'
+      has scale animation that will be discarded.\n\nClip 'Player_low_Wind' has import
+      animation warnings that might lower retargeting quality:\nNote: Activate translation
+      DOF on avatar to improve retargeting quality.\n\t'Thumb01_L' has translation
+      animation that will be discarded.\n\t'Thumb01_R' has translation animation that
+      will be discarded.\n\t'Upper_Leg_L' has scale animation that will be discarded.\n\t'Lower_Leg_L'
       has scale animation that will be discarded.\n\t'Foot_L' has scale animation
-      that will be discarded.\n\t'Upper_Leg_R' has scale animation that will be discarded.\n\t'Foot_R'
-      has scale animation that will be discarded.\n\nClip 'Player_low_Wind_001' has
-      import animation warnings that might lower retargeting quality:\nNote: Activate
-      translation DOF on avatar to improve retargeting quality.\n\t'Thumb01_L' has
-      translation animation that will be discarded.\n\t'Thumb01_R' has translation
-      animation that will be discarded.\n\t'Upper_Leg_L' has scale animation that
-      will be discarded.\n\t'Foot_L' has scale animation that will be discarded.\n\t'Upper_Leg_R'
-      has scale animation that will be discarded.\n\t'Foot_R' has scale animation
-      that will be discarded.\n\nClip 'Player_low_Wind_002' has import animation warnings
-      that might lower retargeting quality:\nNote: Activate translation DOF on avatar
-      to improve retargeting quality.\n\t'Thumb01_L' has translation animation that
-      will be discarded.\n\t'Thumb01_R' has translation animation that will be discarded.\n\t'Upper_Leg_L'
-      has scale animation that will be discarded.\n\t'Foot_L' has scale animation
-      that will be discarded.\n\t'Upper_Leg_R' has scale animation that will be discarded.\n\t'Foot_R'
-      has scale animation that will be discarded.\n\nClip 'Player_low_Wind_003' has
-      import animation warnings that might lower retargeting quality:\nNote: Activate
-      translation DOF on avatar to improve retargeting quality.\n\t'Thumb01_L' has
-      translation animation that will be discarded.\n\t'Thumb01_R' has translation
-      animation that will be discarded.\n\t'Upper_Leg_L' has scale animation that
-      will be discarded.\n\t'Foot_L' has scale animation that will be discarded.\n\t'Upper_Leg_R'
+      that will be discarded.\n\t'Upper_Leg_R' has scale animation that will be discarded.\n\t'Lower_Leg_R'
       has scale animation that will be discarded.\n\t'Foot_R' has scale animation
       that will be discarded.\n"
     animationRetargetingWarnings: 
@@ -3016,6 +3005,558 @@ ModelImporter:
       maskType: 0
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: FastTackStarboard
+      takeName: Player_low_Wind
+      firstFrame: 950
+      lastFrame: 999
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_ik_L
+        weight: 0
+      - path: Armature/Arm_ik_R
+        weight: 0
+      - path: Armature/Leg_Control_L
+        weight: 0
+      - path: Armature/Leg_Control_L/Foot_Angle_control_L
+        weight: 0
+      - path: Armature/Leg_Control_R
+        weight: 0
+      - path: Armature/Leg_Control_R/Foot_Angle_control_R
+        weight: 0
+      - path: Armature/Pole_Target_Arm_L
+        weight: 0
+      - path: Armature/Pole_Target_Arm_R
+        weight: 0
+      - path: Armature/Pole_Target_Leg_L
+        weight: 0
+      - path: Armature/Pole_Target_Leg_R
+        weight: 0
+      - path: Armature/Torso_00
+        weight: 1
+      - path: Armature/Torso_00/Torso_01
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L/Finger02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R/Finger02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck/Head
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Armature_Sail
+        weight: 1
+      - path: Armature_Sail/Bone
+        weight: 1
+      - path: Character
+        weight: 0
+      - path: Eyes
+        weight: 0
+      - path: Hair
+        weight: 0
+      - path: Hair_1
+        weight: 0
+      - path: Helnmet
+        weight: 0
+      - path: Pants
+        weight: 0
+      - path: Plane_001
+        weight: 0
+      - path: Sail_type1
+        weight: 0
+      - path: Sail_type2
+        weight: 0
+      - path: Sail_type3
+        weight: 0
+      - path: Shoes_Low
+        weight: 0
+      - path: Short_Pants
+        weight: 0
+      - path: Sweater
+        weight: 0
+      - path: T-shirt
+        weight: 0
+      - path: Wishbone
+        weight: 0
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: FastTackPort
+      takeName: Player_low_Wind
+      firstFrame: 1000
+      lastFrame: 1049
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_ik_L
+        weight: 0
+      - path: Armature/Arm_ik_R
+        weight: 0
+      - path: Armature/Leg_Control_L
+        weight: 0
+      - path: Armature/Leg_Control_L/Foot_Angle_control_L
+        weight: 0
+      - path: Armature/Leg_Control_R
+        weight: 0
+      - path: Armature/Leg_Control_R/Foot_Angle_control_R
+        weight: 0
+      - path: Armature/Pole_Target_Arm_L
+        weight: 0
+      - path: Armature/Pole_Target_Arm_R
+        weight: 0
+      - path: Armature/Pole_Target_Leg_L
+        weight: 0
+      - path: Armature/Pole_Target_Leg_R
+        weight: 0
+      - path: Armature/Torso_00
+        weight: 1
+      - path: Armature/Torso_00/Torso_01
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L/Finger02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R/Finger02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck/Head
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Armature_Sail
+        weight: 1
+      - path: Armature_Sail/Bone
+        weight: 1
+      - path: Character
+        weight: 0
+      - path: Eyes
+        weight: 0
+      - path: Hair
+        weight: 0
+      - path: Hair_1
+        weight: 0
+      - path: Helnmet
+        weight: 0
+      - path: Pants
+        weight: 0
+      - path: Plane_001
+        weight: 0
+      - path: Sail_type1
+        weight: 0
+      - path: Sail_type2
+        weight: 0
+      - path: Sail_type3
+        weight: 0
+      - path: Shoes_Low
+        weight: 0
+      - path: Short_Pants
+        weight: 0
+      - path: Sweater
+        weight: 0
+      - path: T-shirt
+        weight: 0
+      - path: Wishbone
+        weight: 0
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CarveJibStarboard
+      takeName: Jibe_Level_2
+      firstFrame: 1
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_ik_L
+        weight: 0
+      - path: Armature/Arm_ik_R
+        weight: 0
+      - path: Armature/Leg_Control_L
+        weight: 0
+      - path: Armature/Leg_Control_L/Foot_Angle_control_L
+        weight: 0
+      - path: Armature/Leg_Control_R
+        weight: 0
+      - path: Armature/Leg_Control_R/Foot_Angle_control_R
+        weight: 0
+      - path: Armature/Pole_Target_Arm_L
+        weight: 0
+      - path: Armature/Pole_Target_Arm_R
+        weight: 0
+      - path: Armature/Pole_Target_Leg_L
+        weight: 0
+      - path: Armature/Pole_Target_Leg_R
+        weight: 0
+      - path: Armature/Torso_00
+        weight: 1
+      - path: Armature/Torso_00/Torso_01
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L/Finger02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R/Finger02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck/Head
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Armature_Sail
+        weight: 1
+      - path: Armature_Sail/Bone
+        weight: 1
+      - path: Character
+        weight: 0
+      - path: Eyes
+        weight: 0
+      - path: Hair
+        weight: 0
+      - path: Hair_1
+        weight: 0
+      - path: Helnmet
+        weight: 0
+      - path: Pants
+        weight: 0
+      - path: Plane_001
+        weight: 0
+      - path: Sail_type1
+        weight: 0
+      - path: Sail_type2
+        weight: 0
+      - path: Sail_type3
+        weight: 0
+      - path: Shoes_Low
+        weight: 0
+      - path: Short_Pants
+        weight: 0
+      - path: Sweater
+        weight: 0
+      - path: T-shirt
+        weight: 0
+      - path: Wishbone
+        weight: 0
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CarvejibePort
+      takeName: Jibe_Level_2
+      firstFrame: 100
+      lastFrame: 156
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_ik_L
+        weight: 0
+      - path: Armature/Arm_ik_R
+        weight: 0
+      - path: Armature/Leg_Control_L
+        weight: 0
+      - path: Armature/Leg_Control_L/Foot_Angle_control_L
+        weight: 0
+      - path: Armature/Leg_Control_R
+        weight: 0
+      - path: Armature/Leg_Control_R/Foot_Angle_control_R
+        weight: 0
+      - path: Armature/Pole_Target_Arm_L
+        weight: 0
+      - path: Armature/Pole_Target_Arm_R
+        weight: 0
+      - path: Armature/Pole_Target_Leg_L
+        weight: 0
+      - path: Armature/Pole_Target_Leg_R
+        weight: 0
+      - path: Armature/Torso_00
+        weight: 1
+      - path: Armature/Torso_00/Torso_01
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L/Finger02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R/Finger02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck/Head
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Armature_Sail
+        weight: 1
+      - path: Armature_Sail/Bone
+        weight: 1
+      - path: Character
+        weight: 0
+      - path: Eyes
+        weight: 0
+      - path: Hair
+        weight: 0
+      - path: Hair_1
+        weight: 0
+      - path: Helnmet
+        weight: 0
+      - path: Pants
+        weight: 0
+      - path: Plane_001
+        weight: 0
+      - path: Sail_type1
+        weight: 0
+      - path: Sail_type2
+        weight: 0
+      - path: Sail_type3
+        weight: 0
+      - path: Shoes_Low
+        weight: 0
+      - path: Short_Pants
+        weight: 0
+      - path: Sweater
+        weight: 0
+      - path: T-shirt
+        weight: 0
+      - path: Wishbone
+        weight: 0
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -3041,6 +3582,7 @@ ModelImporter:
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
+    serializedVersion: 2
     human:
     - boneName: Torso_00
       humanName: Hips
@@ -3252,240 +3794,240 @@ ModelImporter:
         modified: 0
     skeleton:
     - name: player_combined_animated(Clone)
+      parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: Armature
+      parentName: 
       position: {x: -2.21, y: 2.812009, z: -0.00000012291682}
       rotation: {x: -0.50000006, y: 0.49999997, z: 0.49999997, w: 0.50000006}
       scale: {x: 0.49995112, y: 0.5, z: 0.5}
-      transformModified: 1
     - name: Torso_00
+      parentName: 
       position: {x: 0.00000052695657, y: -4.42, z: 0}
       rotation: {x: 0.7042535, y: 0.00000008940697, z: -0.7099486, w: 0.00000008940697}
       scale: {x: 0.9999999, y: 1.0000001, z: 1}
-      transformModified: 1
     - name: Torso_01
+      parentName: 
       position: {x: -2.5258281, y: 0.00000019069473, z: -0.000000001862646}
       rotation: {x: 0.000000008431243, y: 0.004027102, z: -0.000000008127201, w: 0.9999919}
       scale: {x: 0.9999999, y: 0.99999994, z: 0.9999999}
-      transformModified: 1
     - name: Neck
+      parentName: 
       position: {x: -2.2254312, y: 0.00000016801538, z: -2.36122e-10}
       rotation: {x: -9.250245e-16, y: -4.656613e-10, z: -4.3074813e-25, w: 1}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: Head
+      parentName: 
       position: {x: -0.39438105, y: 0.000000029774899, z: -0.00000000213377}
       rotation: {x: 0, y: 0, z: 7.10349e-15, w: 1}
       scale: {x: 1, y: 1, z: 0.99999994}
-      transformModified: 1
     - name: Arm01_L
+      parentName: 
       position: {x: -1.7026838, y: -1.5135254, z: -0.14285035}
       rotation: {x: 0.50604445, y: 0.5243031, z: -0.49346942, w: -0.4748823}
       scale: {x: 0.99999994, y: 0.99999994, z: 1}
-      transformModified: 1
     - name: Arm02_L
+      parentName: 
       position: {x: -1.9767388, y: 0.00000014225952, z: -0.0000009825453}
       rotation: {x: 0.00023151688, y: 0.021849707, z: 0.016639987, w: 0.99962276}
       scale: {x: 0.99999994, y: 1, z: 0.9999998}
-      transformModified: 1
     - name: Hand_L
+      parentName: 
       position: {x: -2.2310712, y: 0.00000014901161, z: -0.0000003068708}
       rotation: {x: 0.0018653398, y: 0.035092093, z: -0.043281373, w: 0.9984447}
       scale: {x: 1, y: 0.9999999, z: 1}
-      transformModified: 1
     - name: Finger01_L
+      parentName: 
       position: {x: -0.73097956, y: 0.000000074505806, z: 0.0000005373731}
       rotation: {x: -0.2861524, y: -0.11149292, z: -0.01097824, w: 0.9516121}
       scale: {x: 1.0000001, y: 1, z: 1}
-      transformModified: 1
     - name: Finger02_L
+      parentName: 
       position: {x: -0.34407297, y: -0.00000039488077, z: -0.000000044703484}
       rotation: {x: -0.08991887, y: -0.082750194, z: -0.045067, w: 0.9914817}
       scale: {x: 1, y: 1, z: 0.99999994}
-      transformModified: 1
     - name: Thumb01_L
+      parentName: 
       position: {x: -0.30966198, y: -0.03942017, z: -0.20467451}
       rotation: {x: 0.7949202, y: 0.4298689, z: -0.09268634, w: -0.41799986}
       scale: {x: 1.0000002, y: 1.0000001, z: 1.0000001}
-      transformModified: 1
     - name: Thumb02_L
+      parentName: 
       position: {x: -0.3507088, y: -0.00000035390258, z: -0.0000003799796}
       rotation: {x: -0.02846672, y: 0.09189874, z: -0.040699553, w: 0.99452895}
       scale: {x: 1, y: 0.99999994, z: 0.9999999}
-      transformModified: 1
     - name: Arm01_R
+      parentName: 
       position: {x: -1.7026836, y: 1.5135256, z: -0.14285035}
       rotation: {x: -0.47488242, y: 0.49346924, z: -0.5243024, w: 0.5060452}
       scale: {x: 1, y: 0.99999994, z: 1}
-      transformModified: 1
     - name: Arm02_R
+      parentName: 
       position: {x: -1.9767394, y: 0.00000013457611, z: 0.0000009965152}
       rotation: {x: 0.9724265, y: 0.021252178, z: 0.017393695, w: -0.23158698}
       scale: {x: 0.9999997, y: 1, z: 0.9999999}
-      transformModified: 1
     - name: Hand_R
+      parentName: 
       position: {x: -2.2310722, y: 0.00000040978193, z: 0.00000008568168}
       rotation: {x: 0.93303597, y: 0.0030951516, z: -0.055633962, w: -0.35544232}
       scale: {x: 0.9999999, y: 0.99999994, z: 0.99999994}
-      transformModified: 1
     - name: Finger01_R
+      parentName: 
       position: {x: -0.7309792, y: 0.00000009685755, z: -0.00000008940697}
       rotation: {x: -0.81848687, y: 0.11194902, z: -0.004251152, w: 0.5634968}
       scale: {x: 1, y: 1, z: 0.99999994}
-      transformModified: 1
     - name: Finger02_R
+      parentName: 
       position: {x: -0.34407392, y: 0.0000006854534, z: -0.00000052154064}
       rotation: {x: -0.03905251, y: 0.054722603, z: 0.07670659, w: 0.99478465}
       scale: {x: 0.9999998, y: 1, z: 1}
-      transformModified: 1
     - name: Thumb01_R
+      parentName: 
       position: {x: -0.30966237, y: 0.17645577, z: 0.110946804}
       rotation: {x: -0.5440928, y: 0.32173008, z: 0.2997761, w: 0.7145538}
       scale: {x: 0.9999998, y: 0.99999976, z: 0.99999976}
-      transformModified: 1
     - name: Thumb02_R
+      parentName: 
       position: {x: -0.35070878, y: -0.00000010430813, z: -0.00000043213367}
       rotation: {x: -0.07243701, y: 0.094482444, z: -0.034278914, w: 0.9922958}
       scale: {x: 0.9999999, y: 1, z: 1}
-      transformModified: 1
     - name: Upper_Leg_L
+      parentName: 
       position: {x: 0.03023904, y: -0.8403747, z: -0.06712871}
       rotation: {x: 0.0072376602, y: 0.99992156, z: 0.0002788465, w: 0.010220125}
       scale: {x: 1.0000001, y: 1.000037, z: 1.000074}
-      transformModified: 1
     - name: Lower_Leg_L
+      parentName: 
       position: {x: -2.5198689, y: 0.00000022638017, z: 0.000000007741619}
       rotation: {x: -0.0137567, y: 0.05413939, z: -0.014111924, w: 0.99833894}
       scale: {x: 0.99999994, y: 1, z: 1}
-      transformModified: 1
     - name: Foot_L
+      parentName: 
       position: {x: -2.3891392, y: 0.00000016344711, z: -0.00000000372529}
       rotation: {x: 0.82728463, y: -0.0009931158, z: 0.5615486, w: -0.016198166}
       scale: {x: 0.9999938, y: 1.0000075, z: 0.9999985}
-      transformModified: 1
     - name: Toe_L
+      parentName: 
       position: {x: -1.115449, y: 0.00000008023861, z: -0.0000003435883}
       rotation: {x: -0.00000029819174, y: 0.17484905, z: -0.00000011413781, w: 0.9845953}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: Upper_Leg_R
+      parentName: 
       position: {x: 0.030239167, y: 0.8403747, z: -0.0671288}
       rotation: {x: -0.006491114, y: 0.99992466, z: -0.00029987146, w: 0.010414805}
       scale: {x: 0.99999994, y: 1.0000354, z: 1.0000906}
-      transformModified: 1
     - name: Lower_Leg_R
+      parentName: 
       position: {x: -2.5198689, y: 0.00000023622624, z: 0.000000002444722}
       rotation: {x: -0.013715858, y: 0.054150064, z: 0.014070811, w: 0.9983395}
       scale: {x: 0.9999998, y: 1.0000001, z: 1}
-      transformModified: 1
     - name: Foot_R
+      parentName: 
       position: {x: -2.3891377, y: 0.00000025471672, z: -0.000000033527613}
       rotation: {x: 0.82730335, y: -0.013855828, z: 0.5615417, w: -0.006945485}
       scale: {x: 1.0000062, y: 0.99999195, z: 1.0000014}
-      transformModified: 1
     - name: Toe_R
+      parentName: 
       position: {x: -1.115437, y: 0.00000004882233, z: 0.00000030177773}
       rotation: {x: 0.00000035394115, y: 0.17485091, z: 0.00000003109493, w: 0.98459494}
       scale: {x: 1, y: 1, z: 0.99999994}
-      transformModified: 1
     - name: Pole_Target_Leg_L
+      parentName: 
       position: {x: -0.8403749, y: -0.8540218, z: -2.5493727}
       rotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: Arm_ik_L
+      parentName: 
       position: {x: -5.718765, y: 0.088945925, z: 4.175446}
       rotation: {x: 0.50000006, y: 0.49999997, z: -0.49999997, w: 0.50000006}
       scale: {x: 1, y: 1.0000001, z: 1.0000001}
-      transformModified: 1
     - name: Pole_Target_Arm_L
+      parentName: 
       position: {x: -3.489, y: 0.86601233, z: 4.1577344}
       rotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: Leg_Control_R
+      parentName: 
       position: {x: 1.0121045, y: 0.58680344, z: -5.6311984}
       rotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: Foot_Angle_control_R
+      parentName: 
       position: {x: -0.9345827, y: 0.17172948, z: 0.70051193}
       rotation: {x: 0.000000033571947, y: -0.22688094, z: -0.00000010477281, w: 0.9739225}
       scale: {x: 0.99999994, y: 1, z: 1}
-      transformModified: 1
     - name: Pole_Target_Leg_R
+      parentName: 
       position: {x: 0.8403745, y: -0.854022, z: -2.5493727}
       rotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: Arm_ik_R
+      parentName: 
       position: {x: 5.7187657, y: 0.088944435, z: 4.175446}
       rotation: {x: 0.50000006, y: 0.49999997, z: -0.49999997, w: 0.50000006}
       scale: {x: 1, y: 1.0000001, z: 1.0000001}
-      transformModified: 1
     - name: Pole_Target_Arm_R
+      parentName: 
       position: {x: 3.4890006, y: 0.8660116, z: 4.1577344}
       rotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: Leg_Control_L
+      parentName: 
       position: {x: -1.0121045, y: 0.58680296, z: -5.6311984}
       rotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
       scale: {x: 1.0000001, y: 1.0000001, z: 1}
-      transformModified: 1
     - name: Foot_Angle_control_L
+      parentName: 
       position: {x: -0.90254104, y: -0.17173001, z: 0.70051146}
       rotation: {x: 0.00000002723413, y: -0.226881, z: -0.000000037670485, w: 0.9739225}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: Armature_Sail
+      parentName: 
       position: {x: -2.21, y: -0.9835336, z: 0.00000004299162}
       rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: Bone
+      parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0.50000006, y: 0.49999997, z: -0.49999997, w: 0.50000006}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: Charcter
+      parentName: 
       position: {x: 0, y: 0, z: 1.9852715}
       rotation: {x: 0, y: 0, z: -1.0559242e-15, w: 1}
       scale: {x: 1.6783623, y: 1.6783623, z: 1.6783623}
-      transformModified: 1
     - name: Eyes
+      parentName: 
       position: {x: 0.000000013517024, y: -1.6139426, z: 6.4774146}
       rotation: {x: -0.00017699177, y: 0.9988878, z: 0.046999834, w: 0.0037616072}
       scale: {x: 0.29000002, y: 0.15638116, z: 0.17532715}
-      transformModified: 1
     - name: Hair
+      parentName: 
       position: {x: -2.8e-14, y: -0.16550732, z: 3.7221808}
       rotation: {x: -1.0784218e-30, y: -1.0384709e-15, z: -1.0384709e-15, w: 1}
       scale: {x: 1.7081872, y: 1.7081872, z: 1.7081872}
-      transformModified: 1
     - name: Helnmet
+      parentName: 
       position: {x: -7.1e-14, y: 0.05179453, z: 7.252318}
       rotation: {x: 0, y: 0, z: -8.63938e-16, w: 1}
       scale: {x: 2.049994, y: 2.049994, z: 2.1688623}
-      transformModified: 1
     - name: Plane_001
+      parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: -0.50000006, y: -0.49999997, z: -0.49999997, w: 0.50000006}
       scale: {x: 0.8021307, y: 2.4997463, z: 1.145139}
-      transformModified: 1
     - name: SailObject
+      parentName: 
       position: {x: -0.03346777, y: 0, z: 1.1354718}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: Wishbone
+      parentName: 
       position: {x: -0.15150142, y: 0, z: 5.7750974}
       rotation: {x: 0.066843614, y: 0.000000005046704, z: 0.99776345, w: -0.0000000753313}
       scale: {x: 0.061826315, y: 0.061826307, z: 0.06182632}
-      transformModified: 1
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -3494,7 +4036,10 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 3
   humanoidOversampling: 1

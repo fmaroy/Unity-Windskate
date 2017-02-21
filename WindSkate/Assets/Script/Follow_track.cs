@@ -963,6 +963,7 @@ public class Follow_track : MonoBehaviour
             driveStarboard = true;
         }
     }
+
     void Update()
     {
         // get opponent current parameters, distance and angle vs mark.
@@ -1079,6 +1080,7 @@ public class Follow_track : MonoBehaviour
 
     public void triggeredManoeuvre()
     {
+		int trickLevel = this.gameObject.transform.parent.GetComponent<tricksHandlingScript>().StarsMaxLevel-1;
         bool manoeuvreFlag = false;
 		bool jumpFlag = false;
 
@@ -1124,7 +1126,7 @@ public class Follow_track : MonoBehaviour
             if (this.gameObject.transform.parent.GetComponent<tricksHandlingScript>().StarsMaxLevel > 0)
             {
                 //this.gameObject.transform.parent.GetComponent<tricksHandlingScript>().enableTrick(this.gameObject.transform.parent.GetComponent<tricksHandlingScript>().StarsMaxLevel-1);
-                this.gameObject.transform.parent.GetComponent<tricksHandlingScript>().enableTrick(0);
+				this.gameObject.transform.parent.GetComponent<tricksHandlingScript>().enableTrick(trickLevel);
             }
         }
     }

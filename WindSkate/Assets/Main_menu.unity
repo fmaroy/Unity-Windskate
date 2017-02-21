@@ -20997,7 +20997,7 @@ MonoBehaviour:
   currentRaceOpponentsListIds: 
   tackList:
   - level: 1
-    name: Heli Tack
+    name: Fast Tack
     type: 1
     duration: 3
     slowDownFactor: 1
@@ -21005,7 +21005,7 @@ MonoBehaviour:
     costSpeed: 15
     costAngle: 1
   - level: 2
-    name: Dunk Tack
+    name: Heli Tack
     type: 1
     duration: 3
     slowDownFactor: 0.5
@@ -21013,7 +21013,7 @@ MonoBehaviour:
     costSpeed: 20
     costAngle: 2
   - level: 3
-    name: Speed Tack
+    name: Duck Tak
     type: 1
     duration: 3
     slowDownFactor: 0
