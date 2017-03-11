@@ -154,6 +154,7 @@ public class UserPreferenceScript : MonoBehaviour {
     public void SetOpponent(GameObject playerprefab, Transform position, GameObject parent)
     {
         GameObject temp = (GameObject)Instantiate(playerprefab,position.position,position.rotation);
+		temp.GetComponent<ExternalObjectsReference> ().initPlayer();
         temp.transform.parent = parent.transform;
         //temp.transform.position = position.position;
         //temp.transform.eulerAngles = position.eulerAngles;

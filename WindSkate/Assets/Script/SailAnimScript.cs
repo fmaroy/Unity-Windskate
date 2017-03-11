@@ -270,11 +270,12 @@ public class SailAnimScript : MonoBehaviour
         {
             isManoeuvreing = true;
 			// This is applied when no special manoeuvre is used. If a special manoeuvre is used, this gets overridden later on
-			gameObject.GetComponent<Sail_System_Control>().manoeuvreModifier = 0.2f;
+			// Not needed anymore, should be handled by the method Sail_System_Control.manoeuvreThrustModifier() that include ow this special case
+			//gameObject.GetComponent<Sail_System_Control>().manoeuvreModifier = 0.2f;
         }
         else
         {
-			gameObject.GetComponent<Sail_System_Control>().manoeuvreModifier = 1.0f;
+			//gameObject.GetComponent<Sail_System_Control>().manoeuvreModifier = 1.0f;
             isManoeuvreing = false;
         }
         if (previsManoeuvreing != isManoeuvreing)
@@ -285,11 +286,14 @@ public class SailAnimScript : MonoBehaviour
                 {
 					if (Manoeuvre_level > 0) 
 					{
+						// TODO: based on the level of the manoeuvre chance that a special animation started get higher:
+
 						//StartManoeuvreFX(0.5f);
                     
 
 						//Get the proper manoeuvre type defined in the userprefs in raceManager , Tack of Jibe?
-						List<ManoeuvreType> currentManoeuvreList;
+						// hidden, since the following logic is handled in Sail_System_Control
+						/*List<ManoeuvreType> currentManoeuvreList;
 						if (this.transform.parent.gameObject.GetComponent<tricksHandlingScript> ().manoeuvreStatus == "tack") 
 						{
 							currentManoeuvreList = this.transform.parent.gameObject.GetComponent<ExternalObjectsReference> ().UserPrefs.localTackManoeuvres;
@@ -300,18 +304,18 @@ public class SailAnimScript : MonoBehaviour
 						}
 
 						gameObject.GetComponent<Sail_System_Control> ().manoeuvreModifier = currentManoeuvreList [Manoeuvre_level].slowDownFactor;
-					}
-					Debug.Log ("current Manoeuvre Slow Down factor : " + gameObject.GetComponent<Sail_System_Control> ().manoeuvreModifier);
+					}*/
+					//Debug.Log ("current Manoeuvre Slow Down factor : " + gameObject.GetComponent<Sail_System_Control> ().manoeuvreModifier);
                  }
 					
                 else
                 {
                     EndManoeuvreFX();
-					gameObject.GetComponent<Sail_System_Control> ().manoeuvreModifier = 1.0f;
+					//gameObject.GetComponent<Sail_System_Control> ().manoeuvreModifier = 1.0f;
 
                 }
             }
         }
     }
 }
-
+}

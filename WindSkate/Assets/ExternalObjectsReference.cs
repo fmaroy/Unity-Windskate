@@ -11,7 +11,18 @@ public class ExternalObjectsReference : MonoBehaviour {
 		raceManagerObject = GameObject.Find ("RaceManager");
 		UserPrefs = raceManagerObject.GetComponent<UserPreferenceScript> ();
 	}
-	
+
+	public bool initPlayer()
+	{
+		bool worked = false;
+		raceManagerObject = GameObject.Find ("RaceManager");
+		UserPrefs = raceManagerObject.GetComponent<UserPreferenceScript> ();
+		if (UserPrefs != null) {
+			worked = true;
+		}
+		return worked;
+	}
+
 	// Update is called once per frame
 	void Update () {
 		
