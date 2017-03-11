@@ -3,6 +3,9 @@ using System.Collections;
 
 public class Sail_System_Control : MonoBehaviour 
 	{
+	public GameObject externalObjectsHandler;
+	public UserPreferenceScript userPrefs;
+	public GameObject raceManager;
 	public GameObject windSource;
 	private windEffector windData;
 	private Vector3 windDir;
@@ -40,9 +43,14 @@ public class Sail_System_Control : MonoBehaviour
     public float twist_value;
     public bool pressureOnStarboardSide = true; 
 
+	// Change the force on the board during the manoeuvre
+	public float manoeuvreModifier = 1.0f;
+
     // Use this for initialization
     void Start ()
     {
+		userPrefs = externalObjectsHandler.GetComponent<ExternalObjectsReference> ().UserPrefs;
+		raceManager = externalObjectsHandler.GetComponent<ExternalObjectsReference> ().raceManagerObject;
 		windData= windSource.GetComponent<windEffector>();
 		SailGeomSkinnedMesh = sailGeom.GetComponent<SkinnedMeshRenderer>();
         
@@ -74,12 +82,22 @@ public class Sail_System_Control : MonoBehaviour
         }
     }
 
+	public float manoeuvreThrustModifier(float thrust, float modifier, float boost)
+	{
+		float thrustModif = 0.0f;
+		// this is 0 when not manoeuvrering, 1, when Manoeuering.
+		float currentmanoeuvreWeight = this.gameObject.GetComponent<SailAnimScript> ().Manoeuvre_Weight;
+
+		thrustModif = currentmanoeuvreWeight * thrust * (1 - modifier); 
+		Debug.Log("Manoeuvre Weight : " + currentmanoeuvreWeight);
+		return thrustModif; // Thrust modifier adds up to the current Thrust factor
+	}
+
     void FixedUpdate()
 	{
        
         if (isFalling == false)
-        {
-            
+		{
             float sailThrust = Mathf.Sin((SetSailAngle + braquingAngle) * Mathf.Deg2Rad) * ApparentWindMagnitude;
             sailDrag_rearwind = 0.0f;
             if (trueWindAngleLocal < 90)
@@ -91,10 +109,11 @@ public class Sail_System_Control : MonoBehaviour
                 sailDrag_rearwind = (90.0f - trueWindAngleLocal );
             }
 
+			/* The following has been replaced by different level of Manoeuver slow down
             if (this.gameObject.GetComponent<SailAnimScript>().intManoeuvreState == 1)
             {
-                sailThrust = sailThrust / 4;
-            }
+                sailThrust = sailThrust /4;
+            }*/
 
 
             /*if (Mathf.Abs(apparentWindAngleLocal) > 90)
@@ -109,13 +128,24 @@ public class Sail_System_Control : MonoBehaviour
                 SideForce = -1 * SideForce;
             }
             float linearBoardDrag = boardDrag * linearBoardDrag_factor * (Board_Speed * Board_Speed);
-            float SailThrustForce = sailThrust * sailThrust_factor + (1* sailDrag_rearwind * sailDrag_rearwind_factor) - sailDrag - linearBoardDrag;
-            
-            //Debug.Log("sailThrust" + sailThrust + ", sailDrag_rearwind group " + sailDrag_rearwind * sailDrag_rearwind_factor + ", sailDrag " + sailDrag + ", Linear drag " + linearBoardDrag + ", Total: " + SailThrustForce);
 
-            float SailSideForce = -1 * SideForce * sailThrust_factor / 4;
-            // rbBoard.AddRelativeForce(Vector3.forward * sailThrust * sailThrust_factor + Vector3.forward * (sailDrag_rearwind * sailDrag_rearwind_factor) + Vector3.back * sailDrag + Vector3.back * linearBoardDrag);
-            rbBoard.AddRelativeForce(SailSideForce, 0.0f , SailThrustForce);
+			float SailThrustForce = sailThrust * sailThrust_factor + (1* sailDrag_rearwind * sailDrag_rearwind_factor) - sailDrag - linearBoardDrag;
+
+			float SailSideForce = -1 * SideForce * sailThrust_factor / 4;
+
+			ManoeuvreType currentManoeuvre;
+			if (this.GetComponentInParent<tricksHandlingScript> ().manoeuvreStatus == "tack") {
+				currentManoeuvre = raceManager.GetComponent<UserPreferenceScript> ().localTackManoeuvres [this.gameObject.GetComponent<SailAnimScript> ().Manoeuvre_level];
+			}
+			else{
+				currentManoeuvre = raceManager.GetComponent<UserPreferenceScript> ().localJibeManoeuvres [this.gameObject.GetComponent<SailAnimScript> ().Manoeuvre_level];
+			}
+
+			manoeuvreModifier = manoeuvreThrustModifier (SailThrustForce, currentManoeuvre.slowDownFactor, 1.5f);
+
+			Debug.Log ("Thrust : " + SailThrustForce +", Manoeuvre modifier : " + manoeuvreModifier);
+
+			rbBoard.AddRelativeForce(SailSideForce, 0.0f , SailThrustForce - manoeuvreModifier);
             //Debug.Log(SailThrustForce);
         }
         else
@@ -133,7 +163,6 @@ public class Sail_System_Control : MonoBehaviour
             SailRigidBody.GetComponent<ConfigurableJoint>().angularXMotion= Free;*/
             //SailRigidBody.AddRelativeForce(forceIntentsity * direction_sail.x, 0.0f, forceIntentsity * direction_sail.z);
 
-           
         }
 	}
 

@@ -79,9 +79,9 @@ public class tricksHandlingScript : MonoBehaviour {
             localJibeList = raceDataUserPref.localJibeManoeuvres;
         }
         
-        EnergyMaxLevel = Mathf.Max(localTackList[2].costEnergy, localJibeList[2].costEnergy);
-        SpeedMaxLevel = Mathf.Max(localTackList[2].costSpeed, localJibeList[2].costSpeed);
-        AngleMaxLevel = Mathf.Max(localTackList[2].costAngle, localJibeList[2].costAngle);
+		EnergyMaxLevel = Mathf.Max(localTackList[localTackList.Count -1].costEnergy, localJibeList[localJibeList.Count -1].costEnergy);
+		SpeedMaxLevel = Mathf.Max(localTackList[localTackList.Count -1].costSpeed, localJibeList[localJibeList.Count -1].costSpeed);
+		AngleMaxLevel = Mathf.Max(localTackList[localTackList.Count -1].costAngle, localJibeList[localJibeList.Count -1].costAngle);
 
         if (isCurrentPlayer == true)
         {
@@ -133,11 +133,13 @@ public class tricksHandlingScript : MonoBehaviour {
 
         if ((Mathf.Abs(WindAngle) > 70) && (Mathf.Abs(WindAngle) < 110))
         {
+			manoeuvreStatus = "none";
 			//Disabled for beta shipping, disabling the buttons since the functionality is not ready yet:
             ButtonManoeuvreLeft.SetActive(false);
             ButtonManoeuvreRight.SetActive(false);
 			updateTrickButtonSprite(ButtonManoeuvreLeft, UITrickSpriteList);
 			updateTrickButtonSprite(ButtonManoeuvreRight, UITrickSpriteList);
+
         } 
 		else 
 		{
@@ -146,6 +148,7 @@ public class tricksHandlingScript : MonoBehaviour {
 		}
 
     }
+
 	void updateTrickButtonSprite(GameObject ButtonObject, List<Sprite> spriteList)
 	{
 		ButtonObject.GetComponent<Image> ().sprite = spriteList [0];
@@ -196,10 +199,10 @@ public class tricksHandlingScript : MonoBehaviour {
 
         foreach (ManoeuvreType manoeuvre in manoeuvreList)
         {
-            //cycle through the tck/jibe manoeuvre
-            if (i == 0) { nameStar = "Star1"; }
-            if (i == 1) { nameStar = "Star2"; }
-            if (i == 2) { nameStar = "Star3"; }
+            //cycle through the tack/jibe manoeuvre
+            if (i == 1) { nameStar = "Star1"; }
+            if (i == 2) { nameStar = "Star2"; }
+            if (i == 3) { nameStar = "Star3"; }
             // j cycles through the enregy, speed, angle
             j = 0;
             foreach (Slider Slider in SlidersList)
@@ -336,18 +339,17 @@ public class tricksHandlingScript : MonoBehaviour {
             int i = 1;
             foreach (ManoeuvreType manoeuvre in currentManoeuvre)
             {
-                if (manoeuvre.costEnergy < currentEnergyLevel)
-                {
-                    EnergyStarLevel = i;
-                }
-                if (manoeuvre.costSpeed < currentSpeed)
-                {
-                    SpeedStarLevel = i;
-                }
-                if (manoeuvre.costAngle < currentAngleLevel)
-                {
-                    AngleStarLevel = i;
-                }
+				
+					if (manoeuvre.costEnergy < currentEnergyLevel) {
+						EnergyStarLevel = i -1;
+					}
+					if (manoeuvre.costSpeed < currentSpeed) {
+						SpeedStarLevel = i -1;
+					}
+					if (manoeuvre.costAngle < currentAngleLevel) {
+						AngleStarLevel = i -1;
+					}
+
                 i++;
             }
             updateStarsPosition(currentManoeuvre);

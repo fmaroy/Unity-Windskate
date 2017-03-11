@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class Follow_track : MonoBehaviour
 {
+	public GameObject ExternalObjectHandler;
 	public UserPreferenceScript userPrefData;
     public int currentMarkId = 0;
     public bool leaveOnStarboard = true;
@@ -106,7 +107,8 @@ public class Follow_track : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-		userPrefData = GameObject.Find ("RaceManager").GetComponent<UserPreferenceScript> ();
+		
+		userPrefData = ExternalObjectHandler.GetComponent<ExternalObjectsReference>().UserPrefs;
         SteerBoundary = new List<float>();
         SteerBoundary.Add(5.0f);
         SteerBoundary.Add(15.0f);
@@ -403,17 +405,20 @@ public class Follow_track : MonoBehaviour
             Debug.Log("Disabling track sign : " + i);
 			if (GameObject.Find(trackData.markSequence[i]).GetComponent<Mark>() != null)
 			{ 	Debug.Log("Mark " + trackData.markSequence[i] + " has componenent Mark : ");
-				//Debug.Log(
-            	if (GameObject.Find(trackData.markSequence[i]).GetComponent<Mark>().Children.Count != 0)
-            	{
+				
+            	if (GameObject.Find(trackData.markSequence[i]).GetComponent<Mark>().Children.Count != 0){
                 	foreach (GameObject obj in GameObject.Find(trackData.markSequence[i]).GetComponent<Mark>().Children)
                 	{
                 	    obj.transform.FindChild("Projector").gameObject.SetActive(false);
                 	}
+
             	}
             	else
             	{
-                	GameObject.Find(trackData.markSequence[i]).transform.FindChild("Projector").gameObject.SetActive(false);
+					if (GameObject.Find (trackData.markSequence [i]).transform.FindChild ("Projector") != null) {
+						GameObject.Find (trackData.markSequence [i]).transform.FindChild ("Projector").gameObject.SetActive (false);
+					}
+
             	}
         	}
 		}

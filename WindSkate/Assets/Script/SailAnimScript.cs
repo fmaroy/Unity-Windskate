@@ -1,13 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class SailAnimScript : MonoBehaviour
 {
     Animator animSail;
-
-    /*private AnimatorStateInfo currentBaseState;         // a reference to the current state of the animator, used for base layer
-	private AnimatorStateInfo LightWindLayerCurrentState; 
-	private AnimatorStateInfo HeavyWindLayerCurrentState; */
 
     private float SailAngleAnim;
     Sail_System_Control SailControlComponent;
@@ -18,20 +15,19 @@ public class SailAnimScript : MonoBehaviour
     static int PortStateNinetyDeg;
     static int StarboardStateNinetyDeg;
 
-
     public float WindLayerWeight = 50.0f;
     //private Sail_System_Control SailControlComponent;
     private float SailAngle;
     private bool isManoeuvreTransitioning = false;
-    private bool isManoeuvreing = false;
+    public bool isManoeuvreing = false;
     private bool previsManoeuvreing = false;
     public float timerManoeuvreTarget = 1.0f;
     private float timerManoeuvreCurrent = 0.0f;
     private float targetLayerValue = 1.0f;
     private float initLayerValue = 1.0f;
-    // next is 0 if no manoeuvre, 1 if basic tacking
 
-    private float Manoeuvre_Weight = 0.0f;
+    // next is 0 if no manoeuvre, 1 if basic tacking
+    public float Manoeuvre_Weight = 0.0f;
     public int intManoeuvreState = 0;
     private AnimatorStateInfo currentBaseStateInManoeuvre;
     private AnimatorStateInfo previousBaseStateInManoeuvre;
@@ -41,13 +37,13 @@ public class SailAnimScript : MonoBehaviour
 
     public int Manoeuvre_level = 0;
     private float initCamRotationDamping ;
-    //private float initCamHeightDamping ;
-    //private float initCamHeight;
     private float initCamDistance;
     private bool ManoeuvreFXGoingOn = false;
     private float ManoeuvreFXtimer;
     private float ManoeuvreFXtimerTarget = 2.0f;
     private CameraControlScript CamControlData;
+
+	public int inProgressManoeuverLevel = 0;
 
     // Use this for initialization
     void Start()
@@ -73,10 +69,7 @@ public class SailAnimScript : MonoBehaviour
         previsManoeuvreing = false;
 
         ManoeuvreFXtimer = ManoeuvreFXtimerTarget;
-        ManoeuvreFXGoingOn = false;
-
-        
-
+		ManoeuvreFXGoingOn = false;
     }
 
     void LateUpdate()
@@ -95,6 +88,7 @@ public class SailAnimScript : MonoBehaviour
         initLayerValue = animSail.GetLayerWeight(2);
         Manoeuvre_level = 0;
     }
+
     void enterManoeuvre()
     {
         isManoeuvreTransitioning = true;
@@ -103,24 +97,17 @@ public class SailAnimScript : MonoBehaviour
         initLayerValue = animSail.GetLayerWeight(2);
     }
 
-
     public void StartManoeuvreFX(float SlowMotionFactor)
     {
         ManoeuvreFXGoingOn = true;
         
-        //initCamHeight = CamControlData.SmoothFollowData.height;
-        //initCamDistance = CamControlData.SmoothFollowData.distance;
-        
-            //Time.timeScale = 1 - 0.7f * Manoeuvre_Weight;
-            Time.timeScale = SlowMotionFactor;
-            Time.fixedDeltaTime = 0.01F * Time.timeScale;
-            CamControlData.SmoothFollowData.rotationDamping = 0.5f;
-            CamControlData.SmoothFollowData.heightDamping = 0.5f;
-            CamControlData.CameraTargetData.offsetOrientation = new Vector3(0.0f, Mathf.LerpAngle(-120, 120, Random.value), 0.0f);
-            CamControlData.SmoothFollowData.height = Mathf.Lerp(0f, 15.0f, Random.value);
-            CamControlData.SmoothFollowData.distance = Mathf.Lerp(8.0f, 20.0f, Random.value);
-        
-
+        Time.timeScale = SlowMotionFactor;
+        Time.fixedDeltaTime = 0.01F * Time.timeScale;
+        CamControlData.SmoothFollowData.rotationDamping = 0.5f;
+        CamControlData.SmoothFollowData.heightDamping = 0.5f;
+        CamControlData.CameraTargetData.offsetOrientation = new Vector3(0.0f, Mathf.LerpAngle(-120, 120, Random.value), 0.0f);
+        CamControlData.SmoothFollowData.height = Mathf.Lerp(0f, 15.0f, Random.value);
+        CamControlData.SmoothFollowData.distance = Mathf.Lerp(8.0f, 20.0f, Random.value);
     }
 
     public void EndManoeuvreFX()
@@ -131,8 +118,6 @@ public class SailAnimScript : MonoBehaviour
             Time.fixedDeltaTime = 0.01F * Time.timeScale;
             CamControlData.SmoothFollowData.rotationDamping = CamControlData.initCamRotationDamping;
             CamControlData.SmoothFollowData.heightDamping = CamControlData.initCamHeightDamping;
-            //Camera.main.GetComponent<CameraControlScript>().SmoothFollowData.height = initCamHeight;
-            //Camera.main.GetComponent<CameraControlScript>().SmoothFollowData.distance = initCamDistance;
             if (CamControlData.ViewpointsList[CamControlData.CameraId].rotationFollowTrack == false)
             {
                 //Camera is not aligned with the track
@@ -146,10 +131,8 @@ public class SailAnimScript : MonoBehaviour
             
             CamControlData.SmoothFollowData.height = CamControlData.ViewpointsList[CamControlData.CameraId].height;
             CamControlData.SmoothFollowData.distance = CamControlData.ViewpointsList[CamControlData.CameraId].distance;
-
-            
-            
         }
+
         ManoeuvreFXGoingOn = false;
     }
 
@@ -165,20 +148,14 @@ public class SailAnimScript : MonoBehaviour
         //Debug.Log(TrueWind);
         previousBaseStateInManoeuvre = currentBaseStateInManoeuvre;
         currentBaseStateInManoeuvre = animSail.GetCurrentAnimatorStateInfo(2);
-        //Debug.Log(currentBaseStateInManoeuvre.fullPathHash);
 
         SailAngleAnim = SailAngle / 180;
-
-        //float LightWind_Weight = 1.0f - (gameObject.GetComponent<Sail_System_Control>().Board_Speed / WindLayerWeight);
 
         // to do: apparent wind force impact on animation layer too low.
 
         float LightWind_Weight = 1.0f - Mathf.InverseLerp(minRange, maxRange, gameObject.GetComponent<Sail_System_Control>().Board_Speed);
-
-        //float LightWind_Weight = 1.0f - (gameObject.GetComponent<Sail_System_Control>().Board_Speed / WindLayerWeight);
-
-
-        if (LightWind_Weight < 0.0f)
+	 	
+		if (LightWind_Weight < 0.0f)
         {
             LightWind_Weight = 0.0f;
         }
@@ -292,26 +269,46 @@ public class SailAnimScript : MonoBehaviour
         if (Manoeuvre_Weight != 0)
         {
             isManoeuvreing = true;
+			// This is applied when no special manoeuvre is used. If a special manoeuvre is used, this gets overridden later on
+			gameObject.GetComponent<Sail_System_Control>().manoeuvreModifier = 0.2f;
         }
         else
         {
+			gameObject.GetComponent<Sail_System_Control>().manoeuvreModifier = 1.0f;
             isManoeuvreing = false;
         }
         if (previsManoeuvreing != isManoeuvreing)
-        {
-
+		{
             if (this.gameObject.transform.parent.gameObject.GetComponent<PlayerCollision>().isPlayer == true)
             {
                 if (isManoeuvreing == true)
                 {
-                    if (Manoeuvre_level > 0)
-                    {
-                        StartManoeuvreFX(0.5f);
-                    }
+					if (Manoeuvre_level > 0) 
+					{
+						//StartManoeuvreFX(0.5f);
+                    
+
+						//Get the proper manoeuvre type defined in the userprefs in raceManager , Tack of Jibe?
+						List<ManoeuvreType> currentManoeuvreList;
+						if (this.transform.parent.gameObject.GetComponent<tricksHandlingScript> ().manoeuvreStatus == "tack") 
+						{
+							currentManoeuvreList = this.transform.parent.gameObject.GetComponent<ExternalObjectsReference> ().UserPrefs.localTackManoeuvres;
+						}
+						else 
+						{
+							currentManoeuvreList = this.transform.parent.gameObject.GetComponent<ExternalObjectsReference> ().UserPrefs.localJibeManoeuvres;
+						}
+
+						gameObject.GetComponent<Sail_System_Control> ().manoeuvreModifier = currentManoeuvreList [Manoeuvre_level].slowDownFactor;
+					}
+					Debug.Log ("current Manoeuvre Slow Down factor : " + gameObject.GetComponent<Sail_System_Control> ().manoeuvreModifier);
                  }
+					
                 else
                 {
                     EndManoeuvreFX();
+					gameObject.GetComponent<Sail_System_Control> ().manoeuvreModifier = 1.0f;
+
                 }
             }
         }

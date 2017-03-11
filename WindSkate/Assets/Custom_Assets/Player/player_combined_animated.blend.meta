@@ -169,8 +169,13 @@ ModelImporter:
     7400056: JumpBasePort
     7400058: FastTackStarboard
     7400060: FastTackPort
-    7400062: CarveJibStarboard
+    7400062: CarveJibeStarboard
     7400064: CarvejibePort
+    7400066: Ducktack_Starboard
+    7400068: DuckTackStarboard
+    7400070: DuckTackPort
+    7400072: CarveDuckJibeStarboard
+    7400074: CarveDuckJibePort
     9500000: //RootNode
     13700000: Charcter
     13700002: Eyes
@@ -211,6 +216,12 @@ ModelImporter:
       that will be discarded.\n\t'Lower_Leg_L' has scale animation that will be discarded.\n\t'Foot_L'
       has scale animation that will be discarded.\n\t'Upper_Leg_R' has scale animation
       that will be discarded.\n\t'Lower_Leg_R' has scale animation that will be discarded.\n\t'Foot_R'
+      has scale animation that will be discarded.\n\nClip 'Jibe_Level_3' has import
+      animation warnings that might lower retargeting quality:\nNote: Activate translation
+      DOF on avatar to improve retargeting quality.\n\t'Upper_Leg_L' has scale animation
+      that will be discarded.\n\t'Lower_Leg_L' has scale animation that will be discarded.\n\t'Foot_L'
+      has scale animation that will be discarded.\n\t'Upper_Leg_R' has scale animation
+      that will be discarded.\n\t'Lower_Leg_R' has scale animation that will be discarded.\n\t'Foot_R'
       has scale animation that will be discarded.\n\nClip 'Player_low_Wind' has import
       animation warnings that might lower retargeting quality:\nNote: Activate translation
       DOF on avatar to improve retargeting quality.\n\t'Thumb01_L' has translation
@@ -219,7 +230,13 @@ ModelImporter:
       has scale animation that will be discarded.\n\t'Foot_L' has scale animation
       that will be discarded.\n\t'Upper_Leg_R' has scale animation that will be discarded.\n\t'Lower_Leg_R'
       has scale animation that will be discarded.\n\t'Foot_R' has scale animation
-      that will be discarded.\n"
+      that will be discarded.\n\nClip 'Tack_level_3' has import animation warnings
+      that might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'Upper_Leg_L' has scale animation that will
+      be discarded.\n\t'Lower_Leg_L' has scale animation that will be discarded.\n\t'Foot_L'
+      has scale animation that will be discarded.\n\t'Upper_Leg_R' has scale animation
+      that will be discarded.\n\t'Lower_Leg_R' has scale animation that will be discarded.\n\t'Foot_R'
+      has scale animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     animationCompression: 3
@@ -3282,7 +3299,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: CarveJibStarboard
+      name: CarveJibeStarboard
       takeName: Jibe_Level_2
       firstFrame: 1
       lastFrame: 59
@@ -3424,6 +3441,558 @@ ModelImporter:
       takeName: Jibe_Level_2
       firstFrame: 100
       lastFrame: 156
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_ik_L
+        weight: 0
+      - path: Armature/Arm_ik_R
+        weight: 0
+      - path: Armature/Leg_Control_L
+        weight: 0
+      - path: Armature/Leg_Control_L/Foot_Angle_control_L
+        weight: 0
+      - path: Armature/Leg_Control_R
+        weight: 0
+      - path: Armature/Leg_Control_R/Foot_Angle_control_R
+        weight: 0
+      - path: Armature/Pole_Target_Arm_L
+        weight: 0
+      - path: Armature/Pole_Target_Arm_R
+        weight: 0
+      - path: Armature/Pole_Target_Leg_L
+        weight: 0
+      - path: Armature/Pole_Target_Leg_R
+        weight: 0
+      - path: Armature/Torso_00
+        weight: 1
+      - path: Armature/Torso_00/Torso_01
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L/Finger02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R/Finger02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck/Head
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Armature_Sail
+        weight: 1
+      - path: Armature_Sail/Bone
+        weight: 1
+      - path: Character
+        weight: 0
+      - path: Eyes
+        weight: 0
+      - path: Hair
+        weight: 0
+      - path: Hair_1
+        weight: 0
+      - path: Helnmet
+        weight: 0
+      - path: Pants
+        weight: 0
+      - path: Plane_001
+        weight: 0
+      - path: Sail_type1
+        weight: 0
+      - path: Sail_type2
+        weight: 0
+      - path: Sail_type3
+        weight: 0
+      - path: Shoes_Low
+        weight: 0
+      - path: Short_Pants
+        weight: 0
+      - path: Sweater
+        weight: 0
+      - path: T-shirt
+        weight: 0
+      - path: Wishbone
+        weight: 0
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: DuckTackStarboard
+      takeName: Tack_level_3
+      firstFrame: 1
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_ik_L
+        weight: 0
+      - path: Armature/Arm_ik_R
+        weight: 0
+      - path: Armature/Leg_Control_L
+        weight: 0
+      - path: Armature/Leg_Control_L/Foot_Angle_control_L
+        weight: 0
+      - path: Armature/Leg_Control_R
+        weight: 0
+      - path: Armature/Leg_Control_R/Foot_Angle_control_R
+        weight: 0
+      - path: Armature/Pole_Target_Arm_L
+        weight: 0
+      - path: Armature/Pole_Target_Arm_R
+        weight: 0
+      - path: Armature/Pole_Target_Leg_L
+        weight: 0
+      - path: Armature/Pole_Target_Leg_R
+        weight: 0
+      - path: Armature/Torso_00
+        weight: 1
+      - path: Armature/Torso_00/Torso_01
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L/Finger02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R/Finger02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck/Head
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Armature_Sail
+        weight: 1
+      - path: Armature_Sail/Bone
+        weight: 1
+      - path: Character
+        weight: 0
+      - path: Eyes
+        weight: 0
+      - path: Hair
+        weight: 0
+      - path: Hair_1
+        weight: 0
+      - path: Helnmet
+        weight: 0
+      - path: Pants
+        weight: 0
+      - path: Plane_001
+        weight: 0
+      - path: Sail_type1
+        weight: 0
+      - path: Sail_type2
+        weight: 0
+      - path: Sail_type3
+        weight: 0
+      - path: Shoes_Low
+        weight: 0
+      - path: Short_Pants
+        weight: 0
+      - path: Sweater
+        weight: 0
+      - path: T-shirt
+        weight: 0
+      - path: Wishbone
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: DuckTackPort
+      takeName: Tack_level_3
+      firstFrame: 101
+      lastFrame: 158
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_ik_L
+        weight: 0
+      - path: Armature/Arm_ik_R
+        weight: 0
+      - path: Armature/Leg_Control_L
+        weight: 0
+      - path: Armature/Leg_Control_L/Foot_Angle_control_L
+        weight: 0
+      - path: Armature/Leg_Control_R
+        weight: 0
+      - path: Armature/Leg_Control_R/Foot_Angle_control_R
+        weight: 0
+      - path: Armature/Pole_Target_Arm_L
+        weight: 0
+      - path: Armature/Pole_Target_Arm_R
+        weight: 0
+      - path: Armature/Pole_Target_Leg_L
+        weight: 0
+      - path: Armature/Pole_Target_Leg_R
+        weight: 0
+      - path: Armature/Torso_00
+        weight: 1
+      - path: Armature/Torso_00/Torso_01
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L/Finger02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R/Finger02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck/Head
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Armature_Sail
+        weight: 1
+      - path: Armature_Sail/Bone
+        weight: 1
+      - path: Character
+        weight: 0
+      - path: Eyes
+        weight: 0
+      - path: Hair
+        weight: 0
+      - path: Hair_1
+        weight: 0
+      - path: Helnmet
+        weight: 0
+      - path: Pants
+        weight: 0
+      - path: Plane_001
+        weight: 0
+      - path: Sail_type1
+        weight: 0
+      - path: Sail_type2
+        weight: 0
+      - path: Sail_type3
+        weight: 0
+      - path: Shoes_Low
+        weight: 0
+      - path: Short_Pants
+        weight: 0
+      - path: Sweater
+        weight: 0
+      - path: T-shirt
+        weight: 0
+      - path: Wishbone
+        weight: 0
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CarveDuckJibeStarboard
+      takeName: Jibe_Level_3
+      firstFrame: 1
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_ik_L
+        weight: 0
+      - path: Armature/Arm_ik_R
+        weight: 0
+      - path: Armature/Leg_Control_L
+        weight: 0
+      - path: Armature/Leg_Control_L/Foot_Angle_control_L
+        weight: 0
+      - path: Armature/Leg_Control_R
+        weight: 0
+      - path: Armature/Leg_Control_R/Foot_Angle_control_R
+        weight: 0
+      - path: Armature/Pole_Target_Arm_L
+        weight: 0
+      - path: Armature/Pole_Target_Arm_R
+        weight: 0
+      - path: Armature/Pole_Target_Leg_L
+        weight: 0
+      - path: Armature/Pole_Target_Leg_R
+        weight: 0
+      - path: Armature/Torso_00
+        weight: 1
+      - path: Armature/Torso_00/Torso_01
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L/Finger02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R/Finger02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck/Head
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Armature_Sail
+        weight: 1
+      - path: Armature_Sail/Bone
+        weight: 1
+      - path: Character
+        weight: 0
+      - path: Eyes
+        weight: 0
+      - path: Hair
+        weight: 0
+      - path: Hair_1
+        weight: 0
+      - path: Helnmet
+        weight: 0
+      - path: Pants
+        weight: 0
+      - path: Plane_001
+        weight: 0
+      - path: Sail_type1
+        weight: 0
+      - path: Sail_type2
+        weight: 0
+      - path: Sail_type3
+        weight: 0
+      - path: Shoes_Low
+        weight: 0
+      - path: Short_Pants
+        weight: 0
+      - path: Sweater
+        weight: 0
+      - path: T-shirt
+        weight: 0
+      - path: Wishbone
+        weight: 0
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CarveDuckJibePort
+      takeName: Jibe_Level_3
+      firstFrame: 101
+      lastFrame: 158
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
