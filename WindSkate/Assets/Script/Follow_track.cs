@@ -107,7 +107,6 @@ public class Follow_track : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-		
 		userPrefData = ExternalObjectHandler.GetComponent<ExternalObjectsReference>().UserPrefs;
         SteerBoundary = new List<float>();
         SteerBoundary.Add(5.0f);
@@ -118,6 +117,9 @@ public class Follow_track : MonoBehaviour
         //windSource = GameObject.Find("Wind");
         //windSource = this.gameObject;
         windData = windSource.GetComponent<windEffector>();
+		FinishedImage = ExternalObjectHandler.GetComponent<ExternalObjectsReference>().FinishImage;
+		PauseButton = ExternalObjectHandler.GetComponent<ExternalObjectsReference>().PauseButton;
+
 
         trackDef = GameObject.Find("Track_Marks");
         trackData = trackDef.GetComponent<Setup_track>();
@@ -205,7 +207,7 @@ public class Follow_track : MonoBehaviour
         {
             arrivalObject = GameObject.Find("Arrival");
         }
-		if (userPrefData.IntroScene == false) {
+		if ((userPrefData.IntroScene == false)&&(isPlayer == true)) {
 			handleTrackIndicator (currentMarkId);
 		}
     }
@@ -579,7 +581,7 @@ public class Follow_track : MonoBehaviour
                 setNextmark();
 
                 //if (transform.parent.gameObject.GetComponent<PlayerCollision>().isPlayer == true)
-				if (userPrefData.IntroScene == false) {
+				if ((userPrefData.IntroScene == false)&&(isPlayer == true)) {
                     handleTrackIndicator(currentMarkId);
                 }
                 nextTarget = setNextTarget(currentMark, MarkIndicatorId, markData.firstPassValidation, markData.finalPassValidation);

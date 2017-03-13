@@ -2116,7 +2116,7 @@ AnimatorStateTransition:
     m_EventTreshold: 160
   - m_ConditionMode: 6
     m_ConditionEvent: Manoeuver_Level
-    m_EventTreshold: 3
+    m_EventTreshold: 2
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102106048518007412}
   m_Solo: 0
@@ -2191,7 +2191,7 @@ AnimatorStateTransition:
     m_EventTreshold: 160
   - m_ConditionMode: 6
     m_ConditionEvent: Manoeuver_Level
-    m_EventTreshold: 2
+    m_EventTreshold: 3
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102885141240766612}
   m_Solo: 0

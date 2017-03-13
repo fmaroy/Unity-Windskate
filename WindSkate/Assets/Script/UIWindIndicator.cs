@@ -54,6 +54,9 @@ public class UIWindIndicator : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+		ReferenceGameObject = GetComponentInParent<InterfaceControl> ().Player.GetComponentInChildren<windEffector>().gameObject;
+
+
         ReferenceGameObjectData = ReferenceGameObject.GetComponent<windEffector>();
         WindGustsGameObjectData = WindGustsGameObject.GetComponent<WindGustsBehavior>();
         UIUpcomingWindAngle = WindGustsGameObjectData.currentWindOrientation;

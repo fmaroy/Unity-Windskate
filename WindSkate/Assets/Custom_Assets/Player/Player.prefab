@@ -7486,6 +7486,8 @@ MonoBehaviour:
   CloseOpponent:
   - {r: 1, g: 0, b: 0, a: 1}
   - {r: 1, g: 0.6413793, b: 0, a: 1}
+  apparentWindArrow: {fileID: 1000010845482588}
+  trueWindArrow: {fileID: 1000010402198596}
 --- !u!114 &114285337284456214
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7539,6 +7541,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   raceManagerObject: {fileID: 0}
   UserPrefs: {fileID: 0}
+  SceneManagerObject: {fileID: 0}
+  SceneData: {fileID: 0}
+  WindGust: {fileID: 0}
+  UIControls: {fileID: 0}
+  UIControlData: {fileID: 0}
+  Windindicator: {fileID: 0}
+  FinishImage: {fileID: 0}
+  PauseButton: {fileID: 0}
 --- !u!114 &114802749897482506
 MonoBehaviour:
   m_ObjectHideFlags: 1

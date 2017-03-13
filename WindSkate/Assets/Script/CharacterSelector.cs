@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class CharacterSelector : MonoBehaviour {
-    private GameObject SceneManagerObject;
-    private PersistentParameters PersistentParameterData;
-    private GameObject RaceManagerObject;
-    private UserPreferenceScript RaceManagerData;
+    public GameObject SceneManagerObject;
+    public PersistentParameters PersistentParameterData;
+    public GameObject RaceManagerObject;
+    public UserPreferenceScript RaceManagerData;
     public int tabId;
     public SideMenuHandler sideMenu;
     public GameObject PlayerUICamera;
@@ -25,7 +25,7 @@ public class CharacterSelector : MonoBehaviour {
     public List<float> UICameraSize = new List<float>();
 
     public GameObject faceShapeSliderContainer;
-    public List<GameObject> faceShapeSliderList;
+	public List<GameObject> faceShapeSliderList= new List<GameObject>();
     public List<GameObject> characterMeshList = new List<GameObject>();
 
     public GameObject SkinColorSlider;
@@ -34,61 +34,77 @@ public class CharacterSelector : MonoBehaviour {
     private int skinColorId;
     private int hairColorId;
 
+
+	void initVariables()
+	{
+		SceneManagerObject = GameObject.Find("Scene_Manager");
+		PersistentParameterData = SceneManagerObject.GetComponent<PersistentParameters>();
+		RaceManagerObject = GameObject.Find("RaceManager");
+		RaceManagerData = RaceManagerObject.GetComponent<UserPreferenceScript>();
+		UICameraPos = new List<Vector3>();
+		UICameraSize = new List<float>();
+		UICameraPos.Add(new Vector3(0.38f,57.55f,-104.0f));
+		UICameraPos.Add(new Vector3(0.38f, 60.0f, -104.0f));
+		UICameraSize.Add(5.0f);
+		UICameraSize.Add(2.5f);
+
+		currentObjId = PersistentParameterData.PlayerConfig.gender;
+		updateObjType(currentObjId);
+		characterMeshList = new List<GameObject>();
+		foreach (StoreObject obj in ObjInStoreList)
+		{
+			foreach (Transform child in obj.Object.transform)
+			{
+				Debug.Log("ObjName : " + child.gameObject.name);
+				if (child.gameObject.name == "Character")
+				{
+					Debug.Log("found");
+					characterMeshList.Add(child.gameObject);
+				}
+			}
+		}
+		if (tabId == 0)
+		{
+			PlayerNameText.GetComponent<InputField>().text = PlayerPrefs.GetString("PlayerName");
+
+		}
+		if (tabId == 1)
+		{
+			if (faceShapeSliderList.Capacity == 0) {
+				int i = 0;
+				faceShapeSliderList = new List<GameObject> ();
+				foreach (Transform child in faceShapeSliderContainer.transform) {
+					if (child.gameObject.name == "Slider") {
+						Debug.Log ("Slider found");
+						faceShapeSliderList.Add (child.gameObject);
+						Debug.Log (i);
+						Debug.Log (PersistentParameterData.PlayerConfig.featuresList [i].name);
+						child.gameObject.GetComponent<Slider> ().value = PersistentParameterData.PlayerConfig.featuresList [i].value;
+						Debug.Log ("test");
+						i++;
+					}
+				}
+			}
+			SkinColorSlider.GetComponent<Slider>().maxValue = SceneManagerObject.GetComponent<DataHolder>().SkinColorsList.Count - 1;
+			SkinColorSlider.GetComponent<Slider>().value = PersistentParameterData.PlayerConfig.skinColor;
+			HairColorSlider.GetComponent<Slider>().maxValue = SceneManagerObject.GetComponent<DataHolder>().HairColorsList.Count - 1;
+			HairColorSlider.GetComponent<Slider>().value = PersistentParameterData.PlayerConfig.hairColor;
+		}
+
+	}
     // Use this for initialization
     void Start () {
-        UICameraPos.Add(new Vector3(0.38f,57.55f,-104.0f));
-        UICameraPos.Add(new Vector3(0.38f, 60.0f, -104.0f));
-        UICameraSize.Add(5.0f);
-        UICameraSize.Add(2.5f);
         //sideMenu = transform.parent.gameObject.transform.parent.gameObject.GetComponentInChildren<SideMenuHandler>();
-        SceneManagerObject = GameObject.Find("Scene_Manager");
+        /*SceneManagerObject = GameObject.Find("Scene_Manager");
         PersistentParameterData = SceneManagerObject.GetComponent<PersistentParameters>();
         RaceManagerObject = GameObject.Find("RaceManager");
-        RaceManagerData = RaceManagerObject.GetComponent<UserPreferenceScript>();
-        currentObjId = PersistentParameterData.PlayerConfig.gender;
-        updateObjType(currentObjId);
-        characterMeshList = new List<GameObject>();
-        foreach (StoreObject obj in ObjInStoreList)
-        {
-            foreach (Transform child in obj.Object.transform)
-            {
-                Debug.Log("ObjName : " + child.gameObject.name);
-                if (child.gameObject.name == "Character")
-                {
-                    Debug.Log("found");
-                    characterMeshList.Add(child.gameObject);
-                }
-            }
-        }
-        if (tabId == 0)
-        {
-            PlayerNameText.GetComponent<InputField>().text = PlayerPrefs.GetString("PlayerName");
-            
-        }
-        if (tabId == 1)
-        {
-            int i = 0;
-            foreach (Transform child in faceShapeSliderContainer.transform)
-            {
-                if (child.gameObject.name == "Slider")
-                {
-                    Debug.Log("Slider found");
-                    faceShapeSliderList.Add(child.gameObject);
-                    Debug.Log(i);
-                    Debug.Log(PersistentParameterData.PlayerConfig.featuresList[i].name);
-                    child.gameObject.GetComponent<Slider>().value = PersistentParameterData.PlayerConfig.featuresList[i].value;
-                    Debug.Log("test");
-                    i++;
-                }
-            }
-            SkinColorSlider.GetComponent<Slider>().maxValue = SceneManagerObject.GetComponent<DataHolder>().SkinColorsList.Count - 1;
-            SkinColorSlider.GetComponent<Slider>().value = PersistentParameterData.PlayerConfig.skinColor;
-            HairColorSlider.GetComponent<Slider>().maxValue = SceneManagerObject.GetComponent<DataHolder>().HairColorsList.Count - 1;
-            HairColorSlider.GetComponent<Slider>().value = PersistentParameterData.PlayerConfig.hairColor;
-        }
-        
+        RaceManagerData = RaceManagerObject.GetComponent<UserPreferenceScript>();*/
+
+		initVariables ();
+
         Debug.Log("CurrentTab : " + tabId);
         updateTab();
+
     }
     void OnEnable()
     {
@@ -169,6 +185,9 @@ public class CharacterSelector : MonoBehaviour {
     public void updateTab()
     {
         Debug.Log("Update Tab");
+		initVariables ();
+
+
         currentObjId = PersistentParameterData.PlayerConfig.gender;
         updateObjType(currentObjId);
         Debug.Log("CurrentTab : " + tabId);

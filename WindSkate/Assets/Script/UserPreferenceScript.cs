@@ -6,17 +6,17 @@ using UnityStandardAssets.ImageEffects;
 
 
 public class UserPreferenceScript : MonoBehaviour {
-    private GameObject SceneManagerObject;
+    public GameObject SceneManagerObject;
     public PersistentParameters PersistentParameterData;
     public GameObject ApparentWindArrow;
     public GameObject trueWindArrow;
     public GameObject WindCircle;
     public GameObject UpcomingWindArrow;
     public GameObject UpcomingWindLines;
-    private GameObject Player;
-    private GameObject Opponents;
-    private GameObject PlayerBoard;
-    private List<GameObject> opponentsBoards;
+    public GameObject Player;
+    public GameObject Opponents;
+    public GameObject PlayerBoard;
+    public List<GameObject> opponentsBoards;
     public bool IntroScene = false;
     public GameObject Camera;
     public bool displayWindFx = false;
@@ -36,7 +36,8 @@ public class UserPreferenceScript : MonoBehaviour {
 
         if (SceneManagerObject != null)
         {
-            
+			localTackManoeuvres = SceneManagerObject.GetComponent<PersistentParameters> ().tackList;
+			localJibeManoeuvres = SceneManagerObject.GetComponent<PersistentParameters> ().jibeList;
             numbOpponenents = SceneManagerObject.GetComponent<PersistentParameters>().currentSingleRaceDefinition.numberOfOpponents;
         }
                 
@@ -49,15 +50,19 @@ public class UserPreferenceScript : MonoBehaviour {
             }
 
             for (int i = 0; i <= numbOpponenents; i++)
-            {
-
+			{
                 if (i < numbOpponenents)
                 {
-                    SetOpponent(Playerprefab, playerStartPos[i].transform, Opponents);
+                    instantiatePlayer(Playerprefab, playerStartPos[i].transform, Opponents, false);
                 }
                 else
                 {
-                    SetInitialPlayerPosition(playerStartPos[i].transform);
+					Player = instantiatePlayer(Playerprefab, playerStartPos[i].transform, this.transform.parent.gameObject, true);
+
+					Debug.Log (Player.name);
+					this.GetComponent<RaceManagerScript> ().PlayerObject = Player;
+					initInstantiatedPlayer (this.gameObject.GetComponent<RaceManagerScript> ().PlayerObject);
+                    //SetInitialPlayerPosition(playerStartPos[i].transform);
                 }
             }
         }
@@ -73,12 +78,16 @@ public class UserPreferenceScript : MonoBehaviour {
             updateOpponentsProperties(Opponents);
             updateWindCondition();
         }
+
         this.GetComponent<RaceManagerScript>().getOpponentList(Opponents);
+
         // To fix!!!
         //updateDisplayWindFx(Player);
         //updateDisplayWindFx(Opponents);
         //updateDisplayWindFx(GameObject.Find("Track_Details"));
     }
+
+
 
     public void updateWindCondition()
     {
@@ -151,22 +160,78 @@ public class UserPreferenceScript : MonoBehaviour {
         Player.transform.eulerAngles = position.eulerAngles;
     }
 
-    public void SetOpponent(GameObject playerprefab, Transform position, GameObject parent)
+	/// <summary>
+	/// instantiate the player and opponenents.
+	/// </summary>
+	/// <returns>The player.</returns>
+	/// <param name="playerprefab">Playerprefab.</param>
+	/// <param name="position">Position.</param>
+	/// <param name="parent">Parent.</param>
+	/// <param name="isplayer">If set to <c>true</c> isplayer.</param>
+	public GameObject instantiatePlayer(GameObject playerprefab, Transform position, GameObject parent, bool isplayer)
     {
         GameObject temp = (GameObject)Instantiate(playerprefab,position.position,position.rotation);
 		temp.GetComponent<ExternalObjectsReference> ().initPlayer();
         temp.transform.parent = parent.transform;
         //temp.transform.position = position.position;
         //temp.transform.eulerAngles = position.eulerAngles;
-        temp.GetComponent<PlayerCollision>().isPlayer = false;
-        foreach (Transform child in temp.transform)
-        {
-            if (child.gameObject.name.Contains("Canvas_WindCircle") == true)
-            {
-                child.gameObject.SetActive(false);
-            }
-        }
+		temp.GetComponent<PlayerCollision>().isPlayer = isplayer;
+
+		if (isplayer == false) {
+			foreach (Transform child in temp.transform) {
+				if (child.gameObject.name.Contains ("Canvas_WindCircle") == true) {
+					child.gameObject.SetActive (false);
+				}
+			}
+		}
+		return temp;
     }
+
+	/// <summary>
+	/// Setup all the variables of all the object of the scene that need some information from the player
+	/// </summary>
+	/// <param name="player">Player.</param>
+	public void initInstantiatedPlayer(GameObject player)
+	{
+		if (IntroScene == false) {
+			if (GameObject.Find ("OnScreenButtons") != null) {
+				GameObject.Find ("OnScreenButtons").GetComponent<InterfaceControl> ().initControls (player);
+			}
+		}
+		Camera.GetComponent<CameraControlScript> ().playerObject = player;
+
+		GameObject temp = null;
+		GameObject temp2 = null;
+		foreach (Transform child in Player.GetComponentInChildren<windEffector>().transform) {
+			if (child.gameObject.name == "Armature") {
+				foreach (Transform subchild in child) {
+					if (subchild.gameObject.name == "Torso_00") {
+						temp = subchild.gameObject;
+					}
+				}
+			}
+		}
+
+		GameObject obj = null;
+		foreach (Transform child in player.transform) {
+			if (child.gameObject.name == "Canvas_WindCircle") {
+				obj = child.gameObject;
+			}
+		}
+
+		WindCircle = obj;
+		trueWindArrow = obj.GetComponent<CircleIndicators>().trueWindArrow;
+		ApparentWindArrow = obj.GetComponent<CircleIndicators>().apparentWindArrow;
+
+		temp2 = player.GetComponentInChildren<Follow_track> ().gameObject;
+
+		Camera.GetComponent<CameraControlScript> ().CameraTarget.GetComponent<CameraTargetScript> ().referenceTransformObjectPosition = temp;
+		Debug.Log("assign board to camera : " + temp2.name);
+		Camera.GetComponent<CameraControlScript> ().CameraTarget.GetComponent<CameraTargetScript> ().referenceTransformObjectDirection = temp2;
+
+		Camera.GetComponent<CameraControlScript> ().initCamera ();
+
+	}
 
     public void updateOpponentsProperties(GameObject OpponentsObj)
     {
@@ -393,6 +458,7 @@ public class UserPreferenceScript : MonoBehaviour {
     {
         if (SceneManagerObject != null)
         {
+			PersistentParameterData = SceneManagerObject.GetComponent<PersistentParameters>();
             //Debug.Log("Update Settings");
             //get Board Object
             int WheelsPhysicsDetailsLevel = PersistentParameterData.wheelPhysicsLevel;

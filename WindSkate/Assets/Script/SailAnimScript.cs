@@ -282,13 +282,11 @@ public class SailAnimScript : MonoBehaviour
 		{
             if (this.gameObject.transform.parent.gameObject.GetComponent<PlayerCollision>().isPlayer == true)
             {
-                if (isManoeuvreing == true)
-                {
-					if (Manoeuvre_level > 0) 
-					{
+				if (isManoeuvreing == true) {
+					if (Manoeuvre_level > 0) {
 						// TODO: based on the level of the manoeuvre chance that a special animation started get higher:
 
-						//StartManoeuvreFX(0.5f);
+						StartManoeuvreFX(0.5f);
                     
 
 						//Get the proper manoeuvre type defined in the userprefs in raceManager , Tack of Jibe?
@@ -305,9 +303,9 @@ public class SailAnimScript : MonoBehaviour
 
 						gameObject.GetComponent<Sail_System_Control> ().manoeuvreModifier = currentManoeuvreList [Manoeuvre_level].slowDownFactor;
 					}*/
-					//Debug.Log ("current Manoeuvre Slow Down factor : " + gameObject.GetComponent<Sail_System_Control> ().manoeuvreModifier);
-                 }
-					
+						//Debug.Log ("current Manoeuvre Slow Down factor : " + gameObject.GetComponent<Sail_System_Control> ().manoeuvreModifier);
+					}
+				}
                 else
                 {
                     EndManoeuvreFX();
@@ -318,4 +316,4 @@ public class SailAnimScript : MonoBehaviour
         }
     }
 }
-}
+

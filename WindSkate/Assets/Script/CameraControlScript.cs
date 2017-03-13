@@ -20,9 +20,8 @@ public class CameraControlScript : MonoBehaviour {
     public List<GameObject> refRotationControlObjectList;
     private float currentTime;
 
-
     public GameObject backgroundImage;
-    private Animator backgroundImageAnim;
+    public Animator backgroundImageAnim;
 
     private float backgoundImageInitPos;
     private float AnimStatus;
@@ -30,7 +29,7 @@ public class CameraControlScript : MonoBehaviour {
     public float camRotShiftValue;
     public float initBackgroundShift;
     //private Vector3 camShift;
-    private GameObject playerObject;
+    public GameObject playerObject;
     private Follow_track playerFollowTrack;
     public float currentLegOrient;
 
@@ -39,38 +38,46 @@ public class CameraControlScript : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-        playerObject = GameObject.Find("Player");
-        playerFollowTrack = playerObject.GetComponentInChildren<Follow_track>();
-        SmoothFollowData = this.gameObject.GetComponent<SmoothFollow_Fab>();
-        CameraTarget = SmoothFollowData.target.gameObject;
-        CameraTargetData = CameraTarget.GetComponent<CameraTargetScript>();
-
-        ViewpointsList = new List<CameraViewpoints>();
-        if (isIntroScene == false)
-        {
-            ViewpointsList.Add(new CameraViewpoints("PlayerTrack", true, false, 0, 1, 20));
-            ViewpointsList.Add(new CameraViewpoints("TopTracking", true, false, 0, 8, 30));
-            ViewpointsList.Add(new CameraViewpoints("TopView", false, true, 0, 8, 30));
-        }
-        else
-        {
-            ViewpointsList.Add(new CameraViewpoints("PlayerSideView", false, false, -90, 1, 20));
-            ViewpointsList.Add(new CameraViewpoints("TopSideView", false, false, -90, 8, 30));
-            ViewpointsList.Add(new CameraViewpoints("FrontRearView", true, false, 180, 0, 20));
-            ViewpointsList.Add(new CameraViewpoints("FrontFaceView", true, false, -180, 0, 10));
-        }
-        refRotationControlObjectList = new List<GameObject>();
-        refRotationControlObjectList.Add(CameraTargetData.referenceTransformObjectDirection);
-        refRotationControlObjectList.Add(GameObject.Find("Player"));
-        setViewpoint(CameraId);
-        currentTime = 0;
-        if (backgroundImage != null)
-        {
-            initBackgroundShift = backgroundImage.GetComponent<RectTransform>().transform.position.x;
-            backgroundImageAnim = backgroundImage.GetComponent<Animator>();
-        }
+		initCamera ();
     }
-	
+
+	public void initCamera(){
+		//playerObject = GameObject.Find("Player");
+		playerObject = GameObject.Find("RaceManager").GetComponent<UserPreferenceScript>().Player;
+		playerFollowTrack = playerObject.GetComponentInChildren<Follow_track>();
+		SmoothFollowData = this.gameObject.GetComponent<SmoothFollow_Fab>();
+		CameraTarget = SmoothFollowData.target.gameObject;
+		CameraTargetData = CameraTarget.GetComponent<CameraTargetScript>();
+
+		ViewpointsList = new List<CameraViewpoints>();
+
+		if (isIntroScene == false)
+		{
+			ViewpointsList.Add(new CameraViewpoints("PlayerTrack", true, false, 0, 1, 20));
+			ViewpointsList.Add(new CameraViewpoints("TopTracking", true, false, 0, 8, 30));
+			ViewpointsList.Add(new CameraViewpoints("TopView", false, true, 0, 8, 30));
+		}
+		else
+		{
+			ViewpointsList.Add(new CameraViewpoints("PlayerSideView", false, false, -90, 1, 20));
+			ViewpointsList.Add(new CameraViewpoints("TopSideView", false, false, -90, 8, 30));
+			ViewpointsList.Add(new CameraViewpoints("FrontRearView", true, false, 180, 0, 20));
+			ViewpointsList.Add(new CameraViewpoints("FrontFaceView", true, false, -180, 0, 10));
+		}
+		refRotationControlObjectList = new List<GameObject>();
+		refRotationControlObjectList.Add(CameraTargetData.referenceTransformObjectDirection);
+		//refRotationControlObjectList.Add(GameObject.Find("Player"));
+		refRotationControlObjectList.Add(playerObject);
+
+		setViewpoint(CameraId);
+		currentTime = 0;
+		if (backgroundImage != null)
+		{
+			initBackgroundShift = backgroundImage.GetComponent<RectTransform>().transform.position.x;
+			backgroundImageAnim = backgroundImage.GetComponent<Animator>();
+		}
+	}
+
     public void nextViewpoint()
     {
         CameraId = CameraId + 1;

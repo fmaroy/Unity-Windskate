@@ -64,21 +64,30 @@ public class tricksHandlingScript : MonoBehaviour {
         starHighlightHashTrigger = Animator.StringToHash("StarHighlightTrigger");
         StarsMaxLevel = PrevStarsMaxLevel;
 
-        raceDataUserPref = GameObject.Find("RaceManager").GetComponent<UserPreferenceScript>();
+        //raceDataUserPref = GameObject.Find("RaceManager").GetComponent<UserPreferenceScript>();
+		raceDataUserPref = this.GetComponent<ExternalObjectsReference>().UserPrefs;
         sailControlData = this.GetComponent<PlayerCollision>().SailSystem.GetComponent<Sail_System_Control>();
         followTrackData = this.GetComponent<PlayerCollision>().Board.GetComponent<Follow_track>();
 
-        if (GameObject.Find("Scene_Manager") != null)
+		if (GetComponentInParent<PlayerCollision> ().isPlayer == true) {
+
+			GameObject UIControlObj = GetComponent<ExternalObjectsReference> ().UIControls;
+			ButtonManoeuvreLeft = UIControlObj.GetComponent<InterfaceControl> ().ManoeuvreLeftButton;
+			ButtonManoeuvreRight = UIControlObj.GetComponent<InterfaceControl> ().ManoeuvreRightButton;
+			SlidersContainer = UIControlObj.GetComponent<InterfaceControl> ().SliderContainer;
+		}
+
+		/*if (this.GetComponent<ExternalObjectsReference>().SceneManagerObject != null)
         {
-            localTackList = GameObject.Find("Scene_Manager").GetComponent<PersistentParameters>().tackList;
-            localJibeList = GameObject.Find("Scene_Manager").GetComponent<PersistentParameters>().jibeList;
+			localTackList = this.GetComponent<ExternalObjectsReference>().SceneData.tackList;
+			localJibeList = this.GetComponent<ExternalObjectsReference>().SceneData.jibeList;
         }
         else
         {
             localTackList = raceDataUserPref.localTackManoeuvres;
             localJibeList = raceDataUserPref.localJibeManoeuvres;
-        }
-        
+        }*/
+
 		EnergyMaxLevel = Mathf.Max(localTackList[localTackList.Count -1].costEnergy, localJibeList[localJibeList.Count -1].costEnergy);
 		SpeedMaxLevel = Mathf.Max(localTackList[localTackList.Count -1].costSpeed, localJibeList[localJibeList.Count -1].costSpeed);
 		AngleMaxLevel = Mathf.Max(localTackList[localTackList.Count -1].costAngle, localJibeList[localJibeList.Count -1].costAngle);

@@ -23,7 +23,7 @@ public class RaceManagerScript : MonoBehaviour {
     {
         thisLevelTerrain = GameObject.Find("Track").GetComponentInChildren<Terrain>().gameObject;
         
-        PlayerObject.GetComponentInChildren<windEffector>().terrainWindEffects = thisLevelTerrain;
+        //PlayerObject.GetComponentInChildren<windEffector>().terrainWindEffects = thisLevelTerrain;
         WindData = Wind.GetComponent<WindGustsBehavior>();
         initial_wind_direction = WindData.initWindOrientation;
 
@@ -32,7 +32,7 @@ public class RaceManagerScript : MonoBehaviour {
             setWindOlderbehavior();
         }
 
-        getOpponentList(OpponentContainerObject);
+        //getOpponentList(OpponentContainerObject);
     }
 
     public void getOpponentList(GameObject Container)
@@ -98,7 +98,7 @@ public class RaceManagerScript : MonoBehaviour {
 
     public void setWindBehavior(WindType Windprops)
     {
-        
+		WindData = Wind.GetComponent<WindGustsBehavior>();
         Debug.Log("TypeOdWind : " + Windprops.name);
         if (Random.value < 0.5)
         {

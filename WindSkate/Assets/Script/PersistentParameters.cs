@@ -144,7 +144,7 @@ public class PersistentParameters : MonoBehaviour
         opponentWheelsSettingsList.Add(new WheelsSettings("High", 1, true, false));
         opponentWheelsSettingsList.Add(new WheelsSettings("Very High", 1, true, true));
 
-        HUDSettingsNames.Add("Apparent Wind");
+        //HUDSettingsNames.Add("Apparent Wind");
         HUDSettingsNames.Add("Warning Sector");
         HUDSettingsNames.Add("Wind Circle");
         HUDSettingsNames.Add("Upcoming Wind Arrow");

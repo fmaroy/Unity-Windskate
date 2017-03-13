@@ -48,7 +48,8 @@ public class windEffector : MonoBehaviour {
     {
         WindGusts = GameObject.Find("WindGusts");
         WindGustsBehavior = WindGusts.GetComponent<WindGustsBehavior>();
-        raceManagerObject = GameObject.Find("RaceManager");
+		raceManagerObject = terrainWindEffects = this.GetComponentInParent<ExternalObjectsReference> ().raceManagerObject;
+
 
         terrainWindEffects = raceManagerObject.GetComponent<RaceManagerScript>().thisLevelTerrain;
 

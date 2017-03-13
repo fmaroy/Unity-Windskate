@@ -14,7 +14,8 @@ public class CircleIndicators : MonoBehaviour {
     public GameObject opponentTicksContainer;
     public List<GameObject> opponentTickList = new List<GameObject>();
     public List<Color> CloseOpponent = new List<Color>();
-    
+	public GameObject apparentWindArrow;
+	public GameObject trueWindArrow;
 
     // Use this for initialization
     void Start()

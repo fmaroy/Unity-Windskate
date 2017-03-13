@@ -19050,7 +19050,13 @@ MonoBehaviour:
   LoadingImage: {fileID: 0}
   PauseImage: {fileID: 0}
   PauseButton: {fileID: 0}
+  FinishImage: {fileID: 0}
   Ranking: {fileID: 0}
+  Player: {fileID: 0}
+  SliderContainer: {fileID: 0}
+  WindIndicator: {fileID: 0}
+  ManoeuvreLeftButton: {fileID: 0}
+  ManoeuvreRightButton: {fileID: 0}
 --- !u!114 &764127579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20996,11 +21002,19 @@ MonoBehaviour:
     typeOfWindsID: 0
   currentRaceOpponentsListIds: 
   tackList:
-  - level: 1
+  - level: 0
+    name: Tack
+    type: 1
+    duration: 3
+    slowDownFactor: 0.2
+    costEnergy: 0
+    costSpeed: 0
+    costAngle: 0
+  - level: 2
     name: Fast Tack
     type: 1
     duration: 3
-    slowDownFactor: 1
+    slowDownFactor: 0.5
     costEnergy: 20
     costSpeed: 15
     costAngle: 1
@@ -21008,40 +21022,48 @@ MonoBehaviour:
     name: Heli Tack
     type: 1
     duration: 3
-    slowDownFactor: 0.5
+    slowDownFactor: 1
     costEnergy: 30
     costSpeed: 20
     costAngle: 2
   - level: 3
-    name: Duck Tak
+    name: Duck Tack
     type: 1
     duration: 3
-    slowDownFactor: 0
+    slowDownFactor: 1.5
     costEnergy: 40
     costSpeed: 30
     costAngle: 4
   jibeList:
   - level: 1
-    name: Dunk Jibe
+    name: Jibe
     type: 2
     duration: 3
-    slowDownFactor: 1
-    costEnergy: 20
-    costSpeed: 25
-    costAngle: 1
+    slowDownFactor: 0.2
+    costEnergy: 0
+    costSpeed: 0
+    costAngle: 0
   - level: 2
-    name: Race Jibe
+    name: Duck Jibe
     type: 2
     duration: 3
     slowDownFactor: 0.5
+    costEnergy: 20
+    costSpeed: 25
+    costAngle: 1
+  - level: 3
+    name: Race Jibe
+    type: 2
+    duration: 3
+    slowDownFactor: 1
     costEnergy: 30
     costSpeed: 30
     costAngle: 2
   - level: 3
-    name: Super Jibe
+    name: Race Duck Jibe
     type: 2
-    duration: 0
-    slowDownFactor: 0
+    duration: 3
+    slowDownFactor: 1.5
     costEnergy: 40
     costSpeed: 35
     costAngle: 4
@@ -40653,6 +40675,136 @@ Prefab:
         type: 2}
       propertyPath: playOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011146278416, guid: 9e49ecb09d5c3ab41b750225c6f57142,
+        type: 2}
+      propertyPath: isPlayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 144000013896433450, guid: 9e49ecb09d5c3ab41b750225c6f57142,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -2.6188073
+      objectReference: {fileID: 0}
+    - target: {fileID: 144000013896433450, guid: 9e49ecb09d5c3ab41b750225c6f57142,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.02606291
+      objectReference: {fileID: 0}
+    - target: {fileID: 144000013896433450, guid: 9e49ecb09d5c3ab41b750225c6f57142,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.010562588
+      objectReference: {fileID: 0}
+    - target: {fileID: 153000013645906854, guid: 9e49ecb09d5c3ab41b750225c6f57142,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.00000023841855
+      objectReference: {fileID: 0}
+    - target: {fileID: 144000010758509602, guid: 9e49ecb09d5c3ab41b750225c6f57142,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 1.5135294
+      objectReference: {fileID: 0}
+    - target: {fileID: 144000010758509602, guid: 9e49ecb09d5c3ab41b750225c6f57142,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.14284895
+      objectReference: {fileID: 0}
+    - target: {fileID: 144000010445301956, guid: 9e49ecb09d5c3ab41b750225c6f57142,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -2.5258284
+      objectReference: {fileID: 0}
+    - target: {fileID: 144000010445301956, guid: 9e49ecb09d5c3ab41b750225c6f57142,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.000004606321
+      objectReference: {fileID: 0}
+    - target: {fileID: 144000010445301956, guid: 9e49ecb09d5c3ab41b750225c6f57142,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 144000011218262184, guid: 9e49ecb09d5c3ab41b750225c6f57142,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.0302389
+      objectReference: {fileID: 0}
+    - target: {fileID: 144000011218262184, guid: 9e49ecb09d5c3ab41b750225c6f57142,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.8403792
+      objectReference: {fileID: 0}
+    - target: {fileID: 144000011218262184, guid: 9e49ecb09d5c3ab41b750225c6f57142,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.06712868
+      objectReference: {fileID: 0}
+    - target: {fileID: 144000012227179476, guid: 9e49ecb09d5c3ab41b750225c6f57142,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -1.9767401
+      objectReference: {fileID: 0}
+    - target: {fileID: 144000012227179476, guid: 9e49ecb09d5c3ab41b750225c6f57142,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.0000010728836
+      objectReference: {fileID: 0}
+    - target: {fileID: 144000011654621788, guid: 9e49ecb09d5c3ab41b750225c6f57142,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.030239727
+      objectReference: {fileID: 0}
+    - target: {fileID: 144000011654621788, guid: 9e49ecb09d5c3ab41b750225c6f57142,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.8403723
+      objectReference: {fileID: 0}
+    - target: {fileID: 144000011654621788, guid: 9e49ecb09d5c3ab41b750225c6f57142,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.0671285
+      objectReference: {fileID: 0}
+    - target: {fileID: 144000014078137846, guid: 9e49ecb09d5c3ab41b750225c6f57142,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: -1.51353
+      objectReference: {fileID: 0}
+    - target: {fileID: 144000014078137846, guid: 9e49ecb09d5c3ab41b750225c6f57142,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.14284974
+      objectReference: {fileID: 0}
+    - target: {fileID: 144000011204083850, guid: 9e49ecb09d5c3ab41b750225c6f57142,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -2.5198696
+      objectReference: {fileID: 0}
+    - target: {fileID: 144000011204083850, guid: 9e49ecb09d5c3ab41b750225c6f57142,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.0000025629092
+      objectReference: {fileID: 0}
+    - target: {fileID: 144000011204083850, guid: 9e49ecb09d5c3ab41b750225c6f57142,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.000000715191
+      objectReference: {fileID: 0}
+    - target: {fileID: 144000013700726176, guid: 9e49ecb09d5c3ab41b750225c6f57142,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -2.5198693
+      objectReference: {fileID: 0}
+    - target: {fileID: 144000013700726176, guid: 9e49ecb09d5c3ab41b750225c6f57142,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.0000013559555
+      objectReference: {fileID: 0}
+    - target: {fileID: 144000013700726176, guid: 9e49ecb09d5c3ab41b750225c6f57142,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.0000007152028
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e49ecb09d5c3ab41b750225c6f57142, type: 2}

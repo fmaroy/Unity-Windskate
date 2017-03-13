@@ -24,7 +24,8 @@ public class PlayersTrackOnRacetrack : MonoBehaviour
         currentMarkList = new List<int>();
         positionBetweenMarks = new List<float>();
         rankingList = new List<int>();
-        
+
+		PlayersList = new List<GameObject>();
         PlayersList.Add(this.gameObject.GetComponent<RaceManagerScript>().PlayerObject);
         rankingList.Add(0);
         currentMarkList.Add(0);

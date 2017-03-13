@@ -10,21 +10,48 @@ public class InterfaceControl : MonoBehaviour {
     public GameObject LoadingImage;
     public GameObject PauseImage;
     public GameObject PauseButton;
+	public GameObject FinishImage;
     private GameObject RaceData;
     public GameObject Ranking;
+	public GameObject Player;
+	public GameObject SliderContainer;
+	public GameObject WindIndicator;
+	public GameObject ManoeuvreLeftButton;
+	public GameObject ManoeuvreRightButton;
 
 
+	public void initControls (GameObject player)
+	{
+		Player = player;
+		Start ();
+	}
+		
     void Start()
     {
         RaceData = GameObject.Find("RaceManager");
         //Upate Game Settings
-        updateGameSettings();
+        //updateGameSettings();
         Scenemanager = GameObject.Find("Scene_Manager");
         if (Scenemanager != null)
         {
             ScenemanagerData = Scenemanager.GetComponent<SceneManagerScript>();
         }
+		/*foreach (Transform child in this.transform) {
+			if (child.gameObject.name == "SlidersContainers") {
+				SliderContainer = child.gameObject;
+			}
+			if (child.gameObject.name == "Manoeuvre_Left_Button") {
+				ManoeuvreLeftButton = child.gameObject;
+			}
+			if (child.gameObject.name == "Manoeuvre_Right_Button") {
+				ManoeuvreRightButton = child.gameObject;
+			}
+			if (child.gameObject.name == "WindIndicator") {
+				WindIndicator = child.gameObject;
+			}
+		}*/
     }
+
     public void updateRanking()
     {
         string rankingText = "Position: " + (RaceData.GetComponent<PlayersTrackOnRacetrack>().rankingList[0] + 1).ToString() + "/" + RaceData.GetComponent<PlayersTrackOnRacetrack>().rankingList.Count.ToString();
