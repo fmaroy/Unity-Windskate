@@ -124,7 +124,7 @@ PlayerSettings:
   metroInputSource: 0
   m_HolographicPauseOnTrackingLoss: 1
   xboxOneDisableKinectGpuReservation: 0
-  protectGraphicsMemory: 0
+  protectGraphicsMemory: 1
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 9
   AndroidPreferredInstallLocation: 1
