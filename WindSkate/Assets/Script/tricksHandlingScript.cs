@@ -168,9 +168,9 @@ public class tricksHandlingScript : MonoBehaviour {
         int i = 0;
         foreach( Slider slider in SlidersList)
         {
-            if (i == 0) { slider.maxValue = EnergyMaxLevel; }
-            if (i == 1) { slider.maxValue = SpeedMaxLevel; }
-            if (i == 2) { slider.maxValue = AngleMaxLevel; }
+			if (i == 0) {slider.maxValue = EnergyMaxLevel;}
+            if (i == 1) {slider.maxValue = SpeedMaxLevel;}
+			if (i == 2) {slider.maxValue = AngleMaxLevel;}
             i++;
         }
     }
@@ -243,28 +243,35 @@ public class tricksHandlingScript : MonoBehaviour {
         int i = 0;
         foreach (Slider slider in SlidersList)
         {
-            if (i == 0) { slider.value = currentEnergyLevel; }
+			if (i == 0) { 
+				//if (slider.gameObject.GetComponent<sliderEffectScript> ().animated == false) {
+				slider.value = currentEnergyLevel;
+			}
             if (i == 1) { slider.value = currentSpeed; }
-            if (i == 2) { slider.value = currentAngleLevel; }
+            if (i == 2) { 
+				//if (slider.gameObject.GetComponent<sliderEffectScript> ().animated == false) {
+				slider.value = currentAngleLevel; 
+			}
             i++;
         }
     }
 
 	public void enableTrick(int TrickLevel)
     {
-        //TricksButton_Level[TrickLevel].GetComponent<Button>().interactable = false;
-        
+		float prevEnergylevel = currentEnergyLevel;
         if (activeSector >2 )
         {
             //Manoeuvre is Jibe
-            currentEnergyLevel = currentEnergyLevel - localJibeList[TrickLevel].costEnergy;
+            currentEnergyLevel = currentEnergyLevel - localJibeList[TrickLevel+1].costEnergy;
         }
         else
         {
-            currentEnergyLevel = currentEnergyLevel - localTackList[TrickLevel].costEnergy;
+            currentEnergyLevel = currentEnergyLevel - localTackList[TrickLevel+1].costEnergy;
         }
      
         if (currentEnergyLevel < 0) { currentEnergyLevel = 0.0f; }
+		Debug.Log ("Enable trick before slider animation");
+		//SlidersList[0].gameObject.GetComponent<sliderEffectScript> ().sliderDecreaseAnimation (prevEnergylevel, currentEnergyLevel);
 
         this.GetComponentInChildren<SailAnimScript>().Manoeuvre_level = TrickLevel + 1;
     }

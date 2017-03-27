@@ -14,8 +14,11 @@ public class InterfaceControl : MonoBehaviour {
     private GameObject RaceData;
     public GameObject Ranking;
 	public GameObject Player;
+	public GameObject PlayerBoard;
 	public GameObject SliderContainer;
 	public GameObject WindIndicator;
+	public GameObject TurnLeftButton;
+	public GameObject TurnRightButton;
 	public GameObject ManoeuvreLeftButton;
 	public GameObject ManoeuvreRightButton;
 
@@ -29,6 +32,7 @@ public class InterfaceControl : MonoBehaviour {
     void Start()
     {
         RaceData = GameObject.Find("RaceManager");
+		PlayerBoard = RaceData.GetComponent<UserPreferenceScript>().PlayerBoard;
         //Upate Game Settings
         //updateGameSettings();
         Scenemanager = GameObject.Find("Scene_Manager");
@@ -36,21 +40,30 @@ public class InterfaceControl : MonoBehaviour {
         {
             ScenemanagerData = Scenemanager.GetComponent<SceneManagerScript>();
         }
-		/*foreach (Transform child in this.transform) {
-			if (child.gameObject.name == "SlidersContainers") {
-				SliderContainer = child.gameObject;
-			}
-			if (child.gameObject.name == "Manoeuvre_Left_Button") {
-				ManoeuvreLeftButton = child.gameObject;
-			}
-			if (child.gameObject.name == "Manoeuvre_Right_Button") {
-				ManoeuvreRightButton = child.gameObject;
-			}
-			if (child.gameObject.name == "WindIndicator") {
-				WindIndicator = child.gameObject;
-			}
-		}*/
     }
+
+	public void triggerManoeuvreListener ()
+	{
+		PlayerBoard.GetComponent<Follow_track> ().triggeredManoeuvre ();
+	}
+
+	public void leftTurnButtonDownListener ()
+	{
+		PlayerBoard.GetComponent<BoardForces> ().LeftTurnButtonDown ();
+	}
+	public void rightTurnButtonDownListener ()
+	{
+		PlayerBoard.GetComponent<BoardForces> ().RightTurnButtonDown ();
+	}
+
+	public void leftTurnButtonUpListener ()
+	{
+		PlayerBoard.GetComponent<BoardForces> ().LeftTurnButtonUp ();
+	}
+	public void rightTurnButtonUpListener ()
+	{
+		PlayerBoard.GetComponent<BoardForces> ().RightTurnButtonUp ();
+	}
 
     public void updateRanking()
     {
@@ -92,40 +105,16 @@ public class InterfaceControl : MonoBehaviour {
         Scenemanager.GetComponent<SceneManagerScript>().LoadScene(Scene);
     }
 
-    /*public static void ChangeScene(string SceneID)
-   {
-       lastScene = currentScene;
-       currentScene = SceneID;
-       SceneManager.LoadScene(currentScene);
-       //Application.LoadLevel(currentScene);
-   }*/
-
-
-
     public void QuitApplication()
 	{
 		 Application.Quit();
 	}
 	public void SlowMotionFadeIn(float duration)
 	{
-		/*float SlowMotionTime = 0.0f;
-		while (SlowMotionTime < duration)
-		{
-			Time.timeScale = 1 - (SlowMotionTime/duration);
-			Debug.Log(Time.timeScale);
-			SlowMotionTime=SlowMotionTime+Time.deltaTime;
-		}*/
 		Time.timeScale = 0.0f;
 	}
 	public void SlowMotionFadeOut(float duration)
 	{
-		/*float SlowMotionTime = 0.0f;
-		while (SlowMotionTime < duration)
-		{
-			Time.timeScale = SlowMotionTime/duration;
-			Debug.Log(Time.timeScale);
-			SlowMotionTime=SlowMotionTime+Time.deltaTime;
-		}*/
 		Time.timeScale = 1.0f;
 	}
 	
@@ -135,8 +124,6 @@ public class InterfaceControl : MonoBehaviour {
 		PauseButton.SetActive(false);
 		PauseImage.SetActive(true);
         Time.timeScale = 0.0f;
-        /*fadingIn = true;
-        currentSlowmotionTime = 0.0f;*/
     }
     public void ResumeGame()
 	{

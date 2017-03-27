@@ -285,8 +285,10 @@ public class SailAnimScript : MonoBehaviour
 				if (isManoeuvreing == true) {
 					if (Manoeuvre_level > 0) {
 						// TODO: based on the level of the manoeuvre chance that a special animation started get higher:
+						if (Random.value / Manoeuvre_level < 0.5) {
+							StartManoeuvreFX(0.5f);
+						}
 
-						StartManoeuvreFX(0.5f);
                     
 
 						//Get the proper manoeuvre type defined in the userprefs in raceManager , Tack of Jibe?

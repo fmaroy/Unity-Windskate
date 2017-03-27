@@ -46,8 +46,6 @@ public class ExternalObjectsReference : MonoBehaviour {
 				FinishImage = UIControlData.FinishImage;
 				PauseButton = UIControlData.PauseButton;
 			}
-
-
 		}
 
 

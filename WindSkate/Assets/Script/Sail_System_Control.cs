@@ -89,7 +89,7 @@ public class Sail_System_Control : MonoBehaviour
 		float currentmanoeuvreWeight = this.gameObject.GetComponent<SailAnimScript> ().Manoeuvre_Weight;
 
 		thrustModif = currentmanoeuvreWeight * thrust * (1 - modifier); 
-		Debug.Log("Manoeuvre Weight : " + currentmanoeuvreWeight);
+		//Debug.Log("Manoeuvre Weight : " + currentmanoeuvreWeight);
 		return thrustModif; // Thrust modifier adds up to the current Thrust factor
 	}
 
@@ -143,7 +143,7 @@ public class Sail_System_Control : MonoBehaviour
 
 			manoeuvreModifier = manoeuvreThrustModifier (SailThrustForce, currentManoeuvre.slowDownFactor, 1.5f);
 
-			Debug.Log ("Thrust : " + SailThrustForce +", Manoeuvre modifier : " + manoeuvreModifier);
+			//Debug.Log ("Thrust : " + SailThrustForce +", Manoeuvre modifier : " + manoeuvreModifier);
 
 			rbBoard.AddRelativeForce(SailSideForce, 0.0f , SailThrustForce - manoeuvreModifier);
             //Debug.Log(SailThrustForce);

@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityStandardAssets.ImageEffects;
+using UnityEngine.UI;
 
 
 public class UserPreferenceScript : MonoBehaviour {
@@ -22,6 +23,7 @@ public class UserPreferenceScript : MonoBehaviour {
     public bool displayWindFx = false;
     public List<ManoeuvreType> localTackManoeuvres = new List<ManoeuvreType>();
     public List<ManoeuvreType> localJibeManoeuvres = new List<ManoeuvreType>();
+	public InterfaceControl controlData;
 
     public GameObject Playerprefab;
     public int numbOpponenents = 2;
@@ -86,8 +88,7 @@ public class UserPreferenceScript : MonoBehaviour {
         //updateDisplayWindFx(Opponents);
         //updateDisplayWindFx(GameObject.Find("Track_Details"));
     }
-
-
+		
 
     public void updateWindCondition()
     {
@@ -195,9 +196,13 @@ public class UserPreferenceScript : MonoBehaviour {
 	{
 		if (IntroScene == false) {
 			if (GameObject.Find ("OnScreenButtons") != null) {
-				GameObject.Find ("OnScreenButtons").GetComponent<InterfaceControl> ().initControls (player);
+				controlData = GameObject.Find ("OnScreenButtons").GetComponent<InterfaceControl> ();
+				controlData.initControls (player);
 			}
 		}
+
+		PlayerBoard = player.GetComponentInChildren<BoardForces> ().gameObject;
+
 		Camera.GetComponent<CameraControlScript> ().playerObject = player;
 
 		GameObject temp = null;
