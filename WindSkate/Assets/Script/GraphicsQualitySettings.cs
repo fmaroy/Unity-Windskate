@@ -116,13 +116,13 @@ public class GraphicsQualitySettings : MonoBehaviour {
                 {
                     if (child.gameObject.GetComponent<Toggle>().isOn == true)
                     {
-                        Debug.Log("enable");
+                        //Debug.Log("enable");
                         //Camera.GetComponent<ScreenSpaceAmbientOcclusion>().enabled = true;
                         PlayerPrefs.SetInt("CamScreenOcclusion", 1);
                     }
                     else
                     {
-                        Debug.Log("disable");
+                        //Debug.Log("disable");
                         //Camera.GetComponent<ScreenSpaceAmbientOcclusion>().enabled = false;
                         PlayerPrefs.SetInt("CamScreenOcclusion", 0);
                     }

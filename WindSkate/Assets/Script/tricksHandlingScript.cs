@@ -270,7 +270,7 @@ public class tricksHandlingScript : MonoBehaviour {
         }
      
         if (currentEnergyLevel < 0) { currentEnergyLevel = 0.0f; }
-		Debug.Log ("Enable trick before slider animation");
+		//Debug.Log ("Enable trick before slider animation");
 		//SlidersList[0].gameObject.GetComponent<sliderEffectScript> ().sliderDecreaseAnimation (prevEnergylevel, currentEnergyLevel);
 
         this.GetComponentInChildren<SailAnimScript>().Manoeuvre_level = TrickLevel + 1;

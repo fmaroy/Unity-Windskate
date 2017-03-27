@@ -1108,7 +1108,7 @@ public class Follow_track : MonoBehaviour
             if (m == false)
             {
                 // give the control back to the user
-                Debug.Log("Give the control back to the user for player : " + this.gameObject.transform.parent.gameObject.name);
+                //Debug.Log("Give the control back to the user for player : " + this.gameObject.transform.parent.gameObject.name);
                 //Debug.Log("Angle to Wind = " + angleBoardToWind);
                 //Debug.Log(isNextTargetMark);
                 this.gameObject.transform.parent.GetComponent<PlayerCollision>().ManualDrive = true;
@@ -1158,7 +1158,7 @@ public class Follow_track : MonoBehaviour
 
     public void pathRecalculateLogicTriggeredManoeuvre(float targetDuration)
     {
-        Debug.Log("Triggered Path Logic");
+        //Debug.Log("Triggered Path Logic");
         bool recalculatePath = false;
         bool drivestarboardforrecalc = false;
         int nexttargetreforcalc = 0;
@@ -1311,7 +1311,7 @@ public class Follow_track : MonoBehaviour
         {
             if (prevTackToPort == false)
             {
-                Debug.Log("recalculate path to Tack to Port");
+                //Debug.Log("recalculate path to Tack to Port");
                 //nexttargetreforcalc = isNextTargetMark;
                 //drivestarboardforrecalc = false;
                 recalculatePath = true;
@@ -1322,7 +1322,7 @@ public class Follow_track : MonoBehaviour
             {
                 //Debug.Log("Tack finished");
                 doTackToPort = false;
-                Debug.Log("recalculate path to Tack to Port at jibe end");
+                //Debug.Log("recalculate path to Tack to Port at jibe end");
                 //nexttargetreforcalc = isNextTargetMark;
                 drivestarboardforrecalc = false;
                 if (isPlayer == false) { recalculatePath = true; }
@@ -1333,7 +1333,7 @@ public class Follow_track : MonoBehaviour
         {
             if (prevTackToStarboard == false)
             {
-                Debug.Log("recalculate path to Tack to Starboard");
+                //Debug.Log("recalculate path to Tack to Starboard");
                 //nexttargetreforcalc = isNextTargetMark;
                 //drivestarboardforrecalc = true;
                 recalculatePath = true;
@@ -1343,7 +1343,7 @@ public class Follow_track : MonoBehaviour
             {
                 //Debug.Log("Tack finished");
                 doTackToStarboard = false;
-                Debug.Log("recalculate path to Tack to Starboard at jibe end");
+                //Debug.Log("recalculate path to Tack to Starboard at jibe end");
                 //nexttargetreforcalc = isNextTargetMark;
                 drivestarboardforrecalc = true;
                 if (isPlayer == false) { recalculatePath = true; }
