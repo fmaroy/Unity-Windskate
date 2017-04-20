@@ -274,6 +274,7 @@ public class tricksHandlingScript : MonoBehaviour {
 		//SlidersList[0].gameObject.GetComponent<sliderEffectScript> ().sliderDecreaseAnimation (prevEnergylevel, currentEnergyLevel);
 
         this.GetComponentInChildren<SailAnimScript>().Manoeuvre_level = TrickLevel + 1;
+
     }
 
     public void enableJump(int TrickLevel)

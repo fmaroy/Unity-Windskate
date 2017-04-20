@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class InterfaceControl : MonoBehaviour {
 
@@ -21,6 +22,8 @@ public class InterfaceControl : MonoBehaviour {
 	public GameObject TurnRightButton;
 	public GameObject ManoeuvreLeftButton;
 	public GameObject ManoeuvreRightButton;
+	public GameObject MessageText;
+	//private AnimatorStateInfo reachedEndAnimationState;
 
 
 	public void initControls (GameObject player)
@@ -41,6 +44,8 @@ public class InterfaceControl : MonoBehaviour {
             ScenemanagerData = Scenemanager.GetComponent<SceneManagerScript>();
         }
     }
+
+
 
 	public void triggerManoeuvreListener ()
 	{

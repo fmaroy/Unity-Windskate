@@ -38,6 +38,8 @@ public class Follow_track : MonoBehaviour
     public windEffector windData;
     public float angleMarkToWind;
     public float angleBoardToWind;
+	public float angleBoardToMark;
+
     private Vector3 windDirTransform;
     public bool driveStarboard = true;
     public bool previousdriveStarboardStatus;
@@ -949,8 +951,25 @@ public class Follow_track : MonoBehaviour
         }
     }
 
+	public float getAngleToTarget(Vector3 target)
+	{
+		Vector3 toDirection = target - transform.position;
+
+		Vector3 dirCrossProduct = Vector3.Cross(new Vector3(1.0f, 0.0f, 0.0f), toDirection);
+
+		float angletodir = Vector3.Angle(new Vector3(1.0f, 0.0f, 0.0f), toDirection);
+
+		if (dirCrossProduct.y < 0)
+		{
+			angletodir = -1 * angletodir;
+		}
+		return angletodir;
+	}
+
     void Update()
     {
+		
+
         // get opponent current parameters, distance and angle vs mark.
         if (isPlayer == true)
         {
@@ -1040,6 +1059,15 @@ public class Follow_track : MonoBehaviour
         {
             DestinationIndicator.transform.position = NavMeshNextCorner + new Vector3(0.0f, 3.0f, 0.0f);
         }
+
+		/*angleBoardToMark = Mathf.DeltaAngle(-1 *(transform.eulerAngles.y - 90), getAngleToTarget (NavMeshNextDir));
+		//angleBoardToMark = getAngleToTarget (NavMeshNextDir);
+		if (this.transform.parent.GetComponent<PlayerCollision>().isPlayer == true) {
+			Debug.Log("AngleToDir: " + angleBoardToMark);
+			if (Mathf.Abs (angleBoardToMark ) > 120) {
+				this.transform.parent.GetComponent<ExternalObjectsReference> ().UIControlData.MessageText.GetComponent<messageHandler> ().throwMessage (0);
+			}
+		}*/
     }
 
     public void triggeredManoeuvre()
@@ -1090,6 +1118,11 @@ public class Follow_track : MonoBehaviour
             if (this.gameObject.transform.parent.GetComponent<tricksHandlingScript>().StarsMaxLevel > 0)
             {
                 this.gameObject.transform.parent.GetComponent<tricksHandlingScript>().enableTrick(trickLevel);
+				if ((doTackToStarboard == true) || (doTackToPort == true)) {
+					// TODO: scan throught message name to find the correct one
+					transform.parent.gameObject.GetComponent<ExternalObjectsReference> ().UIControlData.MessageText.GetComponent<messageHandler> ().throwMessage (0);
+				}
+
             }
         }
     }
@@ -1147,12 +1180,6 @@ public class Follow_track : MonoBehaviour
         if (doTackToStarboard == true && angleBoardToWind >= 0 && angleBoardToWind > endTack) { ManouevreCompleted(); }
         if (doJibeToStarboard == true && angleBoardToWind >= 0 && angleBoardToWind < endJibe) { ManouevreCompleted(); }
         if (doJibeToPort == true && angleBoardToWind <= 0 && angleBoardToWind > -1 * endJibe) { ManouevreCompleted(); }
-
-		// This is doone to avoid a special case where the player gets stuck without control
-		/*if ((previousFrame_isNextTargetMark != isNextTargetMark) && (isNextTargetMark == 0)) {
-			//in this case the state of isNexttargetMark has changed during the manoeuvre to direct direction ot the next mark.
-			ManouevreCompleted();
-		}*/
 
     }
 
@@ -1409,15 +1436,29 @@ public class Follow_track : MonoBehaviour
         if ((isPlayer == true )&& (localManualDrive == false))
         {
             //SteerBoard(angleToMark);
-            SteerBoard(NavMeshNextDir);
+			SteerBoard(getAngleToMark(NavMeshNextDir));
         }
         if (isPlayer == false)
         {
-            SteerBoard(NavMeshNextCorner);
+			SteerBoard(getAngleToMark(NavMeshNextCorner));
         }
     }
 
-    void SteerBoard(Vector3 currentNavMeshDir)
+	public float getAngleToMark(Vector3 currentNavMeshDir)
+	{
+		Vector3 toDirection = currentNavMeshDir - transform.position;
+		Vector3 dirCrossProduct = Vector3.Cross(new Vector3(1.0f, 0.0f, 0.0f), toDirection);
+
+		float angletodir = Vector3.Angle(new Vector3(1.0f, 0.0f, 0.0f), toDirection);
+
+		if (dirCrossProduct.y < 0)
+		{
+			angletodir = -1 * angletodir;
+		}
+		return angletodir;
+	}
+
+    /*void SteerBoard(Vector3 currentNavMeshDir)
     {
         Vector3 toDirection = currentNavMeshDir - transform.position;
         //GameObject.Find("DirectionTest").transform.position = currentNavMeshDir;
@@ -1431,9 +1472,11 @@ public class Follow_track : MonoBehaviour
         }
 
         //float angletodir = Vector3.Angle( new Vector3(toDirection.x, 0.0f, toDirection.z), new Vector3(1.0f, 0.0f, 0.0f));
-        //Debug.Log("AngleToDir: " + angletodir);
+        
         SteerBoard(angletodir);
-    }
+
+
+    }*/
 
     void SteerBoard(float TargetDirection)
     {

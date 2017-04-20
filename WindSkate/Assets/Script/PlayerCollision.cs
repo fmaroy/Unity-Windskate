@@ -351,8 +351,10 @@ public class PlayerCollision : MonoBehaviour
         if (isPlayer == true)
         {
             Time.timeScale = 1.0f;
-            Time.fixedDeltaTime = 0.01F * Time.timeScale;
+            Time.fixedDeltaTime = 0.01f * Time.timeScale;
             SailSystem.GetComponent<SailAnimScript>().StartManoeuvreFX(0.5f);
+			Camera.main.GetComponent<CameraControlScript> ().dimCameraEffect ();
+			this.GetComponent<ExternalObjectsReference> ().UIControlData.MessageText.GetComponent<messageHandler> ().throwMessage (1);
         }
         SailSystem.GetComponent<windEffector>().resetWindModifier();
         // Trigger Crash Fx
@@ -583,7 +585,7 @@ public class PlayerCollision : MonoBehaviour
         }
     }
 
-    IEnumerator resetAfterCrashPart2(Rigidbody Rb)
+    /*IEnumerator resetAfterCrashPart2(Rigidbody Rb)
     {
         yield return new WaitForSeconds(0.02f);
         Rb.isKinematic = false;
@@ -606,13 +608,11 @@ public class PlayerCollision : MonoBehaviour
         SailSystemData.SailRigidBody.isKinematic = true;
         SailSystemData.SailBone.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
         SailSystemData.isFalling = false;
-    }
+    }*/
 
-    IEnumerator resetAfterCrash()
+    /*IEnumerator resetAfterCrash()
     {
         yield return new WaitForSeconds(0.02f);
-
-        
 
         colllisonFlag = false;
         //Debug.Log("Reset");
@@ -623,38 +623,7 @@ public class PlayerCollision : MonoBehaviour
 
         getPositionAfterCrash();
 
-        //playerPositionAtCrash = playerPositionAtCrash - new Vector3(Mathf.Sin(playerOrientationAtCrash * Mathf.Deg2Rad), 0.0f, Mathf.Cos(playerOrientationAtCrash * Mathf.Deg2Rad)) * 20;
-        //Board.transform.position = new Vector3(Mathf.Clamp(playerPositionAtCrash.x, trackLeftSideBoundary, trackRightSideBoundary), 4.0f, playerPositionAtCrash.z);
-
-        //Board.transform.position = new Vector3(-20.0f, 3.0f, 5.0f);
-
-        //playerOrientationAtCrash = -Board.GetComponent<Follow_track>().angleToMark ;
-
-        //Debug.Log("TrackLeftBoundary: " + trackLeftSideBoundary + trackRightSideBoundary);
-        //Debug.Log("playerPositionAtCrash : " + playerPositionAtCrash);
-        //Debug.Log("playerOrientationAtCrash : " + playerOrientationAtCrash);
-        //Debug.Log("Angle to mark : " + BoardFollowTrack.angleToMark);
-
-        //if (isPlayer) { Debug.Log("Reset_after_crash_step0: " + Board.transform.position); }
-
-        //playerOrientationAtCrash = BoardFollowTrack.angleToMark;
-
-
-
-        //Debug.Log("Drive StarBoard : "+ BoardFollowTrack.driveStarboard + " , isNextTargetMark: " + BoardFollowTrack.isNextTargetMark + " , playerOrientationAtCrash : "+ playerOrientationAtCrash);
-        //if (isPlayer) { Debug.Log("Reset_after_crash_step1: " + Board.transform.position); }
-
-        /*Board.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        Board.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-        Board.GetComponent<Rigidbody>().inertiaTensorRotation = Quaternion.identity;
-        Board.GetComponent<Rigidbody>().inertiaTensor = Vector3.zero;*/
-
-        //old behavior
-        //Board.transform.eulerAngles = new Vector3(0.0f, playerOrientationAtCrash, 0.0f);
-
-        
         playerOrientationAtCrash = playerRecoveryOrientation;
-        //playerOrientationAtCrash = Vector3.Angle(playerOrientationVectorAtCrash, Vector3.forward);
 
         foreach (Rigidbody rb in rigidBodiesListDynamics)
         {
@@ -673,24 +642,14 @@ public class PlayerCollision : MonoBehaviour
         {
             mesh.enabled = false;
         }
-        /*if (Vector3.Cross(Vector3.forward, playerOrientationVectorAtCrash).y < 0)
-        {
-            playerOrientationAtCrash = -1 * playerOrientationAtCrash;
-        }*/
-        //Debug.Log("ResetPlayerUpdateAngle : " + playerOrientationAtCrash);
+
         Board.transform.position = playerRecoveryPosition + new Vector3(0.0f, 2.0f, 0.0f);
         Board.transform.eulerAngles = new Vector3 (0.0f, playerOrientationAtCrash, 0.0f);
-        //Debug.Log("Board Pos and Orient Updated");
-        
-        //if (isPlayer) { //Debug.Log("Reset_after_crash_step2: " + Board.transform.position); }
 
         StartCoroutine(resetAfterCrashPart2(Board.GetComponent<Rigidbody>()));
 
-        //if (isPlayer) { Debug.Log("Reset_after_crash_step3: " + Board.transform.position); }
-
         Destroy( SailSystemData.SailBone.GetComponent<FixedJoint>() );
         
-        //if (isPlayer) { Debug.Log("Reset_after_crash_step4: " + Board.transform.position); }
         crashTimer = 0.0f;
         colllisonFlag = false;
         isInResettingState = true;
@@ -699,13 +658,14 @@ public class PlayerCollision : MonoBehaviour
 
         SailSystem.GetComponent<windEffector>().resetWindModifier();
 
-    }
+    }*/
+
     void lowSpeedDetected()
     {
         lowSpeedFlag = true;
         lowSpeedTimer = 0.0f;
-
     }
+
     void LateUpdate()
     {
         velocityBeforeCrash = Board.GetComponent<Rigidbody>().velocity;
@@ -715,17 +675,15 @@ public class PlayerCollision : MonoBehaviour
     }
     void repositionPlayerDisabledRb()
     {
+		Camera.main.GetComponent<CameraControlScript> ().resetVignetteCameraEffect ();
+
         getPositionAfterCrash();
         colllisonFlag = false;
         float trackLeftSideBoundary = BoardFollowTrack.currentLeftSideBoundary;
         float trackRightSideBoundary = BoardFollowTrack.currentRightSideBoundary;
         //Get previous player orientation
         playerOrientationAtCrash = playerRecoveryOrientation;
-        /*playerOrientationAtCrash = Vector3.Angle(playerOrientationVectorAtCrash, Vector3.forward);
-        if (Vector3.Cross(Vector3.forward, playerOrientationVectorAtCrash).y < 0)
-        {
-            playerOrientationAtCrash = -1 * playerOrientationAtCrash;
-        }*/
+
         Destroy(SailSystemData.SailBone.GetComponent<FixedJoint>());
         //Destroy(SailSystem.GetComponent<ConfigurableJoint>());
         foreach (Rigidbody rb in rigidBodiesListDynamics)
@@ -745,6 +703,7 @@ public class PlayerCollision : MonoBehaviour
         */
         StartCoroutine(repositionPlayerEnableRb());
     }
+
     IEnumerator repositionPlayerEnableRb()
     {
         yield return new WaitForSeconds(0.02f);
@@ -787,8 +746,7 @@ public class PlayerCollision : MonoBehaviour
         resetting = false;
         //Debug.Log("Board orient end : " + Board.transform.localEulerAngles);
     }
-
-    // Update is called once per frame
+		
     void Update()
     {
         if (prevManualDrive != ManualDrive)

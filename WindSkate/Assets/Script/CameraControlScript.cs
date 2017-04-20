@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityStandardAssets.Utility;
+using UnityStandardAssets.ImageEffects;
 
 public class CameraControlScript : MonoBehaviour {
 
@@ -36,9 +37,15 @@ public class CameraControlScript : MonoBehaviour {
     public float initCamRotationDamping = 2.0f;
     public float initCamHeightDamping = 5.0f;
 
+	public float initVignetteValue;
+	public float vignetteTargetValue;
+	public float vignetteDamping;
+	private IEnumerator currentVignetteCoroutine;
+
     // Use this for initialization
     void Start() {
 		initCamera ();
+		resetVignetteCameraEffect ();
     }
 
 	public void initCamera(){
@@ -76,6 +83,33 @@ public class CameraControlScript : MonoBehaviour {
 			initBackgroundShift = backgroundImage.GetComponent<RectTransform>().transform.position.x;
 			backgroundImageAnim = backgroundImage.GetComponent<Animator>();
 		}
+		currentVignetteCoroutine = null;
+	}
+
+	public void resetVignetteCameraEffect()
+	{
+
+		if (currentVignetteCoroutine != null) {
+			StopCoroutine (currentVignetteCoroutine);
+		}
+		//Debug.Log ("Reset Vignetting to default");
+		this.GetComponent<VignetteAndChromaticAberration> ().intensity = initVignetteValue;
+	}
+
+	public void dimCameraEffect()
+	{
+		currentVignetteCoroutine = dimCameraVignette (vignetteTargetValue, vignetteDamping);
+		StartCoroutine(currentVignetteCoroutine);
+	}
+
+	IEnumerator dimCameraVignette(float target, float damping)
+	{
+		while (this.GetComponent<VignetteAndChromaticAberration> ().intensity < target) {
+			this.GetComponent<VignetteAndChromaticAberration> ().intensity = this.GetComponent<VignetteAndChromaticAberration> ().intensity + Time.deltaTime * damping;
+			//Debug.Log ("Vignette intensity : " + this.GetComponent<VignetteAndChromaticAberration> ().intensity);
+			yield return null;
+		}
+		currentVignetteCoroutine = null;
 	}
 
     public void nextViewpoint()

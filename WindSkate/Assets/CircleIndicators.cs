@@ -7,6 +7,8 @@ public class CircleIndicators : MonoBehaviour {
     public GameObject playerObj;
     public Follow_track followTrackData;
     public GameObject trackDirectionIndicator;
+	public GameObject trackDirectionTickArrow;
+	public GameObject trackDirectionTickIcon;
     public Color trackDirColor;
     public GameObject nextTrackMark;
     public float angleBoardToMark;
@@ -16,6 +18,9 @@ public class CircleIndicators : MonoBehaviour {
     public List<Color> CloseOpponent = new List<Color>();
 	public GameObject apparentWindArrow;
 	public GameObject trueWindArrow;
+	private IEnumerator messageCoroutine;
+	private IEnumerator interruptMessage;
+	public bool turnAroundMessageAlreadyThrown;
 
     // Use this for initialization
     void Start()
@@ -28,12 +33,14 @@ public class CircleIndicators : MonoBehaviour {
                 followTrackData = obj.gameObject.GetComponent<Follow_track>();
             }
         }
-        //trackDirColor = trackDirectionIndicator.GetComponent<Projector>().material.GetColor("_Color");
+ 
         foreach (Transform child in opponentTicksContainer.transform)
         {
             opponentTickList.Add(child.gameObject);
         }
         RaceData = GameObject.Find("RaceManager").GetComponent<RaceManagerScript>();
+
+		turnAroundMessageAlreadyThrown = false;
     }
 	
     public float getOrientationAngle(Vector3 target_position)
@@ -49,6 +56,42 @@ public class CircleIndicators : MonoBehaviour {
         return angle;
     }
 
+	public void placeOnCircle(GameObject obj, float dist, float angle, float height)
+	{
+		obj.transform.localPosition = new Vector3(dist * Mathf.Sin(angle * Mathf.Deg2Rad), dist * Mathf.Cos(angle * Mathf.Deg2Rad), height);
+	}
+
+	public void placeIconOnCircle(GameObject obj, float dist, float angle, float height)
+	{
+		obj.transform.localPosition = new Vector3(-dist * Mathf.Cos(angle * Mathf.Deg2Rad), height, -dist * Mathf.Sin(angle * Mathf.Deg2Rad));
+	}
+
+	public bool hasVisibileChildren(GameObject obj)
+	{
+		bool vis = false;
+		if (obj.GetComponent<MeshRenderer> () != null) {
+			if (obj.GetComponent<MeshRenderer> ().isVisible == true) {
+				vis = true;
+			}
+		} 
+		foreach (Transform child in obj.transform) {
+			if (child.gameObject.GetComponent<MeshRenderer> () != null) {
+				if (child.gameObject.GetComponent<MeshRenderer> ().isVisible == true) {
+					vis = true;
+				}
+			}
+		}
+		return vis;
+	}
+
+	IEnumerator waitBeforeMessage (float timer)
+	{
+		while (turnAroundMessageAlreadyThrown) {
+			yield return new WaitForSeconds(timer);
+			transform.parent.gameObject.GetComponent<ExternalObjectsReference> ().UIControlData.MessageText.GetComponent<messageHandler> ().throwMessage (0);
+		}
+	}
+
     // Update is called once per frame
     void Update() {
 
@@ -57,22 +100,40 @@ public class CircleIndicators : MonoBehaviour {
 
         Vector3 directionToMark = nextTrackMark.transform.position - transform.position;
         float angleToMark = getOrientationAngle(nextTrackMark.transform.position);
-        /*float angleToMark = Vector3.Angle(Vector3.forward,directionToMark);
-        if (Vector3.Cross(Vector3.forward, directionToMark).y > 0)
-        {
-            angleToMark = -1 * angleToMark;
-        }*/
 
-        /*angleBoardToMark = Vector3.Angle(directionToMark, playerObj.transform.forward);
-        if (Vector3.Cross(directionToMark, playerObj.transform.forward).y > 0)
-        {
-            angleBoardToMark = -1 * angleBoardToMark;
-        }*/
         trackDirectionIndicator.transform.eulerAngles = new Vector3(90.0f, 0, angleToMark);
-        float correctAngle = -1 * angleToMark - 90f;
-        trackDirectionIndicator.transform.localPosition = new Vector3(30f * Mathf.Sin(correctAngle * Mathf.Deg2Rad), 30f * Mathf.Cos(correctAngle * Mathf.Deg2Rad), -10.0f);
-        float srtDistToMark = Mathf.Pow(directionToMark.x, 2) + Mathf.Pow(directionToMark.z, 2);
-        //Debug.Log("Dist to mark " + srtDistToMark);
+        float correctAngle = -1 * angleToMark - 90f; // World angle of the direction to the next mark
+		angleBoardToMark = Mathf.DeltaAngle(playerObj.transform.eulerAngles.y -90 , correctAngle); // Angle between the board and the next direction
+
+		if (hasVisibileChildren (followTrackData.currentMark) == true) {
+			trackDirectionTickIcon.SetActive (false);
+		} else {
+			trackDirectionTickIcon.SetActive (true);
+			placeOnCircle (trackDirectionTickIcon, 6f, correctAngle, -3.67f);
+		}
+
+		placeOnCircle (trackDirectionTickArrow, 8.2f, correctAngle, 0f);
+		trackDirectionTickArrow.transform.localEulerAngles = new Vector3 (0.0f, 0.0f, angleToMark + 180);
+
+		//messageWaitbefore = null;
+		interruptMessage = null;
+		if (Mathf.Abs (angleBoardToMark) > 120f) {
+			if (turnAroundMessageAlreadyThrown == false) {
+				turnAroundMessageAlreadyThrown = true;
+				messageCoroutine = waitBeforeMessage(5f); // this throws a message every 5 sec until
+				StartCoroutine (messageCoroutine);
+			}
+		} else {
+			if (turnAroundMessageAlreadyThrown == true) { // angle is less than 120deg and a message has been thrown already, needs to interrupt the message throwing
+				StopCoroutine (messageCoroutine);
+				//transform.parent.gameObject.GetComponent<ExternalObjectsReference> ().UIControlData.MessageText.GetComponent<messageHandler> ().interruptMessage(0);
+				turnAroundMessageAlreadyThrown = false;
+			}
+		}
+
+		placeOnCircle (trackDirectionIndicator, 30f, correctAngle, -10f);
+
+		float srtDistToMark = Mathf.Pow(directionToMark.x, 2) + Mathf.Pow(directionToMark.z, 2);
         float fadeFactor = Mathf.InverseLerp(500, 8000, srtDistToMark);
         //Debug.Log("FadeFactor " + fadeFactor);
         Color col = trackDirectionIndicator.GetComponent<Projector>().material.GetColor("_Color");
@@ -82,11 +143,6 @@ public class CircleIndicators : MonoBehaviour {
         }
         trackDirectionIndicator.GetComponent<Projector>().material.SetColor("_Color", col);
 
-        ///Hanlding the Opoonent indicator
-
-        //Getting the position of all the opponents 
-
-        //List<GameObject> Opponents = RaceData.OpponenentObjectsList;
         List<GameObject> Opponents = new List<GameObject>();
         List<float> opponentDistSqList = new List<float>();
         foreach (GameObject opponent in RaceData.OpponenentObjectsList)
@@ -138,26 +194,31 @@ public class CircleIndicators : MonoBehaviour {
             //Debug.Log("To opponent to : " + closestOpponentId);
             //Debug.Log("Dist to opponent : " + opponentDistSqList[closestOpponentId]);
 
-            opponentTickList[i].transform.localPosition = new Vector3(-6f * Mathf.Cos(angleToOpponent * Mathf.Deg2Rad), 2f, -6f * Mathf.Sin(angleToOpponent * Mathf.Deg2Rad));
-            if (opponentDistSqList[closestOpponentId] < 2000f)
+            //opponentTickList[i].transform.localPosition = new Vector3(-6f * Mathf.Cos(angleToOpponent * Mathf.Deg2Rad), 2f, -6f * Mathf.Sin(angleToOpponent * Mathf.Deg2Rad));
+			//placeIconOnCircle(opponentTickList[i], 6f, angleToOpponent, 2f);
+			placeIconOnCircle(opponentTickList[i], 8.2f, angleToOpponent, 0f);
+			opponentTickList[i].transform.eulerAngles = new Vector3 (90.0f, 90.0f, angleToOpponent + 180);
+
+			if (opponentDistSqList[closestOpponentId] < 15000f)
             {
+				opponentTickList[i].GetComponent<SpriteRenderer>().color = CloseOpponent[2];
                 opponentTickList[i].GetComponent<SpriteRenderer>().enabled = true;
-                opponentTickList[i].transform.GetChild(0).gameObject.SetActive(true);
-                if (opponentDistSqList[closestOpponentId] > 500f)
+                //opponentTickList[i].transform.GetChild(0).gameObject.SetActive(true);
+                if (opponentDistSqList[closestOpponentId] < 4000f)
                 {
                     opponentTickList[i].GetComponent<SpriteRenderer>().color = CloseOpponent[1];
-                    opponentTickList[i].transform.GetChild(0).gameObject.GetComponent<TextMesh>().text = "!";
+                    //opponentTickList[i].transform.GetChild(0).gameObject.GetComponent<TextMesh>().text = "!";
                 }
-                else
+				if (opponentDistSqList[closestOpponentId] < 1000f)
                 {
                     opponentTickList[i].GetComponent<SpriteRenderer>().color = CloseOpponent[0];
-                    opponentTickList[i].transform.GetChild(0).gameObject.GetComponent<TextMesh>().text = "!!";
+                    //opponentTickList[i].transform.GetChild(0).gameObject.GetComponent<TextMesh>().text = "!!";
                 }
             }
             else
             {
                 opponentTickList[i].GetComponent<SpriteRenderer>().enabled = false;
-                opponentTickList[i].transform.GetChild(0).gameObject.SetActive(false);
+                //opponentTickList[i].transform.GetChild(0).gameObject.SetActive(false);
             }
             opponentDistSqList.RemoveAt(closestOpponentId);
         }
