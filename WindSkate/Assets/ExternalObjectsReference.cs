@@ -14,10 +14,12 @@ public class ExternalObjectsReference : MonoBehaviour {
 	public GameObject Windindicator;
 	public GameObject FinishImage;
 	public GameObject PauseButton;
+	public GameObject currentCamera;
 
 	// Use this for initialization
 	void Start () {
 		initPlayer ();
+		currentCamera = GameObject.Find ("Camera Player");
 	}
 
 	public bool initPlayer()

@@ -170,6 +170,11 @@ public class Sail_System_Control : MonoBehaviour
     void Update()
     {
         Board_Speed = rbBoard.velocity.magnitude;
+
+		if ((transform.parent.GetComponent<PlayerCollision>().isPlayer == true)&&(externalObjectsHandler.GetComponent<ExternalObjectsReference> ().UIControlData != null)) {
+			externalObjectsHandler.GetComponent<ExternalObjectsReference> ().UIControlData.MetricsDisplay.GetComponent<UI_Metrics_Handler> ().speed = Board_Speed;
+			externalObjectsHandler.GetComponent<ExternalObjectsReference> ().UIControlData.MetricsDisplay.GetComponent<UI_Metrics_Handler> ().angle = trueWindAngleLocal;
+		}
         apparentWind = windData.localWindDirectionVector * windData.effectiveLocalWindForce - player.transform.forward * Board_Speed;
         //Debug.Log(" WindData : " + windData.localWindDirectionVector * windData.effectiveLocalWindForce);
         //Debug.Log(" Board Speed : "+player.transform.forward * Board_Speed);

@@ -33,7 +33,7 @@ public class messageHandler : MonoBehaviour {
 		currentMessageCoroutine = null; //allows new message to be thrown by cleaning up coroutine
 		currentMessage = -1;
 
-		textAnim.SetTrigger ("Interrupt");
+		//textAnim.SetTrigger ("Interrupt");
 	}
 
 	public void throwMessage(int messageId)
@@ -53,7 +53,7 @@ public class messageHandler : MonoBehaviour {
 			}
 		}
 
-		Debug.Log ("display message");
+		//Debug.Log ("display message");
 		MessageList [messageId].alreadyDisplayed = true;
 		currentMessage = messageId;
 		string textMessage = MessageList [messageId].displayTextList[Random.Range(0, MessageList [messageId].displayTextList.Capacity)]; 
@@ -66,7 +66,7 @@ public class messageHandler : MonoBehaviour {
 	{
 		this.GetComponent<TextMeshProUGUI> ().SetText(textMessage);
 		textAnim.SetTrigger ("Enable");
-		Debug.Log ("triggered animation");
+		//Debug.Log ("triggered animation");
 		yield return new WaitForSeconds(1.5f);
 
 		if (MessageList[id].blockAfter == false) // when message is set as blockAfter true, the message needs to be rest with function allowMessage(messageId) to play again

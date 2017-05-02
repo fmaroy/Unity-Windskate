@@ -23,6 +23,7 @@ public class InterfaceControl : MonoBehaviour {
 	public GameObject ManoeuvreLeftButton;
 	public GameObject ManoeuvreRightButton;
 	public GameObject MessageText;
+	public GameObject MetricsDisplay;
 	//private AnimatorStateInfo reachedEndAnimationState;
 
 

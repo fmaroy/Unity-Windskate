@@ -21,7 +21,7 @@ public class UI_True_Wind_Direction : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+		
         bestAngleFlag = false;
         //windSource = GameObject.Find("Wind");
         windData = windSource.GetComponent<windEffector>();
@@ -53,7 +53,7 @@ public class UI_True_Wind_Direction : MonoBehaviour {
             if (SailOrientData.trueWindAngleLocal <30 || SailOrientData.trueWindAngleLocal > 150)
 			{
 			    UIRenderer.color = new Color (1.0f,0.2f,0.2f,1.0f);
-                if (enableSectors)
+                /*if (enableSectors) // Removed section because I removed the circle sectors
                 {
                     Narrow_Sector_Highlight.SetActive(true);
 
@@ -65,9 +65,9 @@ public class UI_True_Wind_Direction : MonoBehaviour {
                     {
                         Narrow_Sector_Highlight.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
                     }
-                }
+                }*/
             }
-            else
+            /*else
             {
                 Narrow_Sector_Highlight.SetActive(false);
             }
@@ -83,17 +83,17 @@ public class UI_True_Wind_Direction : MonoBehaviour {
                 {
                     Broad_Sector_Highlight.transform.localScale = new Vector3(1.0f, -1.0f, 1.0f);
                 }
-            }
+            }*/
 		}
 		else
 		{
             //UIRenderer.color = new Color (0.355f,0.605f,0.832f,1.0f);
             UIRenderer.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-            Broad_Sector_Highlight.SetActive(false);
+            //Broad_Sector_Highlight.SetActive(false);
 
         }
 
-        if (bestSectorInt == 0)
+        /*if (bestSectorInt == 0)
         {
             Best_Sector_Highlight.SetActive(false);
         }
@@ -117,7 +117,7 @@ public class UI_True_Wind_Direction : MonoBehaviour {
         if (bestSectorInt == 4)
         {
             Best_Sector_Highlight.GetComponent<UIWindCircleScript>().rotationOffset = -135.0f;
-        }
+        }*/
 
         /*if ((SailOrientData.trueWindAngleLocal > 40 && SailOrientData.trueWindAngleLocal < 50)||(SailOrientData.trueWindAngleLocal > 130 && SailOrientData.trueWindAngleLocal < 140))
         {

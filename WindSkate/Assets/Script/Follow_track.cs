@@ -142,7 +142,7 @@ public class Follow_track : MonoBehaviour
             foreach (string name in markIndicatorName)
             {
                 markIndicator.Add(GameObject.Find(name));
-                //Debug.Log(GameObject.Find(name).name);
+                Debug.Log(GameObject.Find(name).name);
             }
 
             if (markData.singleMark == true)
@@ -720,9 +720,12 @@ public class Follow_track : MonoBehaviour
                 //Debug.Log("Next first pass: " + firstPass);
                 //Debug.Log("Next final pass: " + finalPass);
                 int iter2 = 0;
-                foreach (GameObject doorMark in markData.Children)
-                {
-                    //Debug.Log("Placing next double mark indicators");
+                //foreach (GameObject doorMark in markData.Children)
+				for (int i = 0; i < 2 ; i++)
+				{
+					GameObject doorMark = markData.Children[i];
+					Debug.Log("Placing next double mark indicators :" + iter2);
+					Debug.Log (markIndicator [iter2].name);
                     markIndicator[iter2].SetActive(true);
                     markIndicator[iter2].transform.position = new Vector3(doorMark.transform.position.x, 0.0f, doorMark.transform.position.z);
                     //Debug.Log("MarkIndicator # " + iter2 + ", set at pos : " + markIndicator[iter2].transform.position);
@@ -969,6 +972,7 @@ public class Follow_track : MonoBehaviour
     void Update()
     {
 		
+		//ExternalObjectHandler.GetComponent<ExternalObjectsReference>().UIControlData.MetricsDisplay.GetComponent<UI_Metrics_Handler>().angle = angleBoardToWind;
 
         // get opponent current parameters, distance and angle vs mark.
         if (isPlayer == true)
@@ -1059,15 +1063,6 @@ public class Follow_track : MonoBehaviour
         {
             DestinationIndicator.transform.position = NavMeshNextCorner + new Vector3(0.0f, 3.0f, 0.0f);
         }
-
-		/*angleBoardToMark = Mathf.DeltaAngle(-1 *(transform.eulerAngles.y - 90), getAngleToTarget (NavMeshNextDir));
-		//angleBoardToMark = getAngleToTarget (NavMeshNextDir);
-		if (this.transform.parent.GetComponent<PlayerCollision>().isPlayer == true) {
-			Debug.Log("AngleToDir: " + angleBoardToMark);
-			if (Mathf.Abs (angleBoardToMark ) > 120) {
-				this.transform.parent.GetComponent<ExternalObjectsReference> ().UIControlData.MessageText.GetComponent<messageHandler> ().throwMessage (0);
-			}
-		}*/
     }
 
     public void triggeredManoeuvre()
@@ -1108,23 +1103,25 @@ public class Follow_track : MonoBehaviour
             //prevJibeToStarboard = false;
             manoeuvreFlag = true;
         }
-        if (manoeuvreFlag)
-        {
-            triggerManoeuvre = true;
-            this.gameObject.transform.parent.GetComponent<PlayerCollision>().ManualDrive = false;
-            this.gameObject.transform.parent.GetComponent<PlayerCollision>().updateManualDrive();
-            pathRecalculateLogicTriggeredManoeuvre(0.0f);
-            //Debug.Log(this.gameObject.transform.parent.GetComponent<tricksHandlingScript>().StarsMaxLevel);
-            if (this.gameObject.transform.parent.GetComponent<tricksHandlingScript>().StarsMaxLevel > 0)
-            {
-                this.gameObject.transform.parent.GetComponent<tricksHandlingScript>().enableTrick(trickLevel);
-				if ((doTackToStarboard == true) || (doTackToPort == true)) {
-					// TODO: scan throught message name to find the correct one
-					transform.parent.gameObject.GetComponent<ExternalObjectsReference> ().UIControlData.MessageText.GetComponent<messageHandler> ().throwMessage (0);
-				}
+		if (manoeuvreFlag) {
+			triggerManoeuvre = true;
+			this.gameObject.transform.parent.GetComponent<PlayerCollision> ().ManualDrive = false;
+			this.gameObject.transform.parent.GetComponent<PlayerCollision> ().updateManualDrive ();
+			pathRecalculateLogicTriggeredManoeuvre (0.0f);
+			//Debug.Log(this.gameObject.transform.parent.GetComponent<tricksHandlingScript>().StarsMaxLevel);
+            
+			this.gameObject.transform.parent.GetComponent<tricksHandlingScript> ().enableTrick (trickLevel);
+			if ((doTackToStarboard == true) || (doTackToPort == true)) { // Manoeuvre indentied as being a tack
+				// TODO: scan throught message name to find the correct one
 
-            }
-        }
+				transform.parent.gameObject.GetComponent<ExternalObjectsReference> ().UIControlData.MessageText.GetComponent<messageHandler> ().throwMessage (3 + trickLevel);
+			}
+			if ((doJibeToStarboard == true) || (doJibeToPort == true)) { // Manoeuvre indentied as being a tack
+				
+				transform.parent.gameObject.GetComponent<ExternalObjectsReference> ().UIControlData.MessageText.GetComponent<messageHandler> ().throwMessage (7 + trickLevel);
+			}
+            
+		}
     }
 
     public void controlManoeuvre()
@@ -1294,7 +1291,7 @@ public class Follow_track : MonoBehaviour
         {
             if (prevJibeToPort == false)
             {
-                Debug.Log("recalculate path to Jibe to Port");
+                //Debug.Log("recalculate path to Jibe to Port");
                 //nexttargetreforcalc = isNextTargetMark;
                 //drivestarboardforrecalc = false;
                 recalculatePath = true;
@@ -1305,7 +1302,7 @@ public class Follow_track : MonoBehaviour
             {
                 //Debug.Log("Jibe finished");
                 doJibeToPort = false;
-                Debug.Log("recalculate path to Jibe to Port at jibe end");
+                //Debug.Log("recalculate path to Jibe to Port at jibe end");
                 //nexttargetreforcalc = isNextTargetMark;
                 drivestarboardforrecalc = false;
                 if (isPlayer == false) { recalculatePath = true; }
@@ -1316,7 +1313,7 @@ public class Follow_track : MonoBehaviour
         {
             if (prevJibeToStarboard == false)
             {
-                Debug.Log("recalculate path to jibe to Starboard");
+                //Debug.Log("recalculate path to jibe to Starboard");
                 //nexttargetreforcalc = isNextTargetMark;
                 //drivestarboardforrecalc = true;
                 recalculatePath = true;
@@ -1327,7 +1324,7 @@ public class Follow_track : MonoBehaviour
             {
                 //Debug.Log("Jibe finished");
                 doJibeToStarboard = false;
-                Debug.Log("recalculate path to Jibe to Starboard at jibe end");
+                //Debug.Log("recalculate path to Jibe to Starboard at jibe end");
                 //nexttargetreforcalc = isNextTargetMark;
                 drivestarboardforrecalc = true;
                 if (isPlayer == false) { recalculatePath = true; }

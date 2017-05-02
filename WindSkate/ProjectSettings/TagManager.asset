@@ -10,6 +10,7 @@ TagManager:
   - WindEffects
   - NavMeshDestination
   - Pine_Tree
+  - Collectable
   layers:
   - Default
   - TransparentFX

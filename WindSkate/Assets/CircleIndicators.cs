@@ -19,8 +19,10 @@ public class CircleIndicators : MonoBehaviour {
 	public GameObject apparentWindArrow;
 	public GameObject trueWindArrow;
 	private IEnumerator messageCoroutine;
-	private IEnumerator interruptMessage;
+	//private IEnumerator interruptMessage;
 	public bool turnAroundMessageAlreadyThrown;
+	public GameObject WindArrow;
+	public float windAngle;
 
     // Use this for initialization
     void Start()
@@ -95,6 +97,8 @@ public class CircleIndicators : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
+		windAngle = playerObj.GetComponent<Follow_track>().angleBoardToWind;
+
         ///Handling the track direction
         nextTrackMark = followTrackData.currentMark;
 
@@ -116,7 +120,7 @@ public class CircleIndicators : MonoBehaviour {
 		trackDirectionTickArrow.transform.localEulerAngles = new Vector3 (0.0f, 0.0f, angleToMark + 180);
 
 		//messageWaitbefore = null;
-		interruptMessage = null;
+		//interruptMessage = null;
 		if (Mathf.Abs (angleBoardToMark) > 120f) {
 			if (turnAroundMessageAlreadyThrown == false) {
 				turnAroundMessageAlreadyThrown = true;
@@ -223,6 +227,7 @@ public class CircleIndicators : MonoBehaviour {
             opponentDistSqList.RemoveAt(closestOpponentId);
         }
     }
+
 
     /// <summary>
     /// Returns the index of the min value of a List of floats

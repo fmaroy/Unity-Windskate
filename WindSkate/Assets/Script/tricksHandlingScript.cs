@@ -77,17 +77,6 @@ public class tricksHandlingScript : MonoBehaviour {
 			SlidersContainer = UIControlObj.GetComponent<InterfaceControl> ().SliderContainer;
 		}
 
-		/*if (this.GetComponent<ExternalObjectsReference>().SceneManagerObject != null)
-        {
-			localTackList = this.GetComponent<ExternalObjectsReference>().SceneData.tackList;
-			localJibeList = this.GetComponent<ExternalObjectsReference>().SceneData.jibeList;
-        }
-        else
-        {
-            localTackList = raceDataUserPref.localTackManoeuvres;
-            localJibeList = raceDataUserPref.localJibeManoeuvres;
-        }*/
-
 		EnergyMaxLevel = Mathf.Max(localTackList[localTackList.Count -1].costEnergy, localJibeList[localJibeList.Count -1].costEnergy);
 		SpeedMaxLevel = Mathf.Max(localTackList[localTackList.Count -1].costSpeed, localJibeList[localJibeList.Count -1].costSpeed);
 		AngleMaxLevel = Mathf.Max(localTackList[localTackList.Count -1].costAngle, localJibeList[localJibeList.Count -1].costAngle);
@@ -110,14 +99,13 @@ public class tricksHandlingScript : MonoBehaviour {
 
     void ButtonDisplayManoeuvreHandling()
     {
-        if (Mathf.Abs( WindAngle) < 70)
+		if (Mathf.Abs( WindAngle) < 70)
         {
 			manoeuvreStatus = "tack";
             if (WindAngle < 0)
             {
                 ButtonManoeuvreLeft.SetActive(true);
                 ButtonManoeuvreRight.SetActive(false);
-
             }
             else
             {
@@ -125,7 +113,7 @@ public class tricksHandlingScript : MonoBehaviour {
                 ButtonManoeuvreRight.SetActive(true);
             }
         }
-        if ((Mathf.Abs(WindAngle) > 110))
+		if (Mathf.Abs(WindAngle) > 110) 
         {
 			manoeuvreStatus = "jibe";
             if (WindAngle < 0)
@@ -139,6 +127,10 @@ public class tricksHandlingScript : MonoBehaviour {
                 ButtonManoeuvreRight.SetActive(false);
             }
         }
+		if ((Mathf.Abs (WindAngle) < 40) || (Mathf.Abs (WindAngle) > 145)) {
+			ButtonManoeuvreLeft.SetActive(false);
+			ButtonManoeuvreRight.SetActive(false);
+		}
 
         if ((Mathf.Abs(WindAngle) > 70) && (Mathf.Abs(WindAngle) < 110))
         {
@@ -174,6 +166,7 @@ public class tricksHandlingScript : MonoBehaviour {
             i++;
         }
     }
+
     void showSliderStars(bool b)
     {
         string nameStar = "Star1";
@@ -377,7 +370,10 @@ public class tricksHandlingScript : MonoBehaviour {
             //Debug.Log("Hide the stars");
             showSliderStars(false);
         }
-        StarsMaxLevel = Mathf.Min(EnergyStarLevel, SpeedStarLevel, AngleStarLevel);
+		//Removed because i decided to remove the Angle and Speed Sliders now StarsMaxLevel is equal to Energy only
+        //StarsMaxLevel = Mathf.Min(EnergyStarLevel, SpeedStarLevel, AngleStarLevel);
+
+		StarsMaxLevel = EnergyStarLevel;
 
         if (isCurrentPlayer == true)
         {

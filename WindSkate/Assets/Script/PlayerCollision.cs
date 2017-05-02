@@ -675,7 +675,8 @@ public class PlayerCollision : MonoBehaviour
     }
     void repositionPlayerDisabledRb()
     {
-		Camera.main.GetComponent<CameraControlScript> ().resetVignetteCameraEffect ();
+		
+		this.GetComponent<ExternalObjectsReference>().currentCamera.GetComponent<CameraControlScript> ().resetVignetteCameraEffect ();
 
         getPositionAfterCrash();
         colllisonFlag = false;
