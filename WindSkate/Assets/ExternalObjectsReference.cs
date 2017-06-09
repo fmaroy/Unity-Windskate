@@ -19,7 +19,7 @@ public class ExternalObjectsReference : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		initPlayer ();
-		currentCamera = GameObject.Find ("Camera Player");
+		currentCamera = Camera.main.gameObject;
 	}
 
 	public bool initPlayer()

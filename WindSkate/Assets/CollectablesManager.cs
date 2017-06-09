@@ -30,7 +30,7 @@ public class CollectablesManager : MonoBehaviour {
 			time = 0f;
 			if (Random.value > randomFactor) {
 				int id = Random.Range(0, relocalizationPositions.Count);
-				Debug.Log (id);
+				//Debug.Log (id);
 				GameObject temp = (GameObject)Instantiate(EnergyCanPrefab,relocalizationPositions[id].transform.position,relocalizationPositions[id].transform.rotation);
 				temp.transform.parent = collectablesContainerObj.transform;
 			}

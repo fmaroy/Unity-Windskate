@@ -158,9 +158,9 @@ public class Follow_track : MonoBehaviour
                 }*/
                 markIndicator[1].SetActive(false);
                 markIndicator[0].transform.position = new Vector3(currentMark.transform.position.x, 0.0f, currentMark.transform.position.z);
-                
             }
         }
+
         /// calculation for  isPlayer = true
         if (markData.singleMark == true)
         {
@@ -188,6 +188,7 @@ public class Follow_track : MonoBehaviour
             //Debug.Log("setNextNav : " + nextTarget);
             //NavAgentObject.GetComponent<NavMeshAgent>().SetDestination(nextTarget);
         }
+
         previousFrame_isNextTargetMark = isNextTargetMark;
 
         previousdriveStarboardStatus = driveStarboard;
@@ -233,7 +234,11 @@ public class Follow_track : MonoBehaviour
             triggerManoeuvre = false;
         }
     }
-
+	/// <summary>
+	/// This function returns an integer indicating if the player is going upwind, downwind or straight to the mark
+	/// </summary>
+	/// <returns>The racer status on track.</returns>
+	/// <param name="currentAngleToWind">Current angle to wind.</param>
     public int getRacerStatusOnTrack(float currentAngleToWind)
     {
         int NextTargetStatus = 0;
@@ -413,16 +418,14 @@ public class Follow_track : MonoBehaviour
             	if (GameObject.Find(trackData.markSequence[i]).GetComponent<Mark>().Children.Count != 0){
                 	foreach (GameObject obj in GameObject.Find(trackData.markSequence[i]).GetComponent<Mark>().Children)
                 	{
-                	    obj.transform.FindChild("Projector").gameObject.SetActive(false);
+                	    obj.transform.Find("Projector").gameObject.SetActive(false);
                 	}
-
             	}
             	else
             	{
-					if (GameObject.Find (trackData.markSequence [i]).transform.FindChild ("Projector") != null) {
-						GameObject.Find (trackData.markSequence [i]).transform.FindChild ("Projector").gameObject.SetActive (false);
+					if (GameObject.Find (trackData.markSequence [i]).transform.Find ("Projector") != null) {
+						GameObject.Find (trackData.markSequence [i]).transform.Find ("Projector").gameObject.SetActive (false);
 					}
-
             	}
         	}
 		}
@@ -449,10 +452,10 @@ public class Follow_track : MonoBehaviour
 				// checks if current mark has children
 				if (GameObject.Find (trackData.markSequence [id]).GetComponent<Mark> ().Children.Count != 0) {
 					foreach (GameObject obj in GameObject.Find(trackData.markSequence[id]).GetComponent<Mark>().Children) {
-						obj.transform.FindChild ("Projector").gameObject.SetActive (true);
+						obj.transform.Find ("Projector").gameObject.SetActive (true);
 					}
 				} else {
-					GameObject.Find (trackData.markSequence [id]).transform.FindChild ("Projector").gameObject.SetActive (true);
+					GameObject.Find (trackData.markSequence [id]).transform.Find ("Projector").gameObject.SetActive (true);
 				}
 				if (arrivalObject != null) {
 					arrivalObject.SetActive (false);
@@ -470,7 +473,6 @@ public class Follow_track : MonoBehaviour
 
     int getStatusOnPassingSingleMark(int MarkIndicatorId, GameObject currentNextMark, Vector3 firstPass, Vector3 finalPass)
     {
-
         Vector3 targetMark = currentNextMark.transform.position;
         //Debug.Log("targetMark : " + targetMark);
 

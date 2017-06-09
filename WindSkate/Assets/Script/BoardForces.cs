@@ -11,17 +11,9 @@ public class BoardForces : MonoBehaviour {
 	public float angle_mutiplier;
 	public float sailor_weight;
 	private Rigidbody rb;
-	//public Rigidbody boardForces;
-	//public GameObject Sail;
-	//private GameObject windSource;
-	//private Windscript windData;
 	
 	private bool LeftButtonDownBool = false;
 	private bool RightButtonDownBool = false;
-	//public Selectable left_arrowButton;
-	//public Selectable right_arrowButton;
-	//private ButtonLeftScript left_arrowButtonData;
-	//private ButtonRightScript right_arrowButtonData;
 	
 	//for geom roation assignement
 	public GameObject front_axis;
@@ -39,6 +31,9 @@ public class BoardForces : MonoBehaviour {
 	public float startTime;
     
     private PlayerCollision parentGameObjectData;
+
+	public bool isStarting;
+
     public float crashingThreshold = 10.0f;
 
     // change on 18 may
@@ -84,18 +79,6 @@ public class BoardForces : MonoBehaviour {
                                 Debug.Log("Found : " + subsubchild.gameObject.name);
                                 return subsubchild.gameObject;
                             }
-                            /*else
-                            {
-                                foreach (Transform subsubsubchild in subsubchild)
-                                {
-                                    Debug.Log(subsubsubchild.gameObject.name);
-                                    if (subsubsubchild.gameObject.name == nameToFind)
-                                    {
-                                        return subsubsubchild.gameObject;
-                                    }
-                                }
-                            }
-                            */
 						}
 					}
 				}
@@ -168,7 +151,6 @@ public class BoardForces : MonoBehaviour {
         if(localManualDrive == false)
         {
             front_axis.transform.localEulerAngles = new Vector3(270.0f, 1 * angle_mutiplier * rotation, 0.0f);
-            //rear_axis.transform.localEulerAngles = new Vector3(270.0f, -1 * angle_mutiplier * rotation, 0.0f);
             rear_axis.transform.localEulerAngles = new Vector3(270.0f, 180 - 1* angle_mutiplier * rotation, 0.0f);
             wheelFrontLeftCollider.steerAngle = 1 * angle_mutiplier * rotation;
             wheelFrontRightCollider.steerAngle = 1 * angle_mutiplier * rotation;
@@ -176,39 +158,6 @@ public class BoardForces : MonoBehaviour {
             wheelRearRightCollider.steerAngle = -1 * angle_mutiplier * rotation;
             boardObject.transform.localEulerAngles = new Vector3(0.0f, 0.0f, -1 * angle_mutiplier * rotation);
         }
-        /*if (Mathf.Cos(transform.eulerAngles.x) < 0.6) 
-        {
-            Debug.Log(Mathf.Cos(transform.eulerAngles.x));
-            parentGameObjectData.playerCrashed();
-        }
-        
-        if (transform.eulerAngles.x < 300)
-        {
-            transform.eulerAngles = new Vector3(-60, transform.eulerAngles.y, transform.eulerAngles.z);
-        }
-        if (transform.eulerAngles.z < 300)
-        {
-            transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, -60);
-        }
-        if (transform.eulerAngles.z > 60)
-        {
-            transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 60);
-        }
-
-        /*rotation = Input.GetAxis("Horizontal") * rotationSpeed;
-		if (LeftButtonDownBool == true)
-		{
-			rotation = -0.75f * rotationSpeed;
-		}
-		if (RightButtonDownBool == true)
-		{
-			rotation = 0.75f * rotationSpeed;
-		}
-		if(RightButtonDownBool == false && LeftButtonDownBool == false)
-		{
-			rotation = Input.GetAxis("Horizontal") * rotationSpeed;
-		}
-		rotation *= Time.deltaTime;*/
     }
 	
 	void FixedUpdate ()
@@ -249,14 +198,17 @@ public class BoardForces : MonoBehaviour {
             float thrust = Input.GetAxis("Vertical") * thrust_multiplier;
 
             //Add Thrust Force
-            rb.AddRelativeForce(0.0f, 0.0f, thrust * thrust_multiplier);
+			if (isStarting == false) {
+				rb.AddRelativeForce (0.0f, 0.0f, thrust * thrust_multiplier);
+			}
         }
         else
         {
             rotation = rotationToDirection * rotationSpeed;
             rotation *= Time.deltaTime;
-
-            rb.AddForce(new Vector3(0.0f, -1 * sailor_weight, 0.0f));
+			if (isStarting == false) {
+				rb.AddForce (new Vector3 (0.0f, -1 * sailor_weight, 0.0f));
+			}
         }
 		
 		

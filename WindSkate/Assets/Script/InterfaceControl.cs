@@ -6,11 +6,13 @@ using System.Collections.Generic;
 
 public class InterfaceControl : MonoBehaviour {
 
+	public int UIComplexityLevel = 0;
     private GameObject Scenemanager;
     private SceneManagerScript ScenemanagerData;
     public GameObject LoadingImage;
     public GameObject PauseImage;
     public GameObject PauseButton;
+	public GameObject CameraButton;
 	public GameObject FinishImage;
     private GameObject RaceData;
     public GameObject Ranking;
@@ -24,6 +26,11 @@ public class InterfaceControl : MonoBehaviour {
 	public GameObject ManoeuvreRightButton;
 	public GameObject MessageText;
 	public GameObject MetricsDisplay;
+	public GameObject IntroImage;
+	public GameObject GesturePanel;
+	public GameObject StartLights;
+	public GameObject SkipIntoButton;
+
 	//private AnimatorStateInfo reachedEndAnimationState;
 
 
@@ -32,7 +39,70 @@ public class InterfaceControl : MonoBehaviour {
 		Player = player;
 		Start ();
 	}
-		
+
+	public void controlsVisibiltyHandler (bool vis)
+	{
+		int level = UIComplexityLevel;
+		GameObject[] PlayerControls = {
+			TurnLeftButton, TurnRightButton,ManoeuvreLeftButton, ManoeuvreRightButton
+		};
+		GameObject[] GameControls = {
+			PauseButton, CameraButton, GesturePanel
+		};
+		GameObject[] PlayerInfo = {
+			SliderContainer, WindIndicator
+		};
+		GameObject[] GameInfo = {
+			Ranking, MessageText, MetricsDisplay
+		};
+
+		if (!vis) {
+			foreach (GameObject obj in PlayerControls)
+			{
+				obj.SetActive (false);
+			}
+			foreach (GameObject obj in GameControls)
+			{
+				obj.SetActive (false);
+			}
+			foreach (GameObject obj in PlayerInfo)
+			{
+				obj.SetActive (false);
+			}
+			foreach (GameObject obj in GameInfo)
+			{
+				obj.SetActive (false);
+			}
+		} 
+		else {
+			int i = 0;
+			foreach (GameObject obj in PlayerInfo)
+			{
+				if (i < level) {
+					obj.SetActive (true);
+
+				} 
+				else {
+					obj.SetActive (false);
+				}
+				i++;
+			}
+			foreach (GameObject obj in PlayerControls)
+			{
+				obj.SetActive (true);
+			}
+			foreach (GameObject obj in GameControls)
+			{
+				obj.SetActive (true);
+			}
+
+			foreach (GameObject obj in GameInfo)
+			{
+				obj.SetActive (true);
+			}
+		}
+	}
+
     void Start()
     {
         RaceData = GameObject.Find("RaceManager");
@@ -44,9 +114,8 @@ public class InterfaceControl : MonoBehaviour {
         {
             ScenemanagerData = Scenemanager.GetComponent<SceneManagerScript>();
         }
+		SkipIntoButton.SetActive (false);
     }
-
-
 
 	public void triggerManoeuvreListener ()
 	{
