@@ -14,11 +14,15 @@ public class SailAnimScript : MonoBehaviour
     static int PortStateTenDeg;
     static int PortStateNinetyDeg;
     static int StarboardStateNinetyDeg;
+	static int StartTransitionStarboard;
+	static int StartTransitionPort;
+
+
 
     public float WindLayerWeight = 50.0f;
     //private Sail_System_Control SailControlComponent;
     private float SailAngle;
-    private bool isManoeuvreTransitioning = false;
+    public bool isManoeuvreTransitioning = false;
     public bool isManoeuvreing = false;
     private bool previsManoeuvreing = false;
     public float timerManoeuvreTarget = 1.0f;
@@ -76,6 +80,15 @@ public class SailAnimScript : MonoBehaviour
 
 		//isStarting = true;
     }
+	void OnAnimatorMove() {
+		Animator animator = GetComponent<Animator>();
+		if (animator) {
+			Vector3 newPosition = transform.position;
+			newPosition.z += animator.GetFloat("Runspeed") * Time.deltaTime;
+			//Debug.Log ("Motion Z : " + newPosition);
+			//transform.position = newPosition;
+		}
+	}
 
     void LateUpdate()
     {

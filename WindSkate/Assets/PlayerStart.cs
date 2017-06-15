@@ -11,8 +11,10 @@ public class PlayerStart : MonoBehaviour {
 	public Sail_System_Control sailSystemData;
 	public BoardForces boardForcesData;
 	static int StartIdleStarboard;
+	static int StartIdleStarboard2;
 	static int StartTransitionStarboard;
 	static int StartIdlePort;
+	static int StartIdlePort2;
 	static int StartTransitionPort;
 	static int currentBaseStateInManoeuvre;
 
@@ -35,8 +37,10 @@ public class PlayerStart : MonoBehaviour {
 		//updateStartParamameters (false);
 
 		StartIdleStarboard = Animator.StringToHash("Manoeuvres_Layer.StartIdleStarboard");
+		StartIdleStarboard2 = Animator.StringToHash("Manoeuvres_Layer.StartIdleStarboard_Shorter");
 		StartTransitionStarboard = Animator.StringToHash("Manoeuvres_Layer.StartTransitionStarboard");
 		StartIdlePort = Animator.StringToHash("Manoeuvres_Layer.StartIdlePort");
+		StartIdlePort2 = Animator.StringToHash("Manoeuvres_Layer.StartIdlePort_Shorter");
 		StartTransitionPort = Animator.StringToHash("Manoeuvres_Layer.StartTransitionPort");
 	}
 
@@ -78,26 +82,18 @@ public class PlayerStart : MonoBehaviour {
 		//first checks the current status of the aniamtion for this player: is it in Start position?
 		int startInt = 0;
 		Debug.Log ("currentAnim Hash :" + currentManState.fullPathHash);
+		int[] animIdleArraw = new int[]{StartIdleStarboard, StartIdleStarboard2, StartIdlePort, StartIdlePort2};
+		int idleState = 0;
+		foreach (int animState in animIdleArraw) {
+			if (currentManState.fullPathHash == animState) {
+				startInt = 1;
+				break;
+			}
+			idleState++;
+		}
 		if ((currentManState.fullPathHash == StartIdleStarboard) || (currentManState.fullPathHash == StartIdlePort)){
 			Debug.Log ("Player is in Idle pose");
 			startInt = 1;
-			sailAnimData.animSail.SetTrigger ("Start");
-
-			if (currentManState.fullPathHash == StartIdleStarboard)
-			{
-				yield return StartCoroutine (waitForStartTransitioning(currentManState, StartIdleStarboard, StartTransitionStarboard));
-			}
-			if (currentManState.fullPathHash == StartIdlePort)
-			{
-				yield return StartCoroutine (waitForStartTransitioning(currentManState, StartIdlePort, StartTransitionPort));
-			}
-			Debug.Log ("start sequence : exits states");
-			//sailAnimData.exitManoeuvre ();
-			updateStartParamameters (false);
-			sailAnimData.animSail.SetInteger ("Starting", 0);
-			//Debug.Log ("Start Anim integer : " + sailAnimData.animSail.GetInteger ("Starting"));
-			//yield return getStartLayerBlend (transitionTime);
-
 			//Debug.Log ("start sequence : finished transitions");
 
 		}
@@ -107,6 +103,22 @@ public class PlayerStart : MonoBehaviour {
 		}
 		if (startInt == 0) {
 			Debug.Log ("Player is not in Start sequence");
+		}
+		if (startInt == 1) {
+			sailAnimData.animSail.SetTrigger ("Start");
+
+			if (idleState < 2)// is Starboard Position
+			{
+				yield return StartCoroutine (waitForStartTransitioning(currentManState, StartIdleStarboard, StartTransitionStarboard));
+			}
+			else // is Port Position
+			{
+				yield return StartCoroutine (waitForStartTransitioning(currentManState, StartIdlePort, StartTransitionPort));
+			}
+			Debug.Log ("start sequence : exits states");
+			//sailAnimData.exitManoeuvre ();
+			updateStartParamameters (false);
+			sailAnimData.animSail.SetInteger ("Starting", 0);
 		}
 	}
 
@@ -150,5 +162,6 @@ public class PlayerStart : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.S)) {
 			StartCoroutine(PlayerStartSequence ());
 		}
+		sailAnimData.animSail.SetInteger ("Idle_Selector", Random.Range (0, 2));
 	}
 }

@@ -181,6 +181,7 @@ ModelImporter:
     7400080: StartTransitionStarboard
     7400082: StartIdlePort
     7400084: StartTransitionPort
+    7400086: StartTransitionStarboardPush
     9500000: //RootNode
     13700000: Charcter
     13700002: Eyes
@@ -4288,7 +4289,7 @@ ModelImporter:
       name: StartIdleStarboard
       takeName: Start
       firstFrame: 5
-      lastFrame: 50
+      lastFrame: 49
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -4714,6 +4715,144 @@ ModelImporter:
       loopBlendOrientation: 1
       loopBlendPositionY: 1
       loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_ik_L
+        weight: 0
+      - path: Armature/Arm_ik_R
+        weight: 0
+      - path: Armature/Leg_Control_L
+        weight: 0
+      - path: Armature/Leg_Control_L/Foot_Angle_control_L
+        weight: 0
+      - path: Armature/Leg_Control_R
+        weight: 0
+      - path: Armature/Leg_Control_R/Foot_Angle_control_R
+        weight: 0
+      - path: Armature/Pole_Target_Arm_L
+        weight: 0
+      - path: Armature/Pole_Target_Arm_R
+        weight: 0
+      - path: Armature/Pole_Target_Leg_L
+        weight: 0
+      - path: Armature/Pole_Target_Leg_R
+        weight: 0
+      - path: Armature/Torso_00
+        weight: 1
+      - path: Armature/Torso_00/Torso_01
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Finger01_L/Finger02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_L/Arm02_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Finger01_R/Finger02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Arm01_R/Arm02_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck
+        weight: 1
+      - path: Armature/Torso_00/Torso_01/Neck/Head
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_L/Lower_Leg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R
+        weight: 1
+      - path: Armature/Torso_00/Upper_Leg_R/Lower_Leg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Armature_Sail
+        weight: 1
+      - path: Armature_Sail/Bone
+        weight: 1
+      - path: Character
+        weight: 0
+      - path: Eyes
+        weight: 0
+      - path: Hair
+        weight: 0
+      - path: Hair_1
+        weight: 0
+      - path: Helnmet
+        weight: 0
+      - path: Pants
+        weight: 0
+      - path: Plane_001
+        weight: 0
+      - path: Sail_type1
+        weight: 0
+      - path: Sail_type2
+        weight: 0
+      - path: Sail_type3
+        weight: 0
+      - path: Shoes_Low
+        weight: 0
+      - path: Short_Pants
+        weight: 0
+      - path: Sweater
+        weight: 0
+      - path: T-shirt
+        weight: 0
+      - path: Wishbone
+        weight: 0
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: StartTransitionStarboardPush
+      takeName: Start
+      firstFrame: 200
+      lastFrame: 249
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
       keepOriginalOrientation: 1
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 1

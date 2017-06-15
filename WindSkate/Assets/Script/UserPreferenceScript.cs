@@ -185,6 +185,7 @@ public class UserPreferenceScript : MonoBehaviour {
 				}
 			}
 		}
+
 		return temp;
     }
 
@@ -271,6 +272,8 @@ public class UserPreferenceScript : MonoBehaviour {
 
         PlayerProperties currentPlayerConfig = getPlayerProps(currentplayer);
         playerInventory currentInventory = currentplayer.GetComponent<playerInventory>();
+		currentInventory.PlayerName = currentPlayerConfig.name;
+
         //Debug.Log("Name : " + currentPlayerConfig.name);
         //Debug.Log("Gender: " + currentPlayerConfig.gender);
         GameObject characterObject = currentplayer;
