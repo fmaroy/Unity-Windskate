@@ -413,14 +413,14 @@ public class Follow_track : MonoBehaviour
             	if (GameObject.Find(trackData.markSequence[i]).GetComponent<Mark>().Children.Count != 0){
                 	foreach (GameObject obj in GameObject.Find(trackData.markSequence[i]).GetComponent<Mark>().Children)
                 	{
-                	    obj.transform.FindChild("Projector").gameObject.SetActive(false);
+                	    obj.transform.Find("Projector").gameObject.SetActive(false);
                 	}
 
             	}
             	else
             	{
-					if (GameObject.Find (trackData.markSequence [i]).transform.FindChild ("Projector") != null) {
-						GameObject.Find (trackData.markSequence [i]).transform.FindChild ("Projector").gameObject.SetActive (false);
+					if (GameObject.Find (trackData.markSequence [i]).transform.Find ("Projector") != null) {
+						GameObject.Find (trackData.markSequence [i]).transform.Find ("Projector").gameObject.SetActive (false);
 					}
 
             	}
@@ -449,10 +449,10 @@ public class Follow_track : MonoBehaviour
 				// checks if current mark has children
 				if (GameObject.Find (trackData.markSequence [id]).GetComponent<Mark> ().Children.Count != 0) {
 					foreach (GameObject obj in GameObject.Find(trackData.markSequence[id]).GetComponent<Mark>().Children) {
-						obj.transform.FindChild ("Projector").gameObject.SetActive (true);
+						obj.transform.Find ("Projector").gameObject.SetActive (true);
 					}
 				} else {
-					GameObject.Find (trackData.markSequence [id]).transform.FindChild ("Projector").gameObject.SetActive (true);
+					GameObject.Find (trackData.markSequence [id]).transform.Find ("Projector").gameObject.SetActive (true);
 				}
 				if (arrivalObject != null) {
 					arrivalObject.SetActive (false);
