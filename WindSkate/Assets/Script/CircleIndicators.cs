@@ -107,10 +107,11 @@ public class CircleIndicators : MonoBehaviour {
 						subchild.GetComponent<RawImage> ().texture = targetPlayer.GetComponentInChildren<PlayerfaceImageHandler> ().rt;
 					}
 				}
-				if(subchild.GetComponent<Text> () != null){
+				if(subchild.GetComponent<TextMesh> () != null){
+					//Debug.Log ("Text of tick found");
 					subchild.gameObject.SetActive(vis);
 					if (vis) {
-						subchild.GetComponent<Text> ().text = targetPlayer.GetComponent<playerInventory>().PlayerName;
+						subchild.GetComponent<TextMesh> ().text = targetPlayer.GetComponent<playerInventory>().PlayerName;
 					}
 				}
 			}

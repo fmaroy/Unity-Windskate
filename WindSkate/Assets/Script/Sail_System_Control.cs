@@ -47,6 +47,7 @@ public class Sail_System_Control : MonoBehaviour
 	public float manoeuvreModifier = 1.0f;
 
 	public bool isStarting;
+	public bool isStartingActiveSails;
 
     // Use this for initialization
     void Start ()
@@ -126,7 +127,12 @@ public class Sail_System_Control : MonoBehaviour
 
 			//Debug.Log ("Thrust : " + SailThrustForce +", Manoeuvre modifier : " + manoeuvreModifier);
 			if (isStarting == false) {
-				Debug.Log("Applied Forces to Sail");
+				//Debug.Log("Applied Forces to Sail");
+				//Debug.Log ("Thrust : " + SailThrustForce +", Manoeuvre modifier : " + manoeuvreModifier);
+				if (isStartingActiveSails == true) {
+					manoeuvreModifier = -100; // special case for starting condidions. manoeuvre slow dwon is disabled
+				}
+				Debug.Log ("Thrust : " + SailThrustForce +", Manoeuvre modifier : " + manoeuvreModifier);
 				rbBoard.AddRelativeForce (SailSideForce, 0.0f, SailThrustForce - manoeuvreModifier);
 			} else {
 				rbBoard.AddRelativeForce (0.0f, 0.0f, 0.0f);

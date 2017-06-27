@@ -50,6 +50,8 @@ public class SailAnimScript : MonoBehaviour
 	public int inProgressManoeuverLevel = 0;
 
 	public bool isStarting;
+	public Vector3 animatorRootMotion;
+	public float animationDisplacement;
 
     // Use this for initialization
     void Start()
@@ -80,13 +82,25 @@ public class SailAnimScript : MonoBehaviour
 
 		//isStarting = true;
     }
-	void OnAnimatorMove() {
-		Animator animator = GetComponent<Animator>();
-		if (animator) {
-			Vector3 newPosition = transform.position;
+	public void OnAnimatorMove() {
+		//Animator animator = GetComponent<Animator>();
+		if (animSail) {
+			float temp = animSail.GetFloat("Runspeed") * Time.deltaTime;
+
+			//Debug.Log ("Runspeed :" + temp);
+			if (temp > 0) {
+				animationDisplacement = temp;
+				//Debug.Log ("Runspeed :" + animationDisplacement);
+			} else {
+				animationDisplacement = 0.0f;
+			}
+				
+			/*Vector3 newPosition = transform.position;
 			newPosition.z += animator.GetFloat("Runspeed") * Time.deltaTime;
-			//Debug.Log ("Motion Z : " + newPosition);
+
+			Debug.Log ("Motion Z : " + newPosition);
 			//transform.position = newPosition;
+			animatorRootMotion = newPosition;*/
 		}
 	}
 

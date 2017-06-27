@@ -599,7 +599,7 @@ public class PlayerCollision : MonoBehaviour
         prevIsPlayer = isPlayer;
         prevManualDrive = ManualDrive;
     }
-    void repositionPlayerDisabledRb()
+    public void repositionPlayerDisabledRb()
     {
 		
 		this.GetComponent<ExternalObjectsReference>().currentCamera.GetComponent<CameraControlScript> ().resetVignetteCameraEffect ();
@@ -628,11 +628,42 @@ public class PlayerCollision : MonoBehaviour
             mesh.enabled = false;
         }
         */
+		Sail_System_Anim.enabled = false;
         StartCoroutine(repositionPlayerEnableRb());
 		this.GetComponent<PlayerStart>().InitializeStartAfterCrash();
     }
 
-    IEnumerator repositionPlayerEnableRb()
+	/*public void resetRb(){
+		this.GetComponent<ExternalObjectsReference>().currentCamera.GetComponent<CameraControlScript> ().resetVignetteCameraEffect ();
+
+		//getPositionAfterCrash();
+		playerOrientationAtCrash = transform.eulerAngles.y;
+
+		colllisonFlag = false;
+		float trackLeftSideBoundary = BoardFollowTrack.currentLeftSideBoundary;
+		float trackRightSideBoundary = BoardFollowTrack.currentRightSideBoundary;
+		//Get previous player orientation
+		playerOrientationAtCrash = playerRecoveryOrientation;
+
+		Destroy(SailSystemData.SailBone.GetComponent<FixedJoint>());
+		//Destroy(SailSystem.GetComponent<ConfigurableJoint>());
+		foreach (Rigidbody rb in rigidBodiesListDynamics)
+		{
+			rb.velocity = Vector3.zero;
+			rb.angularVelocity = Vector3.zero;
+			rb.useGravity = false;
+			rb.isKinematic = true;
+			rb.gameObject.SetActive(false);
+		}
+		currentFrame = 0;
+		resetting = true;
+
+		StartCoroutine(repositionPlayerEnableRb());
+		this.GetComponent<PlayerStart>().InitializeStartAfterCrash();
+	}*/
+
+
+    public IEnumerator repositionPlayerEnableRb()
     {
         yield return new WaitForSeconds(0.02f);
         //reset Objects

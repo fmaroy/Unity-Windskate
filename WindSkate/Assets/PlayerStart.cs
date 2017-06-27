@@ -49,6 +49,8 @@ public class PlayerStart : MonoBehaviour {
 		//sailAnimData.isStarting = startbool;
 		playerCollisionData.isStarting = startbool;
 		sailSystemData.isStarting = startbool;
+		sailSystemData.isStartingActiveSails = startbool;
+
 		boardForcesData.isStarting = startbool;
 		isStartingStatus = startbool;
 	}
@@ -69,57 +71,109 @@ public class PlayerStart : MonoBehaviour {
 			i += Time.deltaTime * rate;
 			yield return 0;
 		}
+
+
 		StartCoroutine(PlayerStartSequence ());
 	}
+
 
 	/// <summary>
 	/// Manages the Staring animations. this function must be called when the player has triggered the start (or after crash)
 	/// </summary>
 	public IEnumerator PlayerStartSequence()
 	{
+		//initialize player ready to start
+		// force aniamtion state to Idle
 
-		AnimatorStateInfo currentManState = sailAnimData.currentBaseStateInManoeuvre;
+		//sailAnimData.animSail.Play("Manoeuvres_Layer.Idle");
+		sailAnimData.animSail.SetInteger ("Starting", 1);
+
+
+		AnimatorStateInfo  currentManState = sailAnimData.currentBaseStateInManoeuvre;
 		//first checks the current status of the aniamtion for this player: is it in Start position?
 		int startInt = 0;
 		Debug.Log ("currentAnim Hash :" + currentManState.fullPathHash);
-		int[] animIdleArraw = new int[]{StartIdleStarboard, StartIdleStarboard2, StartIdlePort, StartIdlePort2};
+		int[] animIdleArray = new int[]{StartIdleStarboard, StartIdleStarboard2, StartIdlePort, StartIdlePort2};
 		int idleState = 0;
-		foreach (int animState in animIdleArraw) {
+		foreach (int animState in animIdleArray) {
 			if (currentManState.fullPathHash == animState) {
 				startInt = 1;
 				break;
 			}
 			idleState++;
 		}
+
 		if ((currentManState.fullPathHash == StartIdleStarboard) || (currentManState.fullPathHash == StartIdlePort)){
 			Debug.Log ("Player is in Idle pose");
 			startInt = 1;
 			//Debug.Log ("start sequence : finished transitions");
 
 		}
-		if ((currentManState.fullPathHash != StartIdleStarboard) || (currentManState.fullPathHash == StartIdlePort)){
+		/*if ((currentManState.fullPathHash != StartIdleStarboard) || (currentManState.fullPathHash != StartIdlePort)){
 			Debug.Log ("Player is already starting");
 			startInt = 2;
-		}
+		}*/
+
+		//Debug.Log ("Animstate : " + startInt);
+
 		if (startInt == 0) {
 			Debug.Log ("Player is not in Start sequence");
 		}
 		if (startInt == 1) {
-			sailAnimData.animSail.SetTrigger ("Start");
+			//sailAnimData.animSail.SetTrigger ("Start");
 
-			if (idleState < 2)// is Starboard Position
-			{
-				yield return StartCoroutine (waitForStartTransitioning(currentManState, StartIdleStarboard, StartTransitionStarboard));
-			}
-			else // is Port Position
-			{
-				yield return StartCoroutine (waitForStartTransitioning(currentManState, StartIdlePort, StartTransitionPort));
-			}
+			sailAnimData.animSail.SetInteger ("Starting", 2);
+
+			//yield return new WaitForSeconds(1f);
+
+
+
+			GameObject pushObj = this.GetComponentInChildren <BoardForces> ().gameObject;
+			//StartCoroutine (tempPushPlayer(pushObj, 3.0f));
+
+			//updateStartParamameters (false);
+
+			int[] IdleAnimList = new int[]{ // set list of animations
+				StartIdleStarboard,
+				StartIdleStarboard2,
+				StartTransitionStarboard,
+				StartIdlePort,
+				StartIdlePort2,
+				StartTransitionPort
+			};
+
+			Debug.Log ("start sequence : wait to exist start aniamtions");
+			yield return StartCoroutine (waitForStartTransitioning(boardForcesData.gameObject, currentManState, IdleAnimList));
+
 			Debug.Log ("start sequence : exits states");
-			//sailAnimData.exitManoeuvre ();
-			updateStartParamameters (false);
 			sailAnimData.animSail.SetInteger ("Starting", 0);
+
+			//sailAnimData.exitManoeuvre ();
+
+			//this.GetComponent<PlayerCollision> ().resetRb ();
 		}
+	}
+
+	IEnumerator tempPushPlayer(GameObject obj, float time)
+	{
+		float i = 0;
+		float rate = 1 / time;
+		Rigidbody rb = obj.GetComponent<Rigidbody> ();
+		rb.isKinematic = true;
+		Vector3 currentPos = obj.transform.position;
+		while (i < 1)
+		{
+			updateStartParamameters (true);
+			i += Time.deltaTime * rate;
+
+			obj.transform.position = currentPos + obj.transform.forward * 0.1f;
+
+			currentPos = obj.transform.position;
+
+			yield return 0;
+		}
+		updateStartParamameters (false);
+		rb.isKinematic = false;
 	}
 
 	IEnumerator getStartLayerBlend (float time)
@@ -142,25 +196,54 @@ public class PlayerStart : MonoBehaviour {
 	/// <param name="currentState">Current state.</param>
 	/// <param name="startState">Start state.</param>
 	/// <param name="targetState">Target state.</param>
-	IEnumerator waitForStartTransitioning(AnimatorStateInfo currentState, int startState, int targetState)
+	IEnumerator waitForStartTransitioning(GameObject obj, AnimatorStateInfo currentState, int[] stateList)
 	{
 		//while ((currentState.fullPathHash == targetState)||(currentState.fullPathHash == startState))
 		currentState = sailAnimData.currentBaseStateInManoeuvre;
-		while ((currentState.fullPathHash == startState))
+		Rigidbody rb = obj.GetComponent<Rigidbody> ();
+		rb.isKinematic = true;
+		Vector3 currentPos = obj.transform.position;
+		bool b = true;
+		while ((b))
 		{
-			currentState = sailAnimData.currentBaseStateInManoeuvre;
+			b = false;
+			currentState = sailAnimData.currentBaseStateInManoeuvre; // updates the current state
+			foreach (int i in stateList) { // Verifies if the current state of the animation is in the provided list
+				if (currentState.fullPathHash == i) {
+					b = true;
+				}
+			}
+
+			if (sailAnimData.animationDisplacement > 0.01) {
+				updateStartParamameters (true);
+				rb.isKinematic = true;
+				Debug.Log ("Reading Motion value : " + sailAnimData.animationDisplacement);
+				obj.transform.position = currentPos + obj.transform.forward * sailAnimData.animationDisplacement * 10; //carefull, the motion is apply in gloabl Z, check if this will not cause problems!!!!
+			} else {
+				updateStartParamameters (false);
+				// disables the manoueuvre slow down in SailSystem_Contols script
+				sailSystemData.isStartingActiveSails = true;
+				rb.isKinematic = false;
+			}
+			currentPos = obj.transform.position;
+
 			yield return 0;
 		}
-		Debug.Log ("test");
+		updateStartParamameters (false);
+		rb.isKinematic = false;
+		//Debug.Log ("test");
 
 		//StartCoroutine (getStartLayerBlend(2));
 
 	}
 
+
+
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.S)) {
 			StartCoroutine(PlayerStartSequence ());
+			//PlayerStartSequence ();
 		}
 		sailAnimData.animSail.SetInteger ("Idle_Selector", Random.Range (0, 2));
 	}
