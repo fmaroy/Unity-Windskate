@@ -167,6 +167,7 @@ public class PlayerStart : MonoBehaviour {
 			i += Time.deltaTime * rate;
 
 			obj.transform.position = currentPos + obj.transform.forward * 0.1f;
+			// TODO : change into: rigidbody.velocity = new Vector3(1f/Time.fixedDeltaTime,0,0); // no need to change it back into rigidbody
 
 			currentPos = obj.transform.position;
 
