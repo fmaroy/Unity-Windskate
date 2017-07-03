@@ -153,7 +153,11 @@ public class PlayerStart : MonoBehaviour {
 			//this.GetComponent<PlayerCollision> ().resetRb ();
 		}
 	}
+<<<<<<< HEAD
 	//
+=======
+
+>>>>>>> 447cb4cd599b466a83fbc9500f8bcf83bdb06c16
 	IEnumerator tempPushPlayer(GameObject obj, float time)
 	{
 		float i = 0;
