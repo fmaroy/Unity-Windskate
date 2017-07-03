@@ -1,12 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:WindSkate/Assets/Custom_Assets/Textures/Wall/TileableWoodLarge_normal.jpg.meta
-guid: a3f02de91b90d4e51b478ccd567937e8
-timeCreated: 1498993103
-=======
-guid: 583a7008499b1474eabbe7630d3e8e98
-timeCreated: 1498810028
->>>>>>> 447cb4cd599b466a83fbc9500f8bcf83bdb06c16:WindSkate/Assets/RoofTops/Lightmap-0_comp_light.exr.meta
-licenseType: Free
+guid: 2feefc07dfdabec40a7cfe94ab35d0e3
 TextureImporter:
   fileIDToRecycleName: {}
   serializedVersion: 4
