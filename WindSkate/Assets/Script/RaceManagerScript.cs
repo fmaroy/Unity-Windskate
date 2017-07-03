@@ -31,7 +31,6 @@ public class RaceManagerScript : MonoBehaviour {
         {
             setWindOlderbehavior();
         }
-
         //getOpponentList(OpponentContainerObject);
     }
 

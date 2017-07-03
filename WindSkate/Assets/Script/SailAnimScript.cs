@@ -14,11 +14,15 @@ public class SailAnimScript : MonoBehaviour
     static int PortStateTenDeg;
     static int PortStateNinetyDeg;
     static int StarboardStateNinetyDeg;
+	static int StartTransitionStarboard;
+	static int StartTransitionPort;
+
+
 
     public float WindLayerWeight = 50.0f;
     //private Sail_System_Control SailControlComponent;
     private float SailAngle;
-    private bool isManoeuvreTransitioning = false;
+    public bool isManoeuvreTransitioning = false;
     public bool isManoeuvreing = false;
     private bool previsManoeuvreing = false;
     public float timerManoeuvreTarget = 1.0f;
@@ -46,6 +50,8 @@ public class SailAnimScript : MonoBehaviour
 	public int inProgressManoeuverLevel = 0;
 
 	public bool isStarting;
+	public Vector3 animatorRootMotion;
+	public float animationDisplacement;
 
     // Use this for initialization
     void Start()
@@ -76,6 +82,27 @@ public class SailAnimScript : MonoBehaviour
 
 		//isStarting = true;
     }
+	public void OnAnimatorMove() {
+		//Animator animator = GetComponent<Animator>();
+		if (animSail) {
+			float temp = animSail.GetFloat("Runspeed") * Time.deltaTime;
+
+			//Debug.Log ("Runspeed :" + temp);
+			if (temp > 0) {
+				animationDisplacement = temp;
+				//Debug.Log ("Runspeed :" + animationDisplacement);
+			} else {
+				animationDisplacement = 0.0f;
+			}
+				
+			/*Vector3 newPosition = transform.position;
+			newPosition.z += animator.GetFloat("Runspeed") * Time.deltaTime;
+
+			Debug.Log ("Motion Z : " + newPosition);
+			//transform.position = newPosition;
+			animatorRootMotion = newPosition;*/
+		}
+	}
 
     void LateUpdate()
     {

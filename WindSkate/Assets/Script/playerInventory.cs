@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class playerInventory : MonoBehaviour {
     //public GameObject RaceDataObject;
     //private UserPreferenceScript RaceData;
+	public string PlayerName;
     public List<GameObject> sailsList = new List<GameObject>();
     public int currentSail = 0;
     public List<GameObject> boardList = new List<GameObject>();
