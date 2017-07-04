@@ -1,12 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:WindSkate/Assets/Custom_Assets/Textures/Wood/wood-plank-2.jpg.meta
-guid: d64d5f0795b874a928f86d42243643fd
-timeCreated: 1498997090
-=======
-guid: 8969f2937c69f9a4eaf2a50861701197
-timeCreated: 1498810033
->>>>>>> 447cb4cd599b466a83fbc9500f8bcf83bdb06c16:WindSkate/Assets/RoofTops/Lightmap-1_comp_light.exr.meta
-licenseType: Free
+guid: 6a21863cfad00b345b7d378e5fbc05f7
 TextureImporter:
   fileIDToRecycleName: {}
   serializedVersion: 4
