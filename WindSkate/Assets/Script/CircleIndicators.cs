@@ -159,7 +159,7 @@ public class CircleIndicators : MonoBehaviour {
 			}
 		}
 
-		placeOnCircle (trackDirectionIndicator, 30f, correctAngle, -10f);
+		/*placeOnCircle (trackDirectionIndicator, 30f, correctAngle, -10f); // old method with the projector
 
 		float srtDistToMark = Mathf.Pow(directionToMark.x, 2) + Mathf.Pow(directionToMark.z, 2);
         float fadeFactor = Mathf.InverseLerp(500, 8000, srtDistToMark);
@@ -170,7 +170,7 @@ public class CircleIndicators : MonoBehaviour {
             col[i] = trackDirColor[i] * fadeFactor;
         }
         trackDirectionIndicator.GetComponent<Projector>().material.SetColor("_Color", col);
-
+		*/
         List<GameObject> Opponents = new List<GameObject>();
         List<float> opponentDistSqList = new List<float>();
         foreach (GameObject opponent in RaceData.OpponenentObjectsList)

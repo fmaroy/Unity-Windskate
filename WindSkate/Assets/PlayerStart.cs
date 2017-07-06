@@ -34,7 +34,7 @@ public class PlayerStart : MonoBehaviour {
 		boardForcesData = this.gameObject.GetComponentsInChildren<BoardForces> () [0];
 
 		updateStartParamameters (isStartingStatus);
-		//updateStartParamameters (false);
+
 
 		StartIdleStarboard = Animator.StringToHash("Manoeuvres_Layer.StartIdleStarboard");
 		StartIdleStarboard2 = Animator.StringToHash("Manoeuvres_Layer.StartIdleStarboard_Shorter");
@@ -54,11 +54,11 @@ public class PlayerStart : MonoBehaviour {
 		boardForcesData.isStarting = startbool;
 		isStartingStatus = startbool;
 	}
-
+	// TEMP this is never called to avoid the start sequence
 	public void InitializeStartAfterCrash ()
 	{
 		updateStartParamameters (true);
-		sailAnimData.animSail.SetInteger ("Starting", 1);
+		//sailAnimData.animSail.SetInteger ("Starting", 1);
 		StartCoroutine(startAfterDelay(1f));
 	}
 
@@ -76,12 +76,21 @@ public class PlayerStart : MonoBehaviour {
 		StartCoroutine(PlayerStartSequence ());
 	}
 
+	//TEMP this is a temporary function because to PlayerStartSequence doesn't work at the moment
+	public void tempPlayerStartSequence()
+	{
+		sailAnimData.animSail.SetInteger ("Starting", 0);
+		Debug.Log("Starting value : " + sailAnimData.animSail.GetInteger("Starting"));
+		updateStartParamameters (false);
+		this.GetComponent<PlayerCollision> ().tempStartPositionPlayerDisabledRb ();
+	}
 
 	/// <summary>
 	/// Manages the Staring animations. this function must be called when the player has triggered the start (or after crash)
 	/// </summary>
 	public IEnumerator PlayerStartSequence()
 	{
+		Debug.Log ("Start Player Sequence");
 		//initialize player ready to start
 		// force aniamtion state to Idle
 

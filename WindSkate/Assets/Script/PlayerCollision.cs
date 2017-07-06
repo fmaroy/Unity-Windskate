@@ -630,14 +630,21 @@ public class PlayerCollision : MonoBehaviour
         */
 		Sail_System_Anim.enabled = false;
         StartCoroutine(repositionPlayerEnableRb());
-		this.GetComponent<PlayerStart>().InitializeStartAfterCrash();
+
+		//TEMP : removed because of a bug in start sequence
+		//this.GetComponent<PlayerStart>().InitializeStartAfterCrash();
     }
 
-	/*public void resetRb(){
-		this.GetComponent<ExternalObjectsReference>().currentCamera.GetComponent<CameraControlScript> ().resetVignetteCameraEffect ();
+	public void tempStartPositionPlayerDisabledRb()
+	{
 
-		//getPositionAfterCrash();
-		playerOrientationAtCrash = transform.eulerAngles.y;
+		this.GetComponent<ExternalObjectsReference>().currentCamera.GetComponent<CameraControlScript> ().resetVignetteCameraEffect ();
+		//Get player position
+		playerPositionAtCrash = Board.transform.position;
+		playerOrientationAtCrash = Board.transform.eulerAngles.y;
+		playerOrientationVectorAtCrash = Board.transform.forward;
+		playerRecoveryPosition = playerPositionAtCrash;
+		// endof get player position
 
 		colllisonFlag = false;
 		float trackLeftSideBoundary = BoardFollowTrack.currentLeftSideBoundary;
@@ -657,11 +664,16 @@ public class PlayerCollision : MonoBehaviour
 		}
 		currentFrame = 0;
 		resetting = true;
-
+		/*foreach (MeshRenderer mesh in meshRendererList)
+        {
+            mesh.enabled = false;
+        }
+        */
+		Sail_System_Anim.enabled = false;
 		StartCoroutine(repositionPlayerEnableRb());
-		this.GetComponent<PlayerStart>().InitializeStartAfterCrash();
-	}*/
-
+		//TEMP : removed because of a bug in start sequence
+		//this.GetComponent<PlayerStart>().InitializeStartAfterCrash();
+	}
 
     public IEnumerator repositionPlayerEnableRb()
     {
