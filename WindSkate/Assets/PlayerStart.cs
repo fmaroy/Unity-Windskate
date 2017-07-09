@@ -208,6 +208,7 @@ public class PlayerStart : MonoBehaviour {
 	/// <param name="targetState">Target state.</param>
 	IEnumerator waitForStartTransitioning(GameObject obj, AnimatorStateInfo currentState, int[] stateList)
 	{
+		
 		//while ((currentState.fullPathHash == targetState)||(currentState.fullPathHash == startState))
 		currentState = sailAnimData.currentBaseStateInManoeuvre;
 		Rigidbody rb = obj.GetComponent<Rigidbody> ();
@@ -216,6 +217,7 @@ public class PlayerStart : MonoBehaviour {
 		bool b = true;
 		while ((b))
 		{
+			Debug.Log ("In the loop!");
 			b = false;
 			currentState = sailAnimData.currentBaseStateInManoeuvre; // updates the current state
 			foreach (int i in stateList) { // Verifies if the current state of the animation is in the provided list
@@ -224,12 +226,15 @@ public class PlayerStart : MonoBehaviour {
 				}
 			}
 
-			if (sailAnimData.animationDisplacement > 0.01) {
+			if (sailAnimData.animationDisplacement > 0.0) {
 				updateStartParamameters (true);
-				rb.isKinematic = true;
+				rb.isKinematic = false;
+				sailSystemData.isStartingActiveSails = true;
 				Debug.Log ("Reading Motion value : " + sailAnimData.animationDisplacement);
-				obj.transform.position = currentPos + obj.transform.forward * sailAnimData.animationDisplacement * 10; //carefull, the motion is apply in gloabl Z, check if this will not cause problems!!!!
+				rb.velocity = obj.transform.forward * sailAnimData.animationDisplacement;
+				//obj.transform.position = currentPos + obj.transform.forward * sailAnimData.animationDisplacement * 10; //carefull, the motion is apply in gloabl Z, check if this will not cause problems!!!!
 			} else {
+				Debug.Log ("No Anim Deplacement");
 				updateStartParamameters (false);
 				// disables the manoueuvre slow down in SailSystem_Contols script
 				sailSystemData.isStartingActiveSails = true;
@@ -239,6 +244,8 @@ public class PlayerStart : MonoBehaviour {
 
 			yield return 0;
 		}
+
+		Debug.Log ("Out of the loop!");
 		updateStartParamameters (false);
 		rb.isKinematic = false;
 		//Debug.Log ("test");

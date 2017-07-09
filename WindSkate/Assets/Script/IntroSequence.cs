@@ -81,12 +81,12 @@ public class IntroSequence : MonoBehaviour {
 
 			yield return StartCoroutine (disableObjectTimer(5.5f, UIItemsData.StartLights, false));
 
-			//StartCoroutine(raceData.PlayerObject.GetComponent<PlayerStart>().PlayerStartSequence ());
-			raceData.PlayerObject.GetComponent<PlayerStart>().tempPlayerStartSequence();
+			StartCoroutine(raceData.PlayerObject.GetComponent<PlayerStart>().PlayerStartSequence ());
+			//raceData.PlayerObject.GetComponent<PlayerStart>().tempPlayerStartSequence();
 
 			foreach (GameObject opponentObj in raceData.OpponenentObjectsList) {
-				//StartCoroutine (opponentObj.GetComponent<PlayerStart> ().PlayerStartSequence ());
-				opponentObj.GetComponent<PlayerStart> ().tempPlayerStartSequence();
+				StartCoroutine (opponentObj.GetComponent<PlayerStart> ().PlayerStartSequence ());
+				//opponentObj.GetComponent<PlayerStart> ().tempPlayerStartSequence();
 			}
 
 		}

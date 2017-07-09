@@ -85,11 +85,11 @@ public class SailAnimScript : MonoBehaviour
 	public void OnAnimatorMove() {
 		//Animator animator = GetComponent<Animator>();
 		if (animSail) {
-			float temp = animSail.GetFloat("Runspeed") * Time.deltaTime;
-
-			//Debug.Log ("Runspeed :" + temp);
-			if (temp > 0) {
-				animationDisplacement = temp;
+			float temp = animSail.GetFloat("Runspeed") * Time.fixedDeltaTime;
+			float currentPlayerspeed = this.GetComponent<Sail_System_Control> ().Board_Speed;
+			//Debug.Log ("Runspeed :" + animSail.GetFloat("Runspeed"));
+			if ((temp > 0) && (animSail.GetFloat("Runspeed") > currentPlayerspeed)) {
+				animationDisplacement = animSail.GetFloat("Runspeed");
 				//Debug.Log ("Runspeed :" + animationDisplacement);
 			} else {
 				animationDisplacement = 0.0f;
