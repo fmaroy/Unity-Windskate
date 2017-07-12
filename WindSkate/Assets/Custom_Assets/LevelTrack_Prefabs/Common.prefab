@@ -1327,6 +1327,7 @@ GameObject:
   - component: {fileID: 11417356}
   - component: {fileID: 11447988}
   - component: {fileID: 11480400}
+  - component: {fileID: 114868089675051338}
   m_Layer: 0
   m_Name: RaceManager
   m_TagString: Untagged
@@ -2233,6 +2234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 484514}
   targetShift: {x: 0, y: 0, z: 0}
+  orientShift: 0
   distance: 20
   height: 1
   rotationDamping: 2
@@ -3793,7 +3795,7 @@ MonoBehaviour:
   controlData: {fileID: 0}
   Playerprefab: {fileID: 1000014239610428, guid: 9e49ecb09d5c3ab41b750225c6f57142,
     type: 2}
-  numbOpponenents: 1
+  numbOpponenents: 0
 --- !u!114 &11449890
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5230,6 +5232,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 0
 --- !u!212 &21266498
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -5270,6 +5273,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 0
 --- !u!222 &22201018
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -8304,23 +8308,22 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 110872}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd6d4281e5d7cd44d8c6e38bc2c1b8d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 0
-  intensity: 0.06
-  chromaticAberration: 0
+  intensity: 0.036
+  chromaticAberration: 0.2
   axialAberration: 0.5
-  blur: 0.235
-  blurSpread: 0.315
+  blur: 0
+  blurSpread: 0.75
   luminanceDependency: 0.25
   blurDistance: 2.5
-  vignetteShader: {fileID: 4800000, guid: 627943dc7a9a74286b70a4f694a0acd5, type: 3}
-  separableBlurShader: {fileID: 4800000, guid: e97c14fbb5ea04c3a902cc533d7fc5d1, type: 3}
-  chromAberrationShader: {fileID: 4800000, guid: 2b4f29398d9484ccfa9fd220449f5eee,
-    type: 3}
+  vignetteShader: {fileID: 0}
+  separableBlurShader: {fileID: 0}
+  chromAberrationShader: {fileID: 0}
 --- !u!114 &114000011677520806
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9455,6 +9458,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61471fa8b3fa64002b79d719d8c24aa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114868089675051338
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75468a62a28f8e448b185ac3ab57c6ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentGroundType: 0
+  permanentSkids: 00010101010000
+  EmitParticles: 00010101010000
+  TerrainSkidMaterials:
+  - {fileID: 2100000, guid: f4dd0bba6decdd5418fd3d541ff5f7f0, type: 2}
+  - {fileID: 2100000, guid: 5595aa11a52bf2543bcd0fd6421a48d6, type: 2}
+  - {fileID: 2100000, guid: 150106710fe720b4889d8663585ddb0e, type: 2}
+  - {fileID: 2100000, guid: 150106710fe720b4889d8663585ddb0e, type: 2}
+  - {fileID: 2100000, guid: 5595aa11a52bf2543bcd0fd6421a48d6, type: 2}
+  - {fileID: 2100000, guid: f4dd0bba6decdd5418fd3d541ff5f7f0, type: 2}
+  - {fileID: 2100000, guid: f4dd0bba6decdd5418fd3d541ff5f7f0, type: 2}
+  TerrainParticleColor:
+  - {r: 0.38235295, g: 0.38235295, b: 0.38235295, a: 0.553}
+  - {r: 0.5147059, g: 0.5147059, b: 0.5147059, a: 1}
+  - {r: 0.13235295, g: 0.13235295, b: 0.13235295, a: 0.478}
+  - {r: 0.30502924, g: 0.41911763, b: 0.28352076, a: 0.153}
+  - {r: 0.6102941, g: 0.59969443, b: 0.56541955, a: 0.878}
+  - {r: 0.6102941, g: 0.59969443, b: 0.56541955, a: 0.878}
+  - {r: 0.46323532, g: 0.46323532, b: 0.46323532, a: 0.878}
+  surfaceGripFactors:
+  - 1
+  - 0.6
+  - 0.8
+  - 0.6
+  - 0.5
+  - 1.1
+  - 1.1
+  surfaceDragFactors:
+  - 1
+  - 1.2
+  - 1.5
+  - 1.2
+  - 1.5
+  - 0.9
+  - 0.9
 --- !u!114 &114875631300410054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9703,6 +9752,7 @@ SpriteRenderer:
   m_Size: {x: 2.76, y: 4.69}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
 --- !u!212 &212704069177665564
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -9743,6 +9793,7 @@ SpriteRenderer:
   m_Size: {x: 2.76, y: 4.69}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
 --- !u!222 &222000010141914464
 CanvasRenderer:
   m_ObjectHideFlags: 1

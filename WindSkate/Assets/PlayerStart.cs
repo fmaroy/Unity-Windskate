@@ -42,6 +42,10 @@ public class PlayerStart : MonoBehaviour {
 		StartIdlePort = Animator.StringToHash("Manoeuvres_Layer.StartIdlePort");
 		StartIdlePort2 = Animator.StringToHash("Manoeuvres_Layer.StartIdlePort_Shorter");
 		StartTransitionPort = Animator.StringToHash("Manoeuvres_Layer.StartTransitionPort");
+		if (this.GetComponent<ExternalObjectsReference> ().raceManagerObject.GetComponent<UserPreferenceScript> ().IntroScene == true) {
+			Debug.Log ("start Scene");
+			StartCoroutine(startAfterDelay(2));
+		}
 	}
 
 	void updateStartParamameters(bool startbool)
@@ -54,12 +58,14 @@ public class PlayerStart : MonoBehaviour {
 		boardForcesData.isStarting = startbool;
 		isStartingStatus = startbool;
 	}
-	// TEMP this is never called to avoid the start sequence
+
 	public void InitializeStartAfterCrash ()
 	{
+		Debug.Log ("Initialize after start");
 		updateStartParamameters (true);
-		//sailAnimData.animSail.SetInteger ("Starting", 1);
-		StartCoroutine(startAfterDelay(1f));
+		sailAnimData.animSail.SetInteger ("Starting", 1);
+		StartCoroutine(startAfterDelay(1.0f));
+		//StartCoroutine(PlayerStartSequence());
 	}
 
 	public IEnumerator startAfterDelay(float time)
@@ -71,18 +77,8 @@ public class PlayerStart : MonoBehaviour {
 			i += Time.deltaTime * rate;
 			yield return 0;
 		}
-
-
+		print ("starting");
 		StartCoroutine(PlayerStartSequence ());
-	}
-
-	//TEMP this is a temporary function because to PlayerStartSequence doesn't work at the moment
-	public void tempPlayerStartSequence()
-	{
-		sailAnimData.animSail.SetInteger ("Starting", 0);
-		Debug.Log("Starting value : " + sailAnimData.animSail.GetInteger("Starting"));
-		updateStartParamameters (false);
-		this.GetComponent<PlayerCollision> ().tempStartPositionPlayerDisabledRb ();
 	}
 
 	/// <summary>
@@ -113,7 +109,7 @@ public class PlayerStart : MonoBehaviour {
 		}
 
 		if ((currentManState.fullPathHash == StartIdleStarboard) || (currentManState.fullPathHash == StartIdlePort)){
-			Debug.Log ("Player is in Idle pose");
+			//Debug.Log ("Player is in Idle pose");
 			startInt = 1;
 			//Debug.Log ("start sequence : finished transitions");
 
@@ -126,7 +122,7 @@ public class PlayerStart : MonoBehaviour {
 		//Debug.Log ("Animstate : " + startInt);
 
 		if (startInt == 0) {
-			Debug.Log ("Player is not in Start sequence");
+			//Debug.Log ("Player is not in Start sequence");
 		}
 		if (startInt == 1) {
 			//sailAnimData.animSail.SetTrigger ("Start");
@@ -151,10 +147,10 @@ public class PlayerStart : MonoBehaviour {
 				StartTransitionPort
 			};
 
-			Debug.Log ("start sequence : wait to exist start aniamtions");
+			//Debug.Log ("start sequence : wait to exist start aniamtions");
 			yield return StartCoroutine (waitForStartTransitioning(boardForcesData.gameObject, currentManState, IdleAnimList));
 
-			Debug.Log ("start sequence : exits states");
+			//Debug.Log ("start sequence : exits states");
 			sailAnimData.animSail.SetInteger ("Starting", 0);
 
 			//sailAnimData.exitManoeuvre ();
@@ -245,7 +241,7 @@ public class PlayerStart : MonoBehaviour {
 			yield return 0;
 		}
 
-		Debug.Log ("Out of the loop!");
+		//Debug.Log ("Out of the loop!");
 		updateStartParamameters (false);
 		rb.isKinematic = false;
 		//Debug.Log ("test");
@@ -253,8 +249,6 @@ public class PlayerStart : MonoBehaviour {
 		//StartCoroutine (getStartLayerBlend(2));
 
 	}
-
-
 
 	// Update is called once per frame
 	void Update () {

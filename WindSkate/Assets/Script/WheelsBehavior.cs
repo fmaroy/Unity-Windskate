@@ -5,10 +5,12 @@ using System.Collections.Generic;
 public class WheelsBehavior : MonoBehaviour {
 
     //WheelsPhysicsDetails 0 means that all 4 wheels gets the same values, 1 that physics a split front and rear axis, and 2 that all wheels are independantly calculated
-    public int WheelsPhysicsDetails = 2;
+	public GameObject RaceManager;
+	public int WheelsPhysicsDetails = 2;
     public bool WheelSkidMarksEnabled = true;
     public bool tireParticlesEnabled = true;
     public List<GameObject> WheelsList;
+	public List<int> WheelsSurfaceTypeList = new List<int> ();
     public List<WheelCollider> WheelsCollidersList = new List<WheelCollider>();
     public List<GameObject> SkidMarksAsphaltList = new List<GameObject>();
     public List<GameObject> SkidMarksSandList = new List<GameObject>();
@@ -17,6 +19,7 @@ public class WheelsBehavior : MonoBehaviour {
     public List<ParticleSystem> TireParticlesSystem = new List<ParticleSystem>();
     private GameObject currentTerrain;
     private TerrainFXData currentTerrainData;
+	private TerrainFXData surfaceTypeData;
     public float SkidSlipThreshold = 0.2f;
     //public float sandGripFactor = 0.6f;
     //public float mudGripFactor = 0.8f;
@@ -25,12 +28,17 @@ public class WheelsBehavior : MonoBehaviour {
     public List<GameObject> ObjectForPhysicsUpdate = new List<GameObject>();
     private List<float> wheelsSurfaceDragFactors;
     private float BoardDragInit;
+
+	public float height;
+
     // Use this for initialization
     void Start() {
-        currentTerrain = GameObject.Find("RaceManager").GetComponent <RaceManagerScript >().thisLevelTerrain;
-        currentTerrainData = currentTerrain.GetComponent<TerrainFXData>();
-        wheelsSurfaceDragFactors = currentTerrainData.surfaceDragFactors;
-        wheelsSurfaceGripFactors = currentTerrainData.surfaceGripFactors;
+		RaceManager = GameObject.Find ("RaceManager");
+		surfaceTypeData = RaceManager.GetComponent<TerrainFXData> ();
+		//currentTerrain = RaceManager.GetComponent <RaceManagerScript >().thisLevelTerrain;
+        //currentTerrainData = currentTerrain.GetComponent<TerrainFXData>();
+		wheelsSurfaceDragFactors = surfaceTypeData.surfaceDragFactors;
+		wheelsSurfaceGripFactors = surfaceTypeData.surfaceGripFactors;
         //build WheelList
 
         buildWheelList();
@@ -43,6 +51,7 @@ public class WheelsBehavior : MonoBehaviour {
         for (int i = 0; i < 4; i++)
         {
             WheelsCollidersList.Add(WheelsList[i].GetComponent<WheelCollider>());
+			WheelsSurfaceTypeList.Add (0);
             foreach (Transform child in WheelsList[i].transform)
             {
                 if (child.gameObject.name.Contains("SkidTrailAsphalt") == true)
@@ -64,20 +73,11 @@ public class WheelsBehavior : MonoBehaviour {
                 }
             }
         }
-        /*foreach (Transform child in WheelsList[0].transform.parent)
-        {
-            if (child.gameObject.name == "Wheel Particle System")
-            {
-                TireWideParticleObject = child.gameObject;
-            }
-        }*/
-        //TireWideParticleObject.GetComponent<ParticleSystem>().Stop();
 
         sidewaysFriction = WheelsCollidersList[0].sidewaysFriction;
         if (WheelsPhysicsDetails == 2)
         {
             ObjectForPhysicsUpdate = WheelsList;
-
         }
         if (WheelsPhysicsDetails == 1)
         {
@@ -90,8 +90,6 @@ public class WheelsBehavior : MonoBehaviour {
         {
             ObjectForPhysicsUpdate.Add(this.gameObject);
         }
-        /*foreach (GameObject Object in  ObjectForPhysicsUpdate)
-        { Debug.Log(Object.name); }*/
 
         BoardDragInit = this.gameObject.GetComponent<Rigidbody>().drag;
     }
@@ -174,9 +172,106 @@ public class WheelsBehavior : MonoBehaviour {
 		return heightList;
 	}
 
+	public void getLocalSurface(Vector3 pos, out float [] mix, out int surfType, out float height)
+	{
+		float[] surfaceTypeMix;
+		float verticalPos = 0;
+		RaycastHit hit;
+		Vector3 castdir = Vector3.down;
+		if (Physics.Raycast (pos + Vector3.up * 10.0f, castdir, out hit, 30)) {
+			verticalPos = hit.collider.gameObject.transform.transform.position.y;
+			if (hit.collider.GetComponent<Terrain> () != null) {
+				mix = TerrainSurface.GetTextureMix (pos, hit.collider.GetComponent<Terrain> ());
+				surfType = TerrainSurface.GetMainTexture (pos, hit.collider.GetComponent<Terrain> ());
+			} else {
+				if (hit.collider.GetComponent<surfaceTypeScript> () != null) {
+					surfType = hit.collider.gameObject.GetComponent<surfaceTypeScript> ().surfaceType;
+					mix = new float[0];
+				} else {
+					surfType = 0;
+					mix = new float[0];
+				}
+			}
+			height = pos.y - hit.point.y;
+		} else {
+			height = 0.0f;
+			surfType = 0;
+			mix = new float[0];
+		}
+	}
+	public void getLocalSurfaceFromWheel(WheelCollider col, out float [] mix, out int surfType)
+	{
+		float[] surfaceTypeMix;
+		float verticalPos = 0;
+		WheelHit hit;
+		col.GetGroundHit (out hit);
+		if (hit.collider != null) {
+			if (hit.collider.GetComponent<Terrain> () != null) {
+				mix = TerrainSurface.GetTextureMix (hit.point, hit.collider.GetComponent<Terrain> ());
+				surfType = TerrainSurface.GetMainTexture (hit.point, hit.collider.GetComponent<Terrain> ());
+			} else {
+				if (hit.collider.GetComponent<surfaceTypeScript> () != null) {
+					surfType = hit.collider.gameObject.GetComponent<surfaceTypeScript> ().surfaceType;
+					mix = new float[0];
+				} else {
+					surfType = 0;
+					mix = new float[1];
+				}
+			}
+		} else {
+			surfType = 0;
+			mix = new float[1];
+		}
+	}
+
+	/// <summary>
+	/// Return wheel side friction value from a terrain mix of textures
+	/// </summary>
+	/// <param name="mix">Mix.</param>
+	/// <param name="sideFriction">Side friction.</param>
+	/// <param name="dragFriction">Drag friction.</param>
+	void getFrictionFromMix(float [] mix, out float sideFriction)
+	{
+		float tempsideFriction = 0.0f;
+		if (mix.Length > 1) {
+			//Debug.Log ("mix.Length " + mix.Length);
+			//Debug.Log ("wheelsSurfaceGripFactors.Capacity : " +  wheelsSurfaceGripFactors.Capacity);
+			for (int n = 0; n < mix.Length; n++) {
+				//Debug.Log ("n: " + n);
+				//Debug.Log ("wheelsSurfaceGripFactors : " + wheelsSurfaceGripFactors [n]);
+				//Debug.Log ("mix : " + mix [n]);
+				tempsideFriction = tempsideFriction + wheelsSurfaceGripFactors [n] * mix [n];
+			}
+		} else {
+			tempsideFriction = 1.0f;
+		}
+		sideFriction = tempsideFriction;
+	}
+	/// <summary>
+	/// Return wheel side friction value from a terrain mix of textures
+	/// </summary>
+	/// <param name="mix">Mix.</param>
+	/// <param name="sideFriction">Side friction.</param>
+	/// <param name="dragFriction">Drag friction.</param>
+	void getDragFromMix(float [] mix, out float drag)
+	{
+		float tempdragFriction = 0.0f;
+		if (mix.Length > 1) {
+			for (int n = 0; n < mix.Length; n++) {
+				tempdragFriction = tempdragFriction + wheelsSurfaceDragFactors [n] * mix [n];
+			}
+		} else {
+			tempdragFriction = 1.0f;
+		}
+		drag = tempdragFriction;
+	}
+
 	// Update is called once per frame
 	void Update () {
         //int i = 0;
+		float[] surfMix;
+		int surfType = 0;
+
         int RearWheelsCounter = 0;
         for (int i = 0; i < 4; i++)
         {
@@ -185,72 +280,61 @@ public class WheelsBehavior : MonoBehaviour {
             // following can be used to get the main type of terrain
             //var surfaceIndex = TerrainSurface.GetMainTexture(WheelsList[i].transform.position);
 
+			float localDragValue = 1.0f;
             float localStiffness = 1.0f;
+			
             if (WheelsPhysicsDetails == 2)
             {
-                // All wheels calculated independantly
-                var surfaceMix = TerrainSurface.GetTextureMix(ObjectForPhysicsUpdate[i].transform.position);
-                localStiffness = 0.0f;
-                for (int n = 0; n < wheelsSurfaceGripFactors.Count; n++)
-                {
-                    localStiffness = localStiffness + wheelsSurfaceGripFactors[n] * surfaceMix[n];
-                }
-                sidewaysFriction.stiffness = localStiffness;
+				getLocalSurfaceFromWheel(WheelsCollidersList[i], out surfMix, out surfType);
+				float friction = 1.0f;
+				getFrictionFromMix (surfMix, out friction);
+				sidewaysFriction.stiffness = friction;
+				WheelsCollidersList[i].sidewaysFriction = sidewaysFriction;
             }
             if (WheelsPhysicsDetails == 1)
             {
-                if (i == 0 || i == 1)
-                {
-                    var surfaceMix = TerrainSurface.GetTextureMix(ObjectForPhysicsUpdate[i].transform.position);
-                    localStiffness = 0.0f;
-                    for (int n = 0; n < wheelsSurfaceGripFactors.Count; n++)
-                    {
-                        localStiffness = localStiffness + wheelsSurfaceGripFactors[n] * surfaceMix[n];
-                    }
-                    sidewaysFriction.stiffness = localStiffness;
-                }
+				if ((i == 0) || (i == 2))
+				{
+					getLocalSurfaceFromWheel(WheelsCollidersList[i], out surfMix, out surfType);
+					float friction = 1.0f;
+					getFrictionFromMix (surfMix, out friction);
+					sidewaysFriction.stiffness = friction;
+					for (int wheelid = 0; wheelid < 2; wheelid++) {
+						int id = wheelid + i;
+						WheelsCollidersList[id].sidewaysFriction = sidewaysFriction;
+					}
+				}
             }
-            if (WheelsPhysicsDetails == 0)
-            {
-                if (i == 0)
-                {
-                    var surfaceMix = TerrainSurface.GetTextureMix(ObjectForPhysicsUpdate[i].transform.position);
-                    localStiffness = 0.0f;
-                    for (int n = 0; n < wheelsSurfaceGripFactors.Count; n++)
-                    {
-                        localStiffness = localStiffness + wheelsSurfaceGripFactors[n] * surfaceMix[n];
-                    }
-                    sidewaysFriction.stiffness = localStiffness;
-                }
-            }
+           	
+			if (i == 0) 
+			{
+				getLocalSurface (this.transform.position, out surfMix, out surfType, out height);
+				getDragFromMix (surfMix, out localDragValue);
+				this.gameObject.GetComponent<Rigidbody>().drag = localDragValue * BoardDragInit;
 
-
-            WheelsCollidersList[i].sidewaysFriction = sidewaysFriction;
-
-            //managing drage based on ground texture
-            var surfaceValuesForDrag = TerrainSurface.GetTextureMix(this.gameObject.transform.position);
-            float localDragValue = 0.0f;
-            for (int n = 0; n < wheelsSurfaceDragFactors.Count; n++)
-            {
-                localDragValue = localDragValue + wheelsSurfaceDragFactors[n] * surfaceValuesForDrag[n];
-            }
-            this.gameObject.GetComponent<Rigidbody>().drag = localDragValue * BoardDragInit;
-
-
+				if (WheelsPhysicsDetails == 0)
+				{
+					float friction = 1.0f;
+					getFrictionFromMix (surfMix, out friction);
+					sidewaysFriction.stiffness = friction;
+					for (int wheelid = 0; wheelid < 4; wheelid++) {
+						WheelsCollidersList[wheelid].sidewaysFriction = sidewaysFriction;
+					}
+				}
+			}
 
             ///Wheels Skid Marks handling
             ///
-
             if (WheelSkidMarksEnabled)
             {
-                var surfaceIndex = TerrainSurface.GetMainTexture(WheelsList[i].transform.position);
+				int surfaceIndex = surfType;
                 WheelHit wheelHit;
                 WheelsCollidersList[i].GetGroundHit(out wheelHit);
 
                 ///Debug.Log(Mathf.Abs(wheelHit.sidewaysSlip));
 
-                SkidMarksAsphaltList[i].GetComponent<TrailRenderer>().material = Terrain.activeTerrain.GetComponent<TerrainFXData>().TerrainSkidMaterials[surfaceIndex];
-                if (Terrain.activeTerrain.GetComponent<TerrainFXData>().permanentSkids[surfaceIndex] == false)
+				SkidMarksAsphaltList[i].GetComponent<TrailRenderer>().material = surfaceTypeData.TerrainSkidMaterials[surfaceIndex];
+				if (surfaceTypeData.permanentSkids[surfaceIndex] == false)
                 {
                     if (Mathf.Abs(wheelHit.sidewaysSlip) > SkidSlipThreshold)
                     {
@@ -278,12 +362,12 @@ public class WheelsBehavior : MonoBehaviour {
                 
                 if (tireParticlesEnabled)
                 {
-                    if (Terrain.activeTerrain.GetComponent<TerrainFXData>().EmitParticles[surfaceIndex] == true)
+					if (surfaceTypeData.EmitParticles[surfaceIndex] == true)
                     {
                         //TireParticlesObject[RearWheelsCounter].SetActive(true);
                         //Debug.Log("Particle_emission_playing");
                         TireParticlesSystem[RearWheelsCounter].Play();
-                        TireParticlesSystem[RearWheelsCounter].startColor = Terrain.activeTerrain.GetComponent<TerrainFXData>().TerrainParticleColor[surfaceIndex];
+						TireParticlesSystem[RearWheelsCounter].startColor = surfaceTypeData.TerrainParticleColor[surfaceIndex];
                     }
                     else
                     {

@@ -8,6 +8,8 @@ public class SmoothFollow_Fab : MonoBehaviour {
         public Transform target;
         [SerializeField]
         public Vector3 targetShift;
+		[SerializeField]
+		public float orientShift;
         // The distance in the x-z plane to the target
         [SerializeField]
         public float distance = 10.0f;
@@ -32,7 +34,7 @@ public class SmoothFollow_Fab : MonoBehaviour {
                 return;
 
             // Calculate the current rotation angles
-            var wantedRotationAngle = target.eulerAngles.y;
+			var wantedRotationAngle = target.eulerAngles.y + orientShift;
             var wantedHeight = target.position.y + height;
 
             var currentRotationAngle = transform.eulerAngles.y;
@@ -50,8 +52,10 @@ public class SmoothFollow_Fab : MonoBehaviour {
 
             // Set the position of the camera on the x-z plane to:
             // distance meters behind the target
-            transform.position = target.position;
-            transform.position -= currentRotation * Vector3.forward * distance;
+			transform.position = target.position;
+
+			transform.position -= currentRotation * Vector3.forward * distance;
+
 
             // Set the height of the camera
             transform.position = new Vector3(transform.position.x, currentHeight, transform.position.z);

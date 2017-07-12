@@ -132,7 +132,7 @@ public class Sail_System_Control : MonoBehaviour
 				if (isStartingActiveSails == true) {
 					manoeuvreModifier = -10; // special case for starting condidions. manoeuvre slow dwon is disabled
 				}
-				Debug.Log ("Thrust : " + SailThrustForce +", Manoeuvre modifier : " + manoeuvreModifier);
+				//Debug.Log ("Thrust : " + SailThrustForce +", Manoeuvre modifier : " + manoeuvreModifier);
 				rbBoard.AddRelativeForce (SailSideForce, 0.0f, SailThrustForce - manoeuvreModifier);
 			} else {
 				rbBoard.AddRelativeForce (0.0f, 0.0f, 0.0f);

@@ -20,7 +20,7 @@ public class PlayerfaceImageHandler : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		cam.transform.position = camReferencePosition.transform.position + cameraOffet;
-		cam.transform.eulerAngles = camReferenceOrientation.transform.eulerAngles + cameraOrientation;
+		//cam.transform.position = camReferencePosition.transform.position + cameraOffet;
+		//cam.transform.eulerAngles = camReferenceOrientation.transform.eulerAngles + cameraOrientation;
 	}
 }
