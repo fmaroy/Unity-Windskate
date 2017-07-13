@@ -177,7 +177,7 @@ public class BoardForces : MonoBehaviour {
             {
                 rotation = Input.GetAxis("Horizontal") * rotationSpeed;
             }
-            rotation *= Time.deltaTime;
+            rotation *= Time.fixedDeltaTime;
 
 
             //Add vertical force
@@ -204,8 +204,8 @@ public class BoardForces : MonoBehaviour {
         }
         else
         {
-            rotation = rotationToDirection * rotationSpeed;
-            rotation *= Time.deltaTime;
+            rotation = rotationToDirection * rotationSpeed * Time.fixedDeltaTime;
+            rotation *= Time.fixedDeltaTime;
 			if (isStarting == false) {
 				rb.AddForce (new Vector3 (0.0f, -1 * sailor_weight, 0.0f));
 			}
