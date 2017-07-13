@@ -137,7 +137,8 @@ public class CircleIndicators : MonoBehaviour {
 			trackDirectionTickIcon.SetActive (false);
 		} else {
 			trackDirectionTickIcon.SetActive (true);
-			placeOnCircle (trackDirectionTickIcon, 6f, correctAngle, -3.67f);
+			//placeOnCircle (trackDirectionTickIcon, 6f, correctAngle, -3.67f);
+			placeOnCircle (trackDirectionTickIcon, 8f, correctAngle, -2.2f);
 		}
 
 		placeOnCircle (trackDirectionTickArrow, 8.2f, correctAngle, 0f);
