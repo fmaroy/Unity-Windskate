@@ -2696,6 +2696,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Wind: {fileID: 109660}
+  WindData: {fileID: 0}
   typeOfWindDirection: 0
   typeOfWindForce: 0
   highOscillationRange: 20
@@ -3795,7 +3796,7 @@ MonoBehaviour:
   controlData: {fileID: 0}
   Playerprefab: {fileID: 1000014239610428, guid: 9e49ecb09d5c3ab41b750225c6f57142,
     type: 2}
-  numbOpponenents: 0
+  numbOpponenents: 2
 --- !u!114 &11449890
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7334,13 +7335,14 @@ GameObject:
   - component: {fileID: 222184161514739644}
   - component: {fileID: 114035164289888352}
   - component: {fileID: 95893379996573318}
+  - component: {fileID: 114193770721776238}
   m_Layer: 5
   m_Name: IntroductionImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1311770188476584
 GameObject:
   m_ObjectHideFlags: 1
@@ -8719,6 +8721,30 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &114193770721776238
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1282904707562806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1df7b65a6b64047f299f6c5e26f23e89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raceManager: {fileID: 0}
+  isScene: 0
+  raceManagerData: {fileID: 0}
+  persistentSceneData: {fileID: 0}
+  raceTypeData: {fileID: 0}
+  weatherPannel: {fileID: 1551333094028322}
+  opponentPannel: {fileID: 1619692774687968}
+  opponentFramePrefab: {fileID: 1685815380081048, guid: 824d01ad2d6c74e46a1f1717a1c1815a,
+    type: 2}
+  initWritingPosition: {x: 0, y: 0}
+  windData: {fileID: 0}
+  camPreviewList: []
+  opponentInfo: []
 --- !u!114 &114200955872698756
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8803,7 +8829,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: "Place : Beach Parking Lot\nRaceStyle : Regatta\n\nOpponents:\n\t\n"
+  m_text: "Place : Beach Parking Lot\nRaceStyle : Regatta\n\t\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
@@ -8830,8 +8856,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 21.9
-  m_fontSizeBase: 21.9
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -8870,12 +8896,12 @@ MonoBehaviour:
   m_margin: {x: 10, y: 20, z: 5, w: 5}
   m_textInfo:
     textComponent: {fileID: 114293788876643030}
-    characterCount: 60
+    characterCount: 48
     spriteCount: 0
-    spaceCount: 12
-    wordCount: 7
+    spaceCount: 10
+    wordCount: 6
     linkCount: 0
-    lineCount: 5
+    lineCount: 3
     pageCount: 1
     materialCount: 1
   m_havePropertiesChanged: 1
@@ -9147,7 +9173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.603}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.747}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -9405,7 +9431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.603}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.747}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -10450,11 +10476,11 @@ RectTransform:
   m_Father: {fileID: 224596663124790372}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 500, y: 370.1}
-  m_Pivot: {x: 0, y: 0.5}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: -114.95001}
+  m_SizeDelta: {x: 500, y: 370.09998}
+  m_Pivot: {x: 0, y: 1}
 --- !u!224 &224293645917613460
 RectTransform:
   m_ObjectHideFlags: 1

@@ -33,7 +33,7 @@ public class PersistentParameters : MonoBehaviour
     public List<TrackList> trackList = new List<TrackList>();
     public List<WindType> ListOfWinds = new List<WindType>();
 
-    public SingleRaceProps currentSingleRaceDefinition = new SingleRaceProps(3, 3, 0);
+    public SingleRaceProps currentSingleRaceDefinition = new SingleRaceProps(3, 3, 0, 0);
     public List<int> currentRaceOpponentsListIds = new List<int>();
     public List<ManoeuvreType> tackList = new List<ManoeuvreType>();
     public List<ManoeuvreType> jibeList = new List<ManoeuvreType>();
@@ -197,13 +197,16 @@ public class SingleRaceProps
     public int numberOfOpponents;
     public int opponentsLevel;
     public int typeOfWindsID;
+	public int raceId;
 
-    public SingleRaceProps(int n, int l, int w)
+	public SingleRaceProps(int n, int l, int w, int r)
     {
         numberOfOpponents = n;
         opponentsLevel = l;
         typeOfWindsID = w;
+		raceId = r;
     }
+
 }
 
 [System.Serializable]

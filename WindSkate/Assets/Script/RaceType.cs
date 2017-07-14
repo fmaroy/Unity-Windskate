@@ -12,6 +12,7 @@ public class TrackList
 {
     public int trackId;
     public string trackName;
+	public string typeOfRace;
     public string sceneName;
     public Texture2D RacePreview;
     //public Material look2;
