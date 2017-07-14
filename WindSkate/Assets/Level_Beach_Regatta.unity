@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1437422438}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.4426229, g: 0.48485178, b: 0.53445524, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -87,7 +87,7 @@ LightmapSettings:
     m_PVRFilteringAtrousColorSigma: 1
     m_PVRFilteringAtrousNormalSigma: 1
     m_PVRFilteringAtrousPositionSigma: 1
-  m_LightingDataAsset: {fileID: 112000002, guid: f478434f4423549acab6153d6f722fa5,
+  m_LightingDataAsset: {fileID: 112000002, guid: 90e08271632865743b064dc2b2abcb1f,
     type: 2}
   m_ShadowMaskMode: 0
 --- !u!196 &4
@@ -31079,8 +31079,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2097353590}
-  m_LocalRotation: {x: -0.1210541, y: 0.19958311, z: 0.0248617, w: 0.9720568}
-  m_LocalPosition: {x: -55.696438, y: -12.289922, z: -27.287128}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 300, y: -13.17, z: -380}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 608255096}
