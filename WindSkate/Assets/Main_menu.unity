@@ -22052,17 +22052,17 @@ MonoBehaviour:
   accessoryList: []
   trackList:
   - trackId: 0
-    trackName: Beach Regatta
+    trackName: Beach Parking Lot
     typeOfRace: Regatta
     sceneName: Level_Beach_Regatta
     RacePreview: {fileID: 2800000, guid: 4e88a511a2643d441bde29730daae99c, type: 3}
   - trackId: 1
-    trackName: Montain Track
+    trackName: Montains
     typeOfRace: Race Track
     sceneName: Level_Mountain_Race
     RacePreview: {fileID: 2800000, guid: 4873c33810d3f0d46ac297c8cc43f292, type: 3}
   - trackId: 2
-    trackName: Rooftops Race
+    trackName: Rooftops
     typeOfRace: Race Track
     sceneName: RoofTops
     RacePreview: {fileID: 2800000, guid: 5cfeaa8bd47d44602b9014b04a759549, type: 3}

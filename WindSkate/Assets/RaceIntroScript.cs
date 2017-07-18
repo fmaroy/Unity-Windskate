@@ -53,6 +53,10 @@ public class RaceIntroScript : MonoBehaviour {
 			i++;
 		}
 
+		if (isScene) {
+			int windId = persistentSceneData.currentSingleRaceDefinition.typeOfWindsID;
+			weatherPannel.transform.GetChild (0).gameObject.GetComponent<TextMeshProUGUI> ().SetText (string.Format("Weather Report : {0}\n{1}",persistentSceneData.ListOfWinds [windId].name, persistentSceneData.ListOfWinds [windId].label));
+		}
 
 
 
@@ -82,7 +86,6 @@ public class RaceIntroScript : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
 
 		int i = 0;
 		foreach (GameObject opponent in raceManagerData.OpponenentObjectsList)

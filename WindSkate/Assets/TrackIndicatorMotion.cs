@@ -289,16 +289,18 @@ public class TrackIndicatorMotion : MonoBehaviour {
 
 		//handles the mark indicators
 		if ((currentMarkId >= Player.GetComponentInChildren<Follow_track> ().trackData.markSequence.Count - 1) && (markIndicator > 0)) { 
+			// reached the finished line
 			Camera.main.GetComponent<CameraControlScript> ().CameraTargetData.referenceTransformObjectPosition = initCamPosObj;
 			TraceObject.SetActive (false);
 			StartCoroutine(this.GetComponent<IntroSequence>().introductionManager (2)); // track finished
 		} 
 		else {
+			// finished line not reached
 			Debug.Log (currentMarkId);
 			Player.GetComponentInChildren<Follow_track> ().handleTrackIndicator (currentMarkId);
 			cameraTarget.transform.position = new Vector3 (0f, 0f, TraceObject.transform.position.z);
 
-			// Test to replace the Coroutine mechanism
+			// manages the trace move
 			if (currentMarkId < trackData.markSequence.Count) {
 				if (timer < 1.0f) {
 					timer += Time.deltaTime * trailPace;
