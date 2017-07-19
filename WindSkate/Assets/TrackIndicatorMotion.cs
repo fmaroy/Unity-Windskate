@@ -19,8 +19,8 @@ public class TrackIndicatorMotion : MonoBehaviour {
 	private Mark markData;
 	public int currentMarkId = 0; // int that indicate mark number in the sequence
 	public int markIndicator = 0; // int that indicate if a mark has been passed
-	private float leftSideBoundaryMax;
-	private float rightSideBoundaryMax;
+	public float leftSideBoundaryMax;
+	public float rightSideBoundaryMax;
 	public float currentLeftSideBoundary;
 	public float currentRightSideBoundary;
 	private Vector3 flagMarkSide2;
@@ -39,6 +39,7 @@ public class TrackIndicatorMotion : MonoBehaviour {
 	private WindGustsBehavior WindData; 
 	public bool goingStarBoard = false;
 	public bool goingUpwind = true;
+	public bool goingToMark = true;
 	public GameObject initCamDirObj;
 	public GameObject initCamPosObj;
 
@@ -76,7 +77,7 @@ public class TrackIndicatorMotion : MonoBehaviour {
 
 	public void getMark ()
 	{
-		SetTrackBoundaries ();
+		
 		currentMark = GameObject.Find(trackData.markSequence[currentMarkId]);
 		markData = currentMark.GetComponent<Mark>();
 		nextTarget = getNextTarget (currentMarkId, markIndicator);
@@ -85,7 +86,20 @@ public class TrackIndicatorMotion : MonoBehaviour {
 		//yield return StartCoroutine(moveToTarget (TraceObject, TraceObject.transform.position, nextTarget, trailPace));
 		initPos = TraceObject.transform.position;
 		targetPos = setNextTarget (goingStarBoard); // TODO: targetPos will need to change when going downwind and upwind
+
+		Debug.Log ("updating boundaries : " + currentMark.name);
+		//updateTrackBoundaries (currentMark);
+		SetTrackBoundaries ();
+		Debug.Log ("leftSideBoundaryMax : " + leftSideBoundaryMax);
+
 		initPath ();
+	}
+
+	public void updateTrackBoundaries(GameObject markObj)
+	{
+		rightSideBoundaryMax = markObj.GetComponent<Mark> ().BoundingBoxMin[0];
+		leftSideBoundaryMax = markObj.GetComponent<Mark> ().BoundingBoxMax[0];
+
 	}
 
 	public Vector3 setNextTarget (bool goStarBoard)
@@ -103,10 +117,12 @@ public class TrackIndicatorMotion : MonoBehaviour {
 
 		if (Mathf.Abs (dirAngleToWind) < 45) {
 			goingUpwind = true;
+			goingToMark = false;
 			target = followWind (goStarBoard, goingUpwind);
 		} 
 		if (Mathf.Abs (dirAngleToWind) > 135){
 			goingUpwind = false;
+			goingToMark = false;
 			target = followWind (goStarBoard, goingUpwind);
 		}
 		if ((Mathf.Abs (dirAngleToWind) >= 45) && (Mathf.Abs (dirAngleToWind) <= 135)) {
@@ -127,7 +143,7 @@ public class TrackIndicatorMotion : MonoBehaviour {
 	Vector3 goDirectlyToMark()
 	{
 		Vector3 target = nextTarget;
-
+		goingToMark = true;
 		return target;
 	}
 
@@ -175,7 +191,7 @@ public class TrackIndicatorMotion : MonoBehaviour {
 		Vector3 initDirVector = nextTarget - initPos;
 		Vector3 markDir = nextTarget - TraceObject.transform.position;
 		float angleDiffTraceToMark = Vector3.Angle (TraceObject.transform.forward, markDir);
-		Debug.Log ("WindVector for Jibe/Tack : " + angleDiffTraceToMark);
+		//Debug.Log ("WindVector for Jibe/Tack : " + angleDiffTraceToMark);
 		if ((Mathf.Abs (angleDiffTraceToMark) > 90)) {
 			Debug.Log ("Go to mark directly");
 			initPos = TraceObject.transform.position;
@@ -203,6 +219,8 @@ public class TrackIndicatorMotion : MonoBehaviour {
 
 	public void SetTrackBoundaries()
 	{
+		
+
 		if (Mathf.Round(Random.value) == 0)
 		{
 			favorOptionRight = true;
@@ -298,8 +316,14 @@ public class TrackIndicatorMotion : MonoBehaviour {
 			// finished line not reached
 			Debug.Log (currentMarkId);
 			Player.GetComponentInChildren<Follow_track> ().handleTrackIndicator (currentMarkId);
-			cameraTarget.transform.position = new Vector3 (0f, 0f, TraceObject.transform.position.z);
+			if (goingToMark) {
+				cameraTarget.transform.position = new Vector3 (TraceObject.transform.position.x, 0f, TraceObject.transform.position.z);
+			} 
+			else {
+				cameraTarget.transform.position = new Vector3 ((currentLeftSideBoundary + currentRightSideBoundary)/2, 0f, TraceObject.transform.position.z);
+			}
 
+			//updateTrackBoundaries (currentMark);
 			// manages the trace move
 			if (currentMarkId < trackData.markSequence.Count) {
 				if (timer < 1.0f) {
