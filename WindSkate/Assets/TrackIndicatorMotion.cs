@@ -42,6 +42,7 @@ public class TrackIndicatorMotion : MonoBehaviour {
 	public bool goingToMark = true;
 	public GameObject initCamDirObj;
 	public GameObject initCamPosObj;
+	public bool isNextMarkWaypoint;
 
 	// Use this for initialization
 	void Start () {
@@ -62,6 +63,7 @@ public class TrackIndicatorMotion : MonoBehaviour {
 		timer = 0;
 
 		favorOptionRight = true;
+		isNextMarkWaypoint = false;
 	}
 
 	public void SetNext()
@@ -71,34 +73,54 @@ public class TrackIndicatorMotion : MonoBehaviour {
 		} else {
 			currentMarkId++;
 			markIndicator = 0;
-			chooseMark = Mathf.RoundToInt (Random.value); // picks a value between 0 and 1 to choose a door to pass
+
+			currentMark = GameObject.Find (trackData.markSequence [currentMarkId]);
+			if (currentMark.GetComponent<Mark> () == null) {
+				//Get all children objects
+				List<GameObject> listWaypoints = new List<GameObject> ();
+				for (int i = 0; i < currentMark.transform.childCount; i++) {
+					if (currentMark.transform.GetChild (i).gameObject.GetComponent<Mark> ()) {
+						listWaypoints.Add (currentMark.transform.GetChild (i).gameObject);
+					}
+				}
+				Debug.Log("Number of waypoints : " + listWaypoints.Count);
+				if (listWaypoints.Count > 0) {
+					//Get one of the registered waypoint
+					int id = Mathf.RoundToInt (Random.Range (0, listWaypoints.Capacity-1));
+					currentMark = listWaypoints [id];
+				} else {
+					currentMarkId++;
+					currentMark = GameObject.Find (trackData.markSequence [currentMarkId]);
+				}
+				//currentMark = GameObject.Find(trackData.markSequence[currentMarkId]);
+			}
 		}
+		Debug.Log ("updating boundaries : " + currentMark.name);
+		updateTrackBoundaries (currentMark);
+		SetTrackBoundaries ();
+		Debug.Log ("leftSideBoundaryMax : " + leftSideBoundaryMax);
+		chooseMark = Mathf.RoundToInt (Random.value); // picks a value between 0 and 1 to choose a door to pass
 	}
 
 	public void getMark ()
 	{
 		
-		currentMark = GameObject.Find(trackData.markSequence[currentMarkId]);
+		//currentMark = GameObject.Find(trackData.markSequence[currentMarkId]);
 		markData = currentMark.GetComponent<Mark>();
-		nextTarget = getNextTarget (currentMarkId, markIndicator);
+		nextTarget = getNextTarget (currentMark, markIndicator);
 		Debug.Log ("Trace Next Target : " + nextTarget);
 		Debug.Log ("MarkIndicatorValue : " + markIndicator);
 		//yield return StartCoroutine(moveToTarget (TraceObject, TraceObject.transform.position, nextTarget, trailPace));
 		initPos = TraceObject.transform.position;
 		targetPos = setNextTarget (goingStarBoard); // TODO: targetPos will need to change when going downwind and upwind
 
-		Debug.Log ("updating boundaries : " + currentMark.name);
-		//updateTrackBoundaries (currentMark);
-		SetTrackBoundaries ();
-		Debug.Log ("leftSideBoundaryMax : " + leftSideBoundaryMax);
-
 		initPath ();
 	}
 
 	public void updateTrackBoundaries(GameObject markObj)
 	{
-		rightSideBoundaryMax = markObj.GetComponent<Mark> ().BoundingBoxMin[0];
-		leftSideBoundaryMax = markObj.GetComponent<Mark> ().BoundingBoxMax[0];
+		leftSideBoundaryMax = markObj.GetComponent<Mark> ().BoundingBoxMin[0];
+		rightSideBoundaryMax = markObj.GetComponent<Mark> ().BoundingBoxMax[0];
 
 	}
 
@@ -219,8 +241,6 @@ public class TrackIndicatorMotion : MonoBehaviour {
 
 	public void SetTrackBoundaries()
 	{
-		
-
 		if (Mathf.Round(Random.value) == 0)
 		{
 			favorOptionRight = true;
@@ -261,14 +281,16 @@ public class TrackIndicatorMotion : MonoBehaviour {
 		currentMarkId = 0;
 		markIndicator = 0;
 		TraceObject.transform.position = Player.transform.position;
+		SetNext ();
 		getMark ();
 		TraceObject.SetActive (true);
 	}
 
-	public Vector3 getNextTarget(int mark, int statusId)
+	public Vector3 getNextTarget(GameObject thismark, int statusId)
 	{
 		Vector3 target = Vector3.zero;
-		GameObject thismark = GameObject.Find(trackData.markSequence[mark]);
+		//GameObject thismark = GameObject.Find(trackData.markSequence[mark]);
+
 		Mark thismarkData = thismark.GetComponent<Mark>();
 		Vector3 pass1 = Vector3.zero;
 		Vector3 pass2 = Vector3.zero;
@@ -315,7 +337,10 @@ public class TrackIndicatorMotion : MonoBehaviour {
 		else {
 			// finished line not reached
 			Debug.Log (currentMarkId);
-			Player.GetComponentInChildren<Follow_track> ().handleTrackIndicator (currentMarkId);
+			if (currentMark.GetComponent<Mark> ().isWaypoint == false) {
+				Player.GetComponentInChildren<Follow_track> ().handleTrackIndicator (currentMarkId);
+			}
+
 			if (goingToMark) {
 				cameraTarget.transform.position = new Vector3 (TraceObject.transform.position.x, 0f, TraceObject.transform.position.z);
 			} 
