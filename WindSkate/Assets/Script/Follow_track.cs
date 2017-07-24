@@ -881,7 +881,7 @@ public class Follow_track : MonoBehaviour
         else
         {
             Debug.Log("Opponent " + this.gameObject.transform.parent.gameObject.name + " Navigation set to Destination : " + nextObjectivePosition);
-            Debug.DrawLine(playerPosition, nextObjectivePosition, blocked ? Color.cyan : Color.blue, 3.0f);
+            //Debug.DrawLine(playerPosition, nextObjectivePosition, blocked ? Color.cyan : Color.blue, 3.0f);
         }
 
         return nextObjectivePosition;
