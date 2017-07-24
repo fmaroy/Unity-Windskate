@@ -21,13 +21,13 @@ GameObject:
   - component: {fileID: 4146572039674674}
   - component: {fileID: 33813595869020188}
   - component: {fileID: 23543491442559154}
-  - component: {fileID: 95939334333612008}
-  m_Layer: 0
+  - component: {fileID: 65342342219789078}
+  m_Layer: 13
   m_Name: AC_house
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4146572039674674
 Transform:
@@ -35,9 +35,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1429266056769824}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -261.8564, y: 130.18912, z: 0.33200684}
-  m_LocalScale: {x: 1.6, y: 2.4000015, z: 0.50000024}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -83.5, y: 6.7499847, z: -34.6}
+  m_LocalScale: {x: 2, y: 3, z: 1.2500011}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -84,20 +84,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1429266056769824}
   m_Mesh: {fileID: 4300000, guid: 3da072d49e3b54c2fb1c3cbebf47bc41, type: 3}
---- !u!95 &95939334333612008
-Animator:
-  serializedVersion: 3
+--- !u!65 &65342342219789078
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1429266056769824}
+  m_Material: {fileID: 13400000, guid: 01571ba68fb2dad46aa03094ab219579, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 3da072d49e3b54c2fb1c3cbebf47bc41, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  serializedVersion: 2
+  m_Size: {x: 11, y: 10.274663, z: 10.200003}
+  m_Center: {x: 0, y: 0.13733009, z: -0.09999993}

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Mark : MonoBehaviour {
+	public bool singlePassValidation;
 	public Vector3 firstPassValidation;
 	public Vector3 finalPassValidation;
     public bool singleMark;

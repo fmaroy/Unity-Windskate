@@ -97,7 +97,7 @@ public class PlayerStart : MonoBehaviour {
 		AnimatorStateInfo  currentManState = sailAnimData.currentBaseStateInManoeuvre;
 		//first checks the current status of the aniamtion for this player: is it in Start position?
 		int startInt = 0;
-		Debug.Log ("currentAnim Hash :" + currentManState.fullPathHash);
+		//Debug.Log ("currentAnim Hash :" + currentManState.fullPathHash);
 		int[] animIdleArray = new int[]{StartIdleStarboard, StartIdleStarboard2, StartIdlePort, StartIdlePort2};
 		int idleState = 0;
 		foreach (int animState in animIdleArray) {
@@ -190,7 +190,7 @@ public class PlayerStart : MonoBehaviour {
 		{
 			i += Time.deltaTime * rate;
 			sailAnimData.Manoeuvre_Weight = i;
-			Debug.Log("SailAnim Weight : " + i);
+			//Debug.Log("SailAnim Weight : " + i);
 			yield return 0;
 		}
 	}
@@ -213,7 +213,7 @@ public class PlayerStart : MonoBehaviour {
 		bool b = true;
 		while ((b))
 		{
-			Debug.Log ("In the loop!");
+			//Debug.Log ("In the loop!");
 			b = false;
 			currentState = sailAnimData.currentBaseStateInManoeuvre; // updates the current state
 			foreach (int i in stateList) { // Verifies if the current state of the animation is in the provided list
@@ -226,11 +226,11 @@ public class PlayerStart : MonoBehaviour {
 				updateStartParamameters (true);
 				rb.isKinematic = false;
 				sailSystemData.isStartingActiveSails = true;
-				Debug.Log ("Reading Motion value : " + sailAnimData.animationDisplacement);
+				//Debug.Log ("Reading Motion value : " + sailAnimData.animationDisplacement);
 				rb.velocity = obj.transform.forward * sailAnimData.animationDisplacement;
 				//obj.transform.position = currentPos + obj.transform.forward * sailAnimData.animationDisplacement * 10; //carefull, the motion is apply in gloabl Z, check if this will not cause problems!!!!
 			} else {
-				Debug.Log ("No Anim Deplacement");
+				//Debug.Log ("No Anim Deplacement");
 				updateStartParamameters (false);
 				// disables the manoueuvre slow down in SailSystem_Contols script
 				sailSystemData.isStartingActiveSails = true;

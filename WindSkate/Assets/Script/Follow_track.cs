@@ -224,7 +224,7 @@ public class Follow_track : MonoBehaviour
             //Debug.Log("Disable ManualDrive: Auto Mode");
             if (triggerManoeuvre == false)
             {
-                //Debug.Log("NavMeshHandling when updating Manual mode");
+                Debug.Log("NavMeshHandling when updating Manual mode");
                 NavMeshHandling(isNextTargetMark, driveStarboard, transform.position);
             }
         }
@@ -692,7 +692,7 @@ public class Follow_track : MonoBehaviour
             setNextmark();
             int MarkIndicatorInt = 1;
             nextTarget = setNextTarget(currentMark, MarkIndicatorInt, markData.firstPassValidation, markData.finalPassValidation);
-            //Debug.Log("NavMeshHandling When Passing Waypoint : " + nextTarget);
+            Debug.Log("NavMeshHandling When Passing Waypoint : " + nextTarget);
             NavMeshHandling(isNextTargetMark, driveStarboard, transform.position);
             MarkIndicatorInt = 0;
         }
@@ -726,8 +726,8 @@ public class Follow_track : MonoBehaviour
 				for (int i = 0; i < 2 ; i++)
 				{
 					GameObject doorMark = markData.Children[i];
-					Debug.Log("Placing next double mark indicators :" + iter2);
-					Debug.Log (markIndicator [iter2].name);
+					//Debug.Log("Placing next double mark indicators :" + iter2);
+					//Debug.Log (markIndicator [iter2].name);
                     markIndicator[iter2].SetActive(true);
                     markIndicator[iter2].transform.position = new Vector3(doorMark.transform.position.x, 0.0f, doorMark.transform.position.z);
                     //Debug.Log("MarkIndicator # " + iter2 + ", set at pos : " + markIndicator[iter2].transform.position);
@@ -805,6 +805,7 @@ public class Follow_track : MonoBehaviour
     /// <param name="driveStarboard"></param>
     public Vector3 NavMeshHandling(int intNextTarget, bool isstarboard, Vector3 playerPosition)
     {
+		Debug.Log ("Nav handling : " + this.transform.parent.gameObject.name + ", intNextTarget : " + intNextTarget);
         float angleRecommendedToWind = 45.0f;
         Vector3 nextObjectivePosition = new Vector3(0.0f, 0.0f, 0.0f);
         float angleWind = windData.localWindDirection;
@@ -879,8 +880,8 @@ public class Follow_track : MonoBehaviour
         }
         else
         {
-            //Debug.Log("Opponent " + this.gameObject.transform.parent.gameObject.name + " Navigation set to Destination : " + nextObjectivePosition);
-            //Debug.DrawLine(playerPosition, nextObjectivePosition, blocked ? Color.cyan : Color.blue, 3.0f);
+            Debug.Log("Opponent " + this.gameObject.transform.parent.gameObject.name + " Navigation set to Destination : " + nextObjectivePosition);
+            Debug.DrawLine(playerPosition, nextObjectivePosition, blocked ? Color.cyan : Color.blue, 3.0f);
         }
 
         return nextObjectivePosition;
@@ -1238,7 +1239,7 @@ public class Follow_track : MonoBehaviour
             {
                 //Debug.Log("Calculate Nav : " + nexttargetreforcalc + " , " + drivestarboardforrecalc);
             }
-            //Debug.Log("NavMeshDir on triggered Manoeuvre path calculation");
+            Debug.Log("NavMeshDir on triggered Manoeuvre path calculation");
             NavMeshNextDir = NavMeshHandling(nexttargetreforcalc, drivestarboardforrecalc, transform.position);
         }
     }
@@ -1413,7 +1414,7 @@ public class Follow_track : MonoBehaviour
             {
                 //Debug.Log("Calculate Opponenet Nav : " + nexttargetreforcalc + " , " + drivestarboardforrecalc);
             }
-            //Debug.Log("NavMeshDir on regular path calculation");
+            Debug.Log("NavMeshDir on regular path calculation");
             NavMeshNextDir = NavMeshHandling(nexttargetreforcalc, drivestarboardforrecalc, transform.position);
         }
         //Debug.Log(NavAgentObject.GetComponent<NavMeshAgent>().steeringTarget);

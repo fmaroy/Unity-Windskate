@@ -42,6 +42,7 @@ public class TrackIndicatorMotion : MonoBehaviour {
 	public bool goingToMark = true;
 	public GameObject initCamDirObj;
 	public GameObject initCamPosObj;
+	public float posCameraDamping = 3f;
 	public bool isNextMarkWaypoint;
 
 	// Use this for initialization
@@ -60,15 +61,16 @@ public class TrackIndicatorMotion : MonoBehaviour {
 		currentRightSideBoundary = rightSideBoundaryMax;
 
 		TraceObject.transform.position = Player.transform.position;
-		timer = 0;
+		timer = 0f;
 
 		favorOptionRight = true;
 		isNextMarkWaypoint = false;
+
 	}
 
 	public void SetNext()
 	{
-		if (markIndicator == 0) {
+		if ((markIndicator == 0) && (currentMark.GetComponent<Mark>().singlePassValidation == false)) {
 			markIndicator++;
 		} else {
 			currentMarkId++;
@@ -86,7 +88,8 @@ public class TrackIndicatorMotion : MonoBehaviour {
 				Debug.Log("Number of waypoints : " + listWaypoints.Count);
 				if (listWaypoints.Count > 0) {
 					//Get one of the registered waypoint
-					int id = Mathf.RoundToInt (Random.Range (0, listWaypoints.Capacity-1));
+					int id = Mathf.RoundToInt (Random.Range (0, listWaypoints.Count-1));
+					//Debug.Log ("id : " + id);
 					currentMark = listWaypoints [id];
 				} else {
 					currentMarkId++;
@@ -95,21 +98,20 @@ public class TrackIndicatorMotion : MonoBehaviour {
 				//currentMark = GameObject.Find(trackData.markSequence[currentMarkId]);
 			}
 		}
-		Debug.Log ("updating boundaries : " + currentMark.name);
+		//Debug.Log ("updating boundaries : " + currentMark.name);
 		updateTrackBoundaries (currentMark);
 		SetTrackBoundaries ();
-		Debug.Log ("leftSideBoundaryMax : " + leftSideBoundaryMax);
+		//Debug.Log ("leftSideBoundaryMax : " + leftSideBoundaryMax);
 		chooseMark = Mathf.RoundToInt (Random.value); // picks a value between 0 and 1 to choose a door to pass
 	}
 
 	public void getMark ()
 	{
-		
 		//currentMark = GameObject.Find(trackData.markSequence[currentMarkId]);
 		markData = currentMark.GetComponent<Mark>();
 		nextTarget = getNextTarget (currentMark, markIndicator);
-		Debug.Log ("Trace Next Target : " + nextTarget);
-		Debug.Log ("MarkIndicatorValue : " + markIndicator);
+		//Debug.Log ("Trace Next Target : " + nextTarget);
+		//Debug.Log ("MarkIndicatorValue : " + markIndicator);
 		//yield return StartCoroutine(moveToTarget (TraceObject, TraceObject.transform.position, nextTarget, trailPace));
 		initPos = TraceObject.transform.position;
 		targetPos = setNextTarget (goingStarBoard); // TODO: targetPos will need to change when going downwind and upwind
@@ -135,7 +137,7 @@ public class TrackIndicatorMotion : MonoBehaviour {
 		Debug.Log ("WindVector : " + dirWind);
 
 		float dirAngleToWind = Vector3.Angle (dirVector,-1*dirWind);
-		Debug.Log ("Angle to wind : " + dirAngleToWind);
+		//Debug.Log ("Angle to wind : " + dirAngleToWind);
 
 		if (Mathf.Abs (dirAngleToWind) < 45) {
 			goingUpwind = true;
@@ -156,10 +158,11 @@ public class TrackIndicatorMotion : MonoBehaviour {
 
 	void initPath()
 	{
+		//Debug.Log ("Debug path");
 		initPos = TraceObject.transform.position;
 		TraceObject.transform.forward = targetPos - TraceObject.transform.position ;
 		trailPace = trailSpeed / (new Vector2 (targetPos.x - initPos.x , targetPos.z - initPos.z).magnitude);
-		timer = 0;
+		timer = 0f;
 	}
 
 	Vector3 goDirectlyToMark()
@@ -172,6 +175,7 @@ public class TrackIndicatorMotion : MonoBehaviour {
 	Vector3 followWind(bool starboardside, bool goUpWind)
 	{
 		Vector3 target = Vector3.zero;
+		Debug.Log ("Follow wind orient : " + WindData.initWindOrientation);
 		Quaternion rot = Quaternion.AngleAxis (WindData.initWindOrientation, Vector3.up);
 		Vector3 dirWind = rot * Vector3.left;
 
@@ -182,28 +186,36 @@ public class TrackIndicatorMotion : MonoBehaviour {
 				rot = Quaternion.AngleAxis (45, Vector3.up);
 				Debug.Log (rot * Vector3.forward);
 				target = rot * (-1 * dirWind) * 1000;
+				Debug.Log ("target0 : " + target);
 			} else {
 				rot = Quaternion.AngleAxis (-45, Vector3.up);
-				Debug.Log (rot * Vector3.forward);
+				//Debug.Log (rot * Vector3.forward);
 				target = rot * (-1 * dirWind) * 1000;
+				//Debug.Log ("target0 : " + target);
 			}
 		}
 		else {
 			Debug.Log ("is Downwind");
+
 			goingUpwind = false;
 			if (starboardside) {
-				Debug.Log (starboardside);
+				//Debug.Log (starboardside);
 				rot = Quaternion.AngleAxis (45, Vector3.up);
-				Debug.Log (rot * Vector3.forward);
+				//Debug.Log (rot * Vector3.forward);
 				target = rot * dirWind * 1000;
+				//Debug.Log ("target0 : " + target);
 
 			} else {
-				Debug.Log (starboardside);
+				//Debug.Log (starboardside);
 				rot = Quaternion.AngleAxis (-45, Vector3.up);
-				Debug.Log (rot * Vector3.forward);
+				//Debug.Log (rot * Vector3.forward);
 				target = rot * dirWind * 1000;
+				//Debug.Log ("target0 : " + target);
 			}
 		}
+		//Debug.Log ("target1 : " + target);
+		target = target + TraceObject.transform.position;
+		debugNexttargetIndicator.transform.position = target;
 		return target;
 	}
 
@@ -215,7 +227,7 @@ public class TrackIndicatorMotion : MonoBehaviour {
 		float angleDiffTraceToMark = Vector3.Angle (TraceObject.transform.forward, markDir);
 		//Debug.Log ("WindVector for Jibe/Tack : " + angleDiffTraceToMark);
 		if ((Mathf.Abs (angleDiffTraceToMark) > 90)) {
-			Debug.Log ("Go to mark directly");
+			//Debug.Log ("Go to mark directly");
 			initPos = TraceObject.transform.position;
 			targetPos = goDirectlyToMark ();
 			initPath ();
@@ -223,7 +235,7 @@ public class TrackIndicatorMotion : MonoBehaviour {
 
 		if (goingUpwind) {
 			if (((TraceObject.transform.position.x < currentLeftSideBoundary) && (goingStarBoard)) || ((TraceObject.transform.position.x > currentRightSideBoundary) && (!goingStarBoard))) {
-				Debug.Log ("found boundary");
+				//Debug.Log ("found boundary");
 				initPos = TraceObject.transform.position;
 				targetPos = setNextTarget (!goingStarBoard);
 				initPath ();
@@ -231,7 +243,7 @@ public class TrackIndicatorMotion : MonoBehaviour {
 		} 
 		else {
 			if (((TraceObject.transform.position.x < currentLeftSideBoundary) && (!goingStarBoard)) || ((TraceObject.transform.position.x > currentRightSideBoundary) && (goingStarBoard))) {
-				Debug.Log ("found boundary");
+				//Debug.Log ("found boundary");
 				initPos = TraceObject.transform.position;
 				targetPos = setNextTarget (!goingStarBoard);
 				initPath ();
@@ -281,9 +293,10 @@ public class TrackIndicatorMotion : MonoBehaviour {
 		currentMarkId = 0;
 		markIndicator = 0;
 		TraceObject.transform.position = Player.transform.position;
-		SetNext ();
+		//SetNext ();
 		getMark ();
 		TraceObject.SetActive (true);
+		cameraTarget.transform.position = new Vector3 (TraceObject.transform.position.x, 0f, TraceObject.transform.position.z);
 	}
 
 	public Vector3 getNextTarget(GameObject thismark, int statusId)
@@ -330,6 +343,7 @@ public class TrackIndicatorMotion : MonoBehaviour {
 		//handles the mark indicators
 		if ((currentMarkId >= Player.GetComponentInChildren<Follow_track> ().trackData.markSequence.Count - 1) && (markIndicator > 0)) { 
 			// reached the finished line
+			Debug.Log("Reached the finish line");
 			Camera.main.GetComponent<CameraControlScript> ().CameraTargetData.referenceTransformObjectPosition = initCamPosObj;
 			TraceObject.SetActive (false);
 			StartCoroutine(this.GetComponent<IntroSequence>().introductionManager (2)); // track finished
@@ -341,34 +355,51 @@ public class TrackIndicatorMotion : MonoBehaviour {
 				Player.GetComponentInChildren<Follow_track> ().handleTrackIndicator (currentMarkId);
 			}
 
+
+			Vector3 posCamera;
+			float posCameraDamping = 2f;
 			if (goingToMark) {
-				cameraTarget.transform.position = new Vector3 (TraceObject.transform.position.x, 0f, TraceObject.transform.position.z);
+				posCamera = new Vector3 (TraceObject.transform.position.x, 0f, TraceObject.transform.position.z);
 			} 
 			else {
-				cameraTarget.transform.position = new Vector3 ((currentLeftSideBoundary + currentRightSideBoundary)/2, 0f, TraceObject.transform.position.z);
+				posCamera = new Vector3 ((currentLeftSideBoundary + currentRightSideBoundary)/2, 0f, TraceObject.transform.position.z);
 			}
+
+			Vector3 wantedCamPosition = posCamera;
+			Vector3 currentCamPos = cameraTarget.transform.position;
+			cameraTarget.transform.position = Vector3.Lerp(currentCamPos, wantedCamPosition, posCameraDamping * Time.deltaTime);
+
+			//cameraTarget.transform.position = new Vector3 (xposCamera, 0f, TraceObject.transform.position.z);
 
 			//updateTrackBoundaries (currentMark);
 			// manages the trace move
-			if (currentMarkId < trackData.markSequence.Count) {
-				if (timer < 1.0f) {
+			if (currentMarkId < trackData.markSequence.Count) 
+			{
+				Debug.Log ("timer : " + timer);
+				if (timer < 1.0f) 
+				{
 					timer += Time.deltaTime * trailPace;
 					float xPos = Mathf.Lerp (initPos.x, targetPos.x, timer);
 					float zPos = Mathf.Lerp (initPos.z, targetPos.z, timer);
 					//Debug.Log ("Lerp Value : " + timer + ", DeltaTimeValue : " + Time.deltaTime * trailPace);
 					TraceObject.transform.position = new Vector3 (xPos, 1f, zPos);
-				} else {
+				} 
+				else 
+				{
 					Debug.Log ("Reached destination");
 					if (targetPos == nextTarget) {
 						SetNext ();
 						getMark ();
-					} else {
+					} 
+					else 
+					{
 						initPos = TraceObject.transform.position;
 						targetPos = setNextTarget (!goingStarBoard);
 						initPath ();
 					}
 				}
 			}
+
 			//debugNexttargetIndicator.transform.position = nextTarget;
 
 			tackjibHandler ();

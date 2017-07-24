@@ -2928,6 +2928,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9973cfbd5e7ae854687cac1bd32a07b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  singlePassValidation: 1
   firstPassValidation: {x: 1, y: 0, z: 0}
   finalPassValidation: {x: 0, y: 0, z: 1}
   singleMark: 1
@@ -4827,6 +4828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9973cfbd5e7ae854687cac1bd32a07b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  singlePassValidation: 1
   firstPassValidation: {x: 1, y: 0, z: 0}
   finalPassValidation: {x: 0, y: 0, z: 1}
   singleMark: 1
@@ -9801,6 +9803,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9973cfbd5e7ae854687cac1bd32a07b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  singlePassValidation: 0
   firstPassValidation: {x: 0, y: 0, z: 0}
   finalPassValidation: {x: 0, y: 0, z: 1}
   singleMark: 0
@@ -13932,6 +13935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9973cfbd5e7ae854687cac1bd32a07b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  singlePassValidation: 1
   firstPassValidation: {x: 1, y: 0, z: 0}
   finalPassValidation: {x: 0, y: 0, z: 1}
   singleMark: 1
@@ -17291,6 +17295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9973cfbd5e7ae854687cac1bd32a07b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  singlePassValidation: 1
   firstPassValidation: {x: 1, y: 0, z: 0}
   finalPassValidation: {x: 0, y: 0, z: 1}
   singleMark: 1
@@ -30120,6 +30125,10 @@ Prefab:
       propertyPath: m_Layer
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 11498422, guid: c8cbba09b14da924c9fac5f5c719f407, type: 2}
+      propertyPath: singlePassValidation
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5422458, guid: c8cbba09b14da924c9fac5f5c719f407, type: 2}
     - {fileID: 3323070, guid: c8cbba09b14da924c9fac5f5c719f407, type: 2}
@@ -33003,10 +33012,6 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22473662, guid: 8c9b2d2d594dbc44a8051899c5277a6f, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1980826626991830, guid: 8c9b2d2d594dbc44a8051899c5277a6f, type: 2}
-      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
