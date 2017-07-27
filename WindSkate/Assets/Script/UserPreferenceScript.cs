@@ -68,6 +68,7 @@ public class UserPreferenceScript : MonoBehaviour {
                 }
             }
         }
+
         if (SceneManagerObject != null)
         {
             Debug.Log("Updating from Scene Manager");
@@ -88,7 +89,6 @@ public class UserPreferenceScript : MonoBehaviour {
         //updateDisplayWindFx(Opponents);
         //updateDisplayWindFx(GameObject.Find("Track_Details"));
     }
-		
 
     public void updateWindCondition()
     {

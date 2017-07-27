@@ -224,7 +224,7 @@ public class Follow_track : MonoBehaviour
             //Debug.Log("Disable ManualDrive: Auto Mode");
             if (triggerManoeuvre == false)
             {
-                Debug.Log("NavMeshHandling when updating Manual mode");
+                //Debug.Log("NavMeshHandling when updating Manual mode");
                 NavMeshHandling(isNextTargetMark, driveStarboard, transform.position);
             }
         }
@@ -805,7 +805,7 @@ public class Follow_track : MonoBehaviour
     /// <param name="driveStarboard"></param>
     public Vector3 NavMeshHandling(int intNextTarget, bool isstarboard, Vector3 playerPosition)
     {
-		Debug.Log ("Nav handling : " + this.transform.parent.gameObject.name + ", intNextTarget : " + intNextTarget);
+		//Debug.Log ("Nav handling : " + this.transform.parent.gameObject.name + ", intNextTarget : " + intNextTarget);
         float angleRecommendedToWind = 45.0f;
         Vector3 nextObjectivePosition = new Vector3(0.0f, 0.0f, 0.0f);
         float angleWind = windData.localWindDirection;
@@ -880,7 +880,7 @@ public class Follow_track : MonoBehaviour
         }
         else
         {
-            Debug.Log("Opponent " + this.gameObject.transform.parent.gameObject.name + " Navigation set to Destination : " + nextObjectivePosition);
+            //Debug.Log("Opponent " + this.gameObject.transform.parent.gameObject.name + " Navigation set to Destination : " + nextObjectivePosition);
             //Debug.DrawLine(playerPosition, nextObjectivePosition, blocked ? Color.cyan : Color.blue, 3.0f);
         }
 

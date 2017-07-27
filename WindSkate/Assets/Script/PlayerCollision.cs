@@ -303,7 +303,7 @@ public class PlayerCollision : MonoBehaviour
 
     public void playerCollisionHandling(GameObject callingObject, GameObject CollisionObject)
     {
-        Debug.Log("CallingObject : " + callingObject.name + ", CollisionObject : " + CollisionObject.name);
+        //Debug.Log("CallingObject : " + callingObject.name + ", CollisionObject : " + CollisionObject.name);
         GameObject rootObject = CollisionObject;
         playCollision = false;
 
@@ -465,7 +465,7 @@ public class PlayerCollision : MonoBehaviour
         playerRecoveryObjectsList.Add(localObjList[secondShortDist]);
         
         ////Debug.Log(playerRecoveryObjectsList[0].name);
-        Debug.Log(playerRecoveryObjectsList[1].name);
+        //Debug.Log(playerRecoveryObjectsList[1].name);
 
         playerRecoveryPosition = playerRecoveryObjectsList[0].transform.position;
 
@@ -592,8 +592,8 @@ public class PlayerCollision : MonoBehaviour
     }
     public void repositionPlayerDisabledRb()
     {
-		Debug.Log (this.GetComponent<ExternalObjectsReference>().currentCamera);
-		Debug.Log (this.GetComponent<ExternalObjectsReference>().currentCamera.GetComponent<CameraControlScript> ());
+		//Debug.Log (this.GetComponent<ExternalObjectsReference>().currentCamera);
+		//Debug.Log (this.GetComponent<ExternalObjectsReference>().currentCamera.GetComponent<CameraControlScript> ());
 		this.GetComponent<ExternalObjectsReference>().currentCamera.GetComponent<CameraControlScript> ().resetVignetteCameraEffect ();
 
         getPositionAfterCrash();

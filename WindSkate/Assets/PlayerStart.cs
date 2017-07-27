@@ -61,7 +61,7 @@ public class PlayerStart : MonoBehaviour {
 
 	public void InitializeStartAfterCrash ()
 	{
-		Debug.Log ("Initialize after start");
+		//Debug.Log ("Initialize after start");
 		updateStartParamameters (true);
 		sailAnimData.animSail.SetInteger ("Starting", 1);
 		StartCoroutine(startAfterDelay(1.0f));

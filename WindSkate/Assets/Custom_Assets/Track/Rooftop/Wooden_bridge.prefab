@@ -36,6 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4142621736464876}
   - component: {fileID: 65885276603763596}
+  - component: {fileID: 114104847751880418}
   m_Layer: 13
   m_Name: Colliders (1)
   m_TagString: Untagged
@@ -103,6 +104,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4946706511334366}
   - component: {fileID: 65080332631321290}
+  - component: {fileID: 114774824458070254}
   m_Layer: 13
   m_Name: Colliders (2)
   m_TagString: Untagged
@@ -394,12 +396,36 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114104847751880418
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1323807444462452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b35671c155cd4d8e974c1e5e234c22a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceType: 0
 --- !u!114 &114534565731338716
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1810202396512932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b35671c155cd4d8e974c1e5e234c22a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceType: 0
+--- !u!114 &114774824458070254
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1863656748241832}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b35671c155cd4d8e974c1e5e234c22a, type: 3}

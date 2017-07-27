@@ -1328,6 +1328,7 @@ GameObject:
   - component: {fileID: 11447988}
   - component: {fileID: 11480400}
   - component: {fileID: 114868089675051338}
+  - component: {fileID: 114906585696201604}
   m_Layer: 0
   m_Name: RaceManager
   m_TagString: Untagged
@@ -2131,7 +2132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 812a4bc723275784a99d8ee562173716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIComplexityLevel: 0
+  UIComplexityLevel: 2
   LoadingImage: {fileID: 131842}
   PauseImage: {fileID: 173742}
   PauseButton: {fileID: 155490}
@@ -3011,7 +3012,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3796,7 +3797,7 @@ MonoBehaviour:
   controlData: {fileID: 0}
   Playerprefab: {fileID: 1000014239610428, guid: 9e49ecb09d5c3ab41b750225c6f57142,
     type: 2}
-  numbOpponenents: 2
+  numbOpponenents: 1
 --- !u!114 &11449890
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4574,7 +4575,10 @@ MonoBehaviour:
   currentMarkList: 
   positionBetweenMarks: []
   rankingList: 
-  PlayersList: []
+  PlayersList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &11480964
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6222,17 +6226,17 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 112104}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.099999994}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22467102}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -45}
-  m_SizeDelta: {x: 486, y: 338.69}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -102.900024}
+  m_SizeDelta: {x: 514.2, y: 473.7}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!224 &22446478
 RectTransform:
   m_ObjectHideFlags: 1
@@ -6444,16 +6448,16 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 110872}
-  m_LocalRotation: {x: 0.019743606, y: 0.7068311, z: -0.019743606, w: 0.7068311}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.024584403, y: 0.47390333, z: -0.013237336, w: 0.8801341}
+  m_LocalPosition: {x: 0, y: 0, z: -155}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 424776}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 3.2, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 3.2, y: 56.6, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -101.9, y: 13.6}
+  m_AnchoredPosition: {x: -255.4, y: 17.2}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22463000
@@ -7777,7 +7781,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4046063175078082
 Transform:
   m_ObjectHideFlags: 1
@@ -10288,6 +10292,44 @@ MonoBehaviour:
   speed: 0
   angle: 0
   textObj: {fileID: 1821761625950588}
+--- !u!114 &114906585696201604
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75468a62a28f8e448b185ac3ab57c6ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentGroundType: 0
+  permanentSkids: 0000010100
+  EmitParticles: 0001010101
+  TerrainSkidMaterials:
+  - {fileID: 2100000, guid: f4dd0bba6decdd5418fd3d541ff5f7f0, type: 2}
+  - {fileID: 2100000, guid: 5595aa11a52bf2543bcd0fd6421a48d6, type: 2}
+  - {fileID: 2100000, guid: 150106710fe720b4889d8663585ddb0e, type: 2}
+  - {fileID: 2100000, guid: 150106710fe720b4889d8663585ddb0e, type: 2}
+  - {fileID: 2100000, guid: 5595aa11a52bf2543bcd0fd6421a48d6, type: 2}
+  TerrainParticleColor:
+  - {r: 0, g: 0, b: 0, a: 1}
+  - {r: 0.7058823, g: 0.53008145, b: 0.26989618, a: 0.666}
+  - {r: 0, g: 0, b: 0, a: 0.647}
+  - {r: 0.07931041, g: 0.5, b: 0, a: 0.647}
+  - {r: 0.625, g: 0.47737068, b: 0, a: 0.647}
+  surfaceGripFactors:
+  - 1
+  - 0.6
+  - 0.8
+  - 0.6
+  - 0.5
+  surfaceDragFactors:
+  - 1
+  - 1.2
+  - 1.5
+  - 1.2
+  - 1.5
 --- !u!114 &114940770080446252
 MonoBehaviour:
   m_ObjectHideFlags: 1

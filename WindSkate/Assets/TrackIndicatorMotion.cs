@@ -375,7 +375,7 @@ public class TrackIndicatorMotion : MonoBehaviour {
 			// manages the trace move
 			if (currentMarkId < trackData.markSequence.Count) 
 			{
-				Debug.Log ("timer : " + timer);
+				//Debug.Log ("timer : " + timer);
 				if (timer < 1.0f) 
 				{
 					timer += Time.deltaTime * trailPace;
@@ -386,7 +386,7 @@ public class TrackIndicatorMotion : MonoBehaviour {
 				} 
 				else 
 				{
-					Debug.Log ("Reached destination");
+					//Debug.Log ("Reached destination");
 					if (targetPos == nextTarget) {
 						SetNext ();
 						getMark ();
