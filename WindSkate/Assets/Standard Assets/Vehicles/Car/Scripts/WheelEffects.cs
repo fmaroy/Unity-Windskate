@@ -24,7 +24,7 @@ namespace UnityStandardAssets.Vehicles.Car
 
             if (skidParticles == null)
             {
-                Debug.LogWarning(" no particle system found on car to generate smoke particles");
+                Debug.LogWarning(" no particle system found on car to generate smoke particles", gameObject);
             }
             else
             {
