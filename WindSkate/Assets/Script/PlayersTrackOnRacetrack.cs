@@ -86,7 +86,7 @@ public class PlayersTrackOnRacetrack : MonoBehaviour
             }
             catch 
             {
-                Debug.Log("Can't grab currentMarkId of : " + PlayersList[i].name);
+                //Debug.Log("Can't grab currentMarkId of : " + PlayersList[i].name);
             }
 
             i++;

@@ -61,6 +61,7 @@ public class PlayerCollision : MonoBehaviour
     private float crashFxtimer = 0.0f;
     private float crashFxTimeDelay = 1.0f;
     
+	public bool isStarting;
 
     // Use this for initialization
     void Start()
@@ -390,18 +391,7 @@ public class PlayerCollision : MonoBehaviour
         /*Debug.Log("Get Target Mark At Crash : " + inTargetMarkAtCrash);
         Debug.Log("Registered Position At Crash: " + playerPositionAtCrash);
         Debug.Log("Registered Orientation At Crash: " + playerOrientationAtCrash);*/
-
-        
-
     }
-
-    /*public void playerReposition()
-    {
-        playerPositionAtCrash = Board.transform.position;
-        playerOrientationAtCrash = Board.transform.eulerAngles.y;
-        isDrivingStarboardAtCrash = BoardFollowTrack.driveStarboard;
-        inTargetMarkAtCrash = BoardFollowTrack.getRacerStatusOnTrack(BoardFollowTrack.angleMarkToWind);
-    }*/
 
     public int getMinValueInList (List<float> floatList, int grade)
     {
@@ -475,7 +465,7 @@ public class PlayerCollision : MonoBehaviour
         playerRecoveryObjectsList.Add(localObjList[secondShortDist]);
         
         ////Debug.Log(playerRecoveryObjectsList[0].name);
-        Debug.Log(playerRecoveryObjectsList[1].name);
+        //Debug.Log(playerRecoveryObjectsList[1].name);
 
         playerRecoveryPosition = playerRecoveryObjectsList[0].transform.position;
 
@@ -585,80 +575,7 @@ public class PlayerCollision : MonoBehaviour
         }
     }
 
-    /*IEnumerator resetAfterCrashPart2(Rigidbody Rb)
-    {
-        yield return new WaitForSeconds(0.02f);
-        Rb.isKinematic = false;
-        foreach (Rigidbody rb in rigidBodiesListDynamics)
-        {
-            rb.isKinematic = false;
-        }
-        foreach (Collider col in colliderList)
-        {
-            col.enabled = true;
-        }
-        foreach (MeshRenderer mesh in meshRendererList)
-        {
-            mesh.enabled = true;
-        }
-        // Test : Moved from resetAfterCrashPart
 
-        CharacterData.DisableRagdoll();
-        Sail_System_Anim.enabled = true;
-        SailSystemData.SailRigidBody.isKinematic = true;
-        SailSystemData.SailBone.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-        SailSystemData.isFalling = false;
-    }*/
-
-    /*IEnumerator resetAfterCrash()
-    {
-        yield return new WaitForSeconds(0.02f);
-
-        colllisonFlag = false;
-        //Debug.Log("Reset");
-        
-
-        float trackLeftSideBoundary = BoardFollowTrack.currentLeftSideBoundary;
-        float trackRightSideBoundary = BoardFollowTrack.currentRightSideBoundary;
-
-        getPositionAfterCrash();
-
-        playerOrientationAtCrash = playerRecoveryOrientation;
-
-        foreach (Rigidbody rb in rigidBodiesListDynamics)
-        {
-            rb.velocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
-            rb.inertiaTensorRotation = Quaternion.identity;
-            rb.ResetInertiaTensor();
-            rb.isKinematic = true;
-        }
-
-        foreach (Collider col in colliderList)
-        {
-            col.enabled = false;
-        }
-        foreach (MeshRenderer mesh in meshRendererList)
-        {
-            mesh.enabled = false;
-        }
-
-        Board.transform.position = playerRecoveryPosition + new Vector3(0.0f, 2.0f, 0.0f);
-        Board.transform.eulerAngles = new Vector3 (0.0f, playerOrientationAtCrash, 0.0f);
-
-        StartCoroutine(resetAfterCrashPart2(Board.GetComponent<Rigidbody>()));
-
-        Destroy( SailSystemData.SailBone.GetComponent<FixedJoint>() );
-        
-        crashTimer = 0.0f;
-        colllisonFlag = false;
-        isInResettingState = true;
-        resettingTimer = 0.0f;
-        previousVelocity = Board.GetComponent<Rigidbody>().velocity;
-
-        SailSystem.GetComponent<windEffector>().resetWindModifier();
-
-    }*/
 
     void lowSpeedDetected()
     {
@@ -673,9 +590,10 @@ public class PlayerCollision : MonoBehaviour
         prevIsPlayer = isPlayer;
         prevManualDrive = ManualDrive;
     }
-    void repositionPlayerDisabledRb()
+    public void repositionPlayerDisabledRb()
     {
-		
+		//Debug.Log (this.GetComponent<ExternalObjectsReference>().currentCamera);
+		//Debug.Log (this.GetComponent<ExternalObjectsReference>().currentCamera.GetComponent<CameraControlScript> ());
 		this.GetComponent<ExternalObjectsReference>().currentCamera.GetComponent<CameraControlScript> ().resetVignetteCameraEffect ();
 
         getPositionAfterCrash();
@@ -702,10 +620,49 @@ public class PlayerCollision : MonoBehaviour
             mesh.enabled = false;
         }
         */
+		Sail_System_Anim.enabled = false;
         StartCoroutine(repositionPlayerEnableRb());
+
+		//TEMP : removed because of a bug in start sequence
+		this.GetComponent<PlayerStart>().InitializeStartAfterCrash();
     }
 
-    IEnumerator repositionPlayerEnableRb()
+	/*public void tempStartPositionPlayerDisabledRb()
+	{
+
+		this.GetComponent<ExternalObjectsReference>().currentCamera.GetComponent<CameraControlScript> ().resetVignetteCameraEffect ();
+		//Get player position
+		playerPositionAtCrash = Board.transform.position;
+		playerOrientationAtCrash = Board.transform.eulerAngles.y;
+		playerOrientationVectorAtCrash = Board.transform.forward;
+		playerRecoveryPosition = playerPositionAtCrash;
+		// endof get player position
+
+		colllisonFlag = false;
+		float trackLeftSideBoundary = BoardFollowTrack.currentLeftSideBoundary;
+		float trackRightSideBoundary = BoardFollowTrack.currentRightSideBoundary;
+		//Get previous player orientation
+		playerOrientationAtCrash = playerRecoveryOrientation;
+
+		Destroy(SailSystemData.SailBone.GetComponent<FixedJoint>());
+		//Destroy(SailSystem.GetComponent<ConfigurableJoint>());
+		foreach (Rigidbody rb in rigidBodiesListDynamics)
+		{
+			rb.velocity = Vector3.zero;
+			rb.angularVelocity = Vector3.zero;
+			rb.useGravity = false;
+			rb.isKinematic = true;
+			rb.gameObject.SetActive(false);
+		}
+		currentFrame = 0;
+		resetting = true;
+		Sail_System_Anim.enabled = false;
+		StartCoroutine(repositionPlayerEnableRb());
+		//TEMP : removed because of a bug in start sequence
+		//this.GetComponent<PlayerStart>().InitializeStartAfterCrash();
+	}*/
+
+    public IEnumerator repositionPlayerEnableRb()
     {
         yield return new WaitForSeconds(0.02f);
         //reset Objects
@@ -749,83 +706,64 @@ public class PlayerCollision : MonoBehaviour
     }
 		
     void Update()
-    {
-        if (prevManualDrive != ManualDrive)
-        {
-            updateManualDrive();
-        }
+	{
+		if (prevManualDrive != ManualDrive) {
+			updateManualDrive ();
+		}
 
-        if (colllisonFlag == true)
-        {
-            crashTimer = crashTimer + Time.deltaTime;
-            if (crashTimer > timeBeforeReset)
-            {
-                //StartCoroutine(resetAfterCrash());
-                repositionPlayerDisabledRb();
-            }
-        }
+		if (colllisonFlag == true) {
+			crashTimer = crashTimer + Time.deltaTime;
+			if (crashTimer > timeBeforeReset) {
+				//StartCoroutine(resetAfterCrash());
+				repositionPlayerDisabledRb ();
+			}
+		}
         
-        //if (SailSystemData.rbBoard.velocity.x < 0f)
-
-        if (lowSpeedFlag == false)
-        {
-            if (SailSystemData.Board_Speed < 4.0f)
-            {
-                lowSpeedDetected();
-            }
-        }
-        else
-        { 
+		//if (SailSystemData.rbBoard.velocity.x < 0f)
+		if (isStarting == false) {
+			if (lowSpeedFlag == false) {
+				if (SailSystemData.Board_Speed < 4.0f) {
+					lowSpeedDetected ();
+				}
+			} else { 
             
-            if (lowSpeedTimer > 2.0f)
-            {
-                resetting = false;
-                if (SailSystemData.Board_Speed < 4.0f)
-                {
-                    //StartCoroutine(resetAfterCrash());
-                    repositionPlayerDisabledRb();
-                    lowSpeedTimer = 0.0f;
-                    lowSpeedFlag = false;
-                }
-                else
-                {
-                    lowSpeedTimer = 0.0f;
-                    lowSpeedFlag = false;
-                }
-            }
-            else
-            {
-                lowSpeedTimer = lowSpeedTimer + Time.deltaTime;
-            }
-        }
+				if (lowSpeedTimer > 2.0f) {
+					resetting = false;
+					if (SailSystemData.Board_Speed < 4.0f) {
+						//StartCoroutine(resetAfterCrash());
+						repositionPlayerDisabledRb ();
+						lowSpeedTimer = 0.0f;
+						lowSpeedFlag = false;
+					} else {
+						lowSpeedTimer = 0.0f;
+						lowSpeedFlag = false;
+					}
+				} else {
+					lowSpeedTimer = lowSpeedTimer + Time.deltaTime;
+				}
+			}
 
  
-
-        if (isInResettingState == true)
-        {
-            if (resettingTimer < 1.0f)
-            {
-                if (Board.GetComponent<Rigidbody>().velocity.y > 5)
-                {
-                    //Debug.Log("Reset because y velocity = " + Board.GetComponent<Rigidbody>().velocity.y);
-                    repositionPlayerDisabledRb();
-                }
+			if (isInResettingState == true) {
+				if (resettingTimer < 1.0f) {
+					if (Board.GetComponent<Rigidbody> ().velocity.y > 5) {
+						//Debug.Log("Reset because y velocity = " + Board.GetComponent<Rigidbody>().velocity.y);
+						repositionPlayerDisabledRb ();
+					}
                 
-                resettingTimer = resettingTimer + Time.deltaTime;
+					resettingTimer = resettingTimer + Time.deltaTime;
 
 
-            }
-            else
-            {
-                //reseting parameters after crash
-                isInResettingState = false;
-                playerRecoveryPosition = new Vector3(0.0f, 0.0f, 0.0f);
-                if (previousVelocity.magnitude + 1 > Board.GetComponent<Rigidbody>().velocity.magnitude)
-                {
-                    ///Debug.Log("Reset because velocity magnitude after 0.5 s = " + Board.GetComponent<Rigidbody>().velocity.magnitude + 2 + "vs previous vel = " + previousVelocity.magnitude);
-                    repositionPlayerDisabledRb();
-                }
-            }
-        }
-    }
+				} else {
+					//reseting parameters after crash
+					isInResettingState = false;
+					playerRecoveryPosition = new Vector3 (0.0f, 0.0f, 0.0f);
+					if (previousVelocity.magnitude + 1 > Board.GetComponent<Rigidbody> ().velocity.magnitude) {
+						///Debug.Log("Reset because velocity magnitude after 0.5 s = " + Board.GetComponent<Rigidbody>().velocity.magnitude + 2 + "vs previous vel = " + previousVelocity.magnitude);
+						repositionPlayerDisabledRb ();
+					}
+				}
+			}
+		}
+	}
 }

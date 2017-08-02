@@ -158,9 +158,9 @@ public class Follow_track : MonoBehaviour
                 }*/
                 markIndicator[1].SetActive(false);
                 markIndicator[0].transform.position = new Vector3(currentMark.transform.position.x, 0.0f, currentMark.transform.position.z);
-                
             }
         }
+
         /// calculation for  isPlayer = true
         if (markData.singleMark == true)
         {
@@ -188,6 +188,7 @@ public class Follow_track : MonoBehaviour
             //Debug.Log("setNextNav : " + nextTarget);
             //NavAgentObject.GetComponent<NavMeshAgent>().SetDestination(nextTarget);
         }
+
         previousFrame_isNextTargetMark = isNextTargetMark;
 
         previousdriveStarboardStatus = driveStarboard;
@@ -233,7 +234,11 @@ public class Follow_track : MonoBehaviour
             triggerManoeuvre = false;
         }
     }
-
+	/// <summary>
+	/// This function returns an integer indicating if the player is going upwind, downwind or straight to the mark
+	/// </summary>
+	/// <returns>The racer status on track.</returns>
+	/// <param name="currentAngleToWind">Current angle to wind.</param>
     public int getRacerStatusOnTrack(float currentAngleToWind)
     {
         int NextTargetStatus = 0;
@@ -415,14 +420,12 @@ public class Follow_track : MonoBehaviour
                 	{
                 	    obj.transform.Find("Projector").gameObject.SetActive(false);
                 	}
-
             	}
             	else
             	{
 					if (GameObject.Find (trackData.markSequence [i]).transform.Find ("Projector") != null) {
 						GameObject.Find (trackData.markSequence [i]).transform.Find ("Projector").gameObject.SetActive (false);
 					}
-
             	}
         	}
 		}
@@ -470,7 +473,6 @@ public class Follow_track : MonoBehaviour
 
     int getStatusOnPassingSingleMark(int MarkIndicatorId, GameObject currentNextMark, Vector3 firstPass, Vector3 finalPass)
     {
-
         Vector3 targetMark = currentNextMark.transform.position;
         //Debug.Log("targetMark : " + targetMark);
 
@@ -690,7 +692,7 @@ public class Follow_track : MonoBehaviour
             setNextmark();
             int MarkIndicatorInt = 1;
             nextTarget = setNextTarget(currentMark, MarkIndicatorInt, markData.firstPassValidation, markData.finalPassValidation);
-            //Debug.Log("NavMeshHandling When Passing Waypoint : " + nextTarget);
+            Debug.Log("NavMeshHandling When Passing Waypoint : " + nextTarget);
             NavMeshHandling(isNextTargetMark, driveStarboard, transform.position);
             MarkIndicatorInt = 0;
         }
@@ -724,8 +726,8 @@ public class Follow_track : MonoBehaviour
 				for (int i = 0; i < 2 ; i++)
 				{
 					GameObject doorMark = markData.Children[i];
-					Debug.Log("Placing next double mark indicators :" + iter2);
-					Debug.Log (markIndicator [iter2].name);
+					//Debug.Log("Placing next double mark indicators :" + iter2);
+					//Debug.Log (markIndicator [iter2].name);
                     markIndicator[iter2].SetActive(true);
                     markIndicator[iter2].transform.position = new Vector3(doorMark.transform.position.x, 0.0f, doorMark.transform.position.z);
                     //Debug.Log("MarkIndicator # " + iter2 + ", set at pos : " + markIndicator[iter2].transform.position);
@@ -803,6 +805,7 @@ public class Follow_track : MonoBehaviour
     /// <param name="driveStarboard"></param>
     public Vector3 NavMeshHandling(int intNextTarget, bool isstarboard, Vector3 playerPosition)
     {
+		//Debug.Log ("Nav handling : " + this.transform.parent.gameObject.name + ", intNextTarget : " + intNextTarget);
         float angleRecommendedToWind = 45.0f;
         Vector3 nextObjectivePosition = new Vector3(0.0f, 0.0f, 0.0f);
         float angleWind = windData.localWindDirection;
@@ -1236,7 +1239,7 @@ public class Follow_track : MonoBehaviour
             {
                 //Debug.Log("Calculate Nav : " + nexttargetreforcalc + " , " + drivestarboardforrecalc);
             }
-            //Debug.Log("NavMeshDir on triggered Manoeuvre path calculation");
+            Debug.Log("NavMeshDir on triggered Manoeuvre path calculation");
             NavMeshNextDir = NavMeshHandling(nexttargetreforcalc, drivestarboardforrecalc, transform.position);
         }
     }
@@ -1411,7 +1414,7 @@ public class Follow_track : MonoBehaviour
             {
                 //Debug.Log("Calculate Opponenet Nav : " + nexttargetreforcalc + " , " + drivestarboardforrecalc);
             }
-            //Debug.Log("NavMeshDir on regular path calculation");
+            Debug.Log("NavMeshDir on regular path calculation");
             NavMeshNextDir = NavMeshHandling(nexttargetreforcalc, drivestarboardforrecalc, transform.position);
         }
         //Debug.Log(NavAgentObject.GetComponent<NavMeshAgent>().steeringTarget);

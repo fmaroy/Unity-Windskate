@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class RaceManagerScript : MonoBehaviour {
     public GameObject Wind;
-    private WindGustsBehavior WindData;
+    public WindGustsBehavior WindData;
     public int typeOfWindDirection;
     public int typeOfWindForce;
     public float highOscillationRange = 20.0f;
@@ -31,7 +31,6 @@ public class RaceManagerScript : MonoBehaviour {
         {
             setWindOlderbehavior();
         }
-
         //getOpponentList(OpponentContainerObject);
     }
 

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class SailAnimScript : MonoBehaviour
 {
-    Animator animSail;
+    public Animator animSail;
 
     private float SailAngleAnim;
     Sail_System_Control SailControlComponent;
@@ -14,11 +14,15 @@ public class SailAnimScript : MonoBehaviour
     static int PortStateTenDeg;
     static int PortStateNinetyDeg;
     static int StarboardStateNinetyDeg;
+	static int StartTransitionStarboard;
+	static int StartTransitionPort;
+
+
 
     public float WindLayerWeight = 50.0f;
     //private Sail_System_Control SailControlComponent;
     private float SailAngle;
-    private bool isManoeuvreTransitioning = false;
+    public bool isManoeuvreTransitioning = false;
     public bool isManoeuvreing = false;
     private bool previsManoeuvreing = false;
     public float timerManoeuvreTarget = 1.0f;
@@ -29,7 +33,7 @@ public class SailAnimScript : MonoBehaviour
     // next is 0 if no manoeuvre, 1 if basic tacking
     public float Manoeuvre_Weight = 0.0f;
     public int intManoeuvreState = 0;
-    private AnimatorStateInfo currentBaseStateInManoeuvre;
+    public AnimatorStateInfo currentBaseStateInManoeuvre;
     private AnimatorStateInfo previousBaseStateInManoeuvre;
 
     public float minRange = 10.0f;
@@ -45,6 +49,10 @@ public class SailAnimScript : MonoBehaviour
 
 	public int inProgressManoeuverLevel = 0;
 
+	public bool isStarting;
+	public Vector3 animatorRootMotion;
+	public float animationDisplacement;
+
     // Use this for initialization
     void Start()
     {
@@ -54,6 +62,7 @@ public class SailAnimScript : MonoBehaviour
         PortStateTenDeg = Animator.StringToHash("Manoeuvres_Layer.10degPort");
         PortStateNinetyDeg = Animator.StringToHash("Manoeuvres_Layer.FromPort90deg");
         StarboardStateNinetyDeg = Animator.StringToHash("Manoeuvres_Layer.FromStarboard90deg");
+
 
         if (animSail.layerCount >= 2)
         {
@@ -70,16 +79,39 @@ public class SailAnimScript : MonoBehaviour
 
         ManoeuvreFXtimer = ManoeuvreFXtimerTarget;
 		ManoeuvreFXGoingOn = false;
+
+		//isStarting = true;
     }
+	public void OnAnimatorMove() {
+		//Animator animator = GetComponent<Animator>();
+		if (animSail) {
+			float temp = animSail.GetFloat("Runspeed") * Time.fixedDeltaTime;
+			float currentPlayerspeed = this.GetComponent<Sail_System_Control> ().Board_Speed;
+			//Debug.Log ("Runspeed :" + animSail.GetFloat("Runspeed"));
+			if ((temp > 0) && (animSail.GetFloat("Runspeed") > currentPlayerspeed)) {
+				animationDisplacement = animSail.GetFloat("Runspeed");
+				//Debug.Log ("Runspeed :" + animationDisplacement);
+			} else {
+				animationDisplacement = 0.0f;
+			}
+				
+			/*Vector3 newPosition = transform.position;
+			newPosition.z += animator.GetFloat("Runspeed") * Time.deltaTime;
+
+			Debug.Log ("Motion Z : " + newPosition);
+			//transform.position = newPosition;
+			animatorRootMotion = newPosition;*/
+		}
+	}
 
     void LateUpdate()
     {
-        // recodiring the state of the manoeuvring flag to detect if it is changed
+        // recording the state of the manoeuvring flag to detect if it is changed
         previsManoeuvreing = isManoeuvreing;
         //Debug.Log("assigning the value of is Manoeuvre to prevIsManoeuvre at the end of Frame rendering : isManoeuvreing: " + isManoeuvreing + ", previsManoeuvreing: " + previsManoeuvreing);
     }
 
-    void exitManoeuvre()
+    public void exitManoeuvre()
     {
         //Debug.Log("Exit Manoeuvre, initWeight " + animSail.GetLayerWeight(2));
         isManoeuvreTransitioning = true;
@@ -89,7 +121,7 @@ public class SailAnimScript : MonoBehaviour
         Manoeuvre_level = 0;
     }
 
-    void enterManoeuvre()
+    public void enterManoeuvre()
     {
         isManoeuvreTransitioning = true;
         timerManoeuvreCurrent = 0.0f;
@@ -141,7 +173,11 @@ public class SailAnimScript : MonoBehaviour
     void Update()
     {
         animSail.SetInteger("Manoeuver_Level", Manoeuvre_level);
-
+		/*if (isStarting == true) {
+			animSail.SetInteger ("Starting", 1);
+		} else {
+			animSail.SetInteger ("Starting", 0);
+		}*/
         SailAngleAnim = 0.0f;
         SailAngle = gameObject.GetComponent<Sail_System_Control>().apparentWindAngleLocal;
         float TrueWind = gameObject.GetComponent<Sail_System_Control>().trueWindAngleLocal;
@@ -188,134 +224,79 @@ public class SailAnimScript : MonoBehaviour
         {
             Manoeuvre_Weight = (TrueWind - 160) / 10;
         }
+			
+		if ((currentBaseStateInManoeuvre.fullPathHash != ManoeuvreIdleState) && (currentBaseStateInManoeuvre.fullPathHash != StarboardStateTenDeg) && (currentBaseStateInManoeuvre.fullPathHash != PortStateTenDeg) && (currentBaseStateInManoeuvre.fullPathHash != StarboardStateNinetyDeg) && (currentBaseStateInManoeuvre.fullPathHash != PortStateNinetyDeg)) {
+			//current state is not in the idle spot startboard or port 10 deg nor 90 Deg
 
-        if ((currentBaseStateInManoeuvre.fullPathHash != ManoeuvreIdleState) && (currentBaseStateInManoeuvre.fullPathHash != StarboardStateTenDeg) && (currentBaseStateInManoeuvre.fullPathHash != PortStateTenDeg) && (currentBaseStateInManoeuvre.fullPathHash != StarboardStateNinetyDeg) && (currentBaseStateInManoeuvre.fullPathHash != PortStateNinetyDeg))
-        {
-            //current state is not in the idle spot startboard or port 10 deg nor 90 Deg
+			Manoeuvre_Weight = 1.0f;
+			intManoeuvreState = 1;
+		} else {
 
-            Manoeuvre_Weight = 1.0f;
-            intManoeuvreState = 1;
-        }
-        else
-        {
+			intManoeuvreState = 0;
+			if ((previousBaseStateInManoeuvre.fullPathHash != ManoeuvreIdleState) && (previousBaseStateInManoeuvre.fullPathHash != StarboardStateTenDeg) && (previousBaseStateInManoeuvre.fullPathHash != PortStateTenDeg) && (previousBaseStateInManoeuvre.fullPathHash != StarboardStateNinetyDeg) && (previousBaseStateInManoeuvre.fullPathHash != PortStateNinetyDeg)) {
+				exitManoeuvre ();
+			}
+		}
 
-            intManoeuvreState = 0;
-            if ((previousBaseStateInManoeuvre.fullPathHash != ManoeuvreIdleState) && (previousBaseStateInManoeuvre.fullPathHash != StarboardStateTenDeg) && (previousBaseStateInManoeuvre.fullPathHash != PortStateTenDeg) && (previousBaseStateInManoeuvre.fullPathHash != StarboardStateNinetyDeg) && (previousBaseStateInManoeuvre.fullPathHash != PortStateNinetyDeg))
-            {
-                exitManoeuvre();
-            }
-        }
+		if (isManoeuvreTransitioning == true) {
+			if (timerManoeuvreCurrent < timerManoeuvreTarget) {
+				timerManoeuvreCurrent = timerManoeuvreCurrent + Time.deltaTime;
+				//timerManoeuvreCurrent / timerManoeuvreTarget varies from 1 to 0
+				// initLayerValue - targetLayerValue varies from 1 to 0 when exiting and from 1 to 0 when entering
+				Manoeuvre_Weight = Mathf.Lerp (initLayerValue, targetLayerValue, timerManoeuvreCurrent / timerManoeuvreTarget);
+				//Debug.Log("CountDown : " + timerManoeuvreCurrent + "Weight " + Manoeuvre_Weight);
+			}
+		}
 
+		/*if (isStarting == true) {
+			Manoeuvre_Weight = 1.0f;
+		}*/
+			//Debug.Log ("SailAngleAnim : " + SailAngle + ", LightWind_Weight: "+ LightWind_Weight + " ,HeavyWind_Weight : " + HeavyWind_Weight);
 
+			//Debug.Log("LightWindLayerWeight : " + LightWind_Weight);
+			animSail.SetLayerWeight (0, LightWind_Weight);
+			animSail.SetLayerWeight (1, HeavyWind_Weight);
+			animSail.SetLayerWeight (2, Manoeuvre_Weight);
 
-        if (isManoeuvreTransitioning == true)
-        {
-            if (timerManoeuvreCurrent < timerManoeuvreTarget)
-            {
-                timerManoeuvreCurrent = timerManoeuvreCurrent + Time.deltaTime;
-                //timerManoeuvreCurrent / timerManoeuvreTarget varies from 1 to 0
-                // initLayerValue - targetLayerValue varies from 1 to 0 when exiting and from 1 to 0 when entering
-                Manoeuvre_Weight = Mathf.Lerp(initLayerValue, targetLayerValue, timerManoeuvreCurrent / timerManoeuvreTarget);
-                //Debug.Log("CountDown : " + timerManoeuvreCurrent + "Weight " + Manoeuvre_Weight);
+			animSail.SetFloat ("Velocity", this.gameObject.GetComponent<Sail_System_Control> ().Board_Speed);
 
-            }
-        }
+			if (this.gameObject.GetComponent<Sail_System_Control> ().sailTiltDir.y > 0) {
+				animSail.SetFloat ("SailAngle", TrueWind);
 
-        //Debug.Log ("SailAngleAnim : " + SailAngle + ", LightWind_Weight: "+ LightWind_Weight + " ,HeavyWind_Weight : " + HeavyWind_Weight);
+			} else {
+				animSail.SetFloat ("SailAngle", -1 * TrueWind);
+			}
+			if (Manoeuvre_Weight < 1.0f) {
+				if (this.gameObject.GetComponent<Sail_System_Control> ().sailTiltDir.y > 0) {
+					animSail.Play ("LightWind_Layer.LightWindStarboard", 0, SailAngleAnim);
+					animSail.Play ("HeavyWind_Layer.HeavyWindStarboard", 1, SailAngleAnim);
+				} else {
+					animSail.Play ("LightWind_Layer.LightWindPort", 0, SailAngleAnim);
+					animSail.Play ("HeavyWind_Layer.HeavyWindPort", 1, SailAngleAnim);
+				}
+			}
+			if (Manoeuvre_Weight != 0) {
+				isManoeuvreing = true;
+				// This is applied when no special manoeuvre is used. If a special manoeuvre is used, this gets overridden later on
+				// Not needed anymore, should be handled by the method Sail_System_Control.manoeuvreThrustModifier() that include ow this special case
 
-        //Debug.Log("LightWindLayerWeight : " + LightWind_Weight);
-        animSail.SetLayerWeight(0, LightWind_Weight);
-        animSail.SetLayerWeight(1, HeavyWind_Weight);
-        animSail.SetLayerWeight(2, Manoeuvre_Weight);
-        //animSail.Play("LightWind_Layer.SailSystemAnim", 0, SailAngleAnim);
-        //animSail.Play("HeavyWind_Layer.SailSystemAnim", 1, SailAngleAnim);
-
-        //var tackAngle = animSail.GetFloat("SailAngle");
-
-        animSail.SetFloat("Velocity", this.gameObject.GetComponent<Sail_System_Control>().Board_Speed);
-
-        //animSail.SetFloat("SailAngle", SailAngle);
-        if (this.gameObject.GetComponent<Sail_System_Control>().sailTiltDir.y > 0)
-        {
-            animSail.SetFloat("SailAngle", TrueWind);
-            /*if  ((SailAngle < 10)&&(Tacking == false))
-            {
-                animSail.Play("Manoeuvres_Layer.BasicTackStarBoardPart1", 2);
-                Tacking = true;
-            }
-            if (SailAngle > 10)
-            {
-                Tacking = false;
-            }*/
-        }
-        else
-        {
-            animSail.SetFloat("SailAngle", -1 * TrueWind);
-        }
-        if (Manoeuvre_Weight < 1.0f)
-        {
-            if (this.gameObject.GetComponent<Sail_System_Control>().sailTiltDir.y > 0)
-            {
-                animSail.Play("LightWind_Layer.LightWindStarboard", 0, SailAngleAnim);
-                animSail.Play("HeavyWind_Layer.HeavyWindStarboard", 1, SailAngleAnim);
-
-            }
-            else
-            {
-                animSail.Play("LightWind_Layer.LightWindPort", 0, SailAngleAnim);
-                animSail.Play("HeavyWind_Layer.HeavyWindPort", 1, SailAngleAnim);
-            }
-        }
-        if (Manoeuvre_Weight != 0)
-        {
-            isManoeuvreing = true;
-			// This is applied when no special manoeuvre is used. If a special manoeuvre is used, this gets overridden later on
-			// Not needed anymore, should be handled by the method Sail_System_Control.manoeuvreThrustModifier() that include ow this special case
-			//gameObject.GetComponent<Sail_System_Control>().manoeuvreModifier = 0.2f;
-        }
-        else
-        {
-			//gameObject.GetComponent<Sail_System_Control>().manoeuvreModifier = 1.0f;
-            isManoeuvreing = false;
-        }
-        if (previsManoeuvreing != isManoeuvreing)
-		{
-            if (this.gameObject.transform.parent.gameObject.GetComponent<PlayerCollision>().isPlayer == true)
-            {
+			} else {
+				isManoeuvreing = false;
+			}
+		if (previsManoeuvreing != isManoeuvreing) {
+			if (this.gameObject.transform.parent.gameObject.GetComponent<PlayerCollision> ().isPlayer == true) {
 				if (isManoeuvreing == true) {
 					if (Manoeuvre_level > 0) {
 						// TODO: based on the level of the manoeuvre chance that a special animation started get higher:
 						if (Random.value / Manoeuvre_level < 0.5) {
-							StartManoeuvreFX(0.5f);
+							StartManoeuvreFX (0.5f);
 						}
-
-                    
-
-						//Get the proper manoeuvre type defined in the userprefs in raceManager , Tack of Jibe?
-						// hidden, since the following logic is handled in Sail_System_Control
-						/*List<ManoeuvreType> currentManoeuvreList;
-						if (this.transform.parent.gameObject.GetComponent<tricksHandlingScript> ().manoeuvreStatus == "tack") 
-						{
-							currentManoeuvreList = this.transform.parent.gameObject.GetComponent<ExternalObjectsReference> ().UserPrefs.localTackManoeuvres;
-						}
-						else 
-						{
-							currentManoeuvreList = this.transform.parent.gameObject.GetComponent<ExternalObjectsReference> ().UserPrefs.localJibeManoeuvres;
-						}
-
-						gameObject.GetComponent<Sail_System_Control> ().manoeuvreModifier = currentManoeuvreList [Manoeuvre_level].slowDownFactor;
-					}*/
-						//Debug.Log ("current Manoeuvre Slow Down factor : " + gameObject.GetComponent<Sail_System_Control> ().manoeuvreModifier);
 					}
+				} else {
+					EndManoeuvreFX ();
 				}
-                else
-                {
-                    EndManoeuvreFX();
-					//gameObject.GetComponent<Sail_System_Control> ().manoeuvreModifier = 1.0f;
-
-                }
-            }
-        }
+			}
+		}
     }
 }
 

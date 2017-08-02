@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23871871279667006}
   - component: {fileID: 95932970559959584}
   - component: {fileID: 64023369729279542}
+  - component: {fileID: 114176326317704752}
   m_Layer: 13
   m_Name: Tremplin
   m_TagString: Untagged
@@ -37,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1283037433530406}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 84.7, y: 3.1, z: -42.4}
+  m_LocalPosition: {x: 84.7, y: 3, z: -42.4}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
@@ -113,3 +114,15 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114176326317704752
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1283037433530406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b35671c155cd4d8e974c1e5e234c22a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceType: 0

@@ -7,7 +7,13 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Main_menu.unity
+    guid: f03938637da4def4c959b3582f54c6b5
   - enabled: 1
     path: Assets/Level_Beach_Regatta.unity
+    guid: f521fe94bfd488a48a5f72dd82c5b29b
   - enabled: 1
     path: Assets/Level_Mountain_Race.unity
+    guid: 73c47ddd7efda114c9e4a54427c28325
+  - enabled: 1
+    path: Assets/RoofTops.unity
+    guid: 3c0b0d59e062d4bc7b642f19025e2746

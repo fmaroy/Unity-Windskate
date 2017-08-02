@@ -46,6 +46,9 @@ public class Sail_System_Control : MonoBehaviour
 	// Change the force on the board during the manoeuvre
 	public float manoeuvreModifier = 1.0f;
 
+	public bool isStarting;
+	public bool isStartingActiveSails;
+
     // Use this for initialization
     void Start ()
     {
@@ -55,15 +58,6 @@ public class Sail_System_Control : MonoBehaviour
 		SailGeomSkinnedMesh = sailGeom.GetComponent<SkinnedMeshRenderer>();
         
         SailRigidBody = SailBone.GetComponent<Rigidbody>();
-        /*foreach (Transform childObject in this.transform)
-        {
-            if (childObject.gameObject.name == "Sail")
-            {
-                SailGroup = childObject.gameObject;
-                SailRigidBody = childObject.gameObject.GetComponent<Rigidbody>();
-            }
-        }*/
-        //BoardJoint = player.GetComponent<ConfigurableJoint>();
         
         SailRigidBody.isKinematic = true;
         parentGameObjectData = this.gameObject.transform.parent.gameObject.GetComponent<PlayerCollision>();
@@ -109,18 +103,6 @@ public class Sail_System_Control : MonoBehaviour
                 sailDrag_rearwind = (90.0f - trueWindAngleLocal );
             }
 
-			/* The following has been replaced by different level of Manoeuver slow down
-            if (this.gameObject.GetComponent<SailAnimScript>().intManoeuvreState == 1)
-            {
-                sailThrust = sailThrust /4;
-            }*/
-
-
-            /*if (Mathf.Abs(apparentWindAngleLocal) > 90)
-            {
-                sailDrag_rearwind = Mathf.Cos((apparentWindAngleLocal + braquingAngle) * Mathf.Deg2Rad) * ApparentWindMagnitude;
-            }*/
-
             float SideForce = Mathf.Sin((SetSailAngle + braquingAngle) * Mathf.Deg2Rad) * ApparentWindMagnitude;
             float sailDrag = Mathf.Sin((SetSailAngle + braquingAngle) * Mathf.Deg2Rad) * ApparentWindMagnitude * sailDrag_factor;
             if (sailTiltDir.y <= 0)
@@ -144,9 +126,17 @@ public class Sail_System_Control : MonoBehaviour
 			manoeuvreModifier = manoeuvreThrustModifier (SailThrustForce, currentManoeuvre.slowDownFactor, 1.5f);
 
 			//Debug.Log ("Thrust : " + SailThrustForce +", Manoeuvre modifier : " + manoeuvreModifier);
-
-			rbBoard.AddRelativeForce(SailSideForce, 0.0f , SailThrustForce - manoeuvreModifier);
-            //Debug.Log(SailThrustForce);
+			if (isStarting == false) {
+				//Debug.Log("Applied Forces to Sail");
+				//Debug.Log ("Thrust : " + SailThrustForce +", Manoeuvre modifier : " + manoeuvreModifier);
+				if (isStartingActiveSails == true) {
+					manoeuvreModifier = -10; // special case for starting condidions. manoeuvre slow dwon is disabled
+				}
+				//Debug.Log ("Thrust : " + SailThrustForce +", Manoeuvre modifier : " + manoeuvreModifier);
+				rbBoard.AddRelativeForce (SailSideForce, 0.0f, SailThrustForce - manoeuvreModifier);
+			} else {
+				rbBoard.AddRelativeForce (0.0f, 0.0f, 0.0f);
+			}
         }
         else
         {

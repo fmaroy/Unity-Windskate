@@ -19,6 +19,13 @@ ModelImporter:
     100022: Sail_type3
     100024: //RootNode
     100026: Wishbone
+    100028: Cube_001
+    100030: Cube_002
+    100032: Cube_003
+    100034: Cube_004
+    100036: Sail_type1
+    100038: Sail_type2
+    100040: Wing1
     400000: Armature_Sail
     400002: Bone
     400004: Plane_001
@@ -33,6 +40,13 @@ ModelImporter:
     400022: Sail_type3
     400024: //RootNode
     400026: Wishbone
+    400028: Cube_001
+    400030: Cube_002
+    400032: Cube_003
+    400034: Cube_004
+    400036: Sail_type1
+    400038: Sail_type2
+    400040: Wing1
     2300000: Plane_001
     2300002: Profile_1
     2300004: Profile_1_001
@@ -42,6 +56,10 @@ ModelImporter:
     2300012: Profile_1_006
     2300014: Profile_1_007
     2300016: Profile_1_008
+    2300018: Cube_001
+    2300020: Cube_002
+    2300022: Cube_003
+    2300024: Cube_004
     3300000: Plane_001
     3300002: Profile_1
     3300004: Profile_1_001
@@ -51,6 +69,10 @@ ModelImporter:
     3300012: Profile_1_006
     3300014: Profile_1_007
     3300016: Profile_1_008
+    3300018: Cube_001
+    3300020: Cube_002
+    3300022: Cube_003
+    3300024: Cube_004
     4300000: Profile_1_008
     4300002: Profile_1_005
     4300004: Profile_1_004
@@ -62,12 +84,27 @@ ModelImporter:
     4300016: Sail_type3
     4300018: Wishbone
     4300020: Plane_001
+    4300022: Cube_002
+    4300024: Cube_001
+    4300026: Wing1
+    4300028: Cube_004
+    4300030: Cube_003
+    4300032: Sail_type2
+    4300034: Sail_type1
     7400000: Default Take
     7400002: Player_low_Wind
     7400004: Player_low_Wind_002
+    7400006: Jibe_Level_2
+    7400008: Jibe_Level_3
+    7400010: Start
+    7400012: Tack_level_3
+    7400014: Wing_1
     9500000: //RootNode
     13700000: Sail_type3
     13700002: Wishbone
+    13700004: Sail_type1
+    13700006: Sail_type2
+    13700008: Wing1
   materials:
     importMaterials: 1
     materialName: 0
@@ -75,9 +112,11 @@ ModelImporter:
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
-    resampleRotations: 1
+    resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -114,6 +153,7 @@ ModelImporter:
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
+    serializedVersion: 2
     human: []
     skeleton: []
     armTwist: 0.5
@@ -124,7 +164,10 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
   humanoidOversampling: 1

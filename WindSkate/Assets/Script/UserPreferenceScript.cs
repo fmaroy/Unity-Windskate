@@ -68,6 +68,7 @@ public class UserPreferenceScript : MonoBehaviour {
                 }
             }
         }
+
         if (SceneManagerObject != null)
         {
             Debug.Log("Updating from Scene Manager");
@@ -88,7 +89,6 @@ public class UserPreferenceScript : MonoBehaviour {
         //updateDisplayWindFx(Opponents);
         //updateDisplayWindFx(GameObject.Find("Track_Details"));
     }
-		
 
     public void updateWindCondition()
     {
@@ -162,6 +162,22 @@ public class UserPreferenceScript : MonoBehaviour {
     }
 
 	/// <summary>
+	/// Returnground Y position of give world position
+	/// </summary>
+	/// <returns>The player heigh.</returns>
+	/// <param name="pos">Position.</param>
+	public float checkPlayerHeight(Vector3 pos)
+	{
+		float verticalPos = 0f;
+		RaycastHit hit;
+		Vector3 castdir = Vector3.down;
+		if (Physics.Raycast (transform.position + Vector3.up * 10.0f, castdir, out hit, 30)) {
+				verticalPos = hit.collider.gameObject.transform.transform.position.y;
+		}
+		return verticalPos;
+	}
+
+	/// <summary>
 	/// instantiate the player and opponenents.
 	/// </summary>
 	/// <returns>The player.</returns>
@@ -171,7 +187,8 @@ public class UserPreferenceScript : MonoBehaviour {
 	/// <param name="isplayer">If set to <c>true</c> isplayer.</param>
 	public GameObject instantiatePlayer(GameObject playerprefab, Transform position, GameObject parent, bool isplayer)
     {
-        GameObject temp = (GameObject)Instantiate(playerprefab,position.position,position.rotation);
+		float positioningHeight = checkPlayerHeight (position.position);
+		GameObject temp = (GameObject)Instantiate(playerprefab,position.position + Vector3.up * positioningHeight ,position.rotation);
 		temp.GetComponent<ExternalObjectsReference> ().initPlayer();
         temp.transform.parent = parent.transform;
         //temp.transform.position = position.position;
@@ -185,6 +202,7 @@ public class UserPreferenceScript : MonoBehaviour {
 				}
 			}
 		}
+
 		return temp;
     }
 
@@ -271,6 +289,8 @@ public class UserPreferenceScript : MonoBehaviour {
 
         PlayerProperties currentPlayerConfig = getPlayerProps(currentplayer);
         playerInventory currentInventory = currentplayer.GetComponent<playerInventory>();
+		currentInventory.PlayerName = currentPlayerConfig.name;
+
         //Debug.Log("Name : " + currentPlayerConfig.name);
         //Debug.Log("Gender: " + currentPlayerConfig.gender);
         GameObject characterObject = currentplayer;

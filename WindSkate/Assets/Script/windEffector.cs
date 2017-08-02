@@ -63,7 +63,8 @@ public class windEffector : MonoBehaviour {
         TurbulentWindModifier = 0.0f;
         previousTurbulentWindModifier = 0.0f;
         currentTurbulentWindModifier = 0.0f;
-        WindIdicatorObject = GameObject.Find("WindIndicator");
+		WindIdicatorObject = transform.parent.gameObject.GetComponent<ExternalObjectsReference>().Windindicator;
+        //WindIdicatorObject = GameObject.Find("WindIndicator");
         stopAllSystem();
     }
 

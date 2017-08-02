@@ -105,7 +105,7 @@ public class RaceSelector : MonoBehaviour {
             tempList[randomIndex] = temp;
         }
         SceneManagerObject.GetComponent<PersistentParameters>().currentRaceOpponentsListIds = tempList;
-        SceneManagerObject.GetComponent<PersistentParameters>().currentSingleRaceDefinition = new SingleRaceProps(numberOpponents, opponentLevel, windType);
+		SceneManagerObject.GetComponent<PersistentParameters>().currentSingleRaceDefinition = new SingleRaceProps(numberOpponents, opponentLevel, windType, currentObjId);
         SceneManagerObject.GetComponent<SceneManagerScript>().LoadScene(currentTrackList[currentObjId].sceneName);
 
     }
