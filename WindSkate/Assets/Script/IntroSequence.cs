@@ -19,8 +19,8 @@ public class IntroSequence : MonoBehaviour {
 
 	public void initiateCamera ()
 	{
-		Camera.main.GetComponent<CameraControlScript> ().initCamera ();
-		Camera.main.GetComponent<CameraControlScript> ().setViewpoint (0);
+		//Camera.main.GetComponent<CameraControlScript> ().initCamera ();
+		//Camera.main.GetComponent<CameraControlScript> ().setViewpoint (0);
 	}
 
 	IEnumerator animateStartbutton(float time)

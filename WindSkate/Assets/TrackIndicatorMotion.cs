@@ -277,18 +277,19 @@ public class TrackIndicatorMotion : MonoBehaviour {
 	{
 		currentMarkId = Player.GetComponentInChildren<Follow_track> ().trackData.markSequence.Count +1;
 		markIndicator = 2;
-		Camera.main.GetComponent<CameraControlScript> ().CameraTargetData.referenceTransformObjectPosition = initCamPosObj;
+		//Camera.main.GetComponent<CameraControlScript> ().CameraTargetData.referenceTransformObjectPosition = initCamPosObj;
 		this.GetComponent<IntroSequence>().introductionManager (2);
 		TraceObject.SetActive (false);
 	}
 
 	public void initTrackTrace ()
 	{
-		initCamPosObj = Camera.main.GetComponent<CameraControlScript> ().CameraTargetData.referenceTransformObjectPosition; // captures the previous camera reference for orientation for restoring the settings 
-		Camera.main.GetComponent<CameraControlScript> ().CameraTargetData.referenceTransformObjectPosition = cameraTarget;
+		//initCamPosObj = Camera.main.GetComponent<CameraControlScript> ().CameraTargetData.referenceTransformObjectPosition; // captures the previous camera reference for orientation for restoring the settings 
 		//Camera.main.GetComponent<CameraControlScript> ().CameraTargetData.referenceTransformObjectPosition = cameraTarget;
-		Camera.main.GetComponent<SmoothFollow_Fab> ().distance = cameraDistance;
-		Camera.main.GetComponent<SmoothFollow_Fab> ().height = cameraHeight;
+		//Camera.main.GetComponent<CameraControlScript> ().CameraTargetData.referenceTransformObjectPosition = cameraTarget;
+		//Camera.main.GetComponent<SmoothFollow_Fab> ().distance = cameraDistance;
+		//Camera.main.GetComponent<SmoothFollow_Fab> ().height = cameraHeight;
+		Camera.main.GetComponent<CinemachineControls>().camFollowTraceObj.SetActive(true);
 		timer = 0f;
 		currentMarkId = 0;
 		markIndicator = 0;
@@ -344,7 +345,8 @@ public class TrackIndicatorMotion : MonoBehaviour {
 		if ((currentMarkId >= Player.GetComponentInChildren<Follow_track> ().trackData.markSequence.Count - 1) && (markIndicator > 0)) { 
 			// reached the finished line
 			Debug.Log("Reached the finish line");
-			Camera.main.GetComponent<CameraControlScript> ().CameraTargetData.referenceTransformObjectPosition = initCamPosObj;
+			//Camera.main.GetComponent<CameraControlScript> ().CameraTargetData.referenceTransformObjectPosition = initCamPosObj;
+			Camera.main.GetComponent<CinemachineControls>().camFollowTraceObj.SetActive(false);
 			TraceObject.SetActive (false);
 			StartCoroutine(this.GetComponent<IntroSequence>().introductionManager (2)); // track finished
 		} 

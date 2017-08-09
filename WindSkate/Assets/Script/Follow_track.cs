@@ -206,7 +206,7 @@ public class Follow_track : MonoBehaviour
             pathRecalculateLogic();
         }
 
-        if ((transform.parent.gameObject.GetComponent<PlayerCollision>().isPlayer == true) && (Camera.main.GetComponent<CameraControlScript>().isIntroScene == false))
+        if ((transform.parent.gameObject.GetComponent<PlayerCollision>().isPlayer == true) && (Camera.main.GetComponent<CinemachineControls>().isIntroScene == false))
         {
             arrivalObject = GameObject.Find("Arrival");
         }
@@ -743,7 +743,7 @@ public class Follow_track : MonoBehaviour
                 }
             }
             //Debug.Log("Updating Viewpoint");
-            updateViewpointOrient(GameObject.Find(trackData.markSequence[currentMarkId]).transform.position, GameObject.Find(trackData.markSequence[currentMarkId - 1]).transform.position);
+            //updateViewpointOrient(GameObject.Find(trackData.markSequence[currentMarkId]).transform.position, GameObject.Find(trackData.markSequence[currentMarkId - 1]).transform.position);
         }
     }
 
@@ -757,7 +757,7 @@ public class Follow_track : MonoBehaviour
             diffAngle = -1 * diffAngle;
         }
         //Debug.Log("TrackOrientUpdateAngle : " + diffAngle);
-        currentCamera.GetComponent<CameraControlScript>().updateCurrentPositionOnTrack(diffAngle);
+        //currentCamera.GetComponent<CameraControlScript>().updateCurrentPositionOnTrack(diffAngle);
     }
 
     void opponenentTackAndJibeAtBoundary()

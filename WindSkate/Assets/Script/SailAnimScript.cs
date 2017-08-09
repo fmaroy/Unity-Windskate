@@ -129,6 +129,7 @@ public class SailAnimScript : MonoBehaviour
         initLayerValue = animSail.GetLayerWeight(2);
     }
 
+	// should be deprecated
     public void StartManoeuvreFX(float SlowMotionFactor)
     {
         ManoeuvreFXGoingOn = true;
@@ -142,7 +143,8 @@ public class SailAnimScript : MonoBehaviour
         CamControlData.SmoothFollowData.distance = Mathf.Lerp(8.0f, 20.0f, Random.value);
     }
 
-    public void EndManoeuvreFX()
+
+    public void EndManoeuvreFX() // should be deprecated
     {
         if (ManoeuvreFXGoingOn == true)
         {
@@ -289,11 +291,11 @@ public class SailAnimScript : MonoBehaviour
 					if (Manoeuvre_level > 0) {
 						// TODO: based on the level of the manoeuvre chance that a special animation started get higher:
 						if (Random.value / Manoeuvre_level < 0.5) {
-							StartManoeuvreFX (0.5f);
+							//StartManoeuvreFX (0.5f);
 						}
 					}
 				} else {
-					EndManoeuvreFX ();
+					//EndManoeuvreFX ();
 				}
 			}
 		}

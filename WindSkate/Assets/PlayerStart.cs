@@ -24,11 +24,11 @@ public class PlayerStart : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+
 		sailAnimData = this.gameObject.GetComponentsInChildren<SailAnimScript> () [0];
 
 		playerCollisionData = this.gameObject.GetComponent<PlayerCollision> ();
-
+			
 		sailSystemData = this.gameObject.GetComponentsInChildren<Sail_System_Control> () [0];
 
 		boardForcesData = this.gameObject.GetComponentsInChildren<BoardForces> () [0];
@@ -86,7 +86,7 @@ public class PlayerStart : MonoBehaviour {
 	/// </summary>
 	public IEnumerator PlayerStartSequence()
 	{
-		Debug.Log ("Start Player Sequence");
+		//Debug.Log ("Start Player Sequence");
 		//initialize player ready to start
 		// force aniamtion state to Idle
 

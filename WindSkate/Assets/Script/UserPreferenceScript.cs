@@ -221,7 +221,7 @@ public class UserPreferenceScript : MonoBehaviour {
 
 		PlayerBoard = player.GetComponentInChildren<BoardForces> ().gameObject;
 
-		Camera.GetComponent<CameraControlScript> ().playerObject = player;
+		//Camera.GetComponent<CameraControlScript> ().playerObject = player;
 
 		GameObject temp = null;
 		GameObject temp2 = null;
@@ -248,11 +248,13 @@ public class UserPreferenceScript : MonoBehaviour {
 
 		temp2 = player.GetComponentInChildren<Follow_track> ().gameObject;
 
-		Camera.GetComponent<CameraControlScript> ().CameraTarget.GetComponent<CameraTargetScript> ().referenceTransformObjectPosition = temp;
+		//Camera.GetComponent<CameraControlScript> ().CameraTarget.GetComponent<CameraTargetScript> ().referenceTransformObjectPosition = temp;
+		Camera.GetComponent<CinemachineControls>().playerPosTarget = temp;
 		Debug.Log("assign board to camera : " + temp2.name);
-		Camera.GetComponent<CameraControlScript> ().CameraTarget.GetComponent<CameraTargetScript> ().referenceTransformObjectDirection = temp2;
+		//Camera.GetComponent<CameraControlScript> ().CameraTarget.GetComponent<CameraTargetScript> ().referenceTransformObjectDirection = temp2;
+		Camera.GetComponent<CinemachineControls>().playerOrientTarget = temp2;
 
-		Camera.GetComponent<CameraControlScript> ().initCamera ();
+		Camera.GetComponent<CinemachineControls> ().initCamera ();
 
 	}
 

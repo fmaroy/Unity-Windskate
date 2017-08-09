@@ -187,7 +187,7 @@ public class CameraControlScript : MonoBehaviour {
         }
         if (backgroundImage != null)
         {
-            AnimStatus = backgroundImageAnim.GetInteger("OpenPannelStatus");
+            //AnimStatus = backgroundImageAnim.GetInteger("OpenPannelStatus");
             camshiftValue = backgroundImage.GetComponent<RectTransform>().transform.position.x- initBackgroundShift;
             CamShiftTarget(-camshiftValue/40.0f);
 

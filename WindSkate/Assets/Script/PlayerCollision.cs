@@ -15,7 +15,7 @@ public class PlayerCollision : MonoBehaviour
     public GameObject Character;
     private CharacterBehavior CharacterData;
     public GameObject NavmeshAgent;
-    public float timeBeforeReset = 2.0f;
+    public float timeBeforeReset = 4.0f;
     private float crashTimer;
     public Vector3 playerPositionAtCrash;
     public float playerOrientationAtCrash;
@@ -351,11 +351,13 @@ public class PlayerCollision : MonoBehaviour
     {
         if (isPlayer == true)
         {
-            Time.timeScale = 1.0f;
-            Time.fixedDeltaTime = 0.01f * Time.timeScale;
-            SailSystem.GetComponent<SailAnimScript>().StartManoeuvreFX(0.5f);
-			Camera.main.GetComponent<CameraControlScript> ().dimCameraEffect ();
+            //Time.timeScale = 1.0f;
+            //Time.fixedDeltaTime = 0.01f * Time.timeScale;
+            //SailSystem.GetComponent<SailAnimScript>().StartManoeuvreFX(0.5f);
+			//Camera.main.GetComponent<CameraControlScript> ().dimCameraEffect ();
 			this.GetComponent<ExternalObjectsReference> ().UIControlData.MessageText.GetComponent<messageHandler> ().throwMessage (1);
+
+			Camera.main.GetComponent<CinemachineControls> ().CrashCameraHandler (true, 0);
         }
         SailSystem.GetComponent<windEffector>().resetWindModifier();
         // Trigger Crash Fx
@@ -495,6 +497,7 @@ public class PlayerCollision : MonoBehaviour
         if (isPlayer)
         {
             ManualDrive = true;
+			Camera.main.GetComponent<CinemachineControls> ().CrashCameraHandler (false, 0);
         }
         updateManualDrive();
 
@@ -507,7 +510,9 @@ public class PlayerCollision : MonoBehaviour
         
         playerRecoveryOrientation =  boardAngle + 180;
         //Debug.Log("Board Direction to set : " + playerRecoveryOrientation);
-        SailSystem.GetComponent<SailAnimScript>().EndManoeuvreFX();
+        //SailSystem.GetComponent<SailAnimScript>().EndManoeuvreFX();
+
+
 
     }
 
@@ -594,7 +599,7 @@ public class PlayerCollision : MonoBehaviour
     {
 		//Debug.Log (this.GetComponent<ExternalObjectsReference>().currentCamera);
 		//Debug.Log (this.GetComponent<ExternalObjectsReference>().currentCamera.GetComponent<CameraControlScript> ());
-		this.GetComponent<ExternalObjectsReference>().currentCamera.GetComponent<CameraControlScript> ().resetVignetteCameraEffect ();
+		//this.GetComponent<ExternalObjectsReference>().currentCamera.GetComponent<CameraControlScript> ().resetVignetteCameraEffect ();
 
         getPositionAfterCrash();
         colllisonFlag = false;
