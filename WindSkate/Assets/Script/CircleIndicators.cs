@@ -8,6 +8,7 @@ public class CircleIndicators : MonoBehaviour {
     public GameObject playerObj;
     public Follow_track followTrackData;
     public GameObject trackDirectionIndicator;
+	public GameObject trackDirectionLine;
 	public GameObject trackDirectionTickArrow;
 	public GameObject trackDirectionTickIcon;
     public Color trackDirColor;
@@ -24,6 +25,150 @@ public class CircleIndicators : MonoBehaviour {
 	public bool turnAroundMessageAlreadyThrown;
 	public GameObject WindArrow;
 	public float windAngle;
+	public Color debugColor;
+	public int typeOfCourse = 0; //0 for upwind, 1 if Downwind, 2 if direct to mark 
+
+	public Color[] WindAnglesColors = new Color[3];
+
+	public List<WindAnglesClass> listOfWindAngles = new List<WindAnglesClass> ();
+
+	void find2ClosestAnglesinList (float val, List<float> list, out float firstClosest, out float secondClosest)
+	{
+		firstClosest = 180;
+		secondClosest = 180;
+
+		foreach (float a in list) 
+		{
+			float diffAngle = Mathf.Abs(Mathf.DeltaAngle (a, val));
+			if (firstClosest > diffAngle) {firstClosest = diffAngle;}
+		}
+		//find second one
+		foreach (float a in list) 
+		{
+			float diffAngle = Mathf.Abs(Mathf.DeltaAngle (a, val));
+			if ((secondClosest > diffAngle) && (diffAngle > firstClosest)) {secondClosest = diffAngle;}
+		}
+		//Debug.Log ("found first closest " + firstClosest + ", second closest " + secondClosest);
+	}
+
+	public Color getColorForWindAngle (int courseID, float angle)
+	{
+		Color windColor = new Color(1.0f, 1.0f, 1.0f, 0.0f);;
+		float bestAngleFactor;
+
+		float[] closestBestAngles = new float[2];
+		float[] closestWorstAngles = new float[2];
+		float closestAnglefactor;
+		float closestAngleDiff;
+		float secondAngleFactor;
+		float secondAngleDiff;
+
+		find2ClosestAnglesinList (angle, listOfWindAngles [courseID].bestAngles, out closestBestAngles [0], out closestBestAngles [1]);
+		find2ClosestAnglesinList (angle, listOfWindAngles [courseID].worstAngles, out closestWorstAngles [0], out closestWorstAngles [1]);
+
+		/*Debug.Log ("Best Closest : " + closestBestAngles [0]);
+		Debug.Log ("Worst Closest : " + closestWorstAngles [0]);
+		Debug.Log ("Best Second : " + closestBestAngles [1]);
+		Debug.Log ("Worst Second : " + closestWorstAngles [1]);*/
+
+		// get factor of closest angle
+		if (closestBestAngles [0] < closestWorstAngles [0]) {
+			closestAnglefactor = 1f;
+			closestAngleDiff = closestBestAngles [0];
+			//Debug.Log ("closest angle is a best one");
+			if (closestWorstAngles [0] < Mathf.Min (closestBestAngles [1], closestWorstAngles [1])) // check if the second closest value is the first of the worst of part of the second choince in best and wors
+			{ 
+				secondAngleFactor = 0.0f;
+				secondAngleDiff = closestWorstAngles [0];
+			} 
+			else // now we have to search for the minimal value of the second best and worst
+			{ 
+				if (closestBestAngles [1] < closestWorstAngles [1]) { // the second closest is the second best position
+					secondAngleFactor = 1.0f;
+					secondAngleDiff = closestBestAngles [1];
+				} 
+				else 
+				{
+					secondAngleFactor = 0.0f;
+					secondAngleDiff = closestWorstAngles [1];
+				}
+			}
+
+		} else {
+			//Debug.Log ("closest angle is a worst one");
+			closestAnglefactor = 0f;
+			closestAngleDiff = closestWorstAngles [0];
+
+			if (closestBestAngles [0] < Mathf.Min (closestBestAngles [1], closestWorstAngles [1])) // check if the second closest value is the first of the worst of part of the second choince in best and wors
+			{ 
+				
+				secondAngleFactor = 1.0f;
+				secondAngleDiff = closestBestAngles [0];
+			} 
+			else // now we have to search for the minimal value of the second best and worst
+			{ 
+				if (closestBestAngles [1] < closestWorstAngles [1]) { // the second closest is the second best position
+					secondAngleFactor = 1.0f;
+					secondAngleDiff = closestBestAngles [1];
+				} 
+				else 
+				{
+					secondAngleFactor = 0.0f;
+					secondAngleDiff = closestWorstAngles [1];
+				}
+			}
+		}
+
+		//Debug.Log ("closest is " + closestAnglefactor + " at " + closestAngleDiff + ", second closest is " + secondAngleFactor + " at " + secondAngleDiff);
+		float resultFactor = 0f;
+		if (closestAnglefactor != secondAngleFactor) 
+		{
+			resultFactor = ((secondAngleFactor * closestAngleDiff)  + ( closestAnglefactor * secondAngleDiff)) / (closestAngleDiff + secondAngleDiff);
+			//Debug.Log ("temp factor calc : " + resultFactor);
+		} 
+		else 
+		{
+			resultFactor = closestAnglefactor;
+		}
+		if (resultFactor > 1) { resultFactor = 1;}
+		if (resultFactor < 0) { resultFactor = 0;}
+
+		//Debug.Log ("resultFactor is : " + resultFactor);
+
+		float colorSectorwidth = 1 / (WindAnglesColors.Length - 1);
+
+		if ((resultFactor < 1.0f)||(resultFactor > 0.0f)) {
+			/*for (int i = 0; i < WindAnglesColors.Length - 1; i++) {
+				if ((resultFactor > i * colorSectorwidth) && (resultFactor < (i + 1) * colorSectorwidth)) {
+					float value = resultFactor - (colorSectorwidth * (WindAnglesColors.Length - 1)) * (WindAnglesColors.Length - 1);
+					windColor = Color.Lerp (WindAnglesColors [i], WindAnglesColors [i + 1], resultFactor);
+				}
+			}*/
+
+			float h0;
+			float s0; 
+			float v0;
+			Color.RGBToHSV (WindAnglesColors [0], out h0, out s0, out v0);
+			float h1;
+			float s1; 
+			float v1;
+			Color.RGBToHSV (WindAnglesColors [1], out h1, out s1, out v1);
+			float h = Mathf.Lerp(h0, h1, resultFactor);
+			float s = Mathf.Lerp(s0, s1, resultFactor);
+			float v = Mathf.Lerp(v0, v1, resultFactor);
+
+			windColor = Color.HSVToRGB (h, s, v);
+			//windColor = Color.Lerp (WindAnglesColors [0], WindAnglesColors [1], resultFactor);
+		}
+		if (resultFactor == 0.0f) {windColor = WindAnglesColors [0];}
+		if (resultFactor == 1.0f) {windColor = WindAnglesColors [WindAnglesColors.Length-1];}
+
+		//Debug.Log ("resultFactor is : " + resultFactor);
+
+		debugColor = windColor;
+
+		return windColor;
+	}
 
     // Use this for initialization
     void Start()
@@ -121,6 +266,7 @@ public class CircleIndicators : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
+		typeOfCourse = followTrackData.isNextTargetMark;
 		windAngle = playerObj.GetComponent<Follow_track>().angleBoardToWind;
 
         ///Handling the track direction
@@ -140,6 +286,8 @@ public class CircleIndicators : MonoBehaviour {
 			//placeOnCircle (trackDirectionTickIcon, 6f, correctAngle, -3.67f);
 			placeOnCircle (trackDirectionTickIcon, 8f, correctAngle, -2.2f);
 		}
+
+		placeOnCircle (trackDirectionLine, 30f, correctAngle, 0f);
 
 		placeOnCircle (trackDirectionTickArrow, 8.2f, correctAngle, 0f);
 		trackDirectionTickArrow.transform.localEulerAngles = new Vector3 (0.0f, 0.0f, angleToMark + 180);
@@ -296,6 +444,19 @@ public class CircleIndicators : MonoBehaviour {
         }
         return minDistance;
     }
-        
-    }
+}
 
+/// <summary>
+/// This class is used to define the list of best wind angle and worst wind angle for a certain sail ocnfiguration on a certain race direction (upwind, downwind od direct)
+/// </summary>
+[System.Serializable]
+public class WindAnglesClass {
+	public List<float> bestAngles;
+	public List<float> worstAngles;
+
+	public WindAnglesClass (List<float> b, List<float> w)
+	{
+		List<float> bestAngles = b;
+		List<float> worstAngles = w;
+	}
+}

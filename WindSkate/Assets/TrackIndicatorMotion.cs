@@ -344,7 +344,7 @@ public class TrackIndicatorMotion : MonoBehaviour {
 		//handles the mark indicators
 		if ((currentMarkId >= Player.GetComponentInChildren<Follow_track> ().trackData.markSequence.Count - 1) && (markIndicator > 0)) { 
 			// reached the finished line
-			Debug.Log("Reached the finish line");
+			//Debug.Log("Reached the finish line");
 			//Camera.main.GetComponent<CameraControlScript> ().CameraTargetData.referenceTransformObjectPosition = initCamPosObj;
 			Camera.main.GetComponent<CinemachineControls>().camFollowTraceObj.SetActive(false);
 			TraceObject.SetActive (false);
@@ -352,7 +352,7 @@ public class TrackIndicatorMotion : MonoBehaviour {
 		} 
 		else {
 			// finished line not reached
-			Debug.Log (currentMarkId);
+			//Debug.Log (currentMarkId);
 			if (currentMark.GetComponent<Mark> ().isWaypoint == false) {
 				Player.GetComponentInChildren<Follow_track> ().handleTrackIndicator (currentMarkId);
 			}

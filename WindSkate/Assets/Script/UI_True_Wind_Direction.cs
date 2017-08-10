@@ -17,6 +17,7 @@ public class UI_True_Wind_Direction : MonoBehaviour {
     public bool enableSectors = true;
     private float windAngle;
     private int bestSectorInt = 0;
+	public GameObject circleObj;
     
 
 	// Use this for initialization
@@ -29,7 +30,9 @@ public class UI_True_Wind_Direction : MonoBehaviour {
         //initialWindForce= windData.effectiveLocalWindForce;
         //SailOrient = GameObject.Find("Sail");
         SailOrientData = SailOrient.GetComponent<Sail_System_Control>();
-		UIRenderer = gameObject.GetComponent<SpriteRenderer>();
+		if (gameObject.GetComponent<SpriteRenderer> () != null) {
+			UIRenderer = gameObject.GetComponent<SpriteRenderer> ();
+		}
         initialWindForce = GameObject.Find("WindGusts").GetComponent<WindGustsBehavior>().initWindForce;
         windAngle = player.GetComponent<Follow_track>().angleBoardToWind;
         bestSectorInt = 0;
@@ -42,57 +45,17 @@ public class UI_True_Wind_Direction : MonoBehaviour {
         windAngle = player.GetComponent<Follow_track>().angleBoardToWind;
         windUIScale = windData.effectiveLocalWindForce / initialWindForce;
 		transform.eulerAngles = new Vector3 (90.0f,0.0f,-1*windData.localWindDirection + 180f);
-		transform.localPosition = new Vector3 (6.5f*Mathf.Sin(1*windData.localWindDirection*Mathf.Deg2Rad), 6.5f*Mathf.Cos(1*windData.localWindDirection*Mathf.Deg2Rad),0.0f);
+		transform.localPosition = new Vector3 (7.5f*Mathf.Sin(1*windData.localWindDirection*Mathf.Deg2Rad), 7.5f*Mathf.Cos(1*windData.localWindDirection*Mathf.Deg2Rad),0.2f);
 		transform.localScale = new Vector3 (windUIScale , 1.0f, 1.0f);
-		
-		if (SailOrientData.trueWindAngleLocal <40 || SailOrientData.trueWindAngleLocal > 140)
-		{
-            UIRenderer.color = new Color (1.0f,0.75f,0.0f,1.0f);
-            //UIRenderer.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
-            if (SailOrientData.trueWindAngleLocal <30 || SailOrientData.trueWindAngleLocal > 150)
-			{
-			    UIRenderer.color = new Color (1.0f,0.2f,0.2f,1.0f);
-                /*if (enableSectors) // Removed section because I removed the circle sectors
-                {
-                    Narrow_Sector_Highlight.SetActive(true);
+		int coursetype = transform.parent.GetComponent<CircleIndicators> ().typeOfCourse;
 
-                    if (SailOrientData.trueWindAngleLocal > 150)
-                    {
-                        Narrow_Sector_Highlight.transform.localScale = new Vector3(1.0f, -1.0f, 1.0f);
-                    }
-                    else
-                    {
-                        Narrow_Sector_Highlight.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-                    }
-                }*/
-            }
-            /*else
-            {
-                Narrow_Sector_Highlight.SetActive(false);
-            }
-            if (enableSectors)
-            {
-                Broad_Sector_Highlight.SetActive(true);
-
-                if (SailOrientData.trueWindAngleLocal < 45)
-                {
-                    Broad_Sector_Highlight.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-                }
-                else
-                {
-                    Broad_Sector_Highlight.transform.localScale = new Vector3(1.0f, -1.0f, 1.0f);
-                }
-            }*/
+		if (gameObject.GetComponent<SpriteRenderer> () != null) {
+			UIRenderer.color = transform.parent.GetComponent<CircleIndicators> ().getColorForWindAngle (coursetype, SailOrientData.trueWindAngleLocal);
 		}
-		else
-		{
-            //UIRenderer.color = new Color (0.355f,0.605f,0.832f,1.0f);
-            UIRenderer.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-            //Broad_Sector_Highlight.SetActive(false);
-
-        }
-
+		if (gameObject.GetComponent<ParticleSystem> () != null) {
+			gameObject.GetComponent<ParticleSystem>().startColor = transform.parent.GetComponent<CircleIndicators> ().getColorForWindAngle (coursetype, SailOrientData.trueWindAngleLocal);
+		}
         /*if (bestSectorInt == 0)
         {
             Best_Sector_Highlight.SetActive(false);
@@ -155,6 +118,7 @@ public class UI_True_Wind_Direction : MonoBehaviour {
             Best_Sector_Highlight.SetActive(false);
         }
         */
+
     }
 
 }
