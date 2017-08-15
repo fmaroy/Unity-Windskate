@@ -40,7 +40,7 @@ public class UI_True_Wind_Direction : MonoBehaviour {
     }
 
     // Update is called once per frame
-	void LateUpdate () {
+	void Update () {
         bestSectorInt = player.transform.parent.GetComponent<tricksHandlingScript>().activeSector;
         windAngle = player.GetComponent<Follow_track>().angleBoardToWind;
         windUIScale = windData.effectiveLocalWindForce / initialWindForce;
@@ -50,9 +50,9 @@ public class UI_True_Wind_Direction : MonoBehaviour {
 
 		int coursetype = transform.parent.GetComponent<CircleIndicators> ().typeOfCourse;
 
-		if (gameObject.GetComponent<SpriteRenderer> () != null) {
-			UIRenderer.color = transform.parent.GetComponent<CircleIndicators> ().getColorForWindAngle (coursetype, SailOrientData.trueWindAngleLocal);
-		}
+		/*if (gameObject.GetComponent<SpriteRenderer> () != null) {
+			UIRenderer.color = new Color (1.0f, 1.0f, 1.0f, 1.0f);
+		}*/
 		if (gameObject.GetComponent<ParticleSystem> () != null) {
 			gameObject.GetComponent<ParticleSystem>().startColor = transform.parent.GetComponent<CircleIndicators> ().getColorForWindAngle (coursetype, SailOrientData.trueWindAngleLocal);
 		}
@@ -82,9 +82,13 @@ public class UI_True_Wind_Direction : MonoBehaviour {
             Best_Sector_Highlight.GetComponent<UIWindCircleScript>().rotationOffset = -135.0f;
         }*/
 
+
+			
         /*if ((SailOrientData.trueWindAngleLocal > 40 && SailOrientData.trueWindAngleLocal < 50)||(SailOrientData.trueWindAngleLocal > 130 && SailOrientData.trueWindAngleLocal < 140))
         {
-
+			if (gameObject.GetComponent<SpriteRenderer> () != null) {
+				UIRenderer.color = new Color (1.0f, 0.0f, 0.0f);
+			}
             Best_Sector_Highlight.SetActive(true);
             if (SailOrientData.trueWindAngleLocal > 40 && SailOrientData.trueWindAngleLocal < 50)
             {
