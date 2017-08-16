@@ -51,7 +51,7 @@ void LateUpdate () {
         
         if (rotationControlData.isMoving == true)
         {
-             CamRotation = CamRotation + rotationControlData.CamRotation;
+             CamRotation = CamRotation + rotationControlData.CamRotationX;
              CamRotationRef = CamRotation;
         }
         else
