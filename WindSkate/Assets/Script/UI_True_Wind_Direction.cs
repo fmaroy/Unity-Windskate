@@ -35,8 +35,7 @@ public class UI_True_Wind_Direction : MonoBehaviour {
 		}
         initialWindForce = GameObject.Find("WindGusts").GetComponent<WindGustsBehavior>().initWindForce;
         windAngle = player.GetComponent<Follow_track>().angleBoardToWind;
-        bestSectorInt = 0;
-
+		bestSectorInt = 0;
     }
 
     // Update is called once per frame
