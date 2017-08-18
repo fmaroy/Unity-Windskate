@@ -2956,8 +2956,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114345396204890678}
-        m_MethodName: nextView
+      - m_Target: {fileID: 114740245484479394}
+        m_MethodName: setNextCamera
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7536,6 +7536,7 @@ GameObject:
   - component: {fileID: 114537451758779686}
   - component: {fileID: 114112278117969688}
   - component: {fileID: 114345396204890678}
+  - component: {fileID: 114740245484479394}
   m_Layer: 0
   m_Name: Camera Player
   m_TagString: MainCamera
@@ -9402,11 +9403,11 @@ MonoBehaviour:
   m_ShowDebugText: 1
   m_ShowCameraFrustum: 1
   m_WorldUpOverride: {fileID: 0}
-  m_UpdateMethod: 2
+  m_UpdateMethod: 0
   m_DefaultBlend:
     m_Style: 1
     m_Time: 1
-  m_CustomBlends: {fileID: 11400000, guid: 4eace6a6f8ee1459a9c92104786a2c56, type: 2}
+  m_CustomBlends: {fileID: 11400000, guid: d3024a390c61f4c8895ce1db25c57932, type: 2}
   m_CameraCutEvent:
     m_PersistentCalls:
       m_Calls:
@@ -10428,7 +10429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: 34c47ba48f67544e595568c865cda42a, type: 2}
+  profile: {fileID: 11400000, guid: bb9cc2247652248d3a92d9ff536a13a8, type: 2}
 --- !u!114 &114550301600601602
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10821,7 +10822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Definition: {fileID: 11400000, guid: c55eaad8268ac4ef5a48ded03f962b03, type: 2}
+  m_Definition: {fileID: 0}
   m_AmplitudeGain: 2
   m_FrequencyGain: 1
 --- !u!114 &114737645523750600
@@ -10845,6 +10846,32 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114740245484479394
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1722448802171908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fadbaf9f4b5cc494cab3567c82eb63bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isIntroScene: 0
+  cameraId: 0
+  introCameraTimer: 5
+  playerPosTarget: {fileID: 0}
+  playerOrientTarget: {fileID: 0}
+  playerPosObj: {fileID: 1919742107383710}
+  playerOrientObj: {fileID: 1040783011457130}
+  camFollowTraceObj: {fileID: 1154451670205020}
+  camFollowPlayerList:
+  - {fileID: 1860269869960800}
+  - {fileID: 1785831622145616}
+  CrashCameras:
+  - {fileID: 1614340263865782}
+  OrbitCamera: {fileID: 1453054410128002}
+  OrbitCameraData: {fileID: 114001202309226260}
 --- !u!114 &114748847556103522
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10887,7 +10914,7 @@ MonoBehaviour:
   m_XDamping: 0.5
   m_YDamping: 0.2
   m_ZDamping: 0.5
-  m_BindingMode: 2
+  m_BindingMode: 1
 --- !u!114 &114759089931916978
 MonoBehaviour:
   m_ObjectHideFlags: 1
