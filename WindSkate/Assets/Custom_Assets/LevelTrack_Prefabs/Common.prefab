@@ -7535,7 +7535,6 @@ GameObject:
   - component: {fileID: 81199517473750646}
   - component: {fileID: 114537451758779686}
   - component: {fileID: 114112278117969688}
-  - component: {fileID: 114345396204890678}
   - component: {fileID: 114740245484479394}
   m_Layer: 0
   m_Name: Camera Player
@@ -7786,7 +7785,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1453054410128002}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -67.119995, y: 10, z: -12.510002}
+  m_LocalPosition: {x: -67.119995, y: 5, z: -12.510002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4859593816696612}
@@ -7828,7 +7827,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1299607450077378}
-  m_LocalRotation: {x: 0.06499413, y: 0.71959156, z: -0.06797861, w: 0.687999}
+  m_LocalRotation: {x: -0.018126564, y: 0.722753, z: 0.018970272, w: 0.69060826}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7842,8 +7841,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1722448802171908}
-  m_LocalRotation: {x: 0.11401279, y: -0.015160704, z: 0.0017400648, w: 0.99336207}
-  m_LocalPosition: {x: -42.12, y: 10, z: -37.510002}
+  m_LocalRotation: {x: -0.005595605, y: 0.72295487, z: 0.005855659, w: 0.6908479}
+  m_LocalPosition: {x: -67.119995, y: 5, z: -12.510002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 424776}
@@ -8021,7 +8020,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1131072965146060}
-  m_LocalRotation: {x: 0.089942716, y: 0.7166473, z: -0.09407283, w: 0.68518406}
+  m_LocalRotation: {x: -0.0355778, y: 0.72255903, z: 0.03728982, w: 0.6893854}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -8061,8 +8060,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1380023529153188}
-  m_LocalRotation: {x: 0.07746455, y: 0.71823996, z: -0.081021674, w: 0.6867068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.0055951294, y: 0.72297823, z: 0.0058555547, w: 0.69082344}
+  m_LocalPosition: {x: 0, y: -5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4917825688876918}
@@ -9930,34 +9929,6 @@ MonoBehaviour:
   m_YDamping: 0.2
   m_ZDamping: 0.5
   m_BindingMode: 2
---- !u!114 &114345396204890678
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1722448802171908}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21dc7bce627ca466586df40737c127c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isIntroScene: 0
-  playerOrientTarget: {fileID: 0}
-  playerPosTarget: {fileID: 0}
-  playerRefPos: {fileID: 1919742107383710}
-  playerRefOrient: {fileID: 1040783011457130}
-  GameCameraList:
-  - {fileID: 1860269869960800}
-  - {fileID: 1785831622145616}
-  gameViewId: 0
-  CrashCameraList:
-  - {fileID: 1614340263865782}
-  OrbitCamera: {fileID: 1453054410128002}
-  OrbitCameraData: {fileID: 114001202309226260}
-  camFollowTraceObj: {fileID: 1302643474760236}
-  cameraContainers: {fileID: 1561950867419008}
-  cameraAnimator: {fileID: 0}
-  introSceneCamTimer: 5
 --- !u!114 &114385406137279192
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10187,8 +10158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9384ab8608cdc3d479fe89cd51eed48f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Radius: 15
-  m_HeightOffset: 2
+  m_Radius: 20
+  m_HeightOffset: 3
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -10865,6 +10836,7 @@ MonoBehaviour:
   playerPosObj: {fileID: 1919742107383710}
   playerOrientObj: {fileID: 1040783011457130}
   camFollowTraceObj: {fileID: 1154451670205020}
+  traceCam: {fileID: 1302643474760236}
   camFollowPlayerList:
   - {fileID: 1860269869960800}
   - {fileID: 1785831622145616}

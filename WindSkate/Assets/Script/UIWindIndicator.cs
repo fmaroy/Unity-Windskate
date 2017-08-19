@@ -128,12 +128,12 @@ public class UIWindIndicator : MonoBehaviour {
             }
         }
     }
+
     /// <summary>
     /// the following calculates the oritnetation diff and the force diff for the current icon
     /// </summary>
     /// <param name="iconObj"></param>
     /// 
-
     public void updateUpcomingWindIconPosition(UpcomingWindIcon icon)
     {
         float minIconPos = -130.0f;

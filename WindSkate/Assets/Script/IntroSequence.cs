@@ -69,9 +69,10 @@ public class IntroSequence : MonoBehaviour {
 		}
 		if (stage == 1) {
 			StartCoroutine (animateStartbutton (0.5f));
+			Camera.main.GetComponent<CinemachineControls> ().setTraceCamera (true);
 		}
 		if (stage == 2) {
-			
+			Camera.main.GetComponent<CinemachineControls> ().setTraceCamera (false);
 			UIItemsData.StartLights.SetActive (false);
 			Debug.Log ("Race is Starting...");
 			initiateCamera ();
@@ -90,7 +91,7 @@ public class IntroSequence : MonoBehaviour {
 			}
 
 		}
-		if (stage < 2) {
+		if (stage <= 2) {
 			UIItemsData.controlsVisibiltyHandler (false);
 		} else {
 			UIItemsData.controlsVisibiltyHandler (true);

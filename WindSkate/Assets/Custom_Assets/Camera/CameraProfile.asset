@@ -25,7 +25,7 @@ MonoBehaviour:
         motionVectorsResolution: 24
         motionVectorsAmplitude: 64
   fog:
-    m_Enabled: 1
+    m_Enabled: 0
     m_Settings:
       excludeSkybox: 1
   antialiasing:
@@ -101,7 +101,7 @@ MonoBehaviour:
     m_Settings:
       bloom:
         intensity: 0.5
-        threshold: 1.3
+        threshold: 1.5
         softKnee: 0.5
         radius: 4
         antiFlicker: 0
@@ -113,18 +113,18 @@ MonoBehaviour:
     m_Settings:
       tonemapping:
         tonemapper: 1
-        neutralBlackIn: 0.02
+        neutralBlackIn: 0.037
         neutralWhiteIn: 10
         neutralBlackOut: 0
         neutralWhiteOut: 10
         neutralWhiteLevel: 5.3
         neutralWhiteClip: 10
       basic:
-        postExposure: 0.4
+        postExposure: 0.1
         temperature: 0
         tint: 0
         hueShift: 0
-        saturation: 1.1
+        saturation: 1.2
         contrast: 1.1
       channelMixer:
         red: {x: 1, y: 0, z: 0}

@@ -14,12 +14,11 @@ public class CinemachineControls : MonoBehaviour {
 	public GameObject playerOrientObj;
 
 	public GameObject camFollowTraceObj;
+	public GameObject traceCam;
 	public List<GameObject> camFollowPlayerList = new List<GameObject> ();
 	public List<GameObject> CrashCameras = new List<GameObject>();
 	public GameObject OrbitCamera;
 	public CinemachineFreeLook OrbitCameraData;
-
-
 
 	public void initCamera()
 	{
@@ -37,6 +36,11 @@ public class CinemachineControls : MonoBehaviour {
 				camFollowPlayerList [i].SetActive (false);
 			}
 		}
+	}
+
+	public void setTraceCamera(bool vis)
+	{
+		traceCam.SetActive (vis);
 	}
 
 	public void setNextCamera()
