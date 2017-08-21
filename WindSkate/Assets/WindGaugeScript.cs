@@ -80,7 +80,7 @@ public class WindGaugeScript : MonoBehaviour {
 		}
 
 		colorKeys.SetValue(convertColorToGradientColorKey( transform.parent.GetComponent<CircleIndicators>().getColorForWindAngle(courseType, minAngleBound), 0), i);
-		Debug.Log("minAngle : " + minAngleBound);
+		//Debug.Log("minAngle : " + minAngleBound);
 		i++;
 		colorKeys.SetValue(convertColorToGradientColorKey( transform.parent.GetComponent<CircleIndicators>().getColorForWindAngle(courseType, maxAngleBound), 1), i);
 		i++;

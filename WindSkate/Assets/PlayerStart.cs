@@ -48,6 +48,21 @@ public class PlayerStart : MonoBehaviour {
 		}
 	}
 
+	public void referencePlayerCameraReference()
+	{
+		GameObject temp = null;
+		GameObject temp2 = null;
+		foreach (Transform child in this.GetComponentInChildren<windEffector>().transform) {
+			if (child.gameObject.name == "Armature") {
+				foreach (Transform subchild in child) {
+					if (subchild.gameObject.name == "Torso_00") {
+						temp = subchild.gameObject;
+					}
+				}
+			}
+		}
+	}
+
 	void updateStartParamameters(bool startbool)
 	{
 		//sailAnimData.isStarting = startbool;

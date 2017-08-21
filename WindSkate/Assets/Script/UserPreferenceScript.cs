@@ -43,31 +43,27 @@ public class UserPreferenceScript : MonoBehaviour {
             numbOpponenents = SceneManagerObject.GetComponent<PersistentParameters>().currentSingleRaceDefinition.numberOfOpponents;
         }
                 
-        if (IntroScene == false)
-        {
-            List<GameObject> playerStartPos = new List<GameObject>();
-            foreach (Transform child in GameObject.Find("Start_Positions").transform)
-            {
-                playerStartPos.Add(child.gameObject);
-            }
+		if (IntroScene == false) {
+			List<GameObject> playerStartPos = new List<GameObject> ();
+			foreach (Transform child in GameObject.Find("Start_Positions").transform) {
+				playerStartPos.Add (child.gameObject);
+			}
 
-            for (int i = 0; i <= numbOpponenents; i++)
-			{
-                if (i < numbOpponenents)
-                {
-                    instantiatePlayer(Playerprefab, playerStartPos[i].transform, Opponents, false);
-                }
-                else
-                {
-					Player = instantiatePlayer(Playerprefab, playerStartPos[i].transform, this.transform.parent.gameObject, true);
+			for (int i = 0; i <= numbOpponenents; i++) {
+				if (i < numbOpponenents) {
+					instantiatePlayer (Playerprefab, playerStartPos [i].transform, Opponents, false);
+				} else {
+					Player = instantiatePlayer (Playerprefab, playerStartPos [i].transform, this.transform.parent.gameObject, true);
 
 					Debug.Log (Player.name);
 					this.GetComponent<RaceManagerScript> ().PlayerObject = Player;
 					initInstantiatedPlayer (this.gameObject.GetComponent<RaceManagerScript> ().PlayerObject);
-                    //SetInitialPlayerPosition(playerStartPos[i].transform);
-                }
-            }
-        }
+					//SetInitialPlayerPosition(playerStartPos[i].transform);
+				}
+			}
+		} else {
+			initInstantiatedPlayer (this.gameObject.GetComponent<RaceManagerScript> ().PlayerObject);
+		}
 
         if (SceneManagerObject != null)
         {
@@ -191,8 +187,6 @@ public class UserPreferenceScript : MonoBehaviour {
 		GameObject temp = (GameObject)Instantiate(playerprefab,position.position + Vector3.up * positioningHeight ,position.rotation);
 		temp.GetComponent<ExternalObjectsReference> ().initPlayer();
         temp.transform.parent = parent.transform;
-        //temp.transform.position = position.position;
-        //temp.transform.eulerAngles = position.eulerAngles;
 		temp.GetComponent<PlayerCollision>().isPlayer = isplayer;
 
 		if (isplayer == false) {
@@ -202,8 +196,8 @@ public class UserPreferenceScript : MonoBehaviour {
 				}
 			}
 		}
-
 		return temp;
+
     }
 
 	/// <summary>

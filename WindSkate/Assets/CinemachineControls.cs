@@ -56,6 +56,8 @@ public class CinemachineControls : MonoBehaviour {
 	public void disableOrbitCamera()
 	{
 		OrbitCamera.SetActive (false);
+		OrbitCameraData.m_XAxis.Value = 90f;
+		OrbitCameraData.m_YAxis.Value = 5f;
 	}
 
 	public void orbitCameraHandler(float dx, float dy)
@@ -85,6 +87,7 @@ public class CinemachineControls : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		timer = 0;
+		initCamera ();
 	}
 
 	void Update(){
