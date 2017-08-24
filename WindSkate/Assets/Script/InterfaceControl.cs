@@ -199,12 +199,14 @@ public class InterfaceControl : MonoBehaviour {
 		PauseButton.SetActive(false);
 		PauseImage.SetActive(true);
         Time.timeScale = 0.0f;
+		Time.fixedDeltaTime = 0.01f * Time.timeScale;
     }
     public void ResumeGame()
 	{
 		PauseButton.SetActive(true);
 		PauseImage.SetActive(false);
         Time.timeScale = 1.0f;
+		Time.fixedDeltaTime = 0.01f * Time.timeScale;
     }
 
     void Update()

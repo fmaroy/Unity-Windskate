@@ -106,7 +106,6 @@ public class PlayerCollision : MonoBehaviour
                 {
                     child.gameObject.SetActive(false);
                 }
-
             }
         }
 
