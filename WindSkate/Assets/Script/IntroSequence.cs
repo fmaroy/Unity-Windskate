@@ -8,6 +8,7 @@ public class IntroSequence : MonoBehaviour {
 	private GameObject IntroImage;
 	private Animator IntroImageAnim;
 	public int IntroductionStage = 0;
+	public GameObject tutorialManager;
 
 	// Use this for initialization
 	void Start () {
@@ -72,6 +73,7 @@ public class IntroSequence : MonoBehaviour {
 			StartCoroutine (animateStartbutton (0.5f));
 			Camera.main.GetComponent<CinemachineControls> ().setTraceCamera (true);
 			UIItemsData.controlsVisibiltyHandler (false);
+			tutorialManager.GetComponent<TutorialManager> ().enableTutorial("Trace tutorial");
 		}
 		if (stage == 2) {
 			Camera.main.GetComponent<CinemachineControls> ().setTraceCamera (false);

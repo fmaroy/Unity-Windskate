@@ -16,6 +16,7 @@ public class tutorialTweening : MonoBehaviour {
 		System.Collections.Hashtable hash = new System.Collections.Hashtable();
 		hash.Add("amount", new Vector3(0.15f, 0.15f, 0.15f));
 		hash.Add("time", timer);
+		hash.Add ("ignoretimescale", true);
 		iTween.PunchScale(gameObject, hash);
 		iTween.PunchScale (pulseobj, hash);
 	}
