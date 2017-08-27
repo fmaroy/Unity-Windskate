@@ -11862,7 +11862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isIntroScene: 1
-  cameraId: 2
+  cameraId: 3
   introCameraTimer: 5
   playerPosTarget: {fileID: 0}
   playerOrientTarget: {fileID: 0}
@@ -23407,6 +23407,11 @@ MonoBehaviour:
     trackName: Rooftops
     typeOfRace: Race Track
     sceneName: RoofTops
+    RacePreview: {fileID: 2800000, guid: aeeb5fd3a6cad447b9c97cb8709ac2eb, type: 3}
+  - trackId: 3
+    trackName: Tutorial 1
+    typeOfRace: Tutorial
+    sceneName: Intro
     RacePreview: {fileID: 2800000, guid: aeeb5fd3a6cad447b9c97cb8709ac2eb, type: 3}
   ListOfWinds:
   - name: Stable
@@ -44235,7 +44240,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1984569974}
-  m_LocalRotation: {x: -0.076555185, y: -0.68755776, z: -0.07327306, w: 0.71835554}
+  m_LocalRotation: {x: -0.076529086, y: -0.6878136, z: -0.07330033, w: 0.7181106}
   m_LocalPosition: {x: -122.600006, y: 1.5, z: -42.100002}
   m_LocalScale: {x: 1.0000005, y: 1, z: 1.0000004}
   m_Children:

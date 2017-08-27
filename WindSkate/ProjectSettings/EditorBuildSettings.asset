@@ -17,3 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/RoofTops.unity
     guid: 3c0b0d59e062d4bc7b642f19025e2746
+  - enabled: 1
+    path: Assets/Intro.unity
+    guid: a095bf3affb0a4fa99fbbd6a95dc1785

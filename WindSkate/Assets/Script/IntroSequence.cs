@@ -16,13 +16,14 @@ public class IntroSequence : MonoBehaviour {
 		IntroImage = UIItemsData.IntroImage;
 		StartCoroutine(introductionManager (IntroductionStage));
 		raceData = GameObject.Find ("RaceManager").GetComponent<RaceManagerScript> ();
+
 	}
 
-	public void initiateCamera ()
+	/*public void initiateCamera ()
 	{
 		//Camera.main.GetComponent<CameraControlScript> ().initCamera ();
 		//Camera.main.GetComponent<CameraControlScript> ().setViewpoint (0);
-	}
+	}*/
 
 	IEnumerator animateStartbutton(float time)
 	{
@@ -73,14 +74,16 @@ public class IntroSequence : MonoBehaviour {
 			StartCoroutine (animateStartbutton (0.5f));
 			Camera.main.GetComponent<CinemachineControls> ().setTraceCamera (true);
 			UIItemsData.controlsVisibiltyHandler (false);
-			tutorialManager.GetComponent<TutorialManager> ().enableTutorial("Trace tutorial");
+			if (raceData.tutorialObj != null){
+				raceData.tutorialObj.GetComponent<TutorialManager> ().enableTutorial("Trace tutorial");
+			}
 		}
 		if (stage == 2) {
 			Camera.main.GetComponent<CinemachineControls> ().setTraceCamera (false);
 			UIItemsData.StartLights.SetActive (false);
 			UIItemsData.controlsVisibiltyHandler (true);
 			Debug.Log ("Race is Starting...");
-			initiateCamera ();
+			//initiateCamera ();
 			this.GetComponent <TrackIndicatorMotion> ().enabled = false;
 			UIItemsData.StartLights.SetActive (true);
 			UIItemsData.SkipIntoButton.SetActive (false);
@@ -93,6 +96,13 @@ public class IntroSequence : MonoBehaviour {
 			foreach (GameObject opponentObj in raceData.OpponenentObjectsList) {
 				StartCoroutine (opponentObj.GetComponent<PlayerStart> ().PlayerStartSequence ());
 				//opponentObj.GetComponent<PlayerStart> ().tempPlayerStartSequence();
+			}
+			if (raceData.tutorialObj != null){
+				raceData.tutorialObj.GetComponent<TutorialManager> ().enableTutorial("Basic Controls tutorial");
+				raceData.tutorialObj.GetComponent<TutorialManager> ().enableTutorial("Wind Circle tutorial");
+				raceData.tutorialObj.GetComponent<TutorialManager> ().enableTutorial("Track Mark tutorial");
+
+
 			}
 
 		}

@@ -6,7 +6,9 @@ using UnityEngine;
 public class TutorialObjectScript : MonoBehaviour {
 
 	public float timer;
-	public GameObject pulsingObject;
+	public GameObject pulsingObject1;
+	public GameObject pulsingObject2;
+
 
 	// Use this for initialization
 	void Start () {
