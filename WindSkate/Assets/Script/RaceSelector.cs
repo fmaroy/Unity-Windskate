@@ -5,12 +5,14 @@ using UnityEngine.UI;
 
 public class RaceSelector : MonoBehaviour {
 
+	public string typeOfPage = "single"; //can be single or career
     private GameObject SceneManagerObject;
     private PersistentParameters PersistentParameterData;
     private GameObject RaceManagerObject;
     private UserPreferenceScript RaceManagerData;
 
     public int currentObjId = 0;
+	public List<CareerSeasonProps> currentSeasonList = new List<CareerSeasonProps> ();
     public List<TrackList> currentTrackList = new List<TrackList>();
     public GameObject trackNameObject;
     public GameObject RaceImageObject;
@@ -22,24 +24,74 @@ public class RaceSelector : MonoBehaviour {
     public GameObject SliderObjectOpponentsLevel;
     public GameObject SliderWindType;
 
+	public GameObject seasonPannel;
+	public GameObject trackTemplate;
+	public float raceItemMargins = 15f;
+	public int numbColumn = 4;
+
     // Use this for initialization
     void Start () {
         SceneManagerObject = GameObject.Find("Scene_Manager");
         PersistentParameterData = SceneManagerObject.GetComponent<PersistentParameters>();
         RaceManagerObject = GameObject.Find("RaceManager");
         RaceManagerData = RaceManagerObject.GetComponent<UserPreferenceScript>();
-        foreach (TrackList track in PersistentParameterData.trackList)
-        {
-            currentTrackList.Add(track);
-        }
-        //Debug.Log(trackName.GetComponent<Text>().text);
-        updateCurrentTrack(0);
-        //currentTrackList = PersistentParameterData.trackList;
-        getOpponentsLevel();
-        getNumberOpponents();
-        SliderWindType.GetComponent<Slider>().maxValue = PersistentParameterData.ListOfWinds.Count-1;
-        getWindType();
+
+		foreach (TrackList track in PersistentParameterData.trackList) {
+			currentTrackList.Add (track);
+		}
+
+		if (typeOfPage == "career") {
+			foreach (CareerSeasonProps season in PersistentParameterData.seasonList) {
+				currentSeasonList.Add (season);
+			}
+			updateSeason (0);
+		}
+
+
+		if (typeOfPage == "single") {
+			updateCurrentTrack (0);
+			getOpponentsLevel ();
+			getNumberOpponents ();
+			SliderWindType.GetComponent<Slider> ().maxValue = PersistentParameterData.ListOfWinds.Count - 1;
+			getWindType ();
+
+		}
     }
+
+	public void updateSeason(int seasonId)
+	{
+		int raceId = 0;
+		int columnId = 0;
+		int rowId = 0;
+		Vector2 itemDimensions = trackTemplate.GetComponent<RectTransform> ().sizeDelta;
+		Debug.Log (itemDimensions);
+		foreach (SingleRaceProps race in currentSeasonList[seasonId].raceList) {
+			int currentTrackID = race.raceId;
+			//List<TrackList> currentListOfTrack = PersistentParameterData.trackList;
+
+			GameObject temp = (GameObject)Instantiate (trackTemplate, new Vector3 (0f, 0f, 0f), seasonPannel.transform.rotation);
+			//temp.transform.parent = seasonPannel.transform;
+			temp.transform.SetParent (seasonPannel.transform, false);
+			float currentColumnMargins = (raceItemMargins + itemDimensions [0]) * columnId;
+			float currentRowMargins = (raceItemMargins + itemDimensions [1]) * rowId;
+			Debug.Log ("row : " + rowId + ", ColumnPos : " + currentColumnMargins + ", RowPos : " + currentRowMargins);
+			//temp.transform.localPosition = 
+			temp.GetComponent<RectTransform> ().anchoredPosition = new Vector3 (raceItemMargins + currentColumnMargins, -1 * raceItemMargins - currentRowMargins, 0);
+
+			//trackNameObject.GetComponent<Text>().text = currentTrackList[trackid].trackName;
+			temp.GetComponent<RawImage>().texture = currentTrackList[currentTrackID].RacePreview;
+
+			columnId++;
+			if (columnId >= numbColumn-1) {
+				columnId = 0;
+				Debug.Log ("updating rowId");
+				rowId++;
+			}
+			raceId++;
+
+
+		}
+	}
 
     public void getWindType()
     {
@@ -60,6 +112,7 @@ public class RaceSelector : MonoBehaviour {
         SliderObjectOpponentsLevel.GetComponentInChildren<Text>().text = currentSliderText;
 
     }
+
     public void getNumberOpponents()
     {
         Slider currentSlider = SliderObjectNumberOpponents.GetComponent<Slider>();

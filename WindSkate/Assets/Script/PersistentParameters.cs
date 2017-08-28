@@ -29,7 +29,7 @@ public class PersistentParameters : MonoBehaviour
     public List<Cloths> pantsList = new List<Cloths>();
     public List<Cloths> shoesList = new List<Cloths>();
     public List<Cloths> accessoryList = new List<Cloths>();
-
+	public List<CareerSeasonProps> seasonList = new List<CareerSeasonProps> ();
     public List<TrackList> trackList = new List<TrackList>();
     public List<WindType> ListOfWinds = new List<WindType>();
 
@@ -190,6 +190,20 @@ public class Character
         gender = i;
     }
 }*/
+
+[System.Serializable]
+public class CareerSeasonProps
+{
+	public string name;
+	public List<SingleRaceProps> raceList;
+
+	public CareerSeasonProps(string n)
+	{
+		name = n;
+	}
+
+}
+
 
 [System.Serializable]
 public class SingleRaceProps
