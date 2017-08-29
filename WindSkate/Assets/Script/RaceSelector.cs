@@ -14,6 +14,7 @@ public class RaceSelector : MonoBehaviour {
     public int currentObjId = 0;
 	public List<CareerSeasonProps> currentSeasonList = new List<CareerSeasonProps> ();
     public List<TrackList> currentTrackList = new List<TrackList>();
+	public List<GameObject> seasonRaceObj = new List<GameObject> ();
     public GameObject trackNameObject;
     public GameObject RaceImageObject;
 
@@ -28,6 +29,9 @@ public class RaceSelector : MonoBehaviour {
 	public GameObject trackTemplate;
 	public float raceItemMargins = 15f;
 	public int numbColumn = 4;
+
+	public int currentSeasonId = 0;
+	public int currentSelectedCarreerRaceId = 0;
 
     // Use this for initialization
     void Start () {
@@ -44,7 +48,7 @@ public class RaceSelector : MonoBehaviour {
 			foreach (CareerSeasonProps season in PersistentParameterData.seasonList) {
 				currentSeasonList.Add (season);
 			}
-			updateSeason (0);
+			updateSeason (currentSeasonId);
 		}
 
 
@@ -58,11 +62,25 @@ public class RaceSelector : MonoBehaviour {
 		}
     }
 
+	public void selectedCarreerRace(int id)
+	{
+		int i = 0;
+		foreach (SingleRaceProps race in currentSeasonList[currentSeasonId].raceList) {
+			if (id == i) {
+				currentSelectedCarreerRaceId = i;
+			} else {
+				seasonRaceObj[i].GetComponent<buttonCarreerRaceSelected>().thisRaceDeselected();
+			}
+			i++;
+		}
+	}
+
 	public void updateSeason(int seasonId)
 	{
 		int raceId = 0;
 		int columnId = 0;
 		int rowId = 0;
+		seasonRaceObj = new List<GameObject> ();
 		Vector2 itemDimensions = trackTemplate.GetComponent<RectTransform> ().sizeDelta;
 		Debug.Log (itemDimensions);
 		foreach (SingleRaceProps race in currentSeasonList[seasonId].raceList) {
@@ -80,6 +98,9 @@ public class RaceSelector : MonoBehaviour {
 
 			//trackNameObject.GetComponent<Text>().text = currentTrackList[trackid].trackName;
 			temp.GetComponent<RawImage>().texture = currentTrackList[currentTrackID].RacePreview;
+			temp.GetComponent<buttonCarreerRaceSelected> ().raceId = raceId;
+			temp.GetComponent<buttonCarreerRaceSelected> ().carreerRaceManager = this.gameObject;
+			seasonRaceObj.Add (temp);
 
 			columnId++;
 			if (columnId >= numbColumn-1) {
