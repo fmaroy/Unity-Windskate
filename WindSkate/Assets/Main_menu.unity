@@ -2260,7 +2260,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1830384857}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.4375
+  m_Size: 0.43749997
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2546,7 +2546,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.3, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4012,7 +4012,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.22222222, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4621,8 +4621,8 @@ RectTransform:
   m_Father: {fileID: 24989169}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.22222222, y: 0}
-  m_AnchorMax: {x: 0.22222222, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -11350,7 +11350,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &484266866
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11468,8 +11468,8 @@ RectTransform:
   m_Father: {fileID: 1315362828}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -13797,7 +13797,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1837855037}
   m_HandleRect: {fileID: 1837855036}
   m_Direction: 0
-  m_Value: 0.5
+  m_Value: 1
   m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -15723,7 +15723,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -22546,7 +22546,27 @@ MonoBehaviour:
     - numberOfOpponents: 1
       opponentsLevel: 0
       typeOfWindsID: 0
-      raceId: 0
+      raceId: 3
+    - numberOfOpponents: 1
+      opponentsLevel: 0
+      typeOfWindsID: 0
+      raceId: 2
+    - numberOfOpponents: 1
+      opponentsLevel: 0
+      typeOfWindsID: 0
+      raceId: 2
+    - numberOfOpponents: 1
+      opponentsLevel: 0
+      typeOfWindsID: 0
+      raceId: 1
+    - numberOfOpponents: 1
+      opponentsLevel: 0
+      typeOfWindsID: 0
+      raceId: 1
+    - numberOfOpponents: 1
+      opponentsLevel: 0
+      typeOfWindsID: 0
+      raceId: 3
     - numberOfOpponents: 1
       opponentsLevel: 0
       typeOfWindsID: 0
@@ -22554,7 +22574,15 @@ MonoBehaviour:
     - numberOfOpponents: 1
       opponentsLevel: 0
       typeOfWindsID: 0
-      raceId: 0
+      raceId: 1
+    - numberOfOpponents: 1
+      opponentsLevel: 0
+      typeOfWindsID: 0
+      raceId: 3
+    - numberOfOpponents: 1
+      opponentsLevel: 0
+      typeOfWindsID: 0
+      raceId: 2
     - numberOfOpponents: 1
       opponentsLevel: 0
       typeOfWindsID: 0
@@ -22562,47 +22590,19 @@ MonoBehaviour:
     - numberOfOpponents: 1
       opponentsLevel: 0
       typeOfWindsID: 0
-      raceId: 0
+      raceId: 4
     - numberOfOpponents: 1
       opponentsLevel: 0
       typeOfWindsID: 0
-      raceId: 0
+      raceId: 2
     - numberOfOpponents: 1
       opponentsLevel: 0
       typeOfWindsID: 0
-      raceId: 0
+      raceId: 4
     - numberOfOpponents: 1
       opponentsLevel: 0
       typeOfWindsID: 0
-      raceId: 0
-    - numberOfOpponents: 1
-      opponentsLevel: 0
-      typeOfWindsID: 0
-      raceId: 0
-    - numberOfOpponents: 1
-      opponentsLevel: 0
-      typeOfWindsID: 0
-      raceId: 0
-    - numberOfOpponents: 1
-      opponentsLevel: 0
-      typeOfWindsID: 0
-      raceId: 0
-    - numberOfOpponents: 1
-      opponentsLevel: 0
-      typeOfWindsID: 0
-      raceId: 0
-    - numberOfOpponents: 1
-      opponentsLevel: 0
-      typeOfWindsID: 0
-      raceId: 0
-    - numberOfOpponents: 1
-      opponentsLevel: 0
-      typeOfWindsID: 0
-      raceId: 0
-    - numberOfOpponents: 1
-      opponentsLevel: 0
-      typeOfWindsID: 0
-      raceId: 0
+      raceId: 1
     - numberOfOpponents: 1
       opponentsLevel: 0
       typeOfWindsID: 0
@@ -22649,7 +22649,7 @@ MonoBehaviour:
     trackName: Tutorial 1
     typeOfRace: Tutorial
     sceneName: Intro
-    RacePreview: {fileID: 2800000, guid: aeeb5fd3a6cad447b9c97cb8709ac2eb, type: 3}
+    RacePreview: {fileID: 2800000, guid: cd49ec0be734047978713947c330cc49, type: 3}
   ListOfWinds:
   - name: Stable
     label: Wind conditions will not change during the Race
@@ -25949,7 +25949,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Hello
+  m_Text: Season 1
 --- !u!222 &1037991154
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -41272,7 +41272,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1870844936
 Transform:
   m_ObjectHideFlags: 0
@@ -43358,7 +43358,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1984569975
 Transform:
   m_ObjectHideFlags: 0
@@ -43366,7 +43366,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1984569974}
-  m_LocalRotation: {x: -0.076492816, y: -0.6881687, z: -0.07333818, w: 0.7177703}
+  m_LocalRotation: {x: -0.076492645, y: -0.6881705, z: -0.07333837, w: 0.71776867}
   m_LocalPosition: {x: -122.600006, y: 1.5, z: -42.100002}
   m_LocalScale: {x: 1.0000005, y: 1, z: 1.0000004}
   m_Children:
@@ -44819,8 +44819,8 @@ RectTransform:
   m_Father: {fileID: 2075441697}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.3, y: 0}
-  m_AnchorMax: {x: 0.3, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
