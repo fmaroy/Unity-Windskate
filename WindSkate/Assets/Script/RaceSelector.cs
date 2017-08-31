@@ -162,13 +162,34 @@ public class RaceSelector : MonoBehaviour {
         currentObjId = Mathf.Clamp(currentObjId, 0, currentTrackList.Count - 1);
         updateCurrentTrack(currentObjId);
     }
+
+    public void loadCareerTrack()
+    {
+        List<int> tempList = new List<int>();
+        for (int i = 0; i < SceneManagerObject.GetComponent<PersistentParameters>().OpponentConfigList.Capacity; i++)
+        {
+            tempList.Add(i); // buid list of opponents properties
+        }
+        
+        for (int i = 0; i < tempList.Count; i++) // randomizing Opponent List
+        {
+            int temp = tempList[i];
+            int randomIndex = Random.Range(i, tempList.Count);
+            tempList[i] = tempList[randomIndex];
+            tempList[randomIndex] = temp;
+        }
+        int selectedTrack = currentSeasonList[currentSeasonId].raceList[currentSelectedCarreerRaceId].raceId;
+        SceneManagerObject.GetComponent<PersistentParameters>().currentRaceOpponentsListIds = tempList;
+        SceneManagerObject.GetComponent<PersistentParameters>().currentSingleRaceDefinition = currentSeasonList[currentSeasonId].raceList[currentSelectedCarreerRaceId];
+        SceneManagerObject.GetComponent<SceneManagerScript>().LoadScene(currentTrackList[selectedTrack].sceneName);  
+    }
+
     public void loadTrack()
     {
         List <int> tempList = new List<int>();
         for (int i = 0; i < SceneManagerObject.GetComponent<PersistentParameters>().OpponentConfigList.Capacity; i++)
         {
             tempList.Add(i);
-            
         }
         // Next randomizes "tempList"
         for (int i = 0; i < tempList.Count; i++)
