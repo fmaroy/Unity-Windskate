@@ -88,9 +88,10 @@ public class Follow_track : MonoBehaviour
     {
         if (this.gameObject.GetComponentInParent<PlayerCollision>().isPlayer == true)
         {
-            FinishedImage.SetActive(true);
-            PauseButton.SetActive(false);
-            Time.timeScale = 0.0f;
+            //FinishedImage.SetActive(true);
+            //PauseButton.SetActive(false);
+            //Time.timeScale = 0.0f;
+            GetComponentInParent<ExternalObjectsReference>().FinishImage.SetActive(true);
         }
     }
 
