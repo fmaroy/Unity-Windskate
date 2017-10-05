@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 734231538}
-  m_IndirectSpecularColor: {r: 0.24877457, g: 0.3134746, b: 0.6722442, a: 1}
+  m_IndirectSpecularColor: {r: 0.5358876, g: 0.595634, b: 0.83910537, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -77,15 +77,17 @@ LightmapSettings:
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
     m_PVRBounces: 2
-    m_PVRFiltering: 0
+    m_PVRFilterTypeDirect: 0
+    m_PVRFilterTypeIndirect: 0
+    m_PVRFilterTypeAO: 0
     m_PVRFilteringMode: 1
     m_PVRCulling: 1
     m_PVRFilteringGaussRadiusDirect: 1
     m_PVRFilteringGaussRadiusIndirect: 5
     m_PVRFilteringGaussRadiusAO: 2
-    m_PVRFilteringAtrousColorSigma: 1
-    m_PVRFilteringAtrousNormalSigma: 1
-    m_PVRFilteringAtrousPositionSigma: 1
+    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+    m_PVRFilteringAtrousPositionSigmaIndirect: 2
+    m_PVRFilteringAtrousPositionSigmaAO: 1
   m_LightingDataAsset: {fileID: 112000002, guid: bb19361efdae5d64b8411cd5bd7e2086,
     type: 2}
   m_UseShadowmask: 0
@@ -11541,7 +11543,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isIntroScene: 1
-  cameraId: 2
+  cameraId: 1
   introCameraTimer: 5
   playerPosTarget: {fileID: 0}
   playerOrientTarget: {fileID: 0}
@@ -11612,7 +11614,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: bb9cc2247652248d3a92d9ff536a13a8, type: 2}
+  profile: {fileID: 11400000, guid: 146ed84205ec049018605604c27e1642, type: 2}
 --- !u!81 &489658095
 AudioListener:
   m_ObjectHideFlags: 0
@@ -13797,8 +13799,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1837855037}
   m_HandleRect: {fileID: 1837855036}
   m_Direction: 0
-  m_Value: 0.5
-  m_Size: 0.99999994
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -15893,20 +15895,6 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 0
-  m_FalloffTable:
-    m_Table[0]: 0
-    m_Table[1]: 0
-    m_Table[2]: 0
-    m_Table[3]: 0
-    m_Table[4]: 0
-    m_Table[5]: 0
-    m_Table[6]: 0
-    m_Table[7]: 0
-    m_Table[8]: 0
-    m_Table[9]: 0
-    m_Table[10]: 0
-    m_Table[11]: 0
-    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -20330,20 +20318,6 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 2
-  m_FalloffTable:
-    m_Table[0]: 0
-    m_Table[1]: 0
-    m_Table[2]: 0
-    m_Table[3]: 0
-    m_Table[4]: 0
-    m_Table[5]: 0
-    m_Table[6]: 0
-    m_Table[7]: 0
-    m_Table[8]: 0
-    m_Table[9]: 0
-    m_Table[10]: 0
-    m_Table[11]: 0
-    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -22543,92 +22517,140 @@ MonoBehaviour:
       opponentsLevel: 0
       typeOfWindsID: 0
       raceId: 3
+      enabledTutorial: 1
+      tutorialList: 0000000001000000
     - numberOfOpponents: 1
       opponentsLevel: 0
       typeOfWindsID: 0
       raceId: 3
+      enabledTutorial: 1
+      tutorialList: 0300000004000000
     - numberOfOpponents: 1
       opponentsLevel: 0
       typeOfWindsID: 0
       raceId: 2
+      enabledTutorial: 0
+      tutorialList: 
     - numberOfOpponents: 1
       opponentsLevel: 0
       typeOfWindsID: 0
       raceId: 2
+      enabledTutorial: 0
+      tutorialList: 
     - numberOfOpponents: 1
       opponentsLevel: 0
       typeOfWindsID: 0
       raceId: 1
+      enabledTutorial: 0
+      tutorialList: 
     - numberOfOpponents: 1
       opponentsLevel: 0
       typeOfWindsID: 0
       raceId: 1
+      enabledTutorial: 0
+      tutorialList: 
     - numberOfOpponents: 1
       opponentsLevel: 0
       typeOfWindsID: 0
       raceId: 3
+      enabledTutorial: 0
+      tutorialList: 
     - numberOfOpponents: 1
       opponentsLevel: 0
       typeOfWindsID: 0
       raceId: 0
+      enabledTutorial: 0
+      tutorialList: 
     - numberOfOpponents: 1
       opponentsLevel: 0
       typeOfWindsID: 0
       raceId: 1
+      enabledTutorial: 0
+      tutorialList: 
     - numberOfOpponents: 1
       opponentsLevel: 0
       typeOfWindsID: 0
       raceId: 3
+      enabledTutorial: 0
+      tutorialList: 
     - numberOfOpponents: 1
       opponentsLevel: 0
       typeOfWindsID: 0
       raceId: 2
+      enabledTutorial: 0
+      tutorialList: 
     - numberOfOpponents: 1
       opponentsLevel: 0
       typeOfWindsID: 0
       raceId: 0
-    - numberOfOpponents: 1
-      opponentsLevel: 0
-      typeOfWindsID: 0
-      raceId: 4
+      enabledTutorial: 0
+      tutorialList: 
     - numberOfOpponents: 1
       opponentsLevel: 0
       typeOfWindsID: 0
       raceId: 2
+      enabledTutorial: 0
+      tutorialList: 
     - numberOfOpponents: 1
       opponentsLevel: 0
       typeOfWindsID: 0
-      raceId: 4
+      raceId: 2
+      enabledTutorial: 0
+      tutorialList: 
+    - numberOfOpponents: 1
+      opponentsLevel: 0
+      typeOfWindsID: 0
+      raceId: 0
+      enabledTutorial: 0
+      tutorialList: 
     - numberOfOpponents: 1
       opponentsLevel: 0
       typeOfWindsID: 0
       raceId: 1
+      enabledTutorial: 0
+      tutorialList: 
     - numberOfOpponents: 1
       opponentsLevel: 0
       typeOfWindsID: 0
       raceId: 0
+      enabledTutorial: 0
+      tutorialList: 
     - numberOfOpponents: 1
       opponentsLevel: 0
       typeOfWindsID: 0
       raceId: 0
+      enabledTutorial: 0
+      tutorialList: 
     - numberOfOpponents: 1
       opponentsLevel: 0
       typeOfWindsID: 0
       raceId: 0
+      enabledTutorial: 0
+      tutorialList: 
     - numberOfOpponents: 1
       opponentsLevel: 0
       typeOfWindsID: 0
       raceId: 0
+      enabledTutorial: 0
+      tutorialList: 
+    enabledTutorial: 0
+    tutorialList: 0000000001000000
   - name: Season 2
     raceList:
     - numberOfOpponents: 0
       opponentsLevel: 0
       typeOfWindsID: 0
       raceId: 0
+      enabledTutorial: 0
+      tutorialList: 
     - numberOfOpponents: 1
       opponentsLevel: 0
       typeOfWindsID: 0
       raceId: 1
+      enabledTutorial: 0
+      tutorialList: 
+    enabledTutorial: 0
+    tutorialList: 
   trackList:
   - trackId: 0
     trackName: Beach Parking Lot
@@ -22686,6 +22708,8 @@ MonoBehaviour:
     opponentsLevel: 3
     typeOfWindsID: 0
     raceId: 0
+    enabledTutorial: 0
+    tutorialList: 
   currentRaceOpponentsListIds: 
   tackList:
   - level: 0
@@ -24987,20 +25011,6 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 2
-  m_FalloffTable:
-    m_Table[0]: 0
-    m_Table[1]: 0
-    m_Table[2]: 0
-    m_Table[3]: 0
-    m_Table[4]: 0
-    m_Table[5]: 0
-    m_Table[6]: 0
-    m_Table[7]: 0
-    m_Table[8]: 0
-    m_Table[9]: 0
-    m_Table[10]: 0
-    m_Table[11]: 0
-    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -25804,20 +25814,6 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 0
-  m_FalloffTable:
-    m_Table[0]: 0
-    m_Table[1]: 0
-    m_Table[2]: 0
-    m_Table[3]: 0
-    m_Table[4]: 0
-    m_Table[5]: 0
-    m_Table[6]: 0
-    m_Table[7]: 0
-    m_Table[8]: 0
-    m_Table[9]: 0
-    m_Table[10]: 0
-    m_Table[11]: 0
-    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -37320,20 +37316,6 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 0
-  m_FalloffTable:
-    m_Table[0]: 0
-    m_Table[1]: 0
-    m_Table[2]: 0
-    m_Table[3]: 0
-    m_Table[4]: 0
-    m_Table[5]: 0
-    m_Table[6]: 0
-    m_Table[7]: 0
-    m_Table[8]: 0
-    m_Table[9]: 0
-    m_Table[10]: 0
-    m_Table[11]: 0
-    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -40574,7 +40556,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1099799349}
-        m_MethodName: loadTrack
+        m_MethodName: loadCareerTrack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -40989,20 +40971,6 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 0
-  m_FalloffTable:
-    m_Table[0]: 0
-    m_Table[1]: 0
-    m_Table[2]: 0
-    m_Table[3]: 0
-    m_Table[4]: 0
-    m_Table[5]: 0
-    m_Table[6]: 0
-    m_Table[7]: 0
-    m_Table[8]: 0
-    m_Table[9]: 0
-    m_Table[10]: 0
-    m_Table[11]: 0
-    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -41272,7 +41240,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1870844936
 Transform:
   m_ObjectHideFlags: 0

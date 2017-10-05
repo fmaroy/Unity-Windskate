@@ -16,7 +16,7 @@ public class IntroSequence : MonoBehaviour {
 		IntroImage = UIItemsData.IntroImage;
 		StartCoroutine(introductionManager (IntroductionStage));
 		raceData = GameObject.Find ("RaceManager").GetComponent<RaceManagerScript> ();
-
+		tutorialManager = raceData.gameObject.GetComponent<UserPreferenceScript> ().tutorialObj;
 	}
 
 	/*public void initiateCamera ()

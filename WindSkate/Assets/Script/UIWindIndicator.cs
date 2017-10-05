@@ -147,8 +147,11 @@ public class UIWindIndicator : MonoBehaviour {
             //Debug.Log("Wind Relative distance: " + distanceToGust / maxDistanceToGust);
             //Debug.Log("Icon Placement: " + -1 * (distanceToGust / maxDistanceToGust * canvenasWidth) + minIconPos);
 
+			if (icon.iconObject != null)
+			{
             icon.iconObject.transform.localPosition = new Vector3(-1 * (distanceToGust / maxDistanceToGust * canvenasWidth) + minIconPos, -3.0f, 0.0f);
             //icon.gameObject.GetComponent<Animator>().Play(arrowHashDisplacement, 0, ((1 - distanceToGust) / maxDistanceToGust));
+			}
         }
     }
 
@@ -282,7 +285,6 @@ public class UIWindIndicator : MonoBehaviour {
         //iconObject.GetComponent<Animator>().SetInteger(upcomingWindArrowAppliedInt, 1);
         iconObject.GetComponent<Animator>().SetTrigger(arrowOutlineAnimExitTrigger);
         //currentIconObject.exitAnimFlag = true;
-
     }
 
     /// <summary>

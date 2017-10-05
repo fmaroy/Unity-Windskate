@@ -97,6 +97,7 @@ public class RaceSelector : MonoBehaviour {
 			temp.GetComponent<RectTransform> ().anchoredPosition = new Vector3 (raceItemMargins + currentColumnMargins, -1 * raceItemMargins - currentRowMargins, 0);
 
 			//trackNameObject.GetComponent<Text>().text = currentTrackList[trackid].trackName;
+			Debug.Log(currentTrackID);
 			temp.GetComponent<RawImage>().texture = currentTrackList[currentTrackID].RacePreview;
 			temp.GetComponent<buttonCarreerRaceSelected> ().raceId = raceId;
 			temp.GetComponent<buttonCarreerRaceSelected> ().carreerRaceManager = this.gameObject;
@@ -109,8 +110,6 @@ public class RaceSelector : MonoBehaviour {
 				rowId++;
 			}
 			raceId++;
-
-
 		}
 	}
 
@@ -168,7 +167,6 @@ public class RaceSelector : MonoBehaviour {
         for (int i = 0; i < SceneManagerObject.GetComponent<PersistentParameters>().OpponentConfigList.Capacity; i++)
         {
             tempList.Add(i);
-            
         }
         // Next randomizes "tempList"
         for (int i = 0; i < tempList.Count; i++)
@@ -181,8 +179,31 @@ public class RaceSelector : MonoBehaviour {
         SceneManagerObject.GetComponent<PersistentParameters>().currentRaceOpponentsListIds = tempList;
 		SceneManagerObject.GetComponent<PersistentParameters>().currentSingleRaceDefinition = new SingleRaceProps(numberOpponents, opponentLevel, windType, currentObjId);
         SceneManagerObject.GetComponent<SceneManagerScript>().LoadScene(currentTrackList[currentObjId].sceneName);
-
     }
+
+	public void loadCareerTrack()
+	{
+		List <int> tempList = new List<int>();
+		for (int i = 0; i < SceneManagerObject.GetComponent<PersistentParameters>().OpponentConfigList.Capacity; i++)
+		{
+			tempList.Add(i);
+		}
+		// Next randomizes "tempList"
+		for (int i = 0; i < tempList.Count; i++)
+		{
+			int temp = tempList[i];
+			int randomIndex = Random.Range(i, tempList.Count);
+			tempList[i] = tempList[randomIndex];
+			tempList[randomIndex] = temp;
+		}
+		SceneManagerObject.GetComponent<PersistentParameters>().currentRaceOpponentsListIds = tempList;
+		SceneManagerObject.GetComponent<PersistentParameters>().currentSingleRaceDefinition = currentSeasonList [currentSeasonId].raceList [currentSelectedCarreerRaceId];
+		//SceneManagerObject.GetComponent<PersistentParameters>().currentSingleRaceDefinition = new SingleRaceProps(numberOpponents, opponentLevel, windType, currentObjId);
+		int currentTrackId = currentSeasonList [currentSeasonId].raceList[currentSelectedCarreerRaceId].raceId;
+		string raceName = currentTrackList[currentTrackId].sceneName;
+		Debug.Log ("Loading carreer race : " + raceName);
+		SceneManagerObject.GetComponent<SceneManagerScript>().LoadScene(raceName);
+	}
 
     // Update is called once per frame
     void Update () {

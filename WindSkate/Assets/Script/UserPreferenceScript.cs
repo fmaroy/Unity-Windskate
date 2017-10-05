@@ -28,6 +28,10 @@ public class UserPreferenceScript : MonoBehaviour {
     public GameObject Playerprefab;
     public int numbOpponenents = 2;
 
+	public GameObject tutorialPrefab;
+	public GameObject tutorialObj;
+	public TutorialManager tutorialScript;
+
     // Use this for initialization
     void Start() {
 
@@ -61,7 +65,8 @@ public class UserPreferenceScript : MonoBehaviour {
 					//SetInitialPlayerPosition(playerStartPos[i].transform);
 				}
 			}
-		} else {
+		}
+		else {
 			initInstantiatedPlayer (this.gameObject.GetComponent<RaceManagerScript> ().PlayerObject);
 		}
 
@@ -84,7 +89,28 @@ public class UserPreferenceScript : MonoBehaviour {
         //updateDisplayWindFx(Player);
         //updateDisplayWindFx(Opponents);
         //updateDisplayWindFx(GameObject.Find("Track_Details"));
+		if (IntroScene == false) {
+			tutorialObj = updateTutorialProperties ();
+			//tutorialObj = Instantiate(tutorialPrefab,Vector3.zero,Quaternion.identity) as GameObject;
+			tutorialScript = tutorialObj.GetComponent<TutorialManager> ();
+			this.gameObject.GetComponent<RaceManagerScript> ().tutorialObj = tutorialObj;
+			tutorialScript.player = Player;
+			tutorialScript.opponentContainer = this.GetComponent<RaceManagerScript> ().OpponentContainerObject;
+			tutorialScript.windCircle = WindCircle;
+		}
     }
+
+	public GameObject updateTutorialProperties()
+	{
+		Debug.Log ("");
+		GameObject temp = Instantiate(tutorialPrefab,new Vector3 (400f,200f,0f),Quaternion.identity) as GameObject;
+		Debug.Log ("Instantiated tutorial : " + temp.name);
+		temp.transform.parent = controlData.gameObject.transform;
+		Debug.Log ("Placed tutorial as child of : " + temp.transform.parent.gameObject.name);
+		temp.transform.localScale = new Vector3 (1f, 1f, 1f);
+		temp.transform.localPosition = new Vector3 (1f, 1f, 1f);
+		return temp;
+	}
 
     public void updateWindCondition()
     {

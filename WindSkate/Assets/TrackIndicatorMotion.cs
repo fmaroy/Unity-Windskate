@@ -134,7 +134,7 @@ public class TrackIndicatorMotion : MonoBehaviour {
 		Vector3 dirVector = nextTarget - currentPos;
 		Quaternion rot = Quaternion.AngleAxis (WindData.initWindOrientation, Vector3.up);
 		Vector3 dirWind = rot * Vector3.left;
-		Debug.Log ("WindVector : " + dirWind);
+		//Debug.Log ("WindVector : " + dirWind);
 
 		float dirAngleToWind = Vector3.Angle (dirVector,-1*dirWind);
 		//Debug.Log ("Angle to wind : " + dirAngleToWind);

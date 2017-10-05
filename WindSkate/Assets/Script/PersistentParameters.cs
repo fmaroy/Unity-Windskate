@@ -196,14 +196,14 @@ public class CareerSeasonProps
 {
 	public string name;
 	public List<SingleRaceProps> raceList;
+	public bool enabledTutorial;
+	public List<int> tutorialList;
 
 	public CareerSeasonProps(string n)
 	{
 		name = n;
 	}
-
 }
-
 
 [System.Serializable]
 public class SingleRaceProps
@@ -212,6 +212,8 @@ public class SingleRaceProps
     public int opponentsLevel;
     public int typeOfWindsID;
 	public int raceId;
+	public bool enabledTutorial;
+	public List<int> tutorialList;
 
 	public SingleRaceProps(int n, int l, int w, int r)
     {
