@@ -9,13 +9,13 @@ public class RaceSelector : MonoBehaviour {
     private GameObject SceneManagerObject;
     private PersistentParameters PersistentParameterData;
     private GameObject RaceManagerObject;
-    private UserPreferenceScript RaceManagerData;
+    //private UserPreferenceScript RaceManagerData;
 
     public int currentObjId = 0;
 	public List<CareerSeasonProps> currentSeasonList = new List<CareerSeasonProps> ();
     public List<TrackList> currentTrackList = new List<TrackList>();
 	public List<GameObject> seasonRaceObj = new List<GameObject> ();
-    public GameObject trackNameObject;
+    public GameObject pannelNameObject;
     public GameObject RaceImageObject;
 
     public int numberOpponents = 3;
@@ -38,7 +38,7 @@ public class RaceSelector : MonoBehaviour {
         SceneManagerObject = GameObject.Find("Scene_Manager");
         PersistentParameterData = SceneManagerObject.GetComponent<PersistentParameters>();
         RaceManagerObject = GameObject.Find("RaceManager");
-        RaceManagerData = RaceManagerObject.GetComponent<UserPreferenceScript>();
+        //RaceManagerData = RaceManagerObject.GetComponent<UserPreferenceScript>();
 
 		foreach (TrackList track in PersistentParameterData.trackList) {
 			currentTrackList.Add (track);
@@ -48,7 +48,7 @@ public class RaceSelector : MonoBehaviour {
 			foreach (CareerSeasonProps season in PersistentParameterData.seasonList) {
 				currentSeasonList.Add (season);
 			}
-			updateSeason (currentSeasonId);
+			updateSeasonPannel (currentSeasonId);
 		}
 
 
@@ -75,14 +75,25 @@ public class RaceSelector : MonoBehaviour {
 		}
 	}
 
-	public void updateSeason(int seasonId)
+	public void eraseSeasonPannel()
+	{
+		foreach (GameObject raceobj in seasonRaceObj) {
+			Destroy (raceobj);
+
+		}
+		seasonRaceObj = new List<GameObject> ();
+
+	}
+
+	public void updateSeasonPannel(int seasonId)
 	{
 		int raceId = 0;
 		int columnId = 0;
 		int rowId = 0;
+		pannelNameObject.GetComponent<Text> ().text = currentSeasonList [currentSeasonId].name;
 		seasonRaceObj = new List<GameObject> ();
 		Vector2 itemDimensions = trackTemplate.GetComponent<RectTransform> ().sizeDelta;
-		Debug.Log (itemDimensions);
+		//Debug.Log (itemDimensions);
 		foreach (SingleRaceProps race in currentSeasonList[seasonId].raceList) {
 			int currentTrackID = race.raceId;
 			//List<TrackList> currentListOfTrack = PersistentParameterData.trackList;
@@ -92,12 +103,12 @@ public class RaceSelector : MonoBehaviour {
 			temp.transform.SetParent (seasonPannel.transform, false);
 			float currentColumnMargins = (raceItemMargins + itemDimensions [0]) * columnId;
 			float currentRowMargins = (raceItemMargins + itemDimensions [1]) * rowId;
-			Debug.Log ("row : " + rowId + ", ColumnPos : " + currentColumnMargins + ", RowPos : " + currentRowMargins);
+			//Debug.Log ("row : " + rowId + ", ColumnPos : " + currentColumnMargins + ", RowPos : " + currentRowMargins);
 			//temp.transform.localPosition = 
 			temp.GetComponent<RectTransform> ().anchoredPosition = new Vector3 (raceItemMargins + currentColumnMargins, -1 * raceItemMargins - currentRowMargins, 0);
 
-			//trackNameObject.GetComponent<Text>().text = currentTrackList[trackid].trackName;
-			Debug.Log(currentTrackID);
+			//pannelNameObject.GetComponent<Text>().text = currentTrackList[trackid].trackName;
+			//Debug.Log(currentTrackID);
 			temp.GetComponent<RawImage>().texture = currentTrackList[currentTrackID].RacePreview;
 			temp.GetComponent<buttonCarreerRaceSelected> ().raceId = raceId;
 			temp.GetComponent<buttonCarreerRaceSelected> ().carreerRaceManager = this.gameObject;
@@ -106,7 +117,7 @@ public class RaceSelector : MonoBehaviour {
 			columnId++;
 			if (columnId >= numbColumn-1) {
 				columnId = 0;
-				Debug.Log ("updating rowId");
+				//Debug.Log ("updating rowId");
 				rowId++;
 			}
 			raceId++;
@@ -145,7 +156,7 @@ public class RaceSelector : MonoBehaviour {
 
     public void updateCurrentTrack(int trackid)
     {
-        trackNameObject.GetComponent<Text>().text = currentTrackList[trackid].trackName;
+        pannelNameObject.GetComponent<Text>().text = currentTrackList[trackid].trackName;
         RaceImageObject.GetComponent<RawImage>().texture = currentTrackList[trackid].RacePreview;
         currentObjId = trackid;
     }
@@ -161,6 +172,23 @@ public class RaceSelector : MonoBehaviour {
         currentObjId = Mathf.Clamp(currentObjId, 0, currentTrackList.Count - 1);
         updateCurrentTrack(currentObjId);
     }
+
+	public void nextSeason()
+	{
+		currentSeasonId = currentSeasonId + 1;
+		currentSeasonId = Mathf.Clamp(currentSeasonId, 0, currentSeasonList.Count - 1);
+		eraseSeasonPannel ();
+		updateSeasonPannel (currentSeasonId);
+	}
+
+	public void prevSeason()
+	{
+		currentSeasonId = currentSeasonId - 1;
+		currentSeasonId = Mathf.Clamp(currentSeasonId, 0, currentSeasonList.Count - 1);
+		eraseSeasonPannel ();
+		updateSeasonPannel (currentSeasonId);
+	}
+
     public void loadTrack()
     {
         List <int> tempList = new List<int>();
@@ -173,7 +201,7 @@ public class RaceSelector : MonoBehaviour {
         {
             int temp = tempList[i];
             int randomIndex = Random.Range(i, tempList.Count);
-            tempList[i] = tempList[randomIndex];
+            tempList[i] = tempList[randomIndex]; 
             tempList[randomIndex] = temp;
         }
         SceneManagerObject.GetComponent<PersistentParameters>().currentRaceOpponentsListIds = tempList;
@@ -198,7 +226,10 @@ public class RaceSelector : MonoBehaviour {
 		}
 		SceneManagerObject.GetComponent<PersistentParameters>().currentRaceOpponentsListIds = tempList;
 		SceneManagerObject.GetComponent<PersistentParameters>().currentSingleRaceDefinition = currentSeasonList [currentSeasonId].raceList [currentSelectedCarreerRaceId];
-		//SceneManagerObject.GetComponent<PersistentParameters>().currentSingleRaceDefinition = new SingleRaceProps(numberOpponents, opponentLevel, windType, currentObjId);
+
+		SceneManagerObject.GetComponent<PersistentParameters> ().currentSeasonId = currentSeasonId;
+		SceneManagerObject.GetComponent<PersistentParameters> ().currentCarreerTrackId = currentSelectedCarreerRaceId;
+
 		int currentTrackId = currentSeasonList [currentSeasonId].raceList[currentSelectedCarreerRaceId].raceId;
 		string raceName = currentTrackList[currentTrackId].sceneName;
 		Debug.Log ("Loading carreer race : " + raceName);

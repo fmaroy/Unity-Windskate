@@ -25,6 +25,10 @@ public class UserPreferenceScript : MonoBehaviour {
     public List<ManoeuvreType> localJibeManoeuvres = new List<ManoeuvreType>();
 	public InterfaceControl controlData;
 
+	public int raceType = 0; // 0 for single race, 1 for carreer race
+	public int currentCarreerSeason = 0;
+	public int currentCarreerRace = 0;
+
     public GameObject Playerprefab;
     public int numbOpponenents = 2;
 
@@ -45,6 +49,14 @@ public class UserPreferenceScript : MonoBehaviour {
 			localTackManoeuvres = SceneManagerObject.GetComponent<PersistentParameters> ().tackList;
 			localJibeManoeuvres = SceneManagerObject.GetComponent<PersistentParameters> ().jibeList;
             numbOpponenents = SceneManagerObject.GetComponent<PersistentParameters>().currentSingleRaceDefinition.numberOfOpponents;
+
+			if (SceneManagerObject.GetComponent<PersistentParameters> ().currentRaceType == 1) { //raceType is 1 : the current race is part of the carreer race
+				// passes to the current scene the season and race id
+				currentCarreerSeason = SceneManagerObject.GetComponent<PersistentParameters> ().currentSeasonId;
+				currentCarreerRace = SceneManagerObject.GetComponent<PersistentParameters> ().currentCarreerTrackId;
+				// loading the tutorial info from the scene manager
+
+			}
         }
                 
 		if (IntroScene == false) {
@@ -89,27 +101,45 @@ public class UserPreferenceScript : MonoBehaviour {
         //updateDisplayWindFx(Player);
         //updateDisplayWindFx(Opponents);
         //updateDisplayWindFx(GameObject.Find("Track_Details"));
+
 		if (IntroScene == false) {
-			tutorialObj = updateTutorialProperties ();
-			//tutorialObj = Instantiate(tutorialPrefab,Vector3.zero,Quaternion.identity) as GameObject;
-			tutorialScript = tutorialObj.GetComponent<TutorialManager> ();
-			this.gameObject.GetComponent<RaceManagerScript> ().tutorialObj = tutorialObj;
-			tutorialScript.player = Player;
-			tutorialScript.opponentContainer = this.GetComponent<RaceManagerScript> ().OpponentContainerObject;
-			tutorialScript.windCircle = WindCircle;
+			if (SceneManagerObject != null)
+			{
+				if (SceneManagerObject.GetComponent<PersistentParameters> ().currentSingleRaceDefinition.enabledTutorial == true) {
+					
+					tutorialObj = Instantiate(tutorialPrefab,new Vector3 (400f,200f,0f),Quaternion.identity) as GameObject;
+					Debug.Log ("Instantiated tutorial : " + tutorialObj.name);
+					tutorialObj.transform.parent = controlData.gameObject.transform;
+					Debug.Log ("Placed tutorial as child of : " + tutorialObj.transform.parent.gameObject.name);
+					tutorialObj.transform.localScale = new Vector3 (1f, 1f, 1f);
+					tutorialObj.transform.localPosition = new Vector3 (1f, 1f, 1f);
+
+					tutorialScript = tutorialObj.GetComponent<TutorialManager> ();
+					this.gameObject.GetComponent<RaceManagerScript> ().tutorialObj = tutorialObj;
+
+					updateTutorialProperties ();
+
+					tutorialScript.player = Player;
+					tutorialScript.opponentContainer = this.GetComponent<RaceManagerScript> ().OpponentContainerObject;
+					tutorialScript.windCircle = WindCircle;
+				}
+			}
 		}
     }
 
-	public GameObject updateTutorialProperties()
+	public void updateTutorialProperties()
 	{
-		Debug.Log ("");
-		GameObject temp = Instantiate(tutorialPrefab,new Vector3 (400f,200f,0f),Quaternion.identity) as GameObject;
-		Debug.Log ("Instantiated tutorial : " + temp.name);
-		temp.transform.parent = controlData.gameObject.transform;
-		Debug.Log ("Placed tutorial as child of : " + temp.transform.parent.gameObject.name);
-		temp.transform.localScale = new Vector3 (1f, 1f, 1f);
-		temp.transform.localPosition = new Vector3 (1f, 1f, 1f);
-		return temp;
+		int i = 0;
+		foreach (tutorialItem tuto in tutorialScript.tutorialList) {
+			if (SceneManagerObject.GetComponent<PersistentParameters> ().currentSingleRaceDefinition.tutorialList.Contains(i)){ //verify if the current tutorial itme is set in the persistent parameter of the scene
+				Debug.Log("enabling tuto : " + i);
+				tuto.isEnabled = true;
+			}
+			else{
+				tuto.isEnabled = false;
+			}
+			i++;
+		}
 	}
 
     public void updateWindCondition()

@@ -34,10 +34,14 @@ public class PersistentParameters : MonoBehaviour
     public List<WindType> ListOfWinds = new List<WindType>();
 
     public SingleRaceProps currentSingleRaceDefinition = new SingleRaceProps(3, 3, 0, 0);
+	public int currentRaceType = 0; // 0 for single race, 1 for carreer race
+	public int currentSeasonId = 0;
+	public int currentCarreerTrackId = 0;
     public List<int> currentRaceOpponentsListIds = new List<int>();
     public List<ManoeuvreType> tackList = new List<ManoeuvreType>();
     public List<ManoeuvreType> jibeList = new List<ManoeuvreType>();
-    
+
+
     void initPlayerPref()
     {
         if (PlayerPrefs.HasKey("PlayerName") == false)

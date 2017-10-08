@@ -5,6 +5,7 @@ using Cinemachine;
 
 public class TutorialManager : MonoBehaviour {
 
+	public GameObject raceObject;
 	public List<tutorialItem> tutorialList = new List<tutorialItem>();
 	public bool timerToTutorialFlag;
 	public tutorialItem currentTutorialItem;
@@ -16,20 +17,28 @@ public class TutorialManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		GameObject.Find ("RaceManager").GetComponent<RaceManagerScript>().tutorialObj = this.gameObject;
-		player = GameObject.Find ("RaceManager").GetComponent<RaceManagerScript> ().PlayerObject;
-		opponentContainer = GameObject.Find ("RaceManager").GetComponent<RaceManagerScript> ().OpponentContainerObject;
+		raceObject = GameObject.Find ("RaceManager");
+		raceObject.GetComponent<RaceManagerScript>().tutorialObj = this.gameObject;
+		player = raceObject.GetComponent<RaceManagerScript> ().PlayerObject;
+		opponentContainer = raceObject.GetComponent<RaceManagerScript> ().OpponentContainerObject;
 		windCircle = player.GetComponentInChildren<CircleIndicators> ().gameObject;
 
 		enableTutorial ("");
-			
-
-
 	}
 	
 	public void tutorialObjectAssignments()
 	{
 		foreach (tutorialItem item in tutorialList) {
+			if (item.name == "Trace tutorial") {
+				//item.camPos = raceObject.GetComponent<RaceManagerScript>().IntroductionObj.transform.GetChild(0).gameObject;
+				//item.camOrient = raceObject.GetComponent<RaceManagerScript>().IntroductionObj.transform.GetChild(0).gameObject;
+				item.tweeningObj1 = raceObject.GetComponent<RaceManagerScript>().IntroductionObj.transform.GetChild(0).gameObject;
+				//item.tweeningObj2 = windCircle.GetComponentInChildren<WindGaugeScript> ().gameObject;
+			}
+			if (item.name == "Basic Controls tutorial") {
+				item.tweeningObj1 = player.GetComponent<ExternalObjectsReference>().UIControlData.TurnLeftButton;
+				item.tweeningObj2 = player.GetComponent<ExternalObjectsReference>().UIControlData.TurnRightButton;
+			}
 			if (item.name == "Wind Circle tutorial") {
 				item.tweeningObj1 = windCircle.GetComponent<CircleIndicators> ().trueWindArrow;
 				item.tweeningObj2 = windCircle.GetComponentInChildren<WindGaugeScript> ().gameObject;
@@ -39,7 +48,6 @@ public class TutorialManager : MonoBehaviour {
 				item.tweeningObj2 = windCircle.GetComponent<CircleIndicators> ().trackDirectionIndicator;
 				item.camPos = windCircle.GetComponent<CircleIndicators> ().trackDirectionTickArrow;
 				item.camOrient = player.GetComponentInChildren<Follow_track> ().gameObject;
-				//item.camPos = 
 			}
 			if (item.name == "Track Mark tutorial") {
 				item.tweeningObj1 = player.GetComponentInChildren<Follow_track> ().currentMark;
@@ -113,11 +121,16 @@ public class TutorialManager : MonoBehaviour {
 		t.itemObject.GetComponent<TutorialObjectScript>().pulsingObject2 = t.tweeningObj2;
 		t.itemObject.GetComponentInChildren<tutorialTweening> ().pulseIntensity1 = t.tweenIntensity1;
 		t.itemObject.GetComponentInChildren<tutorialTweening> ().pulseIntensity2 = t.tweenIntensity2;
+		if (t.camPos != null) {
 		if (t.itemObject.GetComponentInChildren<CinemachineVirtualCamera> ().m_LookAt == null) {
+			Debug.Log ("found virtual camera attached on object : " + t.itemObject.GetComponentInChildren<CinemachineVirtualCamera> ().gameObject.name);
 			t.itemObject.GetComponentInChildren<CinemachineVirtualCamera> ().m_LookAt = t.camPos.transform;
+			}
 		}
-		if (t.itemObject.GetComponentInChildren<CinemachineVirtualCamera> ().m_Follow == null) {
-			t.itemObject.GetComponentInChildren<CinemachineVirtualCamera> ().m_Follow = t.camOrient.transform;
+		if (t.camOrient != null) {
+			if (t.itemObject.GetComponentInChildren<CinemachineVirtualCamera> ().m_Follow == null) {
+				t.itemObject.GetComponentInChildren<CinemachineVirtualCamera> ().m_Follow = t.camOrient.transform;
+			}
 		}
 
 		Time.timeScale = 0.0f;

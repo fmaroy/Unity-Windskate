@@ -18,6 +18,7 @@ public class RaceManagerScript : MonoBehaviour {
     public GameObject OpponentContainerObject;
     public GameObject PlayerObject;
 	public GameObject tutorialObj;
+	public GameObject IntroductionObj;
 
     // Use this for initialization
     void Start()

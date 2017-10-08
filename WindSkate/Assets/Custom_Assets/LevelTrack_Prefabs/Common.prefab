@@ -2456,6 +2456,7 @@ MonoBehaviour:
   OpponentContainerObject: {fileID: 140092}
   PlayerObject: {fileID: 0}
   tutorialObj: {fileID: 0}
+  IntroductionObj: {fileID: 1135633632416130}
 --- !u!114 &11418220
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3481,6 +3482,9 @@ MonoBehaviour:
     costSpeed: 30
     costAngle: 3
   controlData: {fileID: 0}
+  raceType: 0
+  currentCarreerSeason: 0
+  currentCarreerRace: 0
   Playerprefab: {fileID: 1000014239610428, guid: 9e49ecb09d5c3ab41b750225c6f57142,
     type: 2}
   numbOpponenents: 0
