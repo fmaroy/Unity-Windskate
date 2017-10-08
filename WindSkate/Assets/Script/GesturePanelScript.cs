@@ -38,6 +38,8 @@ public class GesturePanelScript : MonoBehaviour
     void Start()
     {
         //CamControlSensitivity = 1000f;
+		currentCamera = Camera.main.gameObject;
+
         CamRotationX = 0f;
 		CamRotationY = 0f;
         //cameraTarget = currentCamera.GetComponent<CameraControlScript>().CameraTarget;
