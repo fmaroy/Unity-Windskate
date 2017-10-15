@@ -11543,7 +11543,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isIntroScene: 1
-  cameraId: 4
+  cameraId: 2
   introCameraTimer: 5
   playerPosTarget: {fileID: 0}
   playerOrientTarget: {fileID: 0}
@@ -13799,7 +13799,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1837855037}
   m_HandleRect: {fileID: 1837855036}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -22710,6 +22710,9 @@ MonoBehaviour:
     raceId: 0
     enabledTutorial: 0
     tutorialList: 
+  currentRaceType: 0
+  currentSeasonId: 0
+  currentCarreerTrackId: 0
   currentRaceOpponentsListIds: 
   tackList:
   - level: 0
