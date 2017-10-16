@@ -218,6 +218,7 @@ public class SingleRaceProps
 	public int raceId;
 	public bool enabledTutorial;
 	public List<int> tutorialList;
+	public int numbStars;
 
 	public SingleRaceProps(int n, int l, int w, int r)
     {
@@ -226,7 +227,6 @@ public class SingleRaceProps
         typeOfWindsID = w;
 		raceId = r;
     }
-
 }
 
 [System.Serializable]

@@ -33,6 +33,8 @@ public class RaceSelector : MonoBehaviour {
 	public int currentSeasonId = 0;
 	public int currentSelectedCarreerRaceId = 0;
 
+	public List<Sprite> starSpriteList = new List<Sprite> ();
+
     // Use this for initialization
     void Start () {
         SceneManagerObject = GameObject.Find("Scene_Manager");
@@ -120,6 +122,18 @@ public class RaceSelector : MonoBehaviour {
 				//Debug.Log ("updating rowId");
 				rowId++;
 			}
+
+			//update numb stars
+			int i = 0;
+			foreach (Transform star in temp.transform.GetChild(0)) {
+				if (i < race.numbStars) {
+					star.GetComponent<Image> ().sprite = starSpriteList [1];
+				} else {
+					star.GetComponent<Image> ().sprite = starSpriteList [0];
+				}
+				i++;
+			}
+
 			raceId++;
 		}
 	}
@@ -204,6 +218,7 @@ public class RaceSelector : MonoBehaviour {
             tempList[i] = tempList[randomIndex]; 
             tempList[randomIndex] = temp;
         }
+		SceneManagerObject.GetComponent<PersistentParameters> ().currentRaceType = 0;
         SceneManagerObject.GetComponent<PersistentParameters>().currentRaceOpponentsListIds = tempList;
 		SceneManagerObject.GetComponent<PersistentParameters>().currentSingleRaceDefinition = new SingleRaceProps(numberOpponents, opponentLevel, windType, currentObjId);
         SceneManagerObject.GetComponent<SceneManagerScript>().LoadScene(currentTrackList[currentObjId].sceneName);
@@ -227,6 +242,7 @@ public class RaceSelector : MonoBehaviour {
 		SceneManagerObject.GetComponent<PersistentParameters>().currentRaceOpponentsListIds = tempList;
 		SceneManagerObject.GetComponent<PersistentParameters>().currentSingleRaceDefinition = currentSeasonList [currentSeasonId].raceList [currentSelectedCarreerRaceId];
 
+		SceneManagerObject.GetComponent<PersistentParameters> ().currentRaceType = 1;
 		SceneManagerObject.GetComponent<PersistentParameters> ().currentSeasonId = currentSeasonId;
 		SceneManagerObject.GetComponent<PersistentParameters> ().currentCarreerTrackId = currentSelectedCarreerRaceId;
 

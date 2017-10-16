@@ -91,6 +91,7 @@ public class IntroSequence : MonoBehaviour {
 			yield return StartCoroutine (disableObjectTimer(5.5f, UIItemsData.StartLights, false));
 
 			StartCoroutine(raceData.PlayerObject.GetComponent<PlayerStart>().PlayerStartSequence ());
+			raceData.PlayerObject.GetComponentInChildren<Follow_track> ().updateTrackIndicator (); // required to force the update display of the projectors after the indication arrow
 			//raceData.PlayerObject.GetComponent<PlayerStart>().tempPlayerStartSequence();
 
 			foreach (GameObject opponentObj in raceData.OpponenentObjectsList) {

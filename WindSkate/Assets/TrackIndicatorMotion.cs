@@ -175,18 +175,18 @@ public class TrackIndicatorMotion : MonoBehaviour {
 	Vector3 followWind(bool starboardside, bool goUpWind)
 	{
 		Vector3 target = Vector3.zero;
-		Debug.Log ("Follow wind orient : " + WindData.initWindOrientation);
+		//Debug.Log ("Follow wind orient : " + WindData.initWindOrientation);
 		Quaternion rot = Quaternion.AngleAxis (WindData.initWindOrientation, Vector3.up);
 		Vector3 dirWind = rot * Vector3.left;
 
 		if (goUpWind) {
-			Debug.Log ("is Upwind");
+			//Debug.Log ("is Upwind");
 			goingUpwind = true;
 			if (starboardside) {
 				rot = Quaternion.AngleAxis (45, Vector3.up);
-				Debug.Log (rot * Vector3.forward);
+				//Debug.Log (rot * Vector3.forward);
 				target = rot * (-1 * dirWind) * 1000;
-				Debug.Log ("target0 : " + target);
+				//Debug.Log ("target0 : " + target);
 			} else {
 				rot = Quaternion.AngleAxis (-45, Vector3.up);
 				//Debug.Log (rot * Vector3.forward);
@@ -195,7 +195,7 @@ public class TrackIndicatorMotion : MonoBehaviour {
 			}
 		}
 		else {
-			Debug.Log ("is Downwind");
+			//Debug.Log ("is Downwind");
 
 			goingUpwind = false;
 			if (starboardside) {

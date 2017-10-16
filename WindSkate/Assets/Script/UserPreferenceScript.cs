@@ -50,7 +50,8 @@ public class UserPreferenceScript : MonoBehaviour {
 			localJibeManoeuvres = SceneManagerObject.GetComponent<PersistentParameters> ().jibeList;
             numbOpponenents = SceneManagerObject.GetComponent<PersistentParameters>().currentSingleRaceDefinition.numberOfOpponents;
 
-			if (SceneManagerObject.GetComponent<PersistentParameters> ().currentRaceType == 1) { //raceType is 1 : the current race is part of the carreer race
+			raceType = SceneManagerObject.GetComponent<PersistentParameters> ().currentRaceType;
+			if (raceType == 1) { //raceType is 1 : the current race is part of the carreer race
 				// passes to the current scene the season and race id
 				currentCarreerSeason = SceneManagerObject.GetComponent<PersistentParameters> ().currentSeasonId;
 				currentCarreerRace = SceneManagerObject.GetComponent<PersistentParameters> ().currentCarreerTrackId;
@@ -126,6 +127,19 @@ public class UserPreferenceScript : MonoBehaviour {
 			}
 		}
     }
+
+	public void feedSceneWithResults(int stars)
+	{
+		if (SceneManagerObject != null) {
+			PersistentParameters persistentData = SceneManagerObject.GetComponent<PersistentParameters> ();
+			SingleRaceProps currentRace;
+			if (raceType == 1) {
+				currentRace = persistentData.seasonList [currentCarreerSeason].raceList [currentCarreerRace];
+				currentRace.numbStars = stars;
+				Debug.Log ("Stars result feed back to Scene data : " + stars);
+			}
+		}
+	}
 
 	public void updateTutorialProperties()
 	{

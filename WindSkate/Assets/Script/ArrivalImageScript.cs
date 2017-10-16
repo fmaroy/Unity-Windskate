@@ -22,6 +22,7 @@ public class ArrivalImageScript : MonoBehaviour {
 	public List<Camera> camPreviewList = new List<Camera>();
 	public List<GameObject> opponentInfo = new List<GameObject> ();
 	public int playerPosition = 0;
+	public int numbStars = 0;
 
 
 
@@ -55,7 +56,9 @@ public class ArrivalImageScript : MonoBehaviour {
 			i++;
 		}
 		playerPosition = GetPosition (raceManagerData.PlayerObject);
+		numbStars = getStarsNumber (playerPosition);
 		displayManager ();
+		updateSceneData ();
 	}
 
 	public void displayManager ()
@@ -81,6 +84,12 @@ public class ArrivalImageScript : MonoBehaviour {
 		animateStars (playerPosition);
 	}
 
+	public void updateSceneData()
+	{
+		Debug.Log("arrival update scene data");
+		raceManager.GetComponent<UserPreferenceScript> ().feedSceneWithResults (numbStars);
+	}
+
 	public void animateStars(int i)
 	{
 		List<GameObject> starsObjList = new List<GameObject> ();
@@ -89,13 +98,13 @@ public class ArrivalImageScript : MonoBehaviour {
 		foreach (Transform star in starsContainer.transform) {
 			starsObjList.Add (star.gameObject);
 		}
-		switch (playerPosition) {
-		case 1:
+		switch (numbStars) {
+		case 3:
 			break;
 		case 2:
 			starsObjList [2].GetComponent<Animator> ().enabled = false;
 			break;
-		case 3:
+		case 1:
 			starsObjList [1].GetComponent<Animator> ().enabled = false;
 			starsObjList [2].GetComponent<Animator> ().enabled = false;
 			break;
@@ -125,21 +134,39 @@ public class ArrivalImageScript : MonoBehaviour {
 		return pos;
 	}
 
+	/// <summary>
+	/// Gets the nulber of Stars.
+	/// </summary>
+	/// <returns>The stars number.</returns>
+	/// <param name="pos">Position.</param>
+	public int getStarsNumber (int pos)
+	{
+		int numb = 0;
+
+		numb = 4 - pos;
+		if (numb < 0)
+		{
+			numb = 0;
+		}
+
+		return numb;
+	}
+
 	void updatePreviewImage(int id, GameObject opponent)
 	{
 		opponentInfo[id].GetComponent<RawImage>().texture = opponent.GetComponentInChildren<Camera>().targetTexture;
 	}
 	void updateOpponentName(int id, GameObject opponent)
 	{
-		Debug.Log (opponent.GetComponent<playerInventory> ().PlayerName);
-		Debug.Log (opponentInfo [id].name);
-		Debug.Log (opponentInfo [id].transform.GetChild(0).gameObject.name);
+		//Debug.Log (opponent.GetComponent<playerInventory> ().PlayerName);
+		//Debug.Log (opponentInfo [id].name);
+		//Debug.Log (opponentInfo [id].transform.GetChild(0).gameObject.name);
 		TextMeshProUGUI textMesh = opponentInfo [id].transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI> ();
-		Debug.Log (textMesh.text);
+		//Debug.Log (textMesh.text);
 		textMesh.text = opponent.GetComponent<playerInventory> ().PlayerName;
 		TextMeshProUGUI rankingMesh = opponentInfo [id].transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI> ();
-		Debug.Log (rankingMesh.text);
-		rankingMesh.text = (id.ToString() + ".");
+		//Debug.Log (rankingMesh.text);
+		rankingMesh.text = ((id + 1).ToString() + ".");
 	}
 
 	// Update is called once per frame

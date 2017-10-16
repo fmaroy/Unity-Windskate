@@ -30,10 +30,10 @@ public class TutorialManager : MonoBehaviour {
 	{
 		foreach (tutorialItem item in tutorialList) {
 			if (item.name == "Trace tutorial") {
-				//item.camPos = raceObject.GetComponent<RaceManagerScript>().IntroductionObj.transform.GetChild(0).gameObject;
-				//item.camOrient = raceObject.GetComponent<RaceManagerScript>().IntroductionObj.transform.GetChild(0).gameObject;
+				item.camPos = raceObject.GetComponent<RaceManagerScript>().IntroductionObj.transform.GetChild(0).gameObject;
+				item.camOrient = raceObject.GetComponent<RaceManagerScript>().IntroductionObj.transform.GetChild(0).gameObject;
 				item.tweeningObj1 = raceObject.GetComponent<RaceManagerScript>().IntroductionObj.transform.GetChild(0).gameObject;
-				//item.tweeningObj2 = windCircle.GetComponentInChildren<WindGaugeScript> ().gameObject;
+				item.tweeningObj2 = player;
 			}
 			if (item.name == "Basic Controls tutorial") {
 				item.tweeningObj1 = player.GetComponent<ExternalObjectsReference>().UIControlData.TurnLeftButton;
@@ -87,11 +87,11 @@ public class TutorialManager : MonoBehaviour {
 	public void enableTutorial(string name)
 	{
 		
-		Debug.Log ("Enabled Tutorial : " + name);
+		//Debug.Log ("Enabled Tutorial : " + name);
 		foreach (tutorialItem tuto in tutorialList) {
 			if (tuto.name == name) {
 				if (tuto.isEnabled) {
-				Debug.Log ("enabling tutorial");
+				//Debug.Log ("enabling tutorial");
 				tutorialObjectAssignments ();
 				StartCoroutine (timeBeforeShowingTutorial(tuto));
 				currentTutorialItem = tuto;
@@ -137,7 +137,7 @@ public class TutorialManager : MonoBehaviour {
 		t.itemObject.SetActive (false);
 		t.itemObject.SetActive (true);
 		//Time.fixedDeltaTime = 0.01f * Time.timeScale;
-		Debug.Log ("enabled tutorial");
+		//Debug.Log ("enabled tutorial");
 	}
 
 	// Update is called once per frame

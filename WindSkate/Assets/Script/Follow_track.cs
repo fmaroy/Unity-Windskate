@@ -126,6 +126,7 @@ public class Follow_track : MonoBehaviour
         trackDef = GameObject.Find("Track_Marks");
         trackData = trackDef.GetComponent<Setup_track>();
         boardControlData = this.GetComponent<BoardForces>();
+		currentMarkId = 0;
         currentMark = GameObject.Find(trackData.markSequence[currentMarkId]);
         markData = currentMark.GetComponent<Mark>();
 
@@ -142,7 +143,7 @@ public class Follow_track : MonoBehaviour
             foreach (string name in markIndicatorName)
             {
                 markIndicator.Add(GameObject.Find(name));
-                Debug.Log(GameObject.Find(name).name);
+                //Debug.Log(GameObject.Find(name).name);
             }
 
             if (markData.singleMark == true)
@@ -157,6 +158,7 @@ public class Follow_track : MonoBehaviour
                     markIndicator[0].transform.GetChild(1).localEulerAngles = new Vector3(270.0f, 180.0f, 180.0f);
                 }*/
                 markIndicator[1].SetActive(false);
+				//Debug.Log ("current mark position : " + currentMark.transform.position);
                 markIndicator[0].transform.position = new Vector3(currentMark.transform.position.x, 0.0f, currentMark.transform.position.z);
             }
         }
@@ -210,10 +212,20 @@ public class Follow_track : MonoBehaviour
         {
             arrivalObject = GameObject.Find("Arrival");
         }
+		updateTrackIndicator ();
+    }
+
+	public void updateMarkParticleSystem(int id)
+	{
+		
+	}
+
+	public void updateTrackIndicator()
+	{
 		if ((userPrefData.IntroScene == false)&&(isPlayer == true)) {
 			handleTrackIndicator (currentMarkId);
 		}
-    }
+	}
 
     public void updateManualDriveFollowTrack()
     {
@@ -452,6 +464,7 @@ public class Follow_track : MonoBehaviour
 				// checks if current mark has children
 				if (GameObject.Find (trackData.markSequence [id]).GetComponent<Mark> ().Children.Count != 0) {
 					foreach (GameObject obj in GameObject.Find(trackData.markSequence[id]).GetComponent<Mark>().Children) {
+						//Debug.Log ("enabling mark projector on mark : " + id);
 						obj.transform.Find ("Projector").gameObject.SetActive (true);
 					}
 				} else {

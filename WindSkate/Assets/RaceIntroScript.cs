@@ -75,11 +75,11 @@ public class RaceIntroScript : MonoBehaviour {
 	}
 	void updateOpponentName(int id, GameObject opponent)
 	{
-		Debug.Log (opponent.GetComponent<playerInventory> ().PlayerName);
-		Debug.Log (opponentInfo [id].name);
-		Debug.Log (opponentInfo [id].transform.GetChild(0).gameObject.name);
+		//Debug.Log (opponent.GetComponent<playerInventory> ().PlayerName);
+		//Debug.Log (opponentInfo [id].name);
+		//Debug.Log (opponentInfo [id].transform.GetChild(0).gameObject.name);
 		TextMeshProUGUI textMesh = opponentInfo [id].transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI> ();
-		Debug.Log (textMesh.text);
+		//Debug.Log (textMesh.text);
 		textMesh.text = opponent.GetComponent<playerInventory> ().PlayerName;
 	}
 

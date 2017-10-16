@@ -125,7 +125,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.204
+  bundleVersion: 0.21
   preloadedAssets: []
   metroInputSource: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -151,8 +151,8 @@ PlayerSettings:
     iOS: com.FabStudio.WindSkate
     tvOS: com.FabStudio.WindSkate
   buildNumber:
-    iOS: 5
-  AndroidBundleVersionCode: 6
+    iOS: 7
+  AndroidBundleVersionCode: 7
   AndroidMinSdkVersion: 18
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1

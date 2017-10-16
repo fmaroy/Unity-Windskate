@@ -1,0 +1,703 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1238165586405360}
+  m_IsPrefabParent: 1
+--- !u!1 &1238165586405360
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4508885055282820}
+  - component: {fileID: 114149829654832736}
+  - component: {fileID: 114973353654805790}
+  - component: {fileID: 114037663776196218}
+  - component: {fileID: 114596585643164716}
+  - component: {fileID: 114497121864444442}
+  m_Layer: 0
+  m_Name: Scene_Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4508885055282820
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1238165586405360}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -88.671875, y: 12.254883, z: -12.197266}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114037663776196218
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1238165586405360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c82a9c39d9a757e4280e6ae981e47733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114149829654832736
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1238165586405360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1346a88229a86bd4390e9e79d5979af4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114497121864444442
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1238165586405360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08710f05eb1984f4f85f91d77cabbf1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkinColorsList:
+  - {r: 0.9843137, g: 0.8784314, b: 0.8117647, a: 0}
+  - {r: 0.9338235, g: 0.76984423, b: 0.707234, a: 0}
+  - {r: 0.8088235, g: 0.6659259, b: 0.410359, a: 0}
+  - {r: 0.71323526, g: 0.52629507, b: 0.40381703, a: 0}
+  - {r: 0.53676474, g: 0.3603099, b: 0.24470158, a: 0}
+  - {r: 0.3455882, g: 0.231467, b: 0.15754758, a: 0}
+  HairColorsList:
+  - {r: 0.875, g: 0.8066682, b: 0.42463234, a: 0}
+  - {r: 0.9044118, g: 0.75581676, b: 0.36575478, a: 0}
+  - {r: 0.875, g: 0.58161765, b: 0.31525734, a: 0}
+  - {r: 0.50735295, g: 0.33610845, b: 0.02984429, a: 0}
+  - {r: 0.28676468, g: 0.20765717, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &114596585643164716
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1238165586405360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18c88b0c474433540ba2ca379c962b93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114973353654805790
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1238165586405360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba3ed5ccf77fc7e429c79848a21b50ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HUDSettingsNames: []
+  HUDSettingsBool: 
+  wheelPhysicsLevel: 2
+  playerWheelsSettingsList: []
+  opponentWheelsSettingsList: []
+  qualityLevel: 0
+  PlayerConfig:
+    name: Player 1
+    isPlayer: 1
+    gender: 1
+    featuresList: []
+    hair: 0
+    hairColor: 0
+    eyebrowseColor: 0
+    lipsColor: 0
+    skinColor: 0
+    helmet: 0
+    helmetLook: 0
+    shirt: 0
+    shirtLook: 0
+    pants: 0
+    pantsLook: 0
+    shoes: 0
+    shoesLook: 0
+    accessory: 0
+    sail: 1
+    sailLook: 0
+    board: 0
+    boardLook: 0
+  characterList: []
+  OpponentConfigList:
+  - name: 'John '
+    isPlayer: 0
+    gender: 0
+    featuresList:
+    - name: 
+      value: 20
+    - name: 
+      value: 60
+    - name: 
+      value: 30
+    - name: 
+      value: 20
+    - name: 
+      value: 10
+    - name: 
+      value: 0
+    hair: 0
+    hairColor: 2
+    eyebrowseColor: 0
+    lipsColor: 0
+    skinColor: 1
+    helmet: 0
+    helmetLook: 0
+    shirt: 0
+    shirtLook: 0
+    pants: 0
+    pantsLook: 0
+    shoes: 0
+    shoesLook: 0
+    accessory: 0
+    sail: 0
+    sailLook: 2
+    board: 1
+    boardLook: 0
+  - name: Lili
+    isPlayer: 0
+    gender: 1
+    featuresList:
+    - name: 
+      value: 50
+    - name: 
+      value: 30
+    - name: 
+      value: 0
+    - name: 
+      value: 40
+    - name: 
+      value: 30
+    - name: 
+      value: 0
+    hair: 0
+    hairColor: 1
+    eyebrowseColor: 0
+    lipsColor: 0
+    skinColor: 2
+    helmet: 0
+    helmetLook: 0
+    shirt: 0
+    shirtLook: 0
+    pants: 0
+    pantsLook: 0
+    shoes: 0
+    shoesLook: 0
+    accessory: 0
+    sail: 0
+    sailLook: 1
+    board: 1
+    boardLook: 2
+  - name: George
+    isPlayer: 0
+    gender: 0
+    featuresList:
+    - name: 
+      value: 0
+    - name: 
+      value: 30
+    - name: 
+      value: 50
+    - name: 
+      value: 40
+    - name: 
+      value: 20
+    - name: 
+      value: 70
+    hair: 0
+    hairColor: 5
+    eyebrowseColor: 0
+    lipsColor: 0
+    skinColor: 5
+    helmet: 0
+    helmetLook: 0
+    shirt: 0
+    shirtLook: 0
+    pants: 0
+    pantsLook: 0
+    shoes: 0
+    shoesLook: 0
+    accessory: 0
+    sail: 1
+    sailLook: 1
+    board: 0
+    boardLook: 2
+  - name: "Saka\xEB"
+    isPlayer: 0
+    gender: 1
+    featuresList:
+    - name: 
+      value: 70
+    - name: 
+      value: 30
+    - name: 
+      value: 50
+    - name: 
+      value: 40
+    - name: 
+      value: 80
+    - name: 
+      value: 30
+    hair: 0
+    hairColor: 5
+    eyebrowseColor: 0
+    lipsColor: 0
+    skinColor: 2
+    helmet: 0
+    helmetLook: 0
+    shirt: 0
+    shirtLook: 0
+    pants: 0
+    pantsLook: 0
+    shoes: 0
+    shoesLook: 0
+    accessory: 0
+    sail: 0
+    sailLook: 2
+    board: 2
+    boardLook: 1
+  sailList:
+  - name: Base
+    id: 0
+    power: 4
+    powerRearWind: -0.35
+    drag: 1
+    looks:
+    - boardId: 0
+      lookList:
+      - {fileID: 2100000, guid: 3b117389684946649bac541512817f7d, type: 2}
+    - boardId: 0
+      lookList:
+      - {fileID: 2100000, guid: 25846bf3599180644a7a0f8bbc411010, type: 2}
+    - boardId: 0
+      lookList:
+      - {fileID: 2100000, guid: a2848d4bf5e93bd45a4bf15a3a64525e, type: 2}
+    activeLook: 0
+  - name: Rhino
+    id: 1
+    power: 4.2
+    powerRearWind: -0.35
+    drag: 1
+    looks:
+    - boardId: 0
+      lookList:
+      - {fileID: 2100000, guid: 85c62451b2c40ea46a46b82d01dd538e, type: 2}
+    - boardId: 0
+      lookList:
+      - {fileID: 2100000, guid: b154259d8e9d36f40ad1f9b0bc025538, type: 2}
+    - boardId: 0
+      lookList:
+      - {fileID: 2100000, guid: e450db3cee3268148be3a4c5a456e195, type: 2}
+    activeLook: 0
+  - name: Firefly
+    id: 2
+    power: 4.5
+    powerRearWind: -0.35
+    drag: 1
+    looks:
+    - boardId: 0
+      lookList:
+      - {fileID: 2100000, guid: d492fdb9f622e004092f69d9e5574397, type: 2}
+    - boardId: 0
+      lookList:
+      - {fileID: 2100000, guid: 3afc9f6e013ee8a42a1003c1bc2d61ff, type: 2}
+    - boardId: 0
+      lookList:
+      - {fileID: 2100000, guid: fcb794a09e3a4024cb0b560670ebe9dc, type: 2}
+    activeLook: 0
+  boardList:
+  - name: Saturn
+    id: 0
+    grip: 1
+    gripLostOverGround: 1
+    drag: 1
+    looks:
+    - boardId: 0
+      lookList:
+      - {fileID: 2100000, guid: 4d5d395f00e851a45be234d3efb33235, type: 2}
+      - {fileID: 2100000, guid: da759882a5894044999e74807fbfa9d8, type: 2}
+    - boardId: 0
+      lookList:
+      - {fileID: 2100000, guid: 4d5d395f00e851a45be234d3efb33235, type: 2}
+      - {fileID: 2100000, guid: 5f21e38a97c519a468b2749772bb1c2c, type: 2}
+    - boardId: 0
+      lookList:
+      - {fileID: 2100000, guid: 4fa5d8a8653ce9a469b7d0d5b88b88bd, type: 2}
+      - {fileID: 2100000, guid: d1ce1c863cf718d439fcbb4565eaae10, type: 2}
+    activeLook: 0
+    frontAxlePos: 2.1
+    rearAxlePos: -2.1
+    axleName: Base
+  - name: Arrow
+    id: 1
+    grip: 1
+    gripLostOverGround: 1
+    drag: 0.8
+    looks:
+    - boardId: 0
+      lookList:
+      - {fileID: 2100000, guid: da759882a5894044999e74807fbfa9d8, type: 2}
+      - {fileID: 2100000, guid: 4d5d395f00e851a45be234d3efb33235, type: 2}
+    - boardId: 0
+      lookList:
+      - {fileID: 2100000, guid: 5f21e38a97c519a468b2749772bb1c2c, type: 2}
+      - {fileID: 2100000, guid: 4d5d395f00e851a45be234d3efb33235, type: 2}
+    - boardId: 0
+      lookList:
+      - {fileID: 2100000, guid: d1ce1c863cf718d439fcbb4565eaae10, type: 2}
+      - {fileID: 2100000, guid: 4fa5d8a8653ce9a469b7d0d5b88b88bd, type: 2}
+    activeLook: 0
+    frontAxlePos: 2.1
+    rearAxlePos: -2.1
+    axleName: Base
+  - name: Asphalt burner
+    id: 2
+    grip: 1
+    gripLostOverGround: 1
+    drag: 0.5
+    looks:
+    - boardId: 0
+      lookList:
+      - {fileID: 2100000, guid: da759882a5894044999e74807fbfa9d8, type: 2}
+      - {fileID: 2100000, guid: 4d5d395f00e851a45be234d3efb33235, type: 2}
+    - boardId: 0
+      lookList:
+      - {fileID: 2100000, guid: 5f21e38a97c519a468b2749772bb1c2c, type: 2}
+      - {fileID: 2100000, guid: 4d5d395f00e851a45be234d3efb33235, type: 2}
+    activeLook: 0
+    frontAxlePos: 2.12
+    rearAxlePos: -1.63
+    axleName: Type3
+  hairList:
+  - typeName: Hair_1
+    forGender: 2
+    id: 0
+    materialList: []
+    textureList: []
+  - typeName: Hair_2
+    forGender: 1
+    id: 1
+    materialList: []
+    textureList: []
+  helmetList: []
+  shirtList: []
+  pantsList: []
+  shoesList: []
+  accessoryList: []
+  seasonList:
+  - name: Season 1
+    raceList:
+    - numberOfOpponents: 0
+      opponentsLevel: 0
+      typeOfWindsID: 0
+      raceId: 3
+      enabledTutorial: 1
+      tutorialList: 0000000001000000
+      numbStars: 0
+    - numberOfOpponents: 1
+      opponentsLevel: 0
+      typeOfWindsID: 0
+      raceId: 3
+      enabledTutorial: 1
+      tutorialList: 0300000004000000
+      numbStars: 0
+    - numberOfOpponents: 1
+      opponentsLevel: 0
+      typeOfWindsID: 0
+      raceId: 0
+      enabledTutorial: 0
+      tutorialList: 
+      numbStars: 0
+    - numberOfOpponents: 2
+      opponentsLevel: 0
+      typeOfWindsID: 0
+      raceId: 0
+      enabledTutorial: 0
+      tutorialList: 
+      numbStars: 0
+    - numberOfOpponents: 2
+      opponentsLevel: 0
+      typeOfWindsID: 0
+      raceId: 1
+      enabledTutorial: 0
+      tutorialList: 
+      numbStars: 0
+    - numberOfOpponents: 3
+      opponentsLevel: 0
+      typeOfWindsID: 0
+      raceId: 1
+      enabledTutorial: 0
+      tutorialList: 
+      numbStars: 0
+    - numberOfOpponents: 3
+      opponentsLevel: 0
+      typeOfWindsID: 0
+      raceId: 1
+      enabledTutorial: 0
+      tutorialList: 
+      numbStars: 0
+    - numberOfOpponents: 3
+      opponentsLevel: 0
+      typeOfWindsID: 0
+      raceId: 2
+      enabledTutorial: 0
+      tutorialList: 
+      numbStars: 0
+    - numberOfOpponents: 3
+      opponentsLevel: 0
+      typeOfWindsID: 0
+      raceId: 2
+      enabledTutorial: 0
+      tutorialList: 
+      numbStars: 0
+    - numberOfOpponents: 3
+      opponentsLevel: 0
+      typeOfWindsID: 0
+      raceId: 0
+      enabledTutorial: 0
+      tutorialList: 
+      numbStars: 0
+    - numberOfOpponents: 3
+      opponentsLevel: 0
+      typeOfWindsID: 0
+      raceId: 2
+      enabledTutorial: 0
+      tutorialList: 
+      numbStars: 0
+    - numberOfOpponents: 3
+      opponentsLevel: 0
+      typeOfWindsID: 0
+      raceId: 0
+      enabledTutorial: 0
+      tutorialList: 
+      numbStars: 0
+    - numberOfOpponents: 1
+      opponentsLevel: 0
+      typeOfWindsID: 0
+      raceId: 1
+      enabledTutorial: 0
+      tutorialList: 
+      numbStars: 0
+    - numberOfOpponents: 3
+      opponentsLevel: 0
+      typeOfWindsID: 0
+      raceId: 2
+      enabledTutorial: 0
+      tutorialList: 
+      numbStars: 0
+    - numberOfOpponents: 1
+      opponentsLevel: 0
+      typeOfWindsID: 0
+      raceId: 0
+      enabledTutorial: 0
+      tutorialList: 
+      numbStars: 0
+    - numberOfOpponents: 1
+      opponentsLevel: 0
+      typeOfWindsID: 0
+      raceId: 1
+      enabledTutorial: 0
+      tutorialList: 
+      numbStars: 0
+    - numberOfOpponents: 1
+      opponentsLevel: 0
+      typeOfWindsID: 0
+      raceId: 0
+      enabledTutorial: 0
+      tutorialList: 
+      numbStars: 0
+    - numberOfOpponents: 1
+      opponentsLevel: 0
+      typeOfWindsID: 0
+      raceId: 0
+      enabledTutorial: 0
+      tutorialList: 
+      numbStars: 0
+    - numberOfOpponents: 1
+      opponentsLevel: 0
+      typeOfWindsID: 0
+      raceId: 0
+      enabledTutorial: 0
+      tutorialList: 
+      numbStars: 0
+    - numberOfOpponents: 1
+      opponentsLevel: 0
+      typeOfWindsID: 0
+      raceId: 0
+      enabledTutorial: 0
+      tutorialList: 
+      numbStars: 0
+    enabledTutorial: 0
+    tutorialList: 0000000001000000
+  - name: Season 2
+    raceList:
+    - numberOfOpponents: 0
+      opponentsLevel: 0
+      typeOfWindsID: 0
+      raceId: 0
+      enabledTutorial: 0
+      tutorialList: 
+      numbStars: 0
+    - numberOfOpponents: 1
+      opponentsLevel: 0
+      typeOfWindsID: 0
+      raceId: 1
+      enabledTutorial: 0
+      tutorialList: 
+      numbStars: 0
+    enabledTutorial: 0
+    tutorialList: 
+  trackList:
+  - trackId: 0
+    trackName: Beach Parking Lot
+    typeOfRace: Regatta
+    sceneName: Level_Beach_Regatta
+    RacePreview: {fileID: 2800000, guid: 4e88a511a2643d441bde29730daae99c, type: 3}
+  - trackId: 1
+    trackName: Montains
+    typeOfRace: Race Track
+    sceneName: Level_Mountain_Race
+    RacePreview: {fileID: 2800000, guid: 4873c33810d3f0d46ac297c8cc43f292, type: 3}
+  - trackId: 2
+    trackName: Rooftops
+    typeOfRace: Race Track
+    sceneName: RoofTops
+    RacePreview: {fileID: 2800000, guid: aeeb5fd3a6cad447b9c97cb8709ac2eb, type: 3}
+  - trackId: 3
+    trackName: Tutorial 1
+    typeOfRace: Tutorial
+    sceneName: Intro
+    RacePreview: {fileID: 2800000, guid: cd49ec0be734047978713947c330cc49, type: 3}
+  ListOfWinds:
+  - name: Stable
+    label: Wind conditions will not change during the Race
+    shiftRange: 0
+    oscillationRange: 0
+    targetWindForce: 30
+  - name: Small Oscillations
+    label: Wind orientation will change slighly around the the initial direction
+    shiftRange: 0
+    oscillationRange: 5
+    targetWindForce: 30
+  - name: Big Oscilations
+    label: Wind orientation will change a lot around the the initial direction
+    shiftRange: 0
+    oscillationRange: 10
+    targetWindForce: 30
+  - name: Small Shift
+    label: Wind direction will shift a little from the initial direction
+    shiftRange: 10
+    oscillationRange: 0
+    targetWindForce: 30
+  - name: Big Shift
+    label: Wind direction will shift a lot from the initial direction
+    shiftRange: 20
+    oscillationRange: 0
+    targetWindForce: 30
+  - name: Small Shift and Oscilations
+    label: Wind direction will shift a little in direction and Oscilate
+    shiftRange: 15
+    oscillationRange: 8
+    targetWindForce: 0
+  currentSingleRaceDefinition:
+    numberOfOpponents: 3
+    opponentsLevel: 3
+    typeOfWindsID: 0
+    raceId: 0
+    enabledTutorial: 0
+    tutorialList: 
+    numbStars: 0
+  currentRaceType: 0
+  currentSeasonId: 0
+  currentCarreerTrackId: 0
+  currentRaceOpponentsListIds: 
+  tackList:
+  - level: 0
+    name: Tack
+    type: 1
+    duration: 3
+    slowDownFactor: 0.2
+    costEnergy: 0
+    costSpeed: 0
+    costAngle: 0
+  - level: 2
+    name: Fast Tack
+    type: 1
+    duration: 3
+    slowDownFactor: 0.5
+    costEnergy: 20
+    costSpeed: 15
+    costAngle: 1
+  - level: 2
+    name: Heli Tack
+    type: 1
+    duration: 3
+    slowDownFactor: 1
+    costEnergy: 30
+    costSpeed: 20
+    costAngle: 2
+  - level: 3
+    name: Duck Tack
+    type: 1
+    duration: 3
+    slowDownFactor: 1.5
+    costEnergy: 40
+    costSpeed: 30
+    costAngle: 4
+  jibeList:
+  - level: 1
+    name: Jibe
+    type: 2
+    duration: 3
+    slowDownFactor: 0.2
+    costEnergy: 0
+    costSpeed: 0
+    costAngle: 0
+  - level: 2
+    name: Duck Jibe
+    type: 2
+    duration: 3
+    slowDownFactor: 0.5
+    costEnergy: 20
+    costSpeed: 25
+    costAngle: 1
+  - level: 3
+    name: Race Jibe
+    type: 2
+    duration: 3
+    slowDownFactor: 1
+    costEnergy: 30
+    costSpeed: 30
+    costAngle: 2
+  - level: 3
+    name: Race Duck Jibe
+    type: 2
+    duration: 3
+    slowDownFactor: 1.5
+    costEnergy: 40
+    costSpeed: 35
+    costAngle: 4
