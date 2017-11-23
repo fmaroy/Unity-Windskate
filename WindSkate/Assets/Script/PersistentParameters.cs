@@ -41,8 +41,10 @@ public class PersistentParameters : MonoBehaviour
     public List<ManoeuvreType> tackList = new List<ManoeuvreType>();
     public List<ManoeuvreType> jibeList = new List<ManoeuvreType>();
 
-
-    void initPlayerPref()
+	/// <summary>
+	/// Assigns a default value for each prefs not defined yet, because a value must exist for the script to work later.
+	/// </summary>
+	public void initPlayerPref()
     {
         if (PlayerPrefs.HasKey("PlayerName") == false)
         {
@@ -108,8 +110,22 @@ public class PersistentParameters : MonoBehaviour
         {
             PlayerPrefs.SetInt("CamScreenOcclusion", 0);
         }
+		int seasonId = 0;
+		foreach (CareerSeasonProps currentSeason in seasonList) 
+		{
+			int raceId = 0;
+			foreach (SingleRaceProps currentRace in currentSeason.raceList) 
+			{
+				string currentPrefName = "numbStarsSeason" + seasonId.ToString() + "Race" + raceId.ToString();
+				raceId = raceId + 1;
+				if (PlayerPrefs.HasKey (currentPrefName) == false) {
+					PlayerPrefs.SetInt(currentPrefName, 0);
+				}
+			}
+			seasonId = seasonId + 1;
+		}
     }
-        // Use this for initialization
+    // Use this for initialization
     void Start () {
         List<CharacterFeature> characterList = new List<CharacterFeature>();
         characterList.Add(new CharacterFeature("Thinness", PlayerPrefs.GetFloat("Thinness")));
