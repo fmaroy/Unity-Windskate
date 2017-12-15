@@ -49,6 +49,11 @@ public class SceneManagerScript : MonoBehaviour {
         SceneManager.UnloadScene(level);
         //Time.timeScale = 1.0f;
     }
+	public void exitGame()
+	{
+		Application.Quit ();
+	}
+
     // Use this for initialization
     void Start ()
     {

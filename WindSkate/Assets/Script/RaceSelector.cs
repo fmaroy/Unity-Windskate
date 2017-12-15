@@ -37,7 +37,8 @@ public class RaceSelector : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        SceneManagerObject = GameObject.Find("Scene_Manager");
+        //SceneManagerObject = GameObject.Find("Scene_Manager");
+		SceneManagerObject = GameObject.FindObjectOfType <SceneManagerSpawn>().SceneManagerObject;
         PersistentParameterData = SceneManagerObject.GetComponent<PersistentParameters>();
         RaceManagerObject = GameObject.Find("RaceManager");
         //RaceManagerData = RaceManagerObject.GetComponent<UserPreferenceScript>();
@@ -53,7 +54,6 @@ public class RaceSelector : MonoBehaviour {
 			updateSeasonPannel (currentSeasonId);
 		}
 
-
 		if (typeOfPage == "single") {
 			updateCurrentTrack (0);
 			getOpponentsLevel ();
@@ -63,6 +63,14 @@ public class RaceSelector : MonoBehaviour {
 
 		}
     }
+
+	public void updateSeasonListAndPannel ()
+	{
+		foreach (CareerSeasonProps season in PersistentParameterData.seasonList) {
+			currentSeasonList.Add (season);
+		}
+		updateSeasonPannel (currentSeasonId);
+	}
 
 	public void selectedCarreerRace(int id)
 	{
@@ -84,11 +92,11 @@ public class RaceSelector : MonoBehaviour {
 
 		}
 		seasonRaceObj = new List<GameObject> ();
-
 	}
 
 	public void updateSeasonPannel(int seasonId)
 	{
+		Debug.Log ("updating season pannel");
 		int raceId = 0;
 		int columnId = 0;
 		int rowId = 0;
@@ -99,7 +107,7 @@ public class RaceSelector : MonoBehaviour {
 		foreach (SingleRaceProps race in currentSeasonList[seasonId].raceList) {
 			int currentTrackID = race.raceId;
 			//List<TrackList> currentListOfTrack = PersistentParameterData.trackList;
-
+			//Debug.Log ("building season pannel: this race stars number : " + race.numbStars);
 			GameObject temp = (GameObject)Instantiate (trackTemplate, new Vector3 (0f, 0f, 0f), seasonPannel.transform.rotation);
 			//temp.transform.parent = seasonPannel.transform;
 			temp.transform.SetParent (seasonPannel.transform, false);

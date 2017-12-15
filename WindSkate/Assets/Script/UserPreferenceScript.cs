@@ -137,9 +137,15 @@ public class UserPreferenceScript : MonoBehaviour {
 				currentRace = persistentData.seasonList [currentCarreerSeason].raceList [currentCarreerRace];
 				currentRace.numbStars = stars;
 				Debug.Log ("Stars result feed back to Scene data : " + stars);
+
+				//save data to player preference
+				persistentData.saveStarsInPrefs(2);
 			}
+
 		}
+
 	}
+
 
 	public void updateTutorialProperties()
 	{

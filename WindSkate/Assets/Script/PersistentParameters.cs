@@ -110,6 +110,15 @@ public class PersistentParameters : MonoBehaviour
         {
             PlayerPrefs.SetInt("CamScreenOcclusion", 0);
         }
+		saveStarsInPrefs (0);
+    }
+
+	/// <summary>
+	/// Saves the stars status in the Player preferences.
+	/// </summary>
+	/// <param name="init">Init controls the beahvior: 0 to rest all values to 0, 1 to initialize (add only the missing values), 2 to stores the current values</param>
+	public void saveStarsInPrefs (int init)
+	{
 		int seasonId = 0;
 		foreach (CareerSeasonProps currentSeason in seasonList) 
 		{
@@ -118,13 +127,45 @@ public class PersistentParameters : MonoBehaviour
 			{
 				string currentPrefName = "numbStarsSeason" + seasonId.ToString() + "Race" + raceId.ToString();
 				raceId = raceId + 1;
-				if (PlayerPrefs.HasKey (currentPrefName) == false) {
-					PlayerPrefs.SetInt(currentPrefName, 0);
+				if (init == 0) {
+					PlayerPrefs.SetInt (currentPrefName, 0); // reset all values to 0
+				}
+				if (init == 1) {
+					if (PlayerPrefs.HasKey (currentPrefName) == false) {
+						PlayerPrefs.SetInt (currentPrefName, 0); // initializes only missing values to 0
+					}
+				}
+				if (init == 2) {
+					//Debug.Log ("saving numb stars" + currentRace.numbStars + ", in " + currentPrefName);
+					PlayerPrefs.SetInt (currentPrefName, currentRace.numbStars);
 				}
 			}
 			seasonId = seasonId + 1;
 		}
-    }
+	}
+
+	/// <summary>
+	/// Loads the stars from prefs.
+	/// </summary>
+	public void loadStarsInPrefs ()
+	{
+		saveStarsInPrefs (1); //Making sure that there is one pref create for each season races
+
+		int seasonId = 0;
+		foreach (CareerSeasonProps currentSeason in seasonList) {
+			int raceId = 0;
+			foreach (SingleRaceProps currentRace in currentSeason.raceList) {
+				string currentPrefName = "numbStarsSeason" + seasonId.ToString () + "Race" + raceId.ToString ();
+				int n = PlayerPrefs.GetInt (currentPrefName); // retrieves the number of stars for the current season race
+				//Debug.Log ("Loading from " + currentPrefName + " to season, race" + seasonId + ", " + raceId + " numb stars : " + n);
+				currentRace.numbStars = n; // assigns the stored stars number to the race object
+				//Debug.Log ("Number of stars in scene object");
+				raceId = raceId + 1;
+			}
+			seasonId = seasonId + 1;
+		}
+	}
+
     // Use this for initialization
     void Start () {
         List<CharacterFeature> characterList = new List<CharacterFeature>();
@@ -177,6 +218,7 @@ public class PersistentParameters : MonoBehaviour
             HUDSettingsBool.Add(true);
         }
         
+		loadStarsInPrefs ();
     }
 	
 	// Update is called once per frame
