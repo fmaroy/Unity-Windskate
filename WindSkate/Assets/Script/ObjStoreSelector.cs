@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using TMPro;
 
 public class ObjStoreSelector : MonoBehaviour {
     private GameObject SceneManagerObject;
@@ -183,7 +184,7 @@ public class ObjStoreSelector : MonoBehaviour {
         { ObjTypeButtonNext.SetActive(false); }
         else
         { ObjTypeButtonNext.SetActive(true); }
-        ObjTypeText.GetComponent<Text>().text = ObjInStoreList[sailid].name;
+			ObjTypeText.GetComponentInChildren<TextMeshProUGUI>().SetText(ObjInStoreList[sailid].name);
         }
     }
 
@@ -192,12 +193,14 @@ public class ObjStoreSelector : MonoBehaviour {
         currentObjId = currentObjId + 1;
         currentObjId = Mathf.Clamp(currentObjId, 0, ObjInStoreList.Count - 1);
         updateObjType(currentObjId);
+		assignObj ();
     }
     public void prevObjButton()
     {
         currentObjId = currentObjId - 1;
         currentObjId = Mathf.Clamp(currentObjId, 0, ObjInStoreList.Count - 1);
         updateObjType(currentObjId);
+		assignObj ();
     }
     public void nextObjLook()
     {
@@ -214,6 +217,7 @@ public class ObjStoreSelector : MonoBehaviour {
         }
         currentActiveObjLookId = Mathf.Clamp(currentActiveObjLookId, 0, ObjInStoreList[currentObjId].ObjectLooksList.Count - 1);
         updateCurrentObjMat(currentObjId, currentActiveObjLookId);
+		assignObj ();
     }
     public void prevObjLook()
     {
@@ -230,7 +234,18 @@ public class ObjStoreSelector : MonoBehaviour {
         }
         //currentSailLook = Mathf.Clamp(currentSailLook, 0, PersistentParameterData.sailList[currentSail].looks.Count - 1);
         updateCurrentObjMat(currentObjId, currentActiveObjLookId);
+		assignObj ();
     }
+
+	public void assignObj()
+	{
+		if (ObjType == "Board") {
+			AssignBoard ();
+		}
+		if (ObjType == "Sail") {
+			AssignSail ();
+		}
+	}
 
     public void AssignSail()
     {
@@ -256,11 +271,6 @@ public class ObjStoreSelector : MonoBehaviour {
         PlayerPrefs.SetInt("BoardLooks", currentActiveObjLookId);
     }
 
-
-    // Update is called once per frame
-    void Update () {
-	
-	}
 }
 [System.Serializable]
 public class StoreObject

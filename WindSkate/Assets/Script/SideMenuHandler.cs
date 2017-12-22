@@ -18,15 +18,18 @@ public class SideMenuHandler : MonoBehaviour {
     private int buttonIdleHighlight;
     private int buttonIdleCollapse;
     private int buttonIdlePressedCollapse;
+	public GameObject sideMenuBackgroundObj;
 
     private AnimatorStateInfo currentBaseStateButton;
+	public Animation showBackButtonAnimation;
     
     // Use this for initialization
     void Start()
     {
         BackgroundExpansionAnimation = expandingBackground.GetComponent<Animator>();
         BackgroundExpansionAnimation.SetInteger("OpenPannelStatus", 0);
-        foreach (Menu localMenu in MenuList)
+
+		/*foreach (Menu localMenu in MenuList)
         {
             localMenu.menuPanel.GetComponent<Animator>().SetInteger("OpenPannelStatus", 0);
             localMenu.openedTab = 0;
@@ -43,6 +46,7 @@ public class SideMenuHandler : MonoBehaviour {
                 }
             }
         }
+
         ActionButtonsAnim = ActionButtons.GetComponent<Animator>();
         ActionButtonsAnim.SetInteger("ShowBackButton", 0);
 
@@ -53,11 +57,37 @@ public class SideMenuHandler : MonoBehaviour {
         buttonIdlePressedCollapse = Animator.StringToHash("Base_Layer.SideButtonCollapseSelected");
 
         currentBaseStateButton = ActionButtonsAnim.GetCurrentAnimatorStateInfo(0);
+		*/
+        //BackbuttonClick();
 
-        BackbuttonClick();
+		ActionButtonsAnim = ActionButtons.GetComponent<Animator>();
+
+		initMenu();
     }
 
-    public void TabButton(int i)
+	public void initMenu()
+	{
+		foreach (Menu currentMenu in MenuList) {
+			currentMenu.menuPanel.SetActive (false); 
+			if (currentMenu.landingPage != null) {
+				currentMenu.landingPage.SetActive (false); 
+			}
+
+			foreach (UITabs tab in currentMenu.TabsList) {
+				tab.Panel.SetActive (false);
+
+			}
+			currentOpenedMenu = -1;
+			sideMenuDisplayHandler (true);
+			ActionButtonsAnim.SetInteger("ShowBackButton", 0);
+		}
+	}
+
+	/// <summary>
+	/// deprecated
+	/// </summary>
+	/// <param name="i">The index.</param>
+    /*public void TabButton(int i)
     {
         foreach (UITabs tab in MenuList[currentOpenedMenu].TabsList)
         {
@@ -72,10 +102,122 @@ public class SideMenuHandler : MonoBehaviour {
                 tab.Button.GetComponent<Animator>().SetTrigger("Normal");
             }
         }
-        
-    }
+    }*/
 
-    public void ExpandMenu(int i)
+	public void backButtonHandler()
+	{
+		// the following helps decide if a landing page is opened or tab (tab is a sub menu of a lanfing page)
+		if (currentOpenedMenu != -1) {
+			if (MenuList [currentOpenedMenu].landingPage != null) {
+				if (MenuList [currentOpenedMenu].landingPage.activeSelf == true) {
+					// the landing page is opened
+					MenuList [currentOpenedMenu].landingPage.SetActive (false);
+					MenuList [currentOpenedMenu].menuPanel.SetActive (false);
+
+					sideMenuDisplayHandler (true);
+
+				} else {
+					// a tab menu is currently opened
+					Menu currentMenu = MenuList [currentOpenedMenu];
+					currentMenu.landingPage.SetActive (true);
+					currentMenu.TabsList [currentMenu.openedTab].Panel.SetActive (false);
+				}
+			}
+		}
+	}
+
+	/// <summary>
+	/// Display management of the side menu. hides the landing pages and the tabs
+	/// </summary>
+	/// <param name="display">If set to <c>true</c> display.</param>
+	public void sideMenuDisplayHandler(bool display)
+	{
+		Debug.Log ("sidemenuDisplayhandler = " + display);
+		foreach (Menu currentMenu in MenuList) {
+			foreach (Transform child in currentMenu.buttonObject.transform) {
+				if (child.gameObject.name == "ButtonBackground") {
+					child.gameObject.SetActive (display);
+				}
+			}
+		}
+		sideMenuBackgroundObj.SetActive (display);
+		if (display) {
+			ActionButtonsAnim.SetInteger ("ShowBackButton", 0);
+		} else {
+			ActionButtonsAnim.SetInteger ("ShowBackButton", 1);
+		}
+
+		//if (display == true) {
+		//	openLandingPage (-1);
+		//}
+	}
+
+	/// <summary>
+	/// Displays only the landing page i defined in the MenuList
+	/// Hides all the tabs of the menu i
+	/// </summary>
+	/// <param name="i">The index in the MenuList</param>
+	public void openLandingPage(int i)
+	{
+		Debug.Log ("Open Landing Page ID : " + i);
+		int counter = 0;
+		foreach (Menu currentMenu in MenuList) {
+			if (i == counter) {
+				
+				currentMenu.menuPanel.SetActive (true);
+				currentMenu.landingPage.SetActive (true);
+
+				Debug.Log ("Landing Page Name : " + currentMenu.landingPage.name);
+
+				foreach (UITabs tab in currentMenu.TabsList) {
+					tab.Panel.SetActive (false);
+				}
+			}
+			else {
+				currentMenu.menuPanel.SetActive (false);
+			}
+			counter = counter + 1;
+		}
+		currentOpenedMenu = i;
+		sideMenuDisplayHandler (false);
+
+		Debug.Log (MenuList[currentOpenedMenu].TabsList.Count);
+		if (MenuList[currentOpenedMenu].TabsList.Count == 1) {
+			// since only one tab is available we skip the landing page
+			openMenuTab (0);
+		}
+	}
+
+	/// <summary>
+	/// Displays the tab i of the current menu
+	/// </summary>
+	/// <param name="i">The index.</param>
+	public void openMenuTab (int i)
+	{
+		int counter = 0;
+		Menu currentMenu = MenuList [currentOpenedMenu];
+		foreach (UITabs tab in currentMenu.TabsList) {
+			if (i == counter) {
+				tab.Panel.SetActive (true); 
+				Debug.Log ("Tab Page Name : " + tab.Panel.name);
+			}
+			else {
+				tab.Panel.SetActive (false);
+			}
+			counter = counter + 1;
+			// hide landing page
+			if (currentMenu.landingPage != null) {
+				currentMenu.landingPage.SetActive (false);
+			}
+			currentMenu.openedTab = i;
+		}
+	}
+
+	/// <summary>
+	/// deprecated
+	/// </summary>
+	/// <param name="i">The index.</param>
+    /*public void ExpandMenu(int i)
     {
         Menu selectedMenu = MenuList[i];
         Debug.Log(selectedMenu.menuName);
@@ -111,10 +253,12 @@ public class SideMenuHandler : MonoBehaviour {
 
         currentOpenedMenu = i;
         //TabButton(selectedMenu.openedTab);
-    }
+    }*/
 
-
-    public void BackbuttonClick()
+	/// <summary>
+	/// deprecated
+	/// </summary>
+    /*public void BackbuttonClick()
     {
         foreach (Menu currentMenu in MenuList)
         {
@@ -135,12 +279,9 @@ public class SideMenuHandler : MonoBehaviour {
         {
 
         }
-    }
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    }*/
 }
+
 [System.Serializable]
 public class Menu
 {
@@ -148,6 +289,7 @@ public class Menu
     public int menuOpenType;
     public GameObject buttonObject;
     public GameObject menuPanel;
+	public GameObject landingPage;
     public int openedTab;
     public List<UITabs> TabsList;
 

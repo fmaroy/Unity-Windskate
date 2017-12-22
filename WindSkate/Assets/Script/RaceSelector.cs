@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using TMPro;
 
 public class RaceSelector : MonoBehaviour {
 
@@ -100,7 +101,8 @@ public class RaceSelector : MonoBehaviour {
 		int raceId = 0;
 		int columnId = 0;
 		int rowId = 0;
-		pannelNameObject.GetComponent<Text> ().text = currentSeasonList [currentSeasonId].name;
+		//pannelNameObject.GetComponent<Text> ().text = currentSeasonList [currentSeasonId].name;
+		pannelNameObject.GetComponentInChildren<TextMeshProUGUI> ().SetText(currentSeasonList [currentSeasonId].name);
 		seasonRaceObj = new List<GameObject> ();
 		Vector2 itemDimensions = trackTemplate.GetComponent<RectTransform> ().sizeDelta;
 		//Debug.Log (itemDimensions);
@@ -152,7 +154,7 @@ public class RaceSelector : MonoBehaviour {
         windType = Mathf.FloorToInt(currentSlider.value);
         string currentSliderText;
         currentSliderText = "Wind: \n" + PersistentParameterData.ListOfWinds[windType].name + "\n" + PersistentParameterData.ListOfWinds[windType].label;
-        SliderWindType.GetComponentInChildren<Text>().text = currentSliderText;
+		SliderWindType.GetComponentInChildren<TextMeshProUGUI>().SetText(currentSliderText);
 
     }
 
@@ -162,8 +164,7 @@ public class RaceSelector : MonoBehaviour {
         string currentSliderText;
         opponentLevel = Mathf.FloorToInt(currentSlider.value);
         currentSliderText = "Level: " + opponentLevel.ToString();
-        SliderObjectOpponentsLevel.GetComponentInChildren<Text>().text = currentSliderText;
-
+		SliderObjectOpponentsLevel.GetComponentInChildren<TextMeshProUGUI>().SetText(currentSliderText);
     }
 
     public void getNumberOpponents()
@@ -172,13 +173,12 @@ public class RaceSelector : MonoBehaviour {
         string currentSliderText;
         numberOpponents = Mathf.FloorToInt( currentSlider.value);
         currentSliderText = "Players: " + numberOpponents.ToString();
-        SliderObjectNumberOpponents.GetComponentInChildren<Text>().text = currentSliderText;
-
+		SliderObjectNumberOpponents.GetComponentInChildren<TextMeshProUGUI>().SetText(currentSliderText);
     }
 
     public void updateCurrentTrack(int trackid)
     {
-        pannelNameObject.GetComponent<Text>().text = currentTrackList[trackid].trackName;
+		pannelNameObject.GetComponentInChildren<TextMeshProUGUI>().SetText(currentTrackList[trackid].trackName);
         RaceImageObject.GetComponent<RawImage>().texture = currentTrackList[trackid].RacePreview;
         currentObjId = trackid;
     }

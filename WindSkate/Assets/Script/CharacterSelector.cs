@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using TMPro;
 
 public class CharacterSelector : MonoBehaviour {
     public GameObject SceneManagerObject;
@@ -65,7 +66,7 @@ public class CharacterSelector : MonoBehaviour {
 		}
 		if (tabId == 0)
 		{
-			PlayerNameText.GetComponent<InputField>().text = PlayerPrefs.GetString("PlayerName");
+			PlayerNameText.GetComponentInChildren<TextMeshProUGUI>().SetText(PlayerPrefs.GetString("PlayerName"));
 
 		}
 		if (tabId == 1)
@@ -122,6 +123,7 @@ public class CharacterSelector : MonoBehaviour {
         {
             characterMesh.GetComponent<SkinnedMeshRenderer>().materials[0].SetColor("_Color", skinColor);
         }
+		assignCharacterProps ();
     }
     public void skinColorSliderChange()
     {
@@ -149,12 +151,15 @@ public class CharacterSelector : MonoBehaviour {
                 }
             }
         }
+		assignCharacterProps ();
     }
+
     public void hairColorSliderChange()
     {
         int i = Mathf.RoundToInt(HairColorSlider.GetComponent<Slider>().value);
         updateHairColor(i);
     }
+
     public void updateCharacter()
     {
         int k = 0;
@@ -169,6 +174,7 @@ public class CharacterSelector : MonoBehaviour {
         updateHairColor(PersistentParameterData.PlayerConfig.hairColor);
         updateSkinColor(PersistentParameterData.PlayerConfig.skinColor);
     }
+
     public void faceValueChanged()
     {
         int k = 0;
@@ -180,6 +186,7 @@ public class CharacterSelector : MonoBehaviour {
             characterMeshList[1].GetComponent<SkinnedMeshRenderer>().SetBlendShapeWeight(k, slidervalue);
             k++;
         }
+		assignCharacterProps ();
     }
 
     public void updateTab()
@@ -216,6 +223,7 @@ public class CharacterSelector : MonoBehaviour {
             z++;
         }
         currentObjId = sailid;
+		assignCharacter ();
     }
     
     public void updatePlayerName()
