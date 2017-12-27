@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Main_menu.unity
-    guid: f03938637da4def4c959b3582f54c6b5
+    path: Assets/main.unity
+    guid: 038cd29e45d754ea384d6fe5e51707b5
   - enabled: 1
     path: Assets/Level_Beach_Regatta.unity
     guid: f521fe94bfd488a48a5f72dd82c5b29b
