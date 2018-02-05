@@ -40476,6 +40476,44 @@ GameObject:
   m_PrefabParentObject: {fileID: 1000014239610428, guid: 9e49ecb09d5c3ab41b750225c6f57142,
     type: 2}
   m_PrefabInternal: {fileID: 1942118464}
+--- !u!114 &1484127718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1484127710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebbe7846bba3d4b49a23950e64e9bec4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneData: {fileID: 0}
+  thisPlayerProps:
+    name: 
+    isPlayer: 0
+    gender: 0
+    featuresList: []
+    hair: 0
+    hairColor: 0
+    eyebrowseColor: 0
+    lipsColor: 0
+    skinColor: 0
+    helmet: 0
+    helmetLook: 0
+    shirt: 0
+    shirtLook: 0
+    pants: 0
+    pantsLook: 0
+    shoes: 0
+    shoesLook: 0
+    accessory: 0
+    sail: 0
+    sailLook: 0
+    board: 0
+    boardLook: 0
+  boardGeometryContainer: {fileID: 0}
+  boardModel: {fileID: 0}
+  currentBoard: 0
 --- !u!1 &1484660140
 GameObject:
   m_ObjectHideFlags: 0
@@ -51790,6 +51828,22 @@ Prefab:
     - target: {fileID: 114000011146278416, guid: 9e49ecb09d5c3ab41b750225c6f57142,
         type: 2}
       propertyPath: isPlayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012473638788, guid: 9e49ecb09d5c3ab41b750225c6f57142, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012702610698, guid: 9e49ecb09d5c3ab41b750225c6f57142, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011679784502, guid: 9e49ecb09d5c3ab41b750225c6f57142, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010654061800, guid: 9e49ecb09d5c3ab41b750225c6f57142, type: 2}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

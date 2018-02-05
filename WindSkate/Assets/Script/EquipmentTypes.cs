@@ -71,6 +71,7 @@ public class Board
 {
     public string name;
     public int id;
+    public GameObject prefab;
     public float grip;
     public float gripLostOverGround;
     public float drag;

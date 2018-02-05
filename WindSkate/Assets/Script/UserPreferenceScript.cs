@@ -40,13 +40,17 @@ public class UserPreferenceScript : MonoBehaviour {
 	public float controlSensitivity = 1f;
 
     // Use this for initialization
-    void Start() {
+    void Start() 
+    {
 
         Player = this.gameObject.GetComponent<RaceManagerScript>().PlayerObject;
         Opponents = this.gameObject.GetComponent<RaceManagerScript>().OpponentContainerObject;
 
-        SceneManagerObject = GameObject.Find("Scene_Manager");
-
+        SceneManagerObject = GameObject.Find("SceneDataControls").GetComponent<SceneManagerSpawn>().SceneManagerObject;
+        if (SceneManagerObject != null)
+        {
+            PersistentParameterData = SceneManagerObject.GetComponent<PersistentParameters>();
+        }
 		updateRaceData ();
 
         if (SceneManagerObject != null)
@@ -91,7 +95,7 @@ public class UserPreferenceScript : MonoBehaviour {
         if (SceneManagerObject != null)
         {
             Debug.Log("Updating from Scene Manager");
-            PersistentParameterData = SceneManagerObject.GetComponent<PersistentParameters>();
+
 			updateSettings();
             updatePlayerPropsSail(Player);
             updatePlayerPropsBoard(Player);
@@ -303,6 +307,10 @@ public class UserPreferenceScript : MonoBehaviour {
 	/// <param name="player">Player.</param>
 	public void initInstantiatedPlayer(GameObject player)
 	{
+        //passes all player information configuration to the Player Builder
+        player.GetComponent<PlayerBuilderScript>().thisPlayerProps = getPlayerProps(player);
+
+        // Initiates controls data
 		if (IntroScene == false) {
 			if (GameObject.Find ("OnScreenButtons") != null) {
 				controlData = GameObject.Find ("OnScreenButtons").GetComponent<InterfaceControl> ();
@@ -448,7 +456,8 @@ public class UserPreferenceScript : MonoBehaviour {
             {
                 board.SetActive(true);
                 currentplayer.GetComponentInChildren<Sail_System_Control>().boardDrag = PersistentParameterData.boardList[i].drag;
-                Material[] mats = board.GetComponent<MeshRenderer>().materials;
+                //BEGINING transfered to PlayerBuildScript
+                /*Material[] mats = board.GetComponent<MeshRenderer>().materials;
                 for (int j = 0; j < mats.Length; j++)
                 {
                     // for board, the first material slot is for the mast base. The if checks the first slot and aplies it's own material
@@ -460,7 +469,8 @@ public class UserPreferenceScript : MonoBehaviour {
                     }
                 }
                 // for board the looks has to be appplyied on the sub element
-                board.GetComponent<MeshRenderer>().materials = mats;
+                board.GetComponent<MeshRenderer>().materials = mats;*/
+                //ENDOF transfered to PlayerBuildScript
 
                 foreach (AxleList axle in currentInventory.boardAxleList)
                 {

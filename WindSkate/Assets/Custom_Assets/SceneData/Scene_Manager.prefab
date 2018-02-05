@@ -117,7 +117,19 @@ MonoBehaviour:
   HUDSettingsNames: []
   HUDSettingsBool: 
   wheelPhysicsLevel: 2
-  playerWheelsSettingsList: []
+  playerWheelsSettingsList:
+  - name: Low
+    physics: 1
+    skidEnabled: 0
+    particleEnabled: 0
+  - name: Medium
+    physics: 1
+    skidEnabled: 1
+    particleEnabled: 1
+  - name: High
+    physics: 2
+    skidEnabled: 1
+    particleEnabled: 1
   opponentWheelsSettingsList: []
   qualityLevel: 0
   PlayerConfig:
@@ -333,6 +345,7 @@ MonoBehaviour:
   boardList:
   - name: Saturn
     id: 0
+    prefab: {fileID: 1852649359346988, guid: dbbadc2aa0526451cb0595f867fe9855, type: 2}
     grip: 1
     gripLostOverGround: 1
     drag: 1
@@ -355,6 +368,7 @@ MonoBehaviour:
     axleName: Base
   - name: Arrow
     id: 1
+    prefab: {fileID: 0}
     grip: 1
     gripLostOverGround: 1
     drag: 0.8
@@ -377,6 +391,7 @@ MonoBehaviour:
     axleName: Base
   - name: Asphalt burner
     id: 2
+    prefab: {fileID: 0}
     grip: 1
     gripLostOverGround: 1
     drag: 0.5
@@ -704,3 +719,5 @@ MonoBehaviour:
     costAngle: 4
   NumberOfStars: 0
   NumberOfCoins: 0
+  typeOfControl: 0
+  tiltSensitivity: 1
