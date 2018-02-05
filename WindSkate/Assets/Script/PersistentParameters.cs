@@ -41,6 +41,11 @@ public class PersistentParameters : MonoBehaviour
     public List<ManoeuvreType> tackList = new List<ManoeuvreType>();
     public List<ManoeuvreType> jibeList = new List<ManoeuvreType>();
 
+	public int NumberOfStars = 0;
+	public int NumberOfCoins = 0;
+	public int typeOfControl = 0; //0 for buttons, 1 for tilt;
+	public float tiltSensitivity = 1f;
+
 	/// <summary>
 	/// Assigns a default value for each prefs not defined yet, because a value must exist for the script to work later.
 	/// </summary>
@@ -109,6 +114,10 @@ public class PersistentParameters : MonoBehaviour
         if (PlayerPrefs.HasKey("CamScreenOcclusion") == false)
         {
             PlayerPrefs.SetInt("CamScreenOcclusion", 0);
+        }
+        if (PlayerPrefs.HasKey("TypeOfControls") == false)
+        {
+            PlayerPrefs.SetInt("TypeOfControls", 0);
         }
 		saveStarsInPrefs (0);
     }
@@ -193,6 +202,7 @@ public class PersistentParameters : MonoBehaviour
         qualityLevel = QualitySettings.GetQualityLevel();
         Debug.Log("QualitySettings: " + qualityLevel);
 
+        typeOfControl = PlayerPrefs.GetInt("TypeOfControls");
 
         //List of Parameters Presets for Wheels Physics
         playerWheelsSettingsList.Add(new WheelsSettings( "Low", 0,false,false));
@@ -220,9 +230,25 @@ public class PersistentParameters : MonoBehaviour
         
 		loadStarsInPrefs ();
     }
-	
+
+	public void updateGameStats()
+	{
+		int tempStars = 0;
+		int seasonId = 0;
+		foreach (CareerSeasonProps currentSeason in seasonList) {
+			int raceId = 0;
+			foreach (SingleRaceProps currentRace in currentSeason.raceList) {
+				tempStars = tempStars + currentRace.numbStars;
+			}
+		}
+		NumberOfStars = tempStars;
+	}
+
 	// Update is called once per frame
 	void Update () {
+		
+		
+		updateGameStats ();
         //Debug.Log(HUDSettingsNames[0] + " : " + HUDSettingsBool[0]);
         //Debug.Log(HUDSettingsNames[1] + " : " + HUDSettingsBool[1]);
     }
@@ -241,17 +267,6 @@ public class CharacterFeature
         value = f;
     }
 }
-/*[System.Serializable]
-public class Character
-{
-    //0 : Male, 1: female
-    public int gender;
-    public List<CharacterFeature> featuresList;
-    public Character(int i)
-    {
-        gender = i;
-    }
-}*/
 
 [System.Serializable]
 public class CareerSeasonProps

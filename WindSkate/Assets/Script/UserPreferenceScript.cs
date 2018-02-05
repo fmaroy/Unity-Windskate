@@ -36,6 +36,9 @@ public class UserPreferenceScript : MonoBehaviour {
 	public GameObject tutorialObj;
 	public TutorialManager tutorialScript;
 
+	public int typeOfControls= 0;
+	public float controlSensitivity = 1f;
+
     // Use this for initialization
     void Start() {
 
@@ -43,6 +46,8 @@ public class UserPreferenceScript : MonoBehaviour {
         Opponents = this.gameObject.GetComponent<RaceManagerScript>().OpponentContainerObject;
 
         SceneManagerObject = GameObject.Find("Scene_Manager");
+
+		updateRaceData ();
 
         if (SceneManagerObject != null)
         {
@@ -87,7 +92,7 @@ public class UserPreferenceScript : MonoBehaviour {
         {
             Debug.Log("Updating from Scene Manager");
             PersistentParameterData = SceneManagerObject.GetComponent<PersistentParameters>();
-            updateSettings();
+			updateSettings();
             updatePlayerPropsSail(Player);
             updatePlayerPropsBoard(Player);
             updatePlayerPropsCharacter(Player);
@@ -127,6 +132,22 @@ public class UserPreferenceScript : MonoBehaviour {
 			}
 		}
     }
+
+	/// <summary>
+	/// passes data from scene object to the race data object, before the player has been instantiated
+	/// </summary>
+	public void updateRaceData()
+	{
+		if (SceneManagerObject != null) {
+			updateControlSettings ();
+		}
+	}
+
+	public void updateControlSettings()
+	{
+		typeOfControls = SceneManagerObject.GetComponent<PersistentParameters>().typeOfControl;
+
+	}
 
 	public void feedSceneWithResults(int stars)
 	{
@@ -287,6 +308,7 @@ public class UserPreferenceScript : MonoBehaviour {
 				controlData = GameObject.Find ("OnScreenButtons").GetComponent<InterfaceControl> ();
 				controlData.initControls (player);
 			}
+
 		}
 
 		PlayerBoard = player.GetComponentInChildren<BoardForces> ().gameObject;
@@ -325,6 +347,11 @@ public class UserPreferenceScript : MonoBehaviour {
 		Camera.GetComponent<CinemachineControls>().playerOrientTarget = temp2;
 
 		Camera.GetComponent<CinemachineControls> ().initCamera ();
+
+		// applies the contorls settings to the board contorlling script
+		Player.GetComponentInChildren<BoardForces> ().controlType = typeOfControls;
+		Player.GetComponentInChildren<BoardForces> ().controlSensitivity = controlSensitivity;
+
 
 	}
 
@@ -618,6 +645,9 @@ public class UserPreferenceScript : MonoBehaviour {
 
                     i++;
                 }
+
+				typeOfControls = PersistentParameterData.typeOfControl;
+
             }
         }
         else
@@ -625,6 +655,7 @@ public class UserPreferenceScript : MonoBehaviour {
             //When the Scene Manager is not found (running the scen stand alone), this skips the settings update to avoid errors
             Debug.Log("Skipping Update Settings");
         }
+
     }
     
     

@@ -302,7 +302,7 @@ public class PlayerCollision : MonoBehaviour
 
     public void playerCollisionHandling(GameObject callingObject, GameObject CollisionObject)
     {
-        //Debug.Log("CallingObject : " + callingObject.name + ", CollisionObject : " + CollisionObject.name);
+        Debug.Log("CallingObject : " + callingObject.name + ", CollisionObject : " + CollisionObject.name);
         GameObject rootObject = CollisionObject;
         playCollision = false;
 
@@ -318,11 +318,11 @@ public class PlayerCollision : MonoBehaviour
                     playCollision = true;
                     break;
                 }
-                //Debug.Log(rootObject.name);
-                //Debug.Log(currentPlayer.name);
+                Debug.Log("Root object : " + rootObject.name);
+                Debug.Log("Current Player : " + currentPlayer.name);
                 if ((rootObject == currentPlayer) || (rootObject.CompareTag("Terrain") == true))
                 {
-                    //Debug.Log("Self Collision or Terrain collision");
+                    Debug.Log("Self Collision or Terrain collision");
                     break;
                 }
                 //Debug.Log("Searching Parent of : " + rootObject.name);

@@ -1427,7 +1427,7 @@ public class Follow_track : MonoBehaviour
             {
                 //Debug.Log("Calculate Opponenet Nav : " + nexttargetreforcalc + " , " + drivestarboardforrecalc);
             }
-            Debug.Log("NavMeshDir on regular path calculation");
+            //Debug.Log("NavMeshDir on regular path calculation");
             NavMeshNextDir = NavMeshHandling(nexttargetreforcalc, drivestarboardforrecalc, transform.position);
         }
         //Debug.Log(NavAgentObject.GetComponent<NavMeshAgent>().steeringTarget);

@@ -38,6 +38,21 @@ public class InterfaceControl : MonoBehaviour {
 	{
 		Player = player;
 		Start ();
+
+	}
+
+	public void typeOfControlsHandler(int i)
+	{
+		if (i == 0) {
+			// control is by buttons
+			TurnLeftButton.SetActive(true);
+			TurnRightButton.SetActive(true);
+		}
+		if (i == 1) {
+			// control is by tilt
+			TurnLeftButton.SetActive(false);
+			TurnRightButton.SetActive(false);
+		}
 	}
 
 	public void controlsVisibiltyHandler (bool vis)
@@ -100,6 +115,7 @@ public class InterfaceControl : MonoBehaviour {
 			{
 				obj.SetActive (true);
 			}
+			typeOfControlsHandler (RaceData.GetComponent<UserPreferenceScript>().typeOfControls);
 		}
 	}
 
@@ -113,8 +129,10 @@ public class InterfaceControl : MonoBehaviour {
         if (Scenemanager != null)
         {
             ScenemanagerData = Scenemanager.GetComponent<SceneManagerScript>();
+
         }
 		SkipIntoButton.SetActive (false);
+
     }
 
 	public void triggerManoeuvreListener ()
@@ -157,7 +175,7 @@ public class InterfaceControl : MonoBehaviour {
         Scenemanager = GameObject.Find("Scene_Manager");
         ScenemanagerData = Scenemanager.GetComponent<SceneManagerScript>();
 
-        Scenemanager.GetComponent<SceneManagerScript>().LoadScene("Main_menu");
+		Scenemanager.GetComponent<SceneManagerScript>().LoadMainScene();
 
         ScenemanagerData.UnloadScene(SceneManager.GetActiveScene().name);
     }

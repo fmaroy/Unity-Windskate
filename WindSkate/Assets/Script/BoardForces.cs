@@ -3,7 +3,8 @@ using System.Collections;
 
 
 public class BoardForces : MonoBehaviour {
-    private bool isPlayer;
+	
+	private bool isPlayer;
     public bool localManualDrive;
 	public float thrust_multiplier;
 	public float torque_multiplier;
@@ -38,6 +39,9 @@ public class BoardForces : MonoBehaviour {
 
     // change on 18 may
     public float rotationToDirection = 0.0f;
+
+	public int controlType;
+	public float controlSensitivity;
 
     public void OnCollisionEnter(Collision Col)
     {
@@ -158,26 +162,39 @@ public class BoardForces : MonoBehaviour {
             wheelRearRightCollider.steerAngle = -1 * angle_mutiplier * rotation;
             boardObject.transform.localEulerAngles = new Vector3(0.0f, 0.0f, -1 * angle_mutiplier * rotation);
         }
+		if (localManualDrive == true) 
+		{
+			
+		}
     }
-	
+
 	void FixedUpdate ()
 	{
         if (localManualDrive == true)
         {
-            rotation = Input.GetAxis("Horizontal") * rotationSpeed;
-            if (LeftButtonDownBool == true)
-            {
-                rotation = -0.75f * rotationSpeed;
-            }
-            if (RightButtonDownBool == true)
-            {
-                rotation = 0.75f * rotationSpeed;
-            }
-            if (RightButtonDownBool == false && LeftButtonDownBool == false)
-            {
-                rotation = Input.GetAxis("Horizontal") * rotationSpeed;
-            }
-            rotation *= Time.fixedDeltaTime;
+			if (controlType == 0) { // control by buttons
+				rotation = Input.GetAxis ("Horizontal") * rotationSpeed;
+				if (LeftButtonDownBool == true) {
+					rotation = -0.75f * rotationSpeed;
+				}
+				if (RightButtonDownBool == true) {
+					rotation = 0.75f * rotationSpeed;
+				}
+				if (RightButtonDownBool == false && LeftButtonDownBool == false) {
+					rotation = Input.GetAxis ("Horizontal") * rotationSpeed;
+				}
+				rotation *= Time.fixedDeltaTime;
+				//Debug.Log("rotation from buttons : " + rotation);
+			}
+			if (controlType == 1) { // control by tilt
+				//Debug.Log ("tilt inputs");
+				//Debug.Log (Input.acceleration);
+				//rotation = Mathf.Rad2Deg * Mathf.Atan2 (Input.acceleration.y, Mathf.Abs (Input.acceleration.x)) + 90f; 
+				//Debug.Log ("rotation before clamp : " + rotation);
+				rotation = Input.acceleration.x * rotationSpeed;
+				//Debug.Log ("rotation from tilt : " + rotation);
+				rotation *= Time.fixedDeltaTime;
+			}
 
 
             //Add vertical force

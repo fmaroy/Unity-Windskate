@@ -66,6 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1346a88229a86bd4390e9e79d5979af4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainMenuName: main
 --- !u!114 &114497121864444442
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -701,3 +702,5 @@ MonoBehaviour:
     costEnergy: 40
     costSpeed: 35
     costAngle: 4
+  NumberOfStars: 0
+  NumberOfCoins: 0

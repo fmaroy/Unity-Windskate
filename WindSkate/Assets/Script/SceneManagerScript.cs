@@ -6,6 +6,7 @@ public class SceneManagerScript : MonoBehaviour {
 
     static string lastScene;
     static string currentScene;
+	public string MainMenuName;
     private GameObject MainMenu;
 
     void Awake()
@@ -26,6 +27,14 @@ public class SceneManagerScript : MonoBehaviour {
         MainMenu = GameObject.Find("Main Menu");
         MainMenu.SetActive(true);
     }
+
+	public void LoadMainScene()
+	{
+		lastScene = currentScene;
+		currentScene = MainMenuName;
+		SceneManager.LoadScene(MainMenuName);
+		Time.timeScale = 1.0f;
+	}
 
     public void LoadScene(string level)
     {
