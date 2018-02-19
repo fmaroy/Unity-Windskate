@@ -37,6 +37,7 @@ public class PlayerBuilderScript : MonoBehaviour {
 
     public void InstantiateGear (GameObject prefab, GameObject parent)
     {
+        Debug.Log("Instantiating " + prefab.name);
         boardModel = (GameObject)Instantiate(prefab, new Vector3 (0f, 0f, 0f) , parent.transform.rotation);
         boardModel.transform.parent = parent.transform;
         applyBoardLooks(boardModel, thisPlayerProps.board, thisPlayerProps.boardLook);

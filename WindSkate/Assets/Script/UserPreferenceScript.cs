@@ -46,7 +46,12 @@ public class UserPreferenceScript : MonoBehaviour {
         Player = this.gameObject.GetComponent<RaceManagerScript>().PlayerObject;
         Opponents = this.gameObject.GetComponent<RaceManagerScript>().OpponentContainerObject;
 
-        SceneManagerObject = GameObject.Find("SceneDataControls").GetComponent<SceneManagerSpawn>().SceneManagerObject;
+        if (GameObject.Find("SceneDataControls") != null)
+        {
+            SceneManagerObject = GameObject.Find("SceneDataControls").GetComponent<SceneManagerSpawn>().SceneManagerObject;
+        }
+
+
         if (SceneManagerObject != null)
         {
             PersistentParameterData = SceneManagerObject.GetComponent<PersistentParameters>();
@@ -96,7 +101,7 @@ public class UserPreferenceScript : MonoBehaviour {
         {
             Debug.Log("Updating from Scene Manager");
 
-			updateSettings();
+            updateSettings();
             updatePlayerPropsSail(Player);
             updatePlayerPropsBoard(Player);
             updatePlayerPropsCharacter(Player);
@@ -619,7 +624,7 @@ public class UserPreferenceScript : MonoBehaviour {
                 {
                     if (child.gameObject.name == "Board_assembly")
                     {
-                        //Debug.Log("Found Opponent Board : " + currentOpponent.gameObject.name);
+                        Debug.Log("Found Opponent Board : " + currentOpponent.gameObject.name);
                         child.gameObject.GetComponent<WheelsBehavior>().WheelsPhysicsDetails = PersistentParameterData.opponentWheelsSettingsList[WheelsPhysicsDetailsLevel].physics;
                         child.gameObject.GetComponent<WheelsBehavior>().ObjectForPhysicsUpdate = child.gameObject.GetComponent<WheelsBehavior>().updateWheelPhysicsDetails(child.gameObject.GetComponent<WheelsBehavior>().WheelsPhysicsDetails);
                         child.gameObject.GetComponent<WheelsBehavior>().WheelSkidMarksEnabled = PersistentParameterData.opponentWheelsSettingsList[WheelsPhysicsDetailsLevel].skidEnabled;

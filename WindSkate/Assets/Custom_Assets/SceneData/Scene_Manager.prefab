@@ -130,7 +130,19 @@ MonoBehaviour:
     physics: 2
     skidEnabled: 1
     particleEnabled: 1
-  opponentWheelsSettingsList: []
+  opponentWheelsSettingsList:
+  - name: Low
+    physics: 0
+    skidEnabled: 0
+    particleEnabled: 0
+  - name: Medium
+    physics: 1
+    skidEnabled: 1
+    particleEnabled: 0
+  - name: High
+    physics: 1
+    skidEnabled: 1
+    particleEnabled: 1
   qualityLevel: 0
   PlayerConfig:
     name: Player 1
