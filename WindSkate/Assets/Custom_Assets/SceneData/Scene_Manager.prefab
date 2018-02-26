@@ -662,7 +662,7 @@ MonoBehaviour:
   currentRaceType: 0
   currentSeasonId: 0
   currentCarreerTrackId: 0
-  currentRaceOpponentsListIds: 
+  currentRaceOpponentsListIds: 00000000
   tackList:
   - level: 0
     name: Tack

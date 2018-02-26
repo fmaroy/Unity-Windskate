@@ -374,7 +374,16 @@ public class UserPreferenceScript : MonoBehaviour {
         int i = 0;
         foreach (Transform opponent in OpponentsObj.transform)
         {
-            opponent.gameObject.GetComponent<PlayerCollision>().opponentId = SceneManagerObject.GetComponent<PersistentParameters>().currentRaceOpponentsListIds[i];
+
+            if (SceneManagerObject.GetComponent<PersistentParameters>().currentRaceOpponentsListIds.Count > 0)
+            {
+                //here we are handling a case were we are not loading the racing scene from the main scene
+                opponent.gameObject.GetComponent<PlayerCollision>().opponentId = i;
+            }
+            else
+            {
+                opponent.gameObject.GetComponent<PlayerCollision>().opponentId = SceneManagerObject.GetComponent<PersistentParameters>().currentRaceOpponentsListIds[i];
+            }
             opponent.gameObject.name = SceneManagerObject.GetComponent<PersistentParameters>().OpponentConfigList[opponent.gameObject.GetComponent<PlayerCollision>().opponentId].name;
             updatePlayerPropsSail(opponent.gameObject);
             updatePlayerPropsBoard(opponent.gameObject);

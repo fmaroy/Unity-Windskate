@@ -71,10 +71,13 @@ public class tricksHandlingScript : MonoBehaviour {
 
 		if (GetComponentInParent<PlayerCollision> ().isPlayer == true) {
 
-			GameObject UIControlObj = GetComponent<ExternalObjectsReference> ().UIControls;
-			ButtonManoeuvreLeft = UIControlObj.GetComponent<InterfaceControl> ().ManoeuvreLeftButton;
-			ButtonManoeuvreRight = UIControlObj.GetComponent<InterfaceControl> ().ManoeuvreRightButton;
-			SlidersContainer = UIControlObj.GetComponent<InterfaceControl> ().SliderContainer;
+            Debug.Log(this.gameObject.name);
+            Debug.Log(this.gameObject.GetComponent<ExternalObjectsReference>());
+			InterfaceControl tempUIData = this.gameObject.GetComponent<ExternalObjectsReference> ().UIControlData;
+            Debug.Log(tempUIData);
+            ButtonManoeuvreLeft = tempUIData.ManoeuvreLeftButton;
+            ButtonManoeuvreRight = tempUIData.ManoeuvreRightButton;
+            SlidersContainer = tempUIData.SliderContainer;
 		}
 
 		EnergyMaxLevel = Mathf.Max(localTackList[localTackList.Count -1].costEnergy, localJibeList[localJibeList.Count -1].costEnergy);
