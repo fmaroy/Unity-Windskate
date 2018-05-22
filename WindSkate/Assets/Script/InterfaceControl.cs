@@ -174,10 +174,12 @@ public class InterfaceControl : MonoBehaviour {
     {
         Scenemanager = GameObject.Find("Scene_Manager");
         ScenemanagerData = Scenemanager.GetComponent<SceneManagerScript>();
-
+        Time.timeScale = 1.0f;
+        Time.fixedDeltaTime = 0.01f * Time.timeScale;
+        ScenemanagerData.UnloadScene(SceneManager.GetActiveScene().name);
 		Scenemanager.GetComponent<SceneManagerScript>().LoadMainScene();
 
-        ScenemanagerData.UnloadScene(SceneManager.GetActiveScene().name);
+        //
     }
 
     public void LoadSettings()
@@ -188,6 +190,9 @@ public class InterfaceControl : MonoBehaviour {
     public void ReloadLevel()
     {
         Scenemanager = GameObject.Find("Scene_Manager");
+        Time.timeScale = 1.0f;
+        Time.fixedDeltaTime = 0.01f * Time.timeScale;
+        ScenemanagerData.UnloadScene(SceneManager.GetActiveScene().name);
         Scenemanager.GetComponent<SceneManagerScript>().LoadScene(SceneManager.GetActiveScene().name);
         
     }
@@ -195,7 +200,11 @@ public class InterfaceControl : MonoBehaviour {
     public void LoadScene(string Scene)
     {
         Scenemanager = GameObject.Find("Scene_Manager");
+        Time.timeScale = 1.0f;
+        Time.fixedDeltaTime = 0.01f * Time.timeScale;
+        ScenemanagerData.UnloadScene(SceneManager.GetActiveScene().name);
         Scenemanager.GetComponent<SceneManagerScript>().LoadScene(Scene);
+
     }
 
     public void QuitApplication()

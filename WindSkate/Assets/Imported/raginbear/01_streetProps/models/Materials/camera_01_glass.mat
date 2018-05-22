@@ -7,85 +7,98 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: camera_01_glass
-  m_Shader: {fileID: 4800000, guid: 62bbf065246827f4fa51d36f9d96a745, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _EMISSION
+  m_LightmapFlags: 1
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
+  disabledShaderPasses: []
   m_SavedProperties:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TexEnvs:
-    - first:
-        name: _MainTex
-      second:
+    - _BumpMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _environment
-      second:
+    - _DetailAlbedoMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _node_3
-      second:
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _environment:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _node_3:
         m_Texture: {fileID: 8900000, guid: f9382e5e7ba1b87498b521f1e9c4ac0c, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _node_7
-      second:
+    - _node_7:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _normal
-      second:
+    - _normal:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - first:
-        name: _Cutoff
-      second: 0.5
-    - first:
-        name: _envblur
-      second: 0.23214287
-    - first:
-        name: _envfresnel
-      second: 0.51785713
-    - first:
-        name: _gloss
-      second: 0.21169111
-    - first:
-        name: _node_16
-      second: 0.64285713
-    - first:
-        name: _node_23
-      second: 0.4876654
-    - first:
-        name: _node_39
-      second: 0.67857146
-    - first:
-        name: _node_4
-      second: 0.19642858
-    - first:
-        name: _node_5
-      second: 1
-    - first:
-        name: _node_6
-      second: 0.14285715
-    - first:
-        name: _specular
-      second: 0.3214286
-    - first:
-        name: _transfresnel
-      second: 0.51785713
-    - first:
-        name: _transparency
-      second: 1
+    - _BumpScale: 1
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _DstBlend: 0
+    - _GlossMapScale: 1
+    - _Glossiness: 0.5
+    - _GlossyReflections: 1
+    - _Metallic: 0
+    - _Mode: 0
+    - _OcclusionStrength: 1
+    - _Parallax: 0.02
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _UVSec: 0
+    - _ZWrite: 1
+    - _envblur: 0.23214287
+    - _envfresnel: 0.51785713
+    - _gloss: 0.21169111
+    - _node_16: 0.64285713
+    - _node_23: 0.4876654
+    - _node_39: 0.67857146
+    - _node_4: 0.19642858
+    - _node_5: 1
+    - _node_6: 0.14285715
+    - _specular: 0.3214286
+    - _transfresnel: 0.51785713
+    - _transparency: 1
     m_Colors:
-    - first:
-        name: _Color
-      second: {r: 0.32156864, g: 0.4156863, b: 0.45882356, a: 0.39999998}
+    - _Color: {r: 0.32156864, g: 0.4156863, b: 0.45882356, a: 0.39999998}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

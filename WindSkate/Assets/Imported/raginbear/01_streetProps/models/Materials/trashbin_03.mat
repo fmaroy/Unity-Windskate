@@ -7,202 +7,155 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: trashbin_03
-  m_Shader: {fileID: 4800000, guid: 0f6f4499b8ee5ca46b50654311f6ddb7, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _EMISSION _NORMALMAP
+  m_LightmapFlags: 1
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
+  disabledShaderPasses: []
   m_SavedProperties:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TexEnvs:
-    - first:
-        name: _BumpMap
-      second:
+    - _BumpMap:
         m_Texture: {fileID: 2800000, guid: 466d8ec036667694784fcf879f9660b4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _Cubemap
-      second:
+    - _Cubemap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _Diffuse
-      second:
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Diffuse:
         m_Texture: {fileID: 2800000, guid: 1548a36c9e072534da45575ad4354bb5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _Illum
-      second:
+    - _EmissionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _MainTex
-      second:
+    - _Illum:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
         m_Texture: {fileID: 2800000, guid: 91091f99eabc216448940c263a909c0f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _Normal
-      second:
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal:
         m_Texture: {fileID: 2800000, guid: a76cdf2a2a487144b84c705bbaefaf4c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _Specular
-      second:
+    - _OcclusionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _SpecularIBL
-      second:
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Specular:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecularIBL:
         m_Texture: {fileID: 8900000, guid: 39682e5cf516fb148b0abc9305fc3e98, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _ao
-      second:
+    - _ao:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _aorgbcolormaska
-      second:
+    - _aorgbcolormaska:
         m_Texture: {fileID: 2800000, guid: d9a5a1001e9272342a3d8e57cda719c5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _diffuserbgtransparentya
-      second:
+    - _diffuserbgtransparentya:
         m_Texture: {fileID: 2800000, guid: 91091f99eabc216448940c263a909c0f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _emission
-      second:
+    - _emission:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _environment
-      second:
+    - _environment:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _environment_copy
-      second:
+    - _environment_copy:
         m_Texture: {fileID: 8900000, guid: 39682e5cf516fb148b0abc9305fc3e98, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _normal
-      second:
+    - _normal:
         m_Texture: {fileID: 2800000, guid: 466d8ec036667694784fcf879f9660b4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _specularrgbglossa
-      second:
+    - _specularrgbglossa:
         m_Texture: {fileID: 2800000, guid: 56186e5cf43245a4f82328fa3798612f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - first:
-        name: _AOUv0Uv1
-      second: 0
-    - first:
-        name: _AdditionalBrightnesscontrol
-      second: 0.60486275
-    - first:
-        name: _BrignessLevelscontrast
-      second: 0.6
-    - first:
-        name: _Cutoff
-      second: 0.5
-    - first:
-        name: _EmissionLM
-      second: 0
-    - first:
-        name: _FresnelExponent
-      second: 2.526316
-    - first:
-        name: _Gloss
-      second: 0.6165418
-    - first:
-        name: _MainBrightnessContro4
-      second: 0.9477199
-    - first:
-        name: _MainBrightnessControl
-      second: 0
-    - first:
-        name: _OverrideAmbient
-      second: 0
-    - first:
-        name: _Shininess
-      second: 100
-    - first:
-        name: _SlidercontrolGlosscontrol
-      second: 1
-    - first:
-        name: _Specular
-      second: 0.1855478
-    - first:
-        name: _aopower
-      second: 1
-    - first:
-        name: _emissionintensity
-      second: 0
-    - first:
-        name: _emissionpower
-      second: 0
-    - first:
-        name: _environmentblur
-      second: 0
-    - first:
-        name: _environmentblur_copy
-      second: 0
-    - first:
-        name: _environmentcorrection
-      second: 3.4642859
-    - first:
-        name: _environmentfresnel
-      second: 0.35714287
-    - first:
-        name: _environmentpower
-      second: 2
-    - first:
-        name: _glossyness
-      second: 0.46428573
-    - first:
-        name: _normalintensity
-      second: 1
-    - first:
-        name: _normaluv01
-      second: 0
-    - first:
-        name: _specularpower
-      second: 0.28571427
+    - _AOUv0Uv1: 0
+    - _AdditionalBrightnesscontrol: 0.60486275
+    - _BrignessLevelscontrast: 0.6
+    - _BumpScale: 1
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _DstBlend: 0
+    - _EmissionLM: 0
+    - _FresnelExponent: 2.526316
+    - _Gloss: 0.6165418
+    - _GlossMapScale: 1
+    - _Glossiness: 0.5
+    - _GlossyReflections: 1
+    - _MainBrightnessContro4: 0.9477199
+    - _MainBrightnessControl: 0
+    - _Metallic: 0
+    - _Mode: 0
+    - _OcclusionStrength: 1
+    - _OverrideAmbient: 0
+    - _Parallax: 0.02
+    - _Shininess: 100
+    - _SlidercontrolGlosscontrol: 1
+    - _SmoothnessTextureChannel: 0
+    - _Specular: 0.1855478
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _UVSec: 0
+    - _ZWrite: 1
+    - _aopower: 1
+    - _emissionintensity: 0
+    - _emissionpower: 0
+    - _environmentblur: 0
+    - _environmentblur_copy: 0
+    - _environmentcorrection: 3.4642859
+    - _environmentfresnel: 0.35714287
+    - _environmentpower: 2
+    - _glossyness: 0.46428573
+    - _normalintensity: 1
+    - _normaluv01: 0
+    - _specularpower: 0.28571427
     m_Colors:
-    - first:
-        name: _AmbientColor
-      second: {r: 0.05449827, g: 0.2351569, b: 0.3088235, a: 1}
-    - first:
-        name: _Color
-      second: {r: 0.058823526, g: 0.4937116, b: 1, a: 1}
-    - first:
-        name: _SpecColor
-      second: {r: 1, g: 1, b: 1, a: 1}
-    - first:
-        name: _color
-      second: {r: 0.21336956, g: 0.33823532, b: 0.1119161, a: 1}
-    - first:
-        name: _emissioncolor
-      second: {r: 1, g: 1, b: 1, a: 1}
-    - first:
-        name: _specularcolor
-      second: {r: 1, g: 1, b: 1, a: 1}
+    - _AmbientColor: {r: 0.05449827, g: 0.2351569, b: 0.3088235, a: 1}
+    - _Color: {r: 0.058823526, g: 0.4937116, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _SpecColor: {r: 1, g: 1, b: 1, a: 1}
+    - _color: {r: 0.21336956, g: 0.33823532, b: 0.1119161, a: 1}
+    - _emissioncolor: {r: 1, g: 1, b: 1, a: 1}
+    - _specularcolor: {r: 1, g: 1, b: 1, a: 1}

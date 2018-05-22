@@ -23,6 +23,8 @@ public class RaceManagerScript : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        perfoOptimizerOnStart();
+
         thisLevelTerrain = GameObject.Find("Track").GetComponentInChildren<Terrain>().gameObject;
         
         //PlayerObject.GetComponentInChildren<windEffector>().terrainWindEffects = thisLevelTerrain;
@@ -34,6 +36,12 @@ public class RaceManagerScript : MonoBehaviour {
             setWindOlderbehavior();
         }
         //getOpponentList(OpponentContainerObject);
+    }
+
+    public void perfoOptimizerOnStart()
+    {
+        Resources.UnloadUnusedAssets();
+
     }
 
     public void getOpponentList(GameObject Container)
@@ -120,7 +128,7 @@ public class RaceManagerScript : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 	    ///Is wind Ocilating or Shifting?
-        
-        
+        Debug.Log("Time scale : " + Time.timeScale);
+        Debug.Log("Frame count : " + Time.frameCount);
     }
 }

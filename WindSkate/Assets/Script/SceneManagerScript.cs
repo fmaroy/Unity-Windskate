@@ -41,9 +41,15 @@ public class SceneManagerScript : MonoBehaviour {
         lastScene = currentScene;
         currentScene = level;
 
-        SceneManager.LoadScene(level);
+        //Added to try to optmize the perfo of the newely loaded scene
+        Resources.UnloadUnusedAssets();
 
         Time.timeScale = 1.0f;
+
+        SceneManager.LoadScene(level);
+        Debug.Log("unloading the previous scene");
+        SceneManager.UnloadSceneAsync(lastScene);
+
     }
     public void LoadSceneAdditive(string level)
     {
@@ -55,7 +61,7 @@ public class SceneManagerScript : MonoBehaviour {
     }
     public void UnloadScene(string level)
     {
-        SceneManager.UnloadScene(level);
+        SceneManager.UnloadSceneAsync(level);
         //Time.timeScale = 1.0f;
     }
 	public void exitGame()

@@ -74,6 +74,7 @@ public class tricksHandlingScript : MonoBehaviour {
             Debug.Log(this.gameObject.name);
             Debug.Log(this.gameObject.GetComponent<ExternalObjectsReference>());
 			InterfaceControl tempUIData = this.gameObject.GetComponent<ExternalObjectsReference> ().UIControlData;
+            Debug.Log(this.gameObject.GetComponent<ExternalObjectsReference>().UIControls);
             Debug.Log(tempUIData);
             ButtonManoeuvreLeft = tempUIData.ManoeuvreLeftButton;
             ButtonManoeuvreRight = tempUIData.ManoeuvreRightButton;

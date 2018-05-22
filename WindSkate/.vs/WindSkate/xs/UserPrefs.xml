@@ -1,0 +1,18 @@
+﻿<Properties StartupConfiguration="{1F3B5539-C8C6-E86D-74BF-F2018E4E78F2}|">
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/InterfaceControl.cs">
+    <Files>
+      <File FileName="Assets/Script/UserPreferenceScript.cs" Line="398" Column="30" />
+      <File FileName="Assets/Script/InterfaceControl.cs" Line="202" Column="74" />
+      <File FileName="Assets/Script/RaceManagerScript.cs" Line="32" Column="51" />
+      <File FileName="Assets/Script/SceneManagerScript.cs" Line="58" Column="9" />
+      <File FileName="Assets/Script/Follow_track.cs" Line="122" Column="40" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>
