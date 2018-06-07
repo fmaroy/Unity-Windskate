@@ -105,6 +105,7 @@ public class UserPreferenceScript : MonoBehaviour {
             updatePlayerPropsSail(Player);
             updatePlayerPropsBoard(Player);
             updatePlayerPropsCharacter(Player);
+            updatePlayerUIRigging(Player);
             updateGraphicSettings();
             updateOpponentsProperties(Opponents);
             updateWindCondition();
@@ -306,6 +307,7 @@ public class UserPreferenceScript : MonoBehaviour {
 
     }
 
+
 	/// <summary>
 	/// Setup all the variables of all the object of the scene that need some information from the player
 	/// </summary>
@@ -321,7 +323,6 @@ public class UserPreferenceScript : MonoBehaviour {
 				controlData = GameObject.Find ("OnScreenButtons").GetComponent<InterfaceControl> ();
 				controlData.initControls (player);
 			}
-
 		}
 
 		PlayerBoard = player.GetComponentInChildren<BoardForces> ().gameObject;
@@ -365,7 +366,6 @@ public class UserPreferenceScript : MonoBehaviour {
 		Player.GetComponentInChildren<BoardForces> ().controlType = typeOfControls;
 		Player.GetComponentInChildren<BoardForces> ().controlSensitivity = controlSensitivity;
 
-
 	}
 
     public void updateOpponentsProperties(GameObject OpponentsObj)
@@ -388,6 +388,7 @@ public class UserPreferenceScript : MonoBehaviour {
             updatePlayerPropsSail(opponent.gameObject);
             updatePlayerPropsBoard(opponent.gameObject);
             updatePlayerPropsCharacter(opponent.gameObject);
+
             i++;
         }
     }
@@ -404,7 +405,12 @@ public class UserPreferenceScript : MonoBehaviour {
         return playerconfig;
     }
 
-    public void updatePlayerPropsCharacter(GameObject currentplayer)
+	public void updatePlayerUIRigging(GameObject player)
+	{
+        player.GetComponent<tricksHandlingScript>().Init();
+	}
+
+	public void updatePlayerPropsCharacter(GameObject currentplayer)
     {
         Debug.Log("Updating Player Character settings");
 

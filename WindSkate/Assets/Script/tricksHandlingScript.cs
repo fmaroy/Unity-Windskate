@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 public class tricksHandlingScript : MonoBehaviour {
 
+    public InterfaceControl UIData;
     public Sprite idleStar;
     public Sprite pressedStar;
     public List<GameObject> TricksButton_Level;
@@ -40,8 +41,8 @@ public class tricksHandlingScript : MonoBehaviour {
     public int activeSector = 0;
     public float WindAngle = 0.0f;
 
-    private Sail_System_Control sailControlData;
-    private Follow_track followTrackData;
+    public Sail_System_Control sailControlData;
+    public Follow_track followTrackData;
 
     public List<float> EnergyCostPerTrick = new List<float>();
     public bool isCurrentPlayer;
@@ -57,33 +58,58 @@ public class tricksHandlingScript : MonoBehaviour {
 
 	public string manoeuvreStatus = "none";
 
+    public void Init()
+    {
+        //Debug.Log("Awake");
+        Start();
+
+    }
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
+        //Debug.Log("Start");
+        //UIData = this.gameObject.GetComponent<ExternalObjectsReference>().UIControlData;
+        UIData = GameObject.Find("OnScreenButtons").GetComponent<InterfaceControl>();
+        Debug.Log("UIData");
+        Debug.Log(UIData);
         isCurrentPlayer = this.gameObject.GetComponent<PlayerCollision>().isPlayer;
         starHighlightHashEnable = Animator.StringToHash("StarHighlightEnable");
         starHighlightHashTrigger = Animator.StringToHash("StarHighlightTrigger");
         StarsMaxLevel = PrevStarsMaxLevel;
 
         //raceDataUserPref = GameObject.Find("RaceManager").GetComponent<UserPreferenceScript>();
-		raceDataUserPref = this.GetComponent<ExternalObjectsReference>().UserPrefs;
+        raceDataUserPref = this.GetComponent<ExternalObjectsReference>().UserPrefs;
         sailControlData = this.GetComponent<PlayerCollision>().SailSystem.GetComponent<Sail_System_Control>();
         followTrackData = this.GetComponent<PlayerCollision>().Board.GetComponent<Follow_track>();
 
-		if (GetComponentInParent<PlayerCollision> ().isPlayer == true) {
+        setupUIRigging();
+    }
 
-            Debug.Log(this.gameObject.name);
-            Debug.Log(this.gameObject.GetComponent<ExternalObjectsReference>());
-			InterfaceControl tempUIData = this.gameObject.GetComponent<ExternalObjectsReference> ().UIControlData;
-            Debug.Log(this.gameObject.GetComponent<ExternalObjectsReference>().UIControls);
-            Debug.Log(tempUIData);
-            ButtonManoeuvreLeft = tempUIData.ManoeuvreLeftButton;
-            ButtonManoeuvreRight = tempUIData.ManoeuvreRightButton;
-            SlidersContainer = tempUIData.SliderContainer;
-		}
 
-		EnergyMaxLevel = Mathf.Max(localTackList[localTackList.Count -1].costEnergy, localJibeList[localJibeList.Count -1].costEnergy);
-		SpeedMaxLevel = Mathf.Max(localTackList[localTackList.Count -1].costSpeed, localJibeList[localJibeList.Count -1].costSpeed);
-		AngleMaxLevel = Mathf.Max(localTackList[localTackList.Count -1].costAngle, localJibeList[localJibeList.Count -1].costAngle);
+    /*public void makingsureAllUIIsRigged()
+    {
+        if ((SlidersContainer == null)||(ButtonManoeuvreLeft == null)||(ButtonManoeuvreRight == null))
+        {
+            Debug.Log("Updating UI Rigging");
+            setupUIRigging();
+        }
+    }*/
+
+    public void setupUIRigging()
+    {
+        Debug.Log("Setting up UI rigging");
+
+        if (this.gameObject.GetComponentInParent<PlayerCollision>().isPlayer == true)
+        {
+            Debug.Log(UIData);
+            ButtonManoeuvreLeft = UIData.ManoeuvreLeftButton;
+            ButtonManoeuvreRight = UIData.ManoeuvreRightButton;
+            SlidersContainer = UIData.SliderContainer;
+        }
+
+        EnergyMaxLevel = Mathf.Max(localTackList[localTackList.Count - 1].costEnergy, localJibeList[localJibeList.Count - 1].costEnergy);
+        SpeedMaxLevel = Mathf.Max(localTackList[localTackList.Count - 1].costSpeed, localJibeList[localJibeList.Count - 1].costSpeed);
+        AngleMaxLevel = Mathf.Max(localTackList[localTackList.Count - 1].costAngle, localJibeList[localJibeList.Count - 1].costAngle);
 
         if (isCurrentPlayer == true)
         {
@@ -97,7 +123,7 @@ public class tricksHandlingScript : MonoBehaviour {
 
             playerMaxEnergyLevel = EnergyMaxLevel;
             //ButtonDisplayManoeuvreHandling();
-            
+
         }
     }
 
@@ -297,6 +323,12 @@ public class tricksHandlingScript : MonoBehaviour {
 
     void Update()
     {
+        /*if (this.gameObject.GetComponentInParent<PlayerCollision>().isPlayer == true)
+        {
+            Debug.Log("Updating UI rigging from Update");
+            makingsureAllUIIsRigged();
+        }*/
+
         WindAngle = followTrackData.angleBoardToWind;
         currentSpeed = sailControlData.Board_Speed;
         // in the best sector:

@@ -128,7 +128,7 @@ public class RaceManagerScript : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 	    ///Is wind Ocilating or Shifting?
-        Debug.Log("Time scale : " + Time.timeScale);
-        Debug.Log("Frame count : " + Time.frameCount);
+        //Debug.Log("Time scale : " + Time.timeScale);
+        //Debug.Log("Frame count : " + Time.frameCount);
     }
 }

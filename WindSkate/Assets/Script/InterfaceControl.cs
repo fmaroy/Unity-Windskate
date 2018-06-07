@@ -33,7 +33,6 @@ public class InterfaceControl : MonoBehaviour {
 
 	//private AnimatorStateInfo reachedEndAnimationState;
 
-
 	public void initControls (GameObject player)
 	{
 		Player = player;
@@ -166,7 +165,6 @@ public class InterfaceControl : MonoBehaviour {
 
     public void updateGameSettings()
     {
-        
         RaceData.GetComponent<UserPreferenceScript>().updateSettings();
     }
 
@@ -178,8 +176,6 @@ public class InterfaceControl : MonoBehaviour {
         Time.fixedDeltaTime = 0.01f * Time.timeScale;
         ScenemanagerData.UnloadScene(SceneManager.GetActiveScene().name);
 		Scenemanager.GetComponent<SceneManagerScript>().LoadMainScene();
-
-        //
     }
 
     public void LoadSettings()
@@ -187,6 +183,7 @@ public class InterfaceControl : MonoBehaviour {
         Scenemanager = GameObject.Find("Scene_Manager");
         Scenemanager.GetComponent<SceneManagerScript>().LoadSceneAdditive("Settings_page");
     }
+
     public void ReloadLevel()
     {
         Scenemanager = GameObject.Find("Scene_Manager");
@@ -194,7 +191,6 @@ public class InterfaceControl : MonoBehaviour {
         Time.fixedDeltaTime = 0.01f * Time.timeScale;
         ScenemanagerData.UnloadScene(SceneManager.GetActiveScene().name);
         Scenemanager.GetComponent<SceneManagerScript>().LoadScene(SceneManager.GetActiveScene().name);
-        
     }
 
     public void LoadScene(string Scene)

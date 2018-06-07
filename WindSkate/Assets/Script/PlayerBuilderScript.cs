@@ -6,6 +6,7 @@ public class PlayerBuilderScript : MonoBehaviour {
 
     public PersistentParameters sceneData;
     public PlayerProperties thisPlayerProps;
+    public UserPreferenceScript userRacePrefData;
     //Boards def
     public GameObject boardGeometryContainer;
     public GameObject boardModel;
@@ -22,17 +23,15 @@ public class PlayerBuilderScript : MonoBehaviour {
         {
             Debug.Log("can't find scene object !");
         }
-
+        userRacePrefData = this.GetComponent<ExternalObjectsReference>().UserPrefs;
+        this.GetComponent<tricksHandlingScript>().setupUIRigging();
 	}
 	
     public void buildPlayer()
     {
-         
         //instantiante board
         InstantiateGear(sceneData.boardList[0].prefab, boardGeometryContainer);
-        //apply board looks
-
-
+        //apply board look
     }
 
     public void InstantiateGear (GameObject prefab, GameObject parent)

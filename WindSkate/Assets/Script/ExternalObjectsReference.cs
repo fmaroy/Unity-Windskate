@@ -41,7 +41,7 @@ public class ExternalObjectsReference : MonoBehaviour {
 
 		WindGust = GameObject.Find ("WindGusts");
 		if (GetComponent<PlayerCollision> ().isPlayer == true) {
-			UIControls = GameObject.Find ("OnScreenButtons");
+            UIControls = GameObject.Find ("OnScreenButtons");
 			if (UIControls != null) {
 				UIControlData = UIControls.GetComponent<InterfaceControl> ();
 				Windindicator = UIControlData.WindIndicator;

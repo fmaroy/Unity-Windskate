@@ -3499,7 +3499,7 @@ MonoBehaviour:
     costEnergy: 11
     costSpeed: 30
     costAngle: 3
-  controlData: {fileID: 0}
+  controlData: {fileID: 11402106}
   raceType: 0
   currentCarreerSeason: 0
   currentCarreerRace: 0
