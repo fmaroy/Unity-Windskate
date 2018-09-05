@@ -42,7 +42,7 @@ public class tricksHandlingScript : MonoBehaviour {
     public float WindAngle = 0.0f;
 
     public Sail_System_Control sailControlData;
-    public Follow_track followTrackData;
+    public Follow_track followTrackData = null;
 
     public List<float> EnergyCostPerTrick = new List<float>();
     public bool isCurrentPlayer;
@@ -69,9 +69,7 @@ public class tricksHandlingScript : MonoBehaviour {
     {
         //Debug.Log("Start");
         //UIData = this.gameObject.GetComponent<ExternalObjectsReference>().UIControlData;
-        UIData = GameObject.Find("OnScreenButtons").GetComponent<InterfaceControl>();
-        Debug.Log("UIData");
-        Debug.Log(UIData);
+
         isCurrentPlayer = this.gameObject.GetComponent<PlayerCollision>().isPlayer;
         starHighlightHashEnable = Animator.StringToHash("StarHighlightEnable");
         starHighlightHashTrigger = Animator.StringToHash("StarHighlightTrigger");
@@ -82,6 +80,9 @@ public class tricksHandlingScript : MonoBehaviour {
         sailControlData = this.GetComponent<PlayerCollision>().SailSystem.GetComponent<Sail_System_Control>();
         followTrackData = this.GetComponent<PlayerCollision>().Board.GetComponent<Follow_track>();
 
+        UIData = GameObject.Find("OnScreenButtons").GetComponent<InterfaceControl>();
+        Debug.Log("UIData");
+        Debug.Log(UIData);
         setupUIRigging();
     }
 
@@ -328,6 +329,17 @@ public class tricksHandlingScript : MonoBehaviour {
             Debug.Log("Updating UI rigging from Update");
             makingsureAllUIIsRigged();
         }*/
+
+        /*if (followTrackData == null)
+        {
+            followTrackData = this.GetComponent<PlayerCollision>().Board.GetComponent<Follow_track>();
+        }
+
+        if (sailControlData == null)
+        {
+            sailControlData = this.GetComponent<PlayerCollision>().SailSystem.GetComponent<Sail_System_Control>();
+        }*/
+
 
         WindAngle = followTrackData.angleBoardToWind;
         currentSpeed = sailControlData.Board_Speed;
