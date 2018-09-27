@@ -9,6 +9,8 @@ public class SailingProps : MonoBehaviour {
     public float WindAngle = 0f;
     public float upwindAngle = 45f;
     public float downwindAngle = 135f;
+    public List<float> upwindBoundaryAngles = new List<float>();
+    public List<float> downwindBoundaryAngles = new List<float>();
 
     //Player props
     public float playerAngle;
