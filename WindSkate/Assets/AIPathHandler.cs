@@ -12,6 +12,8 @@ public class AIPathHandler : MonoBehaviour
     public float rayDistance = 2000f;
     public float testAngle = 0f;
     public Vector3 currentPos;
+    float minSegmentLengthSqrt = 20f; // minimal segment length
+
 
     //testRaySettings
     public float testTrailSpeed = 500f;
@@ -19,6 +21,7 @@ public class AIPathHandler : MonoBehaviour
 
     public List<AISailPathBranch> pathBranchList = new List<AISailPathBranch>();
 
+    public GameObject DebugAIIndicator;
 
     void Start()
     {
@@ -71,7 +74,7 @@ public class AIPathHandler : MonoBehaviour
         AISailPathBranch thisBranch = new AISailPathBranch(thisBranchSegments);
         foreach (AISailPathSegment thisSegment in thisBranchSegments)
         {
-                Debug.DrawLine(thisSegment.corners[0], thisSegment.corners[1], Color.red, 5, true);
+                Debug.DrawLine(thisSegment.corners[0], thisSegment.corners[1], Color.green, 50, true);
         }
 
         //RenderPathTrail(thisBranchSegments);
@@ -103,19 +106,26 @@ public class AIPathHandler : MonoBehaviour
             anglesBoundary = SailingData.downwindBoundaryAngles;
         }
 
-        Debug.Log("Create Path from :");
-        Debug.Log(startPos);
-        List<Vector3> targetVectorList = new List<Vector3>();
-
-        Vector3 target = startPos + new Vector3(Mathf.Pow(distance, 2) * Mathf.Cos(angle * Mathf.Deg2Rad), 10f, Mathf.Pow(distance, 2) * Mathf.Sin(angle * Mathf.Deg2Rad));
-
-        NavMesh.CalculatePath(startPos, target, NavMesh.AllAreas, thisPath);
-
-        Debug.Log("calculated path");
         float thisWindAngle = SailingData.WindAngle; //retrieving the Wind Angle
         Vector3 windVector = new Vector3(-1 * Mathf.Cos(thisWindAngle * Mathf.Deg2Rad), 0f, -1 * Mathf.Sin(thisWindAngle * Mathf.Deg2Rad)); //the Vector representation of the wind
-        Debug.Log(windVector);
-        //looking fro incompatible angles
+        //Debug.Log(windVector);
+        float globalAngle = angle + thisWindAngle;
+
+        //Debug.Log("Create Path from :");
+        //Debug.Log(startPos);
+        List<Vector3> targetVectorList = new List<Vector3>();
+
+        Vector3 target = startPos + new Vector3(Mathf.Pow(distance, 2) * Mathf.Cos(globalAngle * Mathf.Deg2Rad), 10f, Mathf.Pow(distance, 2) * Mathf.Sin(globalAngle * Mathf.Deg2Rad));
+
+        //Debug
+        Debug.DrawLine(startPos, target, Color.blue, 5, true);
+
+        // end debug
+        NavMesh.CalculatePath(startPos, target, NavMesh.AllAreas, thisPath);
+
+        //Debug.Log("calculated path");
+
+        //looking for incompatible angles
         float nextSegmentAngle = 0f;
         float signOfWindDir = 0f;
         if (angle > 0)
@@ -126,25 +136,29 @@ public class AIPathHandler : MonoBehaviour
         {
             signOfWindDir = -1f;
         }
-        Debug.Log(thisPath.corners.Length);
-        for (int i = 0; i < thisPath.corners.Length - 1; i++)
+        Debug.Log("corners in path : " + thisPath.corners.Length);
+        
+        for (int i = 1; i < thisPath.corners.Length - 1; i++)
         {
-            Debug.DrawLine(thisPath.corners[i], thisPath.corners[i + 1], Color.red, 5, true);
-            Debug.Log("current corner id : " + i);
-            Debug.Log(thisPath.corners[i]);
-            Debug.Log(thisPath.corners[i+1]);
+            //Debug.DrawLine(thisPath.corners[i], thisPath.corners[i + 1], Color.red, 20, true);
+            //Debug.Log("current corner id : " + i);
+            //Debug.Log(thisPath.corners[i]);
+            //Debug.Log(thisPath.corners[i+1]);
             nextSegmentAngle = Mathf.Abs(Vector3.Angle((thisPath.corners[i]-thisPath.corners[i+1]), windVector));
             Debug.Log("Segment numb "+ i +" Angle : " + nextSegmentAngle);
+            // TODO : not yet suitable for downwind directions
             if ((nextSegmentAngle < anglesBoundary[0]) || (nextSegmentAngle > anglesBoundary[1]))
             {
+                Debug.DrawLine(thisPath.corners[i], thisPath.corners[i + 1], Color.red, 20, true);
+                // this segment is out of the angle boundaries
                 Debug.Log("Angle out of range : " + nextSegmentAngle);
                 Debug.Log("Breaking the line");
 
-                // NEED A IF STATEMENT TO GET IF PATH IS BLOCKED FOR 2 LOW OR 2 HIGHT ANGLES
+                // TODO:  IF STATEMENT TO GET IF PATH IS BLOCKED FOR 2 LOW OR 2 HIGHT ANGLES
                 //calculating remaning distance to compute
                 
                 float remainingDistSqrt = Mathf.Pow((target.x - startPos.x), 2) + Mathf.Pow((target.y - startPos.y), 2);
-                if (remainingDistSqrt > 200f)
+                if (remainingDistSqrt > minSegmentLengthSqrt)
                 {
                     if ((nextSegmentAngle < anglesBoundary[0]))
                     {
@@ -153,7 +167,7 @@ public class AIPathHandler : MonoBehaviour
                         //for (int browsedAngle = signOfWindDir * angle; Mathf.Abs(browsedAngle) > anglesBoundary[1]; browsedAngle = browsedAngle + signOfWindDir * 2)
                         for (int iterAngle = 0; iterAngle <= 4; iterAngle ++)
                         {
-                            float browsedAngle = Mathf.Lerp(angle, anglesBoundary[1], iterAngle/4);//ZARNING: ANGLE MIGHT CHANGE AFER ITERATION
+                            float browsedAngle = Mathf.Lerp(angle, anglesBoundary[1], iterAngle/4);//WARNING: ANGLE MIGHT CHANGE AFER ITERATION
                             Debug.Log("BrowsingAngle : " + browsedAngle);
                             /*tempSegmentList = CreateSinglePathInDirection(startPos, angle, distance);
                             if (tempSegmentList.Length > 0)
@@ -169,21 +183,30 @@ public class AIPathHandler : MonoBehaviour
                     else
                     {
                         Debug.Log("too far from wind, browsing more upwind path...");
+
                     }
                 }
-                
+                else
+                {
+                    Debug.Log("remainig length too short, breaking");
+                }
+
+
                 // browing multiple angles to find a path down wind
-                
+
                 //List<AISailPathSegment> additonalSegementsCreateSinglePathInDirection(Vector3 startPos, float angle, float distance);
 
                 break;
             }
             else
             {
+                Debug.DrawLine(thisPath.corners[i], thisPath.corners[i + 1], Color.green, 20, true);
+                // this segment is in angle boundaries
                 Debug.Log("Adding Segment numb "+ i);
                 List<Vector3> segmentCornersToAdd = new List<Vector3>();
+
+                segmentCornersToAdd.Add(thisPath.corners[i-1]);
                 segmentCornersToAdd.Add(thisPath.corners[i]);
-                segmentCornersToAdd.Add(thisPath.corners[i + 1]);
                 thisSegmentList.Add(new AISailPathSegment(segmentCornersToAdd));
             }
             
